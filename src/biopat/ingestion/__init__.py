@@ -3,5 +3,11 @@
 from .ros import RelianceOnScienceLoader
 from .patentsview import PatentsViewClient
 from .openalex import OpenAlexClient
+from .office_action import OfficeActionLoader
 
-__all__ = ["RelianceOnScienceLoader", "PatentsViewClient", "OpenAlexClient"]
+__all__ = [
+    "RelianceOnScienceLoader",
+    "PatentsViewClient",
+    "OpenAlexClient",
+    "OfficeActionLoader",
+]

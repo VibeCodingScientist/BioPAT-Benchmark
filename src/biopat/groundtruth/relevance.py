@@ -282,3 +282,132 @@ class RelevanceAssigner:
         if not self.qrels_path.exists():
             raise FileNotFoundError(f"Qrels not found at {self.qrels_path}")
         return pl.read_parquet(self.qrels_path)
+
+    def merge_ros_and_oa_citations(
+        self,
+        ros_links: pl.DataFrame,
+        oa_links: pl.DataFrame,
+    ) -> pl.DataFrame:
+        """Merge RoS citations with Office Action citations.
+
+        Office Action citations take precedence as they are examiner-validated.
+
+        Args:
+            ros_links: RoS citation links with query_id, paper_id, confidence, source.
+            oa_links: OA citation links with query_id, paper_id, rejection_type.
+
+        Returns:
+            Merged DataFrame with all citation evidence.
+        """
+        # Standardize column names
+        if "doc_id" in ros_links.columns:
+            ros_links = ros_links.rename({"doc_id": "paper_id"})
+        if "doc_id" in oa_links.columns:
+            oa_links = oa_links.rename({"doc_id": "paper_id"})
+
+        # Add source to OA links if not present
+        if "source" not in oa_links.columns:
+            oa_links = oa_links.with_columns(pl.lit("office_action").alias("source"))
+
+        # Merge: prefer OA data when available
+        merged = ros_links.join(
+            oa_links.select(["query_id", "paper_id", "rejection_type"]),
+            on=["query_id", "paper_id"],
+            how="left"
+        )
+
+        # For links only in OA (not in RoS), add them
+        oa_only = oa_links.join(
+            ros_links.select(["query_id", "paper_id"]),
+            on=["query_id", "paper_id"],
+            how="anti"
+        )
+
+        if len(oa_only) > 0:
+            # Add missing columns to match schema
+            if "confidence" not in oa_only.columns:
+                oa_only = oa_only.with_columns(pl.lit(10).alias("confidence"))
+            merged = compat.concat([merged, oa_only])
+
+        logger.info(
+            f"Merged citations: {len(ros_links)} RoS + {len(oa_links)} OA = {len(merged)} total "
+            f"({merged['rejection_type'].is_not_null().sum()} with rejection type)"
+        )
+
+        return merged
+
+    def create_graded_qrels_from_merged(
+        self,
+        merged_citations: pl.DataFrame,
+        save: bool = True,
+    ) -> pl.DataFrame:
+        """Create graded qrels from merged RoS + OA citations.
+
+        Args:
+            merged_citations: Merged citation links with rejection_type.
+            save: Whether to save to disk.
+
+        Returns:
+            Graded qrels DataFrame.
+        """
+        # Calculate relevance for each citation
+        relevance_scores = []
+        labels = []
+
+        for row in compat.iter_rows(merged_citations, named=True):
+            rejection_type = row.get("rejection_type")
+            source = row.get("source", "unknown")
+            confidence = row.get("confidence", 0)
+
+            # Assign relevance based on spec rules
+            if rejection_type == "102":
+                rel = RelevanceLevel.NOVELTY_DESTROYING
+            elif rejection_type == "103":
+                rel = RelevanceLevel.HIGHLY_RELEVANT
+            elif source == "examiner" and confidence >= 9:
+                rel = RelevanceLevel.HIGHLY_RELEVANT
+            elif source == "examiner" and confidence >= 7:
+                rel = RelevanceLevel.RELEVANT
+            elif source == "applicant" and confidence >= 8:
+                rel = RelevanceLevel.RELEVANT
+            else:
+                rel = RelevanceLevel.NOT_RELEVANT
+
+            relevance_scores.append(int(rel))
+            labels.append(RELEVANCE_LABELS.get(rel, "unknown"))
+
+        # Build qrels DataFrame
+        qrels = merged_citations.with_columns([
+            pl.Series("relevance", relevance_scores),
+            pl.Series("label", labels),
+        ])
+
+        # Select and rename columns
+        qrels = qrels.select([
+            pl.col("query_id"),
+            pl.col("paper_id").alias("doc_id"),
+            pl.col("relevance"),
+            pl.col("label"),
+            pl.col("source").alias("evidence_source"),
+            pl.col("confidence"),
+            pl.col("rejection_type"),
+        ])
+
+        # Deduplicate (keep highest relevance)
+        qrels = compat.unique(
+            qrels.sort("relevance", descending=True),
+            subset=["query_id", "doc_id"],
+            keep="first"
+        )
+
+        # Filter out not_relevant
+        qrels = qrels.filter(pl.col("relevance") > 0)
+
+        logger.info(f"Created {len(qrels)} graded relevance judgments")
+        self._log_relevance_distribution(qrels)
+
+        if save:
+            qrels.write_parquet(self.qrels_path)
+            logger.info(f"Saved graded qrels to {self.qrels_path}")
+
+        return qrels
