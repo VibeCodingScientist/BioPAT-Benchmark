@@ -1,0 +1,38 @@
+# BioPAT Default Configuration
+# This file contains the default settings for the benchmark construction pipeline.
+
+phase: "phase1"
+
+# Data paths (relative to project root)
+paths:
+  data_dir: "data"
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  cache_dir: "data/cache"
+  benchmark_dir: "data/benchmark"
+
+# API credentials (can also be set via environment variables)
+# PATENTSVIEW_API_KEY, NCBI_API_KEY, OPENALEX_MAILTO
+api:
+  patentsview_key: null
+  ncbi_key: null
+  openalex_mailto: null
+
+# Phase 1: Minimum Viable Benchmark
+phase1:
+  # Target dataset size
+  target_patent_count: 2000
+  target_query_count: 5000
+
+  # Citation filtering
+  min_citations: 3
+  ros_confidence_threshold: 8
+
+  # IPC code prefixes for biomedical domain
+  ipc_prefixes:
+    - "A61"  # Medical/veterinary science
+    - "C07"  # Organic chemistry (including pharmaceuticals)
+    - "C12"  # Biochemistry, genetic engineering
+
+  # Random seed for reproducibility
+  seed: 42

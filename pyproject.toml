@@ -1,0 +1,55 @@
+[project]
+name = "biopat"
+version = "0.1.0"
+description = "BioPAT: Biomedical Patent-to-Article Retrieval Benchmark"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx[http2]",
+    "polars",
+    "pyarrow",
+    "duckdb",
+    "pyyaml",
+    "pydantic>=2.0",
+    "diskcache",
+    "tqdm",
+    "python-dotenv",
+    "lxml",
+    "rank-bm25",
+]
+
+[project.optional-dependencies]
+evaluation = [
+    "beir",
+    "sentence-transformers",
+    "pytrec-eval-terrier",
+]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "pytest-asyncio",
+    "black",
+    "isort",
+    "mypy",
+]
+all = [
+    "biopat[evaluation,dev]",
+]
+
+[project.scripts]
+biopat = "biopat.pipeline:run_phase1"
+
+[tool.setuptools]
+packages = ["biopat"]
+package-dir = {"" = "src"}
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
