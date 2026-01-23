@@ -57,40 +57,115 @@
 - [x] Validate no temporal violations in positive judgments
 - [ ] Run BM25 baseline with NDCG metrics (requires data)
 
-## Implementation Status: COMPLETE
+## Phase 2 Status: COMPLETE
 
 All 50 tests passing (27 Phase 1 + 23 Phase 2).
+
+---
+
+# Phase 3 Implementation Tasks
+
+## Task Checklist
+
+### 3.1 Embedding Infrastructure
+- [x] Create `dense.py` with DenseRetriever base class
+- [x] Implement embedding generation with batching
+- [x] Add FAISS vector search support
+- [x] Create model registry for HuggingFace models
+- [x] Auto-detect GPU/CPU and handle device placement
+- [x] Implement embedding caching to disk
+
+### 3.2 Dense Retrieval Baselines
+- [x] Implement Contriever baseline (facebook/contriever)
+- [x] Implement SPECTER2 baseline (allenai/specter2)
+- [x] Implement PubMedBERT baseline (microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext)
+- [x] Implement GTR-T5-XL baseline (sentence-transformers/gtr-t5-xl)
+- [x] Save results in TREC format
+- [x] Compute and report all metrics
+
+### 3.3 Hybrid and Reranking Methods
+- [x] Create `hybrid.py` with fusion methods
+- [x] Implement Reciprocal Rank Fusion (RRF)
+- [x] Implement score-based fusion
+- [x] Create `reranker.py` with cross-encoder support
+- [x] Implement BM25 + cross-encoder pipeline
+- [x] Support configurable top-k for reranking
+
+### 3.4 Ablation Studies
+- [x] Create `ablation.py` module
+- [x] Implement query representation ablation
+  - Claim text only
+  - Claim + patent abstract
+  - Claim + patent title + abstract
+- [x] Implement document representation ablation
+  - Title + abstract
+  - Title only
+  - Abstract only
+- [x] Implement domain split analysis
+  - IN-domain performance
+  - OUT-domain performance
+- [x] Implement temporal split analysis
+  - Recent patents (2015+)
+  - Older patents (pre-2015)
+- [x] IPC subclass breakdown (A61K, C12N, C07D, etc.)
+
+### 3.5 Error Analysis
+- [x] Create `error_analysis.py` module
+- [x] Implement failure categorization:
+  - Vocabulary mismatch (patent jargon vs scientific)
+  - Abstraction level (claim too specific/general)
+  - Cross-domain (relevant paper in different subfield)
+  - Semantic gap (same concept, different phrasing)
+  - False negative (missing ground truth)
+- [x] Generate error analysis report
+- [x] Sample errors for manual review
+
+### 3.6 Pipeline and Integration
+- [x] Create `pipeline_phase3.py` orchestrating all steps
+- [x] Results aggregation and reporting
+- [x] Generate benchmark statistics report
+
+### 3.7 Tests
+- [x] Add tests for dense retrieval
+- [x] Add tests for hybrid methods
+- [x] Add tests for reranking
+- [x] Add tests for ablation infrastructure
+- [x] Add tests for error analysis
+
+## Phase 3 Status: COMPLETE
+
+All 76 tests passing (27 Phase 1 + 23 Phase 2 + 26 Phase 3).
 
 ## File Structure (New/Modified)
 
 ```
 src/biopat/
-├── ingestion/
-│   ├── __init__.py         # MODIFIED: Added OfficeActionLoader
-│   └── office_action.py    # NEW: Office Action downloader/parser
-├── processing/
-│   ├── __init__.py         # MODIFIED: Added NPLParser, ClaimMapper
-│   ├── npl_parser.py       # NEW: NPL citation parser & linker
-│   └── claim_mapper.py     # NEW: Claim-rejection mapper
-├── groundtruth/
-│   ├── __init__.py         # MODIFIED: Added stratification exports
-│   ├── relevance.py        # MODIFIED: Graded relevance & merge logic
-│   └── stratification.py   # NEW: Domain stratification
-└── pipeline_phase2.py      # NEW: Phase 2 pipeline orchestration
+├── evaluation/
+│   ├── __init__.py         # MODIFIED: Add new exports
+│   ├── bm25.py             # EXISTS: BM25 baseline
+│   ├── dense.py            # NEW: Dense retrieval baselines
+│   ├── hybrid.py           # NEW: Hybrid methods and fusion
+│   ├── reranker.py         # NEW: Cross-encoder reranking
+│   ├── metrics.py          # EXISTS: Metrics computation
+│   ├── ablation.py         # NEW: Ablation studies
+│   └── error_analysis.py   # NEW: Error analysis
+└── pipeline_phase3.py      # NEW: Phase 3 pipeline
 
 tests/
-└── test_phase2.py          # NEW: Phase 2 tests (23 tests)
+└── test_phase3.py          # NEW: Phase 3 tests (26 tests)
 ```
 
 ## Dependencies
 
-- Existing: polars, httpx, pydantic
-- No new dependencies needed (fuzzy matching done via normalization)
+New dependencies for Phase 3:
+- sentence-transformers>=2.2.0
+- faiss-cpu>=1.7.0 (or faiss-gpu for GPU support)
+- torch>=2.0.0
 
 ## Next Steps
 
-1. Download actual Office Action data (~15GB) from USPTO
-2. Run Phase 2 pipeline on real data
-3. Evaluate NPL linking accuracy (target >75%)
-4. Run BM25 baseline with NDCG metrics
-5. Generate benchmark statistics report
+1. Run Phase 3 pipeline on actual benchmark data
+2. Generate baseline results table
+3. Analyze ablation results
+4. Document error categories
+5. Prepare for Phase 4 (Publication and Release)
