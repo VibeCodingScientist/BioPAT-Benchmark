@@ -75,3 +75,14 @@
     - [x] Update Evaluation for Per-Jurisdiction Metrics <!-- id: 79 -->
     - [x] Re-run Baselines on v3.0 Global Corpus <!-- id: 80 -->
 - [x] Push all BioPAT v3.0 code to GitHub <!-- id: 81 -->
+- [/] Execute BioPAT v3.0 Production Run (Phase 7) <!-- id: 82 -->
+    - [ ] Large-scale ingestion from EPO/WIPO <!-- id: 83 -->
+    - [ ] Comprehensive Dual-Corpus assembly (1M+ docs) <!-- id: 84 -->
+    - [ ] Global Ground Truth validation audit <!-- id: 85 -->
+    - [ ] Manual quality check of relevance labels <!-- id: 86 -->
+    - [ ] Compute official v3.0 Baselines (all models) <!-- id: 87 -->
+- [ ] Prepare Public Release (Phase 8) <!-- id: 88 -->
+    - [ ] Data anonymization and licensing <!-- id: 89 -->
+    - [ ] Upload datasets to HuggingFace & Zenodo <!-- id: 90 -->
+    - [ ] Finalize citation and DOI <!-- id: 91 -->
+    - [ ] Submission to academic conference (NeurIPS/SIGIR) <!-- id: 92 -->
