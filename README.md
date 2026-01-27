@@ -24,18 +24,20 @@ In the pharmaceutical and biotechnology industries, prior art search is critical
 
 BioPAT is evolving from a literature-only benchmark to a **Full Prior Art retrieval benchmark**, matching the real-world complexity of patent examination.
 
-| Attribute | v1.0 (Phases 1-4) | v2.0 (Phase 5+) |
-|-----------|-------------------|-----------------|
-| **Corpus** | Scientific papers only | Papers + Prior patents |
-| **Ground Truth** | NPL citations only | NPL + Patent citations |
-| **Task** | Patent-to-Literature | Full Prior Art Retrieval |
-| **Size** | ~200K documents | ~500K documents |
+| Attribute | v1.0 (Phases 1-4) | v2.0 (Phase 5) | v3.0 (Phase 6+) |
+|-----------|-------------------|-----------------|-----------------|
+| **Jurisdictions** | US only | US only | **Global (US+EP+WO)** |
+| **Corpus** | papers | papers + patents | papers + intl patents |
+| **Ground Truth**| NPL citations | NPL + US patents | NPL + Global citations |
+| **Task** | Patent-to-Literature | Full Prior Art | **Global Novelty retrieval** |
+| **Size** | ~200K | ~500K | **~1M documents** |
 
 ## Project Roadmap
 
 - **Phases 1-3**: [DONE] Baseline implementation, Examiner-grade ground truth, and Evaluation framework.
-- **Phase 4**: [IN PROGRESS] **BioPAT v2.0: Full Novelty Search** - Expansion to include prior patents alongside scientific literature. Includes Open Science documentation and reproducibility audit.
-- **Phase 5**: [PLANNED] Formal academic publication and public dataset release (HuggingFace & Zenodo).
+- **Phases 4-5**: [DONE] **BioPAT v2.0: Full Novelty Search** - Expansion to include US patents.
+- **Phase 6**: [IN PROGRESS] **BioPAT v3.0: Global Prior Art** - International coverage (EP, WO) and multi-jurisdictional evaluation.
+- **Phase 7**: [PLANNED] Formal academic publication and public dataset release (HuggingFace & Zenodo).
 
 ## Quick Start
 

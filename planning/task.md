@@ -63,3 +63,14 @@
     - [x] Upgrade Evaluation with Cross-Type Reporting <!-- id: 67 -->
     - [x] Execute v2.0 Baseline Evaluation <!-- id: 68 -->
 - [x] Push all BioPAT v2.0 code to GitHub <!-- id: 69 -->
+- [/] Plan Phase 6: International Patent Coverage (v3.0) <!-- id: 70 -->
+    - [x] Create Phase 6 Implementation Plan <!-- id: 71 -->
+    - [ ] Define Phase 6 Implementation Tasks for Code Claude <!-- id: 72 -->
+- [ ] Implement Phase 6 (Code Claude) <!-- id: 73 -->
+    - [ ] Develop EPO OPS Client with OAuth <!-- id: 74 -->
+    - [ ] Develop WIPO PATENTSCOPE Client <!-- id: 75 -->
+    - [ ] Implement International Patent ID Normalization <!-- id: 76 -->
+    - [ ] Build EP Search Report Parser for Ground Truth <!-- id: 77 -->
+    - [ ] Assemble International Dual-Corpus (v3.0) <!-- id: 78 -->
+    - [ ] Update Evaluation for Per-Jurisdiction Metrics <!-- id: 79 -->
+    - [ ] Re-run Baselines on v3.0 Global Corpus <!-- id: 80 -->
