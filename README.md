@@ -1,16 +1,17 @@
-# BioPAT: Biomedical Patent-to-Article Retrieval Benchmark
+# BioPAT: Biomedical Patent-to-Article & Patent-to-Patent Retrieval Benchmark
 
-BioPAT is the first dedicated benchmark dataset designed to evaluate information retrieval systems in the specialized task of finding relevant scientific literature given biomedical patent claims.
+BioPAT is the first dedicated benchmark dataset designed to evaluate information retrieval systems in the specialized task of finding relevant **scientific literature and earlier patents** given biomedical patent claims.
 
 ## What is BioPAT?
 
-In the pharmaceutical and biotechnology industries, prior art search is critical. Patent examiners and researchers must determine if a claimed invention is truly novel by searching both earlier patents and the vast body of scientific literature. While benchmarks exist for patent-to-patent retrieval (CLEF-IP) and general literature retrieval (BEIR), BioPAT fills the critical gap for **cross-domain retrieval** where patent claims (queries) must be matched against scientific research papers (corpus).
+In the pharmaceutical and biotechnology industries, prior art search is critical. Patent examiners and researchers must determine if a claimed invention is truly novel by searching the vast body of scientific literature **and** earlier patents. While previous benchmarks focused on either patent-to-patent (CLEF-IP) or general literature retrieval (BEIR), BioPAT fills the critical gap for **Full Prior Art retrieval**, where patent claims (queries) are matched against a comprehensive, heterogeneous corpus of both research papers and patents.
 
 ## Why BioPAT?
 
-- **The NPL Gap**: Biomedical patents cite non-patent literature (NPL) at 3-5x the rate of other domains.
-- **High Stakes**: Patent validity directly impacts billion-dollar drug lifecycles and global access to medicine.
-- **Domain Difficulty**: Bridging the linguistic gap between legal patent jargon and scientific terminology is a unique challenge for AI and IR systems.
+- **Real-World Fidelity**: Mirrors the actual workflow of patent examiners who must search multiple source types to assess legal novelty.
+- **The NPL & Patent Gap**: Biomedical patents require a unique cross-domain retrieval capability to bridge legal jargon, chemical indexing, and scientific terminology.
+- **High Stakes**: Patent validity directly impacts billion-dollar drug lifecycles; missing a single piece of prior art in either papers or patents can be catastrophic.
+- **Domain Difficulty**: Provides a rigorous test for systems attempting to generalize across scientific disciplines and legal domains.
 
 ## Key Features
 
