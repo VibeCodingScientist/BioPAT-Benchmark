@@ -29,20 +29,19 @@ Link disparate identifiers across US, EP, WO, and biomedical databases into a un
 
 Integrate structural similarity search into the retrieval pipeline.
 
-### [NEW] [ingestion/chembl.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/chembl.py)
+### [DONE] [ingestion/chembl.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/chembl.py)
 - Official `chembl-webresource-client` wrapper.
 - Logic for bioactivity mapping and target resolution.
 
-### [NEW] [ingestion/pubchem.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/pubchem.py)
+### [DONE] [ingestion/pubchem.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/pubchem.py)
 - PUG-REST API client wrapper.
 - Logic for Compound ID (CID) resolution and PubMed cross-reference retrieval.
 
-### [NEW] [ingestion/surechembl.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/surechembl.py)
+### [DONE] [ingestion/surechembl.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/surechembl.py)
 - SureChEMBL V3 REST API client wrapper.
 - High-performance mapping between patents and chemical structures.
-- Support for structure similarity and substructure searches.
 
-### [NEW] [processing/chemical_index.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/processing/chemical_index.py)
+### [PENDING] [processing/chemical_index.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/processing/chemical_index.py)
 - Morgan/RDKit fingerprint computation.
 - **FAISS IndexFlatIP** for Tanimoto similarity approximation via L2-normalized inner product.
 
@@ -55,11 +54,11 @@ Integrate structural similarity search into the retrieval pipeline.
 
 Enable sequence-level prior art findability for biotechnology/antibody patents.
 
-### [NEW] [ingestion/uniprot.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/uniprot.py)
+### [DONE] [ingestion/uniprot.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/uniprot.py)
 - UniProt REST API client wrapper.
 - Logic for resolving protein accessions and fetching FASTA sequences.
 
-### [NEW] [ingestion/patent_sequences.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/patent_sequences.py)
+### [PENDING] [ingestion/patent_sequences.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/patent_sequences.py)
 - NCBI Patent Sequence Database integration via `Biopython.Entrez`.
 - Regex extraction of `SEQ ID NO` references from claim text.
 

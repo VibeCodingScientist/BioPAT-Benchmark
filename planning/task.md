@@ -90,7 +90,7 @@
     - [x] Implement `EntityResolver` for unified ID handling <!-- id: 94 -->
     - [x] Design and deploy SQL unified entity schema <!-- id: 95 -->
     - [x] Build mapping system for Paper-to-Patent cross-references <!-- id: 96 -->
-- [ ] Implement Phase 9: Chemical Structure Matching (v3.1) <!-- id: 97 -->
+- [x] Implement Phase 9: Chemical Structure Matching (v3.1) <!-- id: 97 -->
     - [x] Integrate official `chembl-webresource-client` <!-- id: 97.1 -->
     - [x] Implement PubChem PUG-REST API client <!-- id: 97.2 -->
     - [x] Build SureChEMBL V3 REST API client <!-- id: 98 -->
