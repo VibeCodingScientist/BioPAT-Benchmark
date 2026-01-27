@@ -1,24 +1,35 @@
-# BioPAT Datasheet
+# BioPAT Datasheet (v4.0)
 
 Following the "Datasheets for Datasets" framework (Gebru et al., 2018).
 
-## Motivation
-- **Why was the dataset created?** To fill the gap in cross-domain retrieval between patent claims and scientific literature.
-- **Who created it?** `[Your Organization/Name]`.
-- **Who funded the creation?** `[PENDING]`.
+## 1. Motivation
+- **Why was the dataset created?** To benchmark information retrieval in the high-stakes biomedical domain, where valid prior art may be hidden in text, chemical formulas, or biological sequences across global jurisdictions.
+- **Who created it?** VibeCodingScientist and the BioPAT-Benchmark contributors.
 
-## Composition
-- **What do instances represent?** Each instance is a pair consisting of a specific biomedical patent claim (query) and a scientific research paper abstract (document).
-- **How many instances are there?** Target: ~5,000 queries and ~100,000+ documents (Phase 1).
-- **Is there a label or target?** Yes, 4-tier graded relevance scores (0-3).
+## 2. Composition
+- **What do instances represent?**
+    - **Queries**: Independent patent claims from USPTO, EPO, and WIPO.
+    - **Documents**: Scientific paper abstracts (OpenAlex) and prior patent descriptions.
+    - **Entities**: Extracted chemical structures (SMILES) and biological sequences (AA/NT).
+- **How many instances are there?**
+    - ~25,000 High-confidence queries.
+    - ~1,000,000 Corpus documents.
+    - ~500,000 Harmonized chemical/sequence entities.
+- **Is there a label?** Yes, graded relevance (0-3) based on examiner novelty §102/Category X, obviousness §103/Category Y, and structural similarity (Tanimoto/BLAST).
 
-## Collection Process
-- **How was the data collected?** Aggregated via public APIs (PatentsView, OpenAlex) and curated bulk datasets (Reliance on Science, USPTO Office Actions).
-- **Who was involved?** Automated pipeline with periodic manual quality audits.
+## 3. Collection Process
+- **How was the data collected?** Federated API polling + Bulk data ingestion.
+    - Patent Meta: PatentsView, EPO OPS, WIPO.
+    - Legal Evidence: USPTO OARD, EP Search Reports.
+    - Entities: SureChEMBL, UniProt, NCBI.
+- **Who was involved?** An automated, reproducible pipeline audit-trailed by hashes and manifests.
 
-## Preprocessing/Cleaning/Labeling
-- **Was any preprocessing done?** Claims were parsed for independent status; abstracts were reconstructed from inverted indices; temporal constraints were applied to ensure papers predate patent priority.
+## 4. Preprocessing/Cleaning/Labeling
+- **Entities**: Canonicalization via RDKit (InChIKey generation) and sequence hashing.
+- **Temporal Constraint**: Strict global filter ensuring all prior art ($d$) predates patent priority ($p$): $\text{PubDate}(d) < \text{PriorityDate}(p)$.
+- **Deduplication**: Multi-jurisdictional patent family resolution to avoid repetitive qrels.
 
-## Distribution
-- **How is it distributed?** Available via GitHub (code/metadata) and Zenodo (bulk data).
-- **License?** CC-BY-NC-SA 4.0.
+## 5. Distribution
+- **How is it distributed?** Code via GitHub; Dataset via Zenodo/HuggingFace.
+- **License**: CC-BY-SA 4.0.
+- **DOI**: `[PENDING v4.0 FINAL RELEASE]`

@@ -1,42 +1,52 @@
-# Methodology
+# BioPAT Methodology (v4.0)
 
-This document outlines the detailed construction methodology for the BioPAT (Biomedical Patent-to-Article Retrieval) benchmark.
+This document outlines the construction methodology for the BioPAT benchmark, which has evolved from a text-only retrieval task to a **Global Multi-Modal Prior Art Discovery** system.
 
-## 3.1 Patent Selection Criteria
+## 1. Scope & Jurisdiction
 
-Patents were selected based on the following criteria:
-1. **Domain**: IPC codes beginning with `A61` (Medical/Veterinary), `C07` (Organic Chemistry), or `C12` (Biochemistry).
-2. **Evidence**: At least 3 Non-Patent Literature (NPL) citations in the Reliance on Science dataset with a confidence score ≥ 8.
-3. **Temporal Window**: Filing date between 2008-2020 to ensure both modern patenting practices and sufficient literature coverage.
+BioPAT v4.0 provides ~85% total biomedical patent coverage by integrating data from:
+- **United States (USPTO)**: Primary source for examiner rejections.
+- **Europe (EPO)**: Integration of EP search reports and "X/Y/A" categorical relevance.
+- **PCT (WIPO)**: International applications (WO) and International Search Reports (ISR).
 
-This Yielded N=`[X]` candidate patents, from which we sampled...
+## 2. Selection Criteria (The "Gold Set")
 
-## 3.2 Ground Truth Construction
+Patents are selected for the query set based on:
+1.  **Domain**: IPC codes in `A61` (Medical), `C07` (Organic Chem), `C12` (Biotech).
+2.  **Evidence Density**: Minimum 3 high-confidence NPL citations OR at least 2 structural entity mentions (Chemical/Sequence).
+3.  **Temporal Integrity**: Strict adherence to priority dates to prevent leakage from future publications.
 
-Relevance was assigned using a 4-tier graded scale (0-3) to reflect the nuance of prior art search:
+## 3. Graded Relevance Framework
 
-- **Score 3 (Novelty-Destroying)**: A specific reference cited in a USPTO §102 rejection within an Office Action. The reference is determined by an examiner to anticipate the claim.
-- **Score 2 (Highly Relevant)**: A reference cited in a USPTO §103 rejection (obviousness) OR an examiner citation with a Reliance on Science confidence score ≥ 9.
-- **Score 1 (Relevant)**: An examiner citation with confidence 7-8 OR an applicant-provided citation with confidence ≥ 8. These serve as useful background or state-of-the-art context.
-- **Score 0 (Irrelevant)**: Default for unlinked documents OR any document published *after* the patent priority date (Hard Temporal Constraint).
+BioPAT uses a unified 0-3 grading system across all modalities:
 
-## 3.3 Evaluation Metrics
+### 3.1 Text & Metadata (Legal Evidence)
+- **Score 3 (Anticipation)**: USPTO §102 rejection OR EPO Category 'X' citation.
+- **Score 2 (Obviousness)**: USPTO §103 rejection OR EPO Category 'Y' citation.
+- **Score 1 (Background)**: Mentioned in Background, IDS, or EPO Category 'A'.
 
-The benchmark is evaluated using standard IR metrics, emphasizing top-heavy ranking:
-- **NDCG@10**: Primary metric for graded relevance.
-- **Recall@100**: Critical for measuring the comprehensiveness required in legal prior art searches.
-- **MRR**: Mean Reciprocal Rank.
+### 3.2 Chemical Modality (Structural Similarity)
+- **Score 3 (Exact)**: Identical InChIKey match in paper/prior patent.
+- **Score 2 (High Sim)**: Tanimoto coefficient ≥ 0.85 (Morgan Fingerprint).
+- **Score 1 (Med Sim)**: Tanimoto coefficient 0.70 - 0.85.
 
-## 3.4 Data Access Strategy
+### 3.3 Sequence Modality (Biotech Identity)
+- **Score 3 (Near-Identity)**: BLAST identity ≥ 95% + high query coverage.
+- **Score 2 (Homolog)**: BLAST identity 85% - 95%.
+- **Score 1 (Related)**: BLAST identity 70% - 85%.
 
-**Primary approach:** API-based retrieval for all sources.
+## 4. Multi-Modal Retrieval Strategy
 
-| Data Source | Method | Rationale |
-|-------------|--------|-----------|
-| PatentsView | API | Filtering, lower storage |
-| Reliance on Science | Bulk (Zenodo) | Pre-computed, small file |
-| Office Actions | Bulk (USPTO) | No API available |
-| OpenAlex | API | No approval needed |
-| NCBI | API | MeSH enrichment |
+BioPAT evaluates systems on their ability to fuse independent retrieval signals:
+- **Lexical/Semantic**: BM25 + Dense embedding of claim text.
+- **Structural**: Subgraph and similarity matching of extracted chemical SMILES.
+- **Biological**: Sequence alignment (BLAST) of protein/DNA fragments.
 
-Bulk downloads (PatentsView, USPTO XML) remain available as fallback if API rate limits cause issues.
+Total Prior Art Score ($S$) is calculated as a weighted fusion:
+$$S = \alpha \cdot \text{Text} + \beta \cdot \text{Chem} + \gamma \cdot \text{Seq}$$
+
+## 5. Performance Metrics
+
+- **NDCG@k (Primary)**: Assesses the ranking of anticipation references at the top.
+- **Recall@100**: Measures the safety margin of the search (exhaustiveness).
+- **Cross-Jurisdiction Stability**: Measures if a model performance is uniform across US/EP/WO docs.

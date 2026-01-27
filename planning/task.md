@@ -105,3 +105,8 @@
     - [ ] Implement Weighted Trimodal Retriever (Text + Chem + Seq) <!-- id: 109 -->
     - [ ] Build Multi-Modal Evaluation Reporting <!-- id: 110 -->
     - [ ] Conduct comprehensive v4.0 system audit <!-- id: 111 -->
+- [x] Align documentation with v4.0 architecture overhaul <!-- id: 112 -->
+    - [x] Overhaul `METHODOLOGY.md` with multi-modal relevance <!-- id: 113 -->
+    - [x] Update `DATA_SOURCES.md` with international/entity sources <!-- id: 114 -->
+    - [x] Update `REPRODUCIBILITY.md` with RDKit/BLAST prerequisites <!-- id: 115 -->
+    - [x] Update `DATASHEET.md` with Gebru et al. standards <!-- id: 116 -->

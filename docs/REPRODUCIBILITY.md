@@ -1,152 +1,94 @@
-# Reproducibility Guide
+# BioPAT Reproducibility Guide (v4.0)
 
-Follow these steps to reproduce the BioPAT benchmark from scratch.
+Follow these steps to reproduce the BioPAT benchmark from scratch, including global patent coverage and multi-modal retrieval pipelines.
 
-## Prerequisites
+## 1. Prerequisites
 
-- **Python 3.11+** (tested with 3.11 and 3.12)
-- **Git**
-- **API Keys**:
-    - PatentsView API Key (X-Api-Key)
-    - NCBI API Key (for PubMed enrichment)
-- **Disk Space**: At least 150GB of free space.
+- **Python**: 3.11 or 3.12 (High performance Polars support required).
+- **Relational DB**: SQLite (Local) or PostgreSQL (Production).
+- **Core Intelligence**:
+    - `rdkit`: For chemical structure handling and fingerprinting.
+    - `biopython`: For biological sequence extraction.
+    - `ncbi-blast+`: Local installation of BLAST required for sequence similarity.
+- **API Access**:
+    - **PatentsView**: `X-Api-Key` required.
+    - **EPO OPS**: Consumer Key and Secret (OAuth 2.0).
+    - **WIPO PATENTSCOPE**: API Token.
+    - **NCBI**: `NCBI_API_KEY` for high-throughput sequence retrieval.
+- **Storage**: At least 300GB of free space (SureChEMBL and BLAST indices).
 
-## Step 1: Clone and Install
+## 2. Environment Configuration
+
+Create a `.env` file in the root directory:
 
 ```bash
-git clone https://github.com/[org]/biopat.git
-cd biopat
-python -m venv venv
-source venv/activate
-pip install -e ".[all]"
-```
-
-## Step 2: Configure Environment
-
-Create a `.env` file or export variables:
-```bash
+# USPTO / PatentsView
 export PATENTSVIEW_API_KEY="your_key"
+
+# European Patent Office (EPO)
+export EPO_CONSUMER_KEY="your_ops_key"
+export EPO_CONSUMER_SECRET="your_ops_secret"
+
+# WIPO / PATENTSCOPE
+export WIPO_API_TOKEN="your_token"
+
+# NCBI / PubMed
 export NCBI_API_KEY="your_key"
+
+# OpenAlex
 export OPENALEX_MAILTO="your_email@example.org"
 ```
 
-## Step 3: Execute Pipeline
-
-Run the unified build command. This will download the raw data, process claims, link citations, and generate the BEIR-formatted output.
+## 3. Installation
 
 ```bash
-biopat build --target-patents 2000
+# Clone and install with all multi-modal dependencies
+git clone https://github.com/VibeCodingScientist/BioPAT-Benchmark.git
+cd BioPAT-Benchmark
+python -m venv venv
+source venv/activate
+pip install -e ".[all]"
+
+# Install local BLAST+ (Platform specific)
+brew install blast  # macOS
+sudo apt-get install ncbi-blast+  # Linux
 ```
 
-## Step 4: Run Baselines
+## 4. Execution Pipeline
 
-Evaluate the generated benchmark against lexical and dense baselines:
+### 4.1 Initialize Harmonization Layer
+BioPAT v4.0 requires a unified entity database.
 
 ```bash
-biopat evaluate --all
+# Initialize SQLite database
+biopat db init --backend sqlite --path data/biopat.db
 ```
 
-## Reproducibility Infrastructure
+### 4.2 Build Unified Corpus (v3.0)
+Downloads patents from all three jurisdictions and applies family deduplication.
 
-BioPAT implements multiple layers of reproducibility guarantees:
-
-### 1. Deterministic Randomness
-
-All random operations use a fixed seed (`REPRODUCIBILITY_SEED = 42`):
-
-```python
-from biopat import REPRODUCIBILITY_SEED
-from biopat.benchmark import BenchmarkSampler, DatasetSplitter
-
-# Both classes use the fixed seed by default
-sampler = BenchmarkSampler()  # seed=42
-splitter = DatasetSplitter()   # seed=42
-```
-
-If you use the same data sources and configuration, the output `qrels` and `corpus` will be bit-identical.
-
-### 2. Checksum Verification
-
-Every downloaded file is hashed with SHA256 for verification:
-
-```python
-from biopat import ChecksumEngine, create_manifest
-
-# Create manifest for tracking
-manifest_path = create_manifest(output_dir)
-checksum_engine = ChecksumEngine(manifest_path)
-
-# Verify a downloaded file
-checksum_engine.verify_checksum(file_path, expected_hash="abc123...")
-```
-
-The manifest records:
-- Source URLs
-- Download timestamps
-- File sizes
-- SHA256 checksums
-
-### 3. Audit Logging
-
-All API calls are logged for full provenance tracking:
-
-```python
-from biopat import AuditLogger
-
-audit_logger = AuditLogger(manifest_path)
-
-# View summary of API calls
-print(audit_logger.get_summary())
-# {
-#   "total_api_calls": 1523,
-#   "call_counts_by_endpoint": {...},
-#   "services_used": ["patentsview", "openalex", "zenodo"],
-#   ...
-# }
-```
-
-### 4. Dependency Pinning
-
-All dependencies are pinned to specific version ranges in `pyproject.toml`:
-- Core dependencies: `polars>=1.0.0,<2.0`, `httpx>=0.27.0,<0.28`, etc.
-- Evaluation dependencies: `sentence-transformers>=2.2.0,<4.0`, `faiss-cpu>=1.7.0,<2.0`
-
-To lock exact versions for your environment:
 ```bash
-pip freeze > requirements.lock.txt
+biopat build --jurisdiction all --target-size 500000
 ```
 
-### 5. Manifest File
+### 4.3 Multi-Modal Enrichment (v4.0)
+Extracts molecules and sequences, and builds similarity indices.
 
-After running the pipeline, a `manifest.json` file is generated containing:
+```bash
+# Extract and index Chemical Structures
+biopat hydrate chemical --use-rdkit
 
-```json
-{
-  "biopat_version": "0.1.0",
-  "created_at": "2026-01-27T10:00:00Z",
-  "reproducibility_seed": 42,
-  "downloads": {
-    "_pcs_oa.csv.gz": {
-      "source_url": "https://zenodo.org/records/7996195/files/_pcs_oa.csv.gz",
-      "sha256": "abc123...",
-      "downloaded_at": "2026-01-27T10:05:00Z"
-    }
-  },
-  "api_calls": [...],
-  "api_call_counts": {
-    "patentsview:patent/": 150,
-    "openalex:works": 2000
-  }
-}
+# Extract and index Biological Sequences
+biopat hydrate sequence --use-blast
 ```
 
-## Verifying Reproducibility
+### 4.4 Run Trimodal Evaluation
+```bash
+biopat evaluate --trimodal --alpha 0.4 --beta 0.3 --gamma 0.3
+```
 
-To verify your build matches the reference:
+## 5. Verification
 
-1. Compare `manifest.json` checksums against the reference checksums in `docs/DATA_SOURCES.md`
-2. Run the test suite: `pytest tests/`
-3. Compare output file hashes:
-   ```bash
-   sha256sum output/corpus.jsonl output/queries.jsonl
-   ```
+1.  **Checksums**: Compare `manifest.json` against `docs/DATA_SOURCES.md`.
+2.  **Audit Logs**: Check `logs/audit.json` for all authenticated API traffic.
+3.  **Unit Tests**: All core logic must pass: `pytest tests/`.
