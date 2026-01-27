@@ -39,6 +39,18 @@ from .error_analysis import (
     ErrorReportGenerator,
     run_error_analysis,
 )
+from .trimodal_retrieval import (
+    MatchType,
+    ModalityScore,
+    TrimodalHit,
+    TrimodalConfig,
+    ScoreNormalizer,
+    TrimodalRetriever,
+    TrimodalEvaluator,
+    TrimodalEvaluationResult,
+    reciprocal_rank_fusion,
+    create_trimodal_retriever,
+)
 
 __all__ = [
     # BM25
@@ -85,4 +97,15 @@ __all__ = [
     "DomainAnalyzer",
     "ErrorReportGenerator",
     "run_error_analysis",
+    # Trimodal retrieval (Phase 4.0)
+    "MatchType",
+    "ModalityScore",
+    "TrimodalHit",
+    "TrimodalConfig",
+    "ScoreNormalizer",
+    "TrimodalRetriever",
+    "TrimodalEvaluator",
+    "TrimodalEvaluationResult",
+    "reciprocal_rank_fusion",
+    "create_trimodal_retriever",
 ]

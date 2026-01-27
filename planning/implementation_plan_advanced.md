@@ -41,11 +41,11 @@ Integrate structural similarity search into the retrieval pipeline.
 - SureChEMBL V3 REST API client wrapper.
 - High-performance mapping between patents and chemical structures.
 
-### [PENDING] [processing/chemical_index.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/processing/chemical_index.py)
+### [DONE] [processing/chemical_index.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/processing/chemical_index.py)
 - Morgan/RDKit fingerprint computation.
 - **FAISS IndexFlatIP** for Tanimoto similarity approximation via L2-normalized inner product.
 
-### [NEW] [evaluation/hybrid_retrieval.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/evaluation/hybrid_retrieval.py)
+### [DONE] [evaluation/hybrid_retrieval.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/evaluation/hybrid_retrieval.py)
 - **Alpha-Weighted Hybrid Retriever**: `score = α * text_score + (1 - α) * chemical_score`.
 
 ---
@@ -58,24 +58,24 @@ Enable sequence-level prior art findability for biotechnology/antibody patents.
 - UniProt REST API client wrapper.
 - Logic for resolving protein accessions and fetching FASTA sequences.
 
-### [PENDING] [ingestion/patent_sequences.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/patent_sequences.py)
+### [DONE] [ingestion/patent_sequences.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/patent_sequences.py)
 - NCBI Patent Sequence Database integration via `Biopython.Entrez`.
 - Regex extraction of `SEQ ID NO` references from claim text.
 
-### [NEW] [processing/sequence_index.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/processing/sequence_index.py)
+### [DONE] [processing/sequence_index.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/processing/sequence_index.py)
 - Local **BLAST+** database management (`makeblastdb`).
 - FASTA management for combined patent/paper sequence databases.
 
-### [NEW] [evaluation/sequence_search.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/evaluation/sequence_search.py)
+### [DONE] [evaluation/sequence_search.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/evaluation/sequence_search.py)
 - Wrapper for `blastp` (protein) and `blastn` (nucleotide) execution and XML result parsing.
 
 ---
 
-## 4. Phase 11: BioPAT v4.0 Trimodal Integration
+## 4. Phase 11: BioPAT v4.0 Trimodal Integration [DONE]
 
 Unification of all retrieval signals into a single "Prior Art Score".
 
-### [NEW] [evaluation/trimodal_retrieval.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/evaluation/trimodal_retrieval.py)
+### [DONE] [evaluation/trimodal_retrieval.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/evaluation/trimodal_retrieval.py)
 - **Weighted Trimodal Retriever**: Combines Text, Chemical Structure, and Sequence Similarity.
 - Support for modality-specific thresholds (e.g., identity >= 0.7 for sequences).
 

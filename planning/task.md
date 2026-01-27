@@ -94,20 +94,20 @@
     - [x] Integrate official `chembl-webresource-client` <!-- id: 97.1 -->
     - [x] Implement PubChem PUG-REST API client <!-- id: 97.2 -->
     - [x] Build SureChEMBL V3 REST API client <!-- id: 98 -->
-    - [ ] Implement FAISS-based Morgan fingerprint index <!-- id: 99 -->
-    - [ ] Develop NLP-based chemical extraction for patent claims <!-- id: 100 -->
-    - [ ] Create Chemical-aware Ground Truth (Tanimoto tiers) <!-- id: 101 -->
-    - [ ] Implement Alpha-weighted Hybrid Retriever (Text + Chem) <!-- id: 102 -->
-- [ ] Implement Phase 10: Biological Sequence Similarity (v3.2) <!-- id: 103 -->
+    - [x] Implement FAISS-based Morgan fingerprint index <!-- id: 99 -->
+    - [x] Develop NLP-based chemical extraction for patent claims <!-- id: 100 -->
+    - [x] Create Chemical-aware Ground Truth (Tanimoto tiers) <!-- id: 101 -->
+    - [x] Implement Alpha-weighted Hybrid Retriever (Text + Chem) <!-- id: 102 -->
+- [x] Implement Phase 10: Biological Sequence Similarity (v3.2) <!-- id: 103 -->
     - [x] Integrate UniProt REST API client <!-- id: 103.1 -->
-    - [ ] Integrate NCBI Patent Sequence Database API <!-- id: 104 -->
-    - [ ] Build local BLAST+ index management system <!-- id: 105 -->
-    - [ ] Develop sequence extraction for antibody/biotech patents <!-- id: 106 -->
-    - [ ] Create Sequence-aware Ground Truth (Identity tiers) <!-- id: 107 -->
-- [ ] Finalize BioPAT v4.0: Trimodal Retrieval Integration <!-- id: 108 -->
-    - [ ] Implement Weighted Trimodal Retriever (Text + Chem + Seq) <!-- id: 109 -->
-    - [ ] Build Multi-Modal Evaluation Reporting <!-- id: 110 -->
-    - [ ] Conduct comprehensive v4.0 system audit <!-- id: 111 -->
+    - [x] Integrate NCBI Patent Sequence Database API <!-- id: 104 -->
+    - [x] Build local BLAST+ index management system <!-- id: 105 -->
+    - [x] Develop sequence extraction for antibody/biotech patents <!-- id: 106 -->
+    - [x] Create Sequence-aware Ground Truth (Identity tiers) <!-- id: 107 -->
+- [x] Finalize BioPAT v4.0: Trimodal Retrieval Integration <!-- id: 108 -->
+    - [x] Implement Weighted Trimodal Retriever (Text + Chem + Seq) <!-- id: 109 -->
+    - [x] Build Multi-Modal Evaluation Reporting <!-- id: 110 -->
+    - [x] Conduct comprehensive v4.0 system audit <!-- id: 111 -->
 - [x] Align documentation with v4.0 architecture overhaul <!-- id: 112 -->
     - [x] Overhaul `METHODOLOGY.md` with multi-modal relevance <!-- id: 113 -->
     - [x] Update `DATA_SOURCES.md` with international/entity sources <!-- id: 114 -->

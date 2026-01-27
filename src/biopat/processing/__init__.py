@@ -26,6 +26,28 @@ from .international_patents import (
     merge_corpus_dataframes,
     get_corpus_statistics,
 )
+from .sequence_index import (
+    BlastHit,
+    BlastResult,
+    SequenceRecord,
+    BlastDatabaseManager,
+    BlastSearcher,
+    SequenceIndex,
+    compute_sequence_hash,
+    identity_to_relevance_tier,
+)
+from .chemical_index import (
+    ChemicalRecord,
+    ChemicalSearchHit,
+    MorganFingerprintCalculator,
+    FaissChemicalIndex,
+    ChemicalIndex,
+    compute_tanimoto,
+    tanimoto_to_relevance_tier,
+    compute_chemical_id,
+    RDKIT_AVAILABLE,
+    FAISS_AVAILABLE,
+)
 
 __all__ = [
     "PatentProcessor",
@@ -54,4 +76,24 @@ __all__ = [
     "create_international_corpus_entry",
     "merge_corpus_dataframes",
     "get_corpus_statistics",
+    # Sequence indexing (Phase 4.0)
+    "BlastHit",
+    "BlastResult",
+    "SequenceRecord",
+    "BlastDatabaseManager",
+    "BlastSearcher",
+    "SequenceIndex",
+    "compute_sequence_hash",
+    "identity_to_relevance_tier",
+    # Chemical indexing (Phase 4.0)
+    "ChemicalRecord",
+    "ChemicalSearchHit",
+    "MorganFingerprintCalculator",
+    "FaissChemicalIndex",
+    "ChemicalIndex",
+    "compute_tanimoto",
+    "tanimoto_to_relevance_tier",
+    "compute_chemical_id",
+    "RDKIT_AVAILABLE",
+    "FAISS_AVAILABLE",
 ]
