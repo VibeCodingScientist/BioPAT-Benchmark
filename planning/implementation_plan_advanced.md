@@ -33,6 +33,10 @@ Integrate structural similarity search into the retrieval pipeline.
 - Official `chembl-webresource-client` wrapper.
 - Logic for bioactivity mapping and target resolution.
 
+### [NEW] [ingestion/pubchem.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/pubchem.py)
+- PUG-REST API client wrapper.
+- Logic for Compound ID (CID) resolution and PubMed cross-reference retrieval.
+
 ### [NEW] [ingestion/surechembl.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/surechembl.py)
 - Loader for quarterly SureChEMBL releases.
 - SDF parsing using `rdkit`.

@@ -92,6 +92,7 @@
     - [x] Build mapping system for Paper-to-Patent cross-references <!-- id: 96 -->
 - [ ] Implement Phase 9: Chemical Structure Matching (v3.1) <!-- id: 97 -->
     - [x] Integrate official `chembl-webresource-client` <!-- id: 97.1 -->
+    - [x] Implement PubChem PUG-REST API client <!-- id: 97.2 -->
     - [ ] Build SureChEMBL FTP loader and parser <!-- id: 98 -->
     - [ ] Implement FAISS-based Morgan fingerprint index <!-- id: 99 -->
     - [ ] Develop NLP-based chemical extraction for patent claims <!-- id: 100 -->
