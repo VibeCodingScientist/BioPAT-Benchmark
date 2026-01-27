@@ -13,6 +13,8 @@ import httpx
 import polars as pl
 from tqdm import tqdm
 
+from biopat.reproducibility import ChecksumEngine, AuditLogger
+
 logger = logging.getLogger(__name__)
 
 # USPTO Office Action dataset URLs
@@ -27,13 +29,21 @@ OA_FILES = {
 class OfficeActionLoader:
     """Loader for USPTO Office Action Research Dataset."""
 
-    def __init__(self, raw_dir: Path, cache_dir: Path):
+    def __init__(
+        self,
+        raw_dir: Path,
+        cache_dir: Path,
+        checksum_engine: Optional[ChecksumEngine] = None,
+        audit_logger: Optional[AuditLogger] = None,
+    ):
         self.raw_dir = Path(raw_dir)
         self.cache_dir = Path(cache_dir)
         self.raw_dir.mkdir(parents=True, exist_ok=True)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.oa_dir = self.raw_dir / "office_actions"
         self.oa_dir.mkdir(parents=True, exist_ok=True)
+        self.checksum_engine = checksum_engine
+        self.audit_logger = audit_logger
 
     def download_file(self, filename: str, force: bool = False) -> Path:
         """Download a single Office Action file.
@@ -53,6 +63,15 @@ class OfficeActionLoader:
         url = f"{OA_DATASET_BASE}/{filename}"
         logger.info(f"Downloading {url}")
 
+        # Log API call
+        if self.audit_logger:
+            self.audit_logger.log_api_call(
+                service="uspto",
+                endpoint=f"office/actions/bigdata/{filename}",
+                method="GET",
+                params={"file": filename},
+            )
+
         with httpx.stream("GET", url, follow_redirects=True, timeout=600.0) as response:
             response.raise_for_status()
             total = int(response.headers.get("content-length", 0))
@@ -64,6 +83,15 @@ class OfficeActionLoader:
                         pbar.update(len(chunk))
 
         logger.info(f"Downloaded to {local_path}")
+
+        # Log download with checksum
+        if self.checksum_engine:
+            self.checksum_engine.log_download(
+                file_path=local_path,
+                source_url=url,
+                compute_hash=True,
+            )
+
         return local_path
 
     def download_all(self, force: bool = False) -> Dict[str, Path]:

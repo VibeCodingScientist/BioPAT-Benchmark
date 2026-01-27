@@ -7,11 +7,13 @@ abstracts, publication dates, and concept tags.
 import asyncio
 import logging
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple, Any, Optional
+from typing import Any, Dict, List, Optional, Set, Tuple
 import httpx
 import polars as pl
 from diskcache import Cache
 from tqdm.asyncio import tqdm_asyncio
+
+from biopat.reproducibility import AuditLogger
 
 logger = logging.getLogger(__name__)
 
@@ -28,11 +30,13 @@ class OpenAlexClient:
         mailto: Optional[str] = None,
         cache_dir: Optional[Path] = None,
         rate_limit: int = DEFAULT_RATE_LIMIT,
+        audit_logger: Optional[AuditLogger] = None,
     ):
         self.mailto = mailto
         self.rate_limit = rate_limit
         self.cache = Cache(str(cache_dir / "openalex")) if cache_dir else None
         self._semaphore = asyncio.Semaphore(rate_limit)
+        self.audit_logger = audit_logger
 
     def _get_headers(self) -> Dict[str, str]:
         headers = {"Accept": "application/json"}
@@ -85,7 +89,27 @@ class OpenAlexClient:
                     timeout=60.0,
                 )
                 response.raise_for_status()
-                return response.json()
+                result = response.json()
+
+                # Log API call
+                if self.audit_logger:
+                    response_count = None
+                    if isinstance(result, dict):
+                        if "results" in result:
+                            response_count = len(result["results"])
+                        elif "id" in result:
+                            response_count = 1
+
+                    self.audit_logger.log_api_call(
+                        service="openalex",
+                        endpoint=endpoint,
+                        method="GET",
+                        params=params,
+                        response_status=response.status_code,
+                        response_count=response_count,
+                    )
+
+                return result
             except httpx.HTTPStatusError as e:
                 logger.error(f"HTTP error {e.response.status_code}: {e.response.text}")
                 raise

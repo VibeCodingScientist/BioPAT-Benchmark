@@ -13,6 +13,7 @@ import polars as pl
 from tqdm import tqdm
 
 from biopat import compat
+from biopat.reproducibility import ChecksumEngine, AuditLogger
 
 logger = logging.getLogger(__name__)
 
@@ -23,11 +24,19 @@ ROS_FILENAME = "_pcs_oa.csv.gz"
 class RelianceOnScienceLoader:
     """Loader for the Reliance on Science dataset."""
 
-    def __init__(self, raw_dir: Path, cache_dir: Path):
+    def __init__(
+        self,
+        raw_dir: Path,
+        cache_dir: Path,
+        checksum_engine: Optional[ChecksumEngine] = None,
+        audit_logger: Optional[AuditLogger] = None,
+    ):
         self.raw_dir = Path(raw_dir)
         self.cache_dir = Path(cache_dir)
         self.raw_dir.mkdir(parents=True, exist_ok=True)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
+        self.checksum_engine = checksum_engine
+        self.audit_logger = audit_logger
 
     @property
     def raw_file_path(self) -> Path:
@@ -52,6 +61,15 @@ class RelianceOnScienceLoader:
 
         logger.info(f"Downloading RoS dataset from {ROS_ZENODO_URL}")
 
+        # Log API call
+        if self.audit_logger:
+            self.audit_logger.log_api_call(
+                service="zenodo",
+                endpoint="records/7996195/files/_pcs_oa.csv.gz",
+                method="GET",
+                params={"file": ROS_FILENAME},
+            )
+
         with httpx.stream("GET", ROS_ZENODO_URL, follow_redirects=True, timeout=300.0) as response:
             response.raise_for_status()
             total = int(response.headers.get("content-length", 0))
@@ -63,6 +81,15 @@ class RelianceOnScienceLoader:
                         pbar.update(len(chunk))
 
         logger.info(f"Downloaded RoS dataset to {self.raw_file_path}")
+
+        # Log download with checksum
+        if self.checksum_engine:
+            self.checksum_engine.log_download(
+                file_path=self.raw_file_path,
+                source_url=ROS_ZENODO_URL,
+                compute_hash=True,
+            )
+
         return self.raw_file_path
 
     def load(

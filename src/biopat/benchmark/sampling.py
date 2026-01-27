@@ -2,6 +2,10 @@
 
 Handles stratified sampling of queries and corpus documents
 to create a balanced and representative benchmark.
+
+REPRODUCIBILITY NOTE: This module uses a fixed seed (42) for all random
+operations to ensure deterministic benchmark generation. Any user running
+the same code with the same data will produce identical results.
 """
 
 import logging
@@ -10,14 +14,31 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 import polars as pl
 
 from biopat import compat
+from biopat.reproducibility import REPRODUCIBILITY_SEED
 
 logger = logging.getLogger(__name__)
 
 
 class BenchmarkSampler:
-    """Sampler for creating benchmark datasets with stratification."""
+    """Sampler for creating benchmark datasets with stratification.
 
-    def __init__(self, seed: int = 42):
+    All sampling operations use a fixed seed for reproducibility.
+    The default seed (42) ensures that benchmark generation is
+    deterministic across different runs and environments.
+    """
+
+    def __init__(self, seed: int = REPRODUCIBILITY_SEED):
+        """Initialize sampler with fixed seed.
+
+        Args:
+            seed: Random seed for reproducibility. Defaults to REPRODUCIBILITY_SEED (42).
+                  Changing this will produce different benchmark splits.
+        """
+        if seed != REPRODUCIBILITY_SEED:
+            logger.warning(
+                f"Using non-standard seed {seed}. "
+                f"For reproducibility, use REPRODUCIBILITY_SEED ({REPRODUCIBILITY_SEED})."
+            )
         self.seed = seed
 
     def sample_queries_stratified(

@@ -2,6 +2,10 @@
 
 Handles train/dev/test splitting with stratification to ensure
 balanced domain representation across all splits.
+
+REPRODUCIBILITY NOTE: This module uses a fixed seed (42) for all random
+operations. The splitting algorithm is deterministic: given the same
+input data and seed, the output splits will be identical.
 """
 
 import logging
@@ -10,22 +14,43 @@ from typing import Dict, Optional, Set, Tuple
 import polars as pl
 
 from biopat import compat
+from biopat.reproducibility import REPRODUCIBILITY_SEED
 
 logger = logging.getLogger(__name__)
 
 
 class DatasetSplitter:
-    """Splitter for creating train/dev/test sets with stratification."""
+    """Splitter for creating train/dev/test sets with stratification.
+
+    Uses a fixed random seed to ensure deterministic splits. Running
+    the same code with the same data will always produce identical
+    train/dev/test sets.
+    """
 
     def __init__(
         self,
         train_ratio: float = 0.7,
         dev_ratio: float = 0.15,
         test_ratio: float = 0.15,
-        seed: int = 42,
+        seed: int = REPRODUCIBILITY_SEED,
     ):
+        """Initialize splitter with fixed seed.
+
+        Args:
+            train_ratio: Fraction of data for training (default 0.7).
+            dev_ratio: Fraction of data for development (default 0.15).
+            test_ratio: Fraction of data for testing (default 0.15).
+            seed: Random seed for reproducibility. Defaults to REPRODUCIBILITY_SEED (42).
+                  Changing this will produce different splits.
+        """
         assert abs(train_ratio + dev_ratio + test_ratio - 1.0) < 1e-6, \
             "Split ratios must sum to 1.0"
+
+        if seed != REPRODUCIBILITY_SEED:
+            logger.warning(
+                f"Using non-standard seed {seed}. "
+                f"For reproducibility, use REPRODUCIBILITY_SEED ({REPRODUCIBILITY_SEED})."
+            )
 
         self.train_ratio = train_ratio
         self.dev_ratio = dev_ratio
