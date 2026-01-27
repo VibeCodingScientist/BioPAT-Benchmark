@@ -19,12 +19,22 @@ In the pharmaceutical and biotechnology industries, prior art search is critical
 - **Hard Temporal Constraints**: Strictly enforces that prior art must predate the patent's priority date to be valid.
 - **API-First & Reproducible**: Built using public APIs (PatentsView, OpenAlex) with full SHA256 checksumming and deterministic sampling for academic audit.
 
+## BioPAT v2.0: Full Novelty Search
+
+BioPAT is evolving from a literature-only benchmark to a **Full Prior Art retrieval benchmark**, matching the real-world complexity of patent examination.
+
+| Attribute | v1.0 (Phases 1-4) | v2.0 (Phase 5+) |
+|-----------|-------------------|-----------------|
+| **Corpus** | Scientific papers only | Papers + Prior patents |
+| **Ground Truth** | NPL citations only | NPL + Patent citations |
+| **Task** | Patent-to-Literature | Full Prior Art Retrieval |
+| **Size** | ~200K documents | ~500K documents |
+
 ## Project Roadmap
 
-- **Phase 1**: [DONE] Minimum Viable Benchmark using citation-based ground truth.
-- **Phase 2**: [DONE] Enhanced ground truth using expert examiner judgments from USPTO Office Actions.
-- **Phase 3**: [DONE] Comprehensive baseline evaluation with Lexical, Dense, and Hybrid models.
-- **Phase 4**: [PLANNED] Formal academic publication and public dataset release.
+- **Phases 1-3**: [DONE] Baseline implementation, Examiner-grade ground truth, and Evaluation framework.
+- **Phase 4**: [IN PROGRESS] **BioPAT v2.0: Full Novelty Search** - Expansion to include prior patents alongside scientific literature. Includes Open Science documentation and reproducibility audit.
+- **Phase 5**: [PLANNED] Formal academic publication and public dataset release (HuggingFace & Zenodo).
 
 ## Quick Start
 
