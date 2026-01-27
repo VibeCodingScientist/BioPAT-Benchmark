@@ -38,8 +38,9 @@ Integrate structural similarity search into the retrieval pipeline.
 - Logic for Compound ID (CID) resolution and PubMed cross-reference retrieval.
 
 ### [NEW] [ingestion/surechembl.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/surechembl.py)
-- Loader for quarterly SureChEMBL releases.
-- SDF parsing using `rdkit`.
+- SureChEMBL V3 REST API client wrapper.
+- High-performance mapping between patents and chemical structures.
+- Support for structure similarity and substructure searches.
 
 ### [NEW] [processing/chemical_index.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/processing/chemical_index.py)
 - Morgan/RDKit fingerprint computation.
