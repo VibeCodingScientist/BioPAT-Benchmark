@@ -24,23 +24,24 @@ In the pharmaceutical and biotechnology industries, prior art search is critical
 
 BioPAT is evolving from a literature-only benchmark to a **Full Prior Art retrieval benchmark**, matching the real-world complexity of patent examination.
 
-| Attribute | v1.0 (Phases 1-4) | v2.0 (Phase 5) | v3.0 (Phase 6+) |
-|-----------|-------------------|-----------------|-----------------|
-| **Jurisdictions** | US only | US only | **Global (US+EP+WO)** |
-| **Corpus** | papers | papers + patents | papers + intl patents |
-| **Ground Truth**| NPL citations | NPL + US patents | NPL + Global citations |
-| **Task** | Patent-to-Literature | Full Prior Art | **Global Novelty retrieval** |
-| **Size** | ~200K | ~500K | **~1M documents** |
+| Attribute | v1.0 (Phases 1-4) | v2.0 (Phase 5) | v3.0 (Phase 6) | **v4.0 (Advanced)** |
+|-----------|-------------------|-----------------|-----------------|-------------------|
+| **Jurisdictions** | US only | US only | Global (US+EP+WO) | **Global + Data Linking** |
+| **Corpus** | papers | papers + patents | papers + intl patents | **Papers + Patents + BioEntities**|
+| **Modality** | Text only | Text only | Text only | **Trimodal (Text + Chem + Seq)**|
+| **Ground Truth**| NPL citations | NPL + US patents | NPL + Global citations | **Cross-Reference + Similarity**|
+| **Size** | ~200K | ~500K | ~1M documents | **Multi-Million Entities** |
 
 ## Project Roadmap
 
-The BioPAT codebase is structured for iterative expansion. While the **software architecture** for all phases is fully implemented, the actual **production data releases** follow the schedule below:
+The BioPAT codebase is structured for iterative expansion, transitioning from a text-based benchmark to a full multi-modal discovery engine.
 
-- **Phases 1-3**: [CORE READY] Baseline engine, Examiner-grade ground truth logic, and multi-model evaluation framework (BM25, Dense, Hybrid).
-- **Phases 4-5**: [CORE READY] **BioPAT v2.0 Architecture** - Support for dual-corpus (NPL + US Patents) and graded relevance.
-- **Phase 6**: [CODE COMPLETE] **BioPAT v3.0 Architecture** - Global expansion support (EPO & WIPO ingestion, international search report parsing).
-- **Phase 7**: [IN PROGRESS] **Production Run & Audit** - Execution of v3.0 pipeline at scale (~1M docs), manual quality audit, and data cleaning.
-- **Phase 8**: [PLANNED] **Public Release & Academic Publication** - Hosting on HuggingFace/Zenodo and submission to scientific conferences.
+- **Phases 1-3**: [CORE READY] Baseline engine, Examiner-grade ground truth logic, and evaluation framework.
+- **Phases 4-5**: [CORE READY] **v2.0: Dual-Corpus** - Support for US Patents and graded relevance.
+- **Phase 6**: [CODE COMPLETE] **v3.0: Global Expansion** - EPO & WIPO ingestion and international normalization.
+- **Phase 7**: [IN PROGRESS] **Production Run & Audit** - Execution of v3.0 pipeline at scale (~1M docs).
+- **Phases 8-10**: [PLANNING] **v4.0: Multi-Modal** - Chemical structure matching (SureChEMBL), Sequence similarity (BLAST), and Data Harmonization.
+- **Future**: [PLANNED] **Public Release** via HuggingFace/Zenodo.
 
 ## Quick Start
 

@@ -86,3 +86,22 @@
     - [ ] Upload datasets to HuggingFace & Zenodo <!-- id: 90 -->
     - [ ] Finalize citation and DOI <!-- id: 91 -->
     - [ ] Submission to academic conference (NeurIPS/SIGIR) <!-- id: 92 -->
+- [/] Establish Data Harmonization Layer <!-- id: 93 -->
+    - [ ] Implement `EntityResolver` for unified ID handling <!-- id: 94 -->
+    - [ ] Design and deploy SQL unified entity schema <!-- id: 95 -->
+    - [ ] Build mapping system for Paper-to-Patent cross-references <!-- id: 96 -->
+- [ ] Implement Phase 9: Chemical Structure Matching (v3.1) <!-- id: 97 -->
+    - [ ] Build SureChEMBL FTP loader and parser <!-- id: 98 -->
+    - [ ] Implement FAISS-based Morgan fingerprint index <!-- id: 99 -->
+    - [ ] Develop NLP-based chemical extraction for patent claims <!-- id: 100 -->
+    - [ ] Create Chemical-aware Ground Truth (Tanimoto tiers) <!-- id: 101 -->
+    - [ ] Implement Alpha-weighted Hybrid Retriever (Text + Chem) <!-- id: 102 -->
+- [ ] Implement Phase 10: Biological Sequence Similarity (v3.2) <!-- id: 103 -->
+    - [ ] Integrate NCBI Patent Sequence Database API <!-- id: 104 -->
+    - [ ] Build local BLAST+ index management system <!-- id: 105 -->
+    - [ ] Develop sequence extraction for antibody/biotech patents <!-- id: 106 -->
+    - [ ] Create Sequence-aware Ground Truth (Identity tiers) <!-- id: 107 -->
+- [ ] Finalize BioPAT v4.0: Trimodal Retrieval Integration <!-- id: 108 -->
+    - [ ] Implement Weighted Trimodal Retriever (Text + Chem + Seq) <!-- id: 109 -->
+    - [ ] Build Multi-Modal Evaluation Reporting <!-- id: 110 -->
+    - [ ] Conduct comprehensive v4.0 system audit <!-- id: 111 -->
