@@ -29,6 +29,10 @@ Link disparate identifiers across US, EP, WO, and biomedical databases into a un
 
 Integrate structural similarity search into the retrieval pipeline.
 
+### [NEW] [ingestion/chembl.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/chembl.py)
+- Official `chembl-webresource-client` wrapper.
+- Logic for bioactivity mapping and target resolution.
+
 ### [NEW] [ingestion/surechembl.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/surechembl.py)
 - Loader for quarterly SureChEMBL releases.
 - SDF parsing using `rdkit`.

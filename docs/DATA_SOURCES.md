@@ -45,7 +45,11 @@ This document tracks all data sources, versions, and access requirements used in
 - **Access**: PUG-REST API.
 - **Scope**: Chemical properties and PubMed-to-Structure cross-references.
 
-### 3.3 UniProt / NCBI (Biological Sequences)
+### 3.3 ChEMBL (Bioactivity Data)
+- **Access**: `chembl-webresource-client` (Official Python Library).
+- **Rationale**: Replaces direct REST API calls; handles rate limiting and complex bioactivity queries without requiring a manual API key for public data.
+
+### 3.4 UniProt / NCBI (Biological Sequences)
 - **UniProt**: REST API for protein sequence annotations and cross-refs.
 - **NCBI nuccore**: Patent Sequence Database via Entrez API.
 - **Scope**: SEQ ID NO extraction and alignment (BLAST).

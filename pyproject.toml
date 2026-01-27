@@ -41,6 +41,7 @@ advanced = [
     "psycopg2-binary>=2.9.0,<3.0",  # PostgreSQL driver
     "rdkit>=2023.9.1",  # Chemical structure handling
     "biopython>=1.83,<2.0",  # Sequence handling
+    "chembl-webresource-client>=0.10.9",  # Official ChEMBL API client
 ]
 all = [
     "biopat[evaluation,dev,advanced]",
