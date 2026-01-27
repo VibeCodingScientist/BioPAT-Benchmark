@@ -4,6 +4,9 @@ Computes standard IR evaluation metrics for the benchmark.
 
 Phase 5 (v2.0): Extended to support multi-dimensional reporting
 with breakdowns by document type (papers vs patents).
+
+Phase 6 (v3.0): Extended to support per-jurisdiction reporting
+(US, EP, WO) for international patent coverage benchmark.
 """
 
 import logging
@@ -15,6 +18,12 @@ logger = logging.getLogger(__name__)
 # Document type constants for v2.0
 DOC_TYPE_PAPER = "paper"
 DOC_TYPE_PATENT = "patent"
+
+# Jurisdiction constants for v3.0
+JURISDICTION_US = "US"
+JURISDICTION_EP = "EP"
+JURISDICTION_WO = "WO"
+ALL_JURISDICTIONS = [JURISDICTION_US, JURISDICTION_EP, JURISDICTION_WO]
 
 
 class MetricsComputer:
@@ -494,4 +503,337 @@ class MetricsComputer:
                 lines.append(f"  {metric_name:20s}: {value}")
 
         lines.append("\n" + "=" * 60)
+        return "\n".join(lines)
+
+    def compute_metrics_by_jurisdiction(
+        self,
+        results: Dict[str, Dict[str, float]],
+        qrels: Dict[str, Dict[str, int]],
+        doc_jurisdictions: Dict[str, str],
+        k_values: List[int] = [10, 50, 100],
+    ) -> Dict[str, Dict[str, float]]:
+        """Compute metrics broken down by jurisdiction (v3.0).
+
+        Multi-dimensional reporting for international benchmark:
+        - Overall: Combined performance across all jurisdictions
+        - US: Performance on US patents subset
+        - EP: Performance on EP patents subset
+        - WO: Performance on WO/PCT patents subset
+
+        Args:
+            results: Retrieved results {query_id: {doc_id: score}}.
+            qrels: Ground truth {query_id: {doc_id: relevance}}.
+            doc_jurisdictions: Mapping of doc_id to jurisdiction ("US", "EP", "WO").
+            k_values: Values of k for metrics.
+
+        Returns:
+            Dictionary with metrics for each subset:
+            {"overall": {...}, "US": {...}, "EP": {...}, "WO": {...}}
+        """
+        # Overall metrics
+        overall_metrics = self.compute_all_metrics(results, qrels, k_values)
+
+        # Filter qrels by jurisdiction
+        jurisdiction_qrels = {jur: {} for jur in ALL_JURISDICTIONS}
+
+        for query_id, doc_rels in qrels.items():
+            for jur in ALL_JURISDICTIONS:
+                jur_docs = {
+                    doc_id: rel for doc_id, rel in doc_rels.items()
+                    if doc_jurisdictions.get(doc_id) == jur
+                }
+                if jur_docs:
+                    jurisdiction_qrels[jur][query_id] = jur_docs
+
+        # Compute metrics for each jurisdiction
+        result = {"overall": overall_metrics}
+
+        for jur in ALL_JURISDICTIONS:
+            if jurisdiction_qrels[jur]:
+                jur_metrics = self.compute_all_metrics(
+                    results, jurisdiction_qrels[jur], k_values
+                )
+                jur_metrics["num_queries"] = len(jurisdiction_qrels[jur])
+                jur_metrics["num_relevant_docs"] = sum(
+                    len(docs) for docs in jurisdiction_qrels[jur].values()
+                )
+            else:
+                jur_metrics = {"num_queries": 0, "num_relevant_docs": 0}
+
+            result[jur] = jur_metrics
+
+        # Add overall counts
+        result["overall"]["num_queries"] = len(qrels)
+        result["overall"]["num_relevant_docs"] = sum(
+            len(docs) for docs in qrels.values()
+        )
+
+        return result
+
+    def compute_cross_jurisdiction_analysis(
+        self,
+        results: Dict[str, Dict[str, float]],
+        qrels: Dict[str, Dict[str, int]],
+        doc_jurisdictions: Dict[str, str],
+        query_jurisdictions: Optional[Dict[str, str]] = None,
+        k_values: List[int] = [10, 50, 100],
+    ) -> Dict[str, Any]:
+        """Compute detailed cross-jurisdiction analysis (v3.0).
+
+        Analyzes retrieval performance across jurisdictions,
+        including cross-jurisdiction transfer (e.g., US query retrieving EP docs).
+
+        Args:
+            results: Retrieved results {query_id: {doc_id: score}}.
+            qrels: Ground truth {query_id: {doc_id: relevance}}.
+            doc_jurisdictions: Mapping of doc_id to jurisdiction.
+            query_jurisdictions: Optional mapping of query_id to jurisdiction.
+            k_values: Values of k for metrics.
+
+        Returns:
+            Detailed analysis dictionary.
+        """
+        analysis = {
+            "by_jurisdiction": self.compute_metrics_by_jurisdiction(
+                results, qrels, doc_jurisdictions, k_values
+            ),
+            "retrieval_distribution": {},
+            "cross_jurisdiction_matrix": {},
+        }
+
+        # Analyze retrieval distribution per k
+        for k in k_values:
+            jur_counts = {jur: {"retrieved": 0, "relevant": 0} for jur in ALL_JURISDICTIONS}
+            jur_counts["other"] = {"retrieved": 0, "relevant": 0}
+
+            for query_id, retrieved_scores in results.items():
+                if query_id not in qrels:
+                    continue
+
+                query_qrels = qrels[query_id]
+
+                # Count relevant by jurisdiction
+                for doc_id, rel in query_qrels.items():
+                    if rel > 0:
+                        jur = doc_jurisdictions.get(doc_id, "other")
+                        if jur in jur_counts:
+                            jur_counts[jur]["relevant"] += 1
+                        else:
+                            jur_counts["other"]["relevant"] += 1
+
+                # Count retrieved by jurisdiction at k
+                sorted_docs = sorted(
+                    retrieved_scores.keys(),
+                    key=lambda x: retrieved_scores[x],
+                    reverse=True
+                )[:k]
+
+                for doc_id in sorted_docs:
+                    if doc_id in query_qrels and query_qrels[doc_id] > 0:
+                        jur = doc_jurisdictions.get(doc_id, "other")
+                        if jur in jur_counts:
+                            jur_counts[jur]["retrieved"] += 1
+                        else:
+                            jur_counts["other"]["retrieved"] += 1
+
+            # Calculate recall per jurisdiction
+            analysis["retrieval_distribution"][f"@{k}"] = {}
+            for jur, counts in jur_counts.items():
+                if counts["relevant"] > 0:
+                    recall = counts["retrieved"] / counts["relevant"]
+                else:
+                    recall = 0.0
+
+                analysis["retrieval_distribution"][f"@{k}"][jur] = {
+                    "recall": recall,
+                    "retrieved": counts["retrieved"],
+                    "relevant": counts["relevant"],
+                }
+
+        # Cross-jurisdiction matrix (if query jurisdictions provided)
+        if query_jurisdictions:
+            matrix = {
+                q_jur: {d_jur: {"hits": 0, "total": 0}
+                        for d_jur in ALL_JURISDICTIONS + ["other"]}
+                for q_jur in ALL_JURISDICTIONS + ["other"]
+            }
+
+            for query_id, retrieved_scores in results.items():
+                if query_id not in qrels:
+                    continue
+
+                q_jur = query_jurisdictions.get(query_id, "other")
+                query_qrels = qrels[query_id]
+
+                # Count relevant docs by jurisdiction for this query
+                for doc_id, rel in query_qrels.items():
+                    if rel > 0:
+                        d_jur = doc_jurisdictions.get(doc_id, "other")
+                        matrix[q_jur][d_jur]["total"] += 1
+
+                # Check top-100 retrievals
+                sorted_docs = sorted(
+                    retrieved_scores.keys(),
+                    key=lambda x: retrieved_scores[x],
+                    reverse=True
+                )[:100]
+
+                for doc_id in sorted_docs:
+                    if doc_id in query_qrels and query_qrels[doc_id] > 0:
+                        d_jur = doc_jurisdictions.get(doc_id, "other")
+                        matrix[q_jur][d_jur]["hits"] += 1
+
+            analysis["cross_jurisdiction_matrix"] = matrix
+
+        return analysis
+
+    def format_jurisdiction_report(
+        self,
+        metrics: Dict[str, Dict[str, float]],
+        name: str = "Model",
+    ) -> str:
+        """Format per-jurisdiction metrics as a detailed report (v3.0).
+
+        Args:
+            metrics: Metrics dictionary from compute_metrics_by_jurisdiction.
+            name: Model/run name.
+
+        Returns:
+            Formatted report string.
+        """
+        lines = [
+            f"\n{'=' * 70}",
+            f"INTERNATIONAL BENCHMARK EVALUATION REPORT: {name}",
+            "=" * 70,
+        ]
+
+        # Overall metrics
+        lines.append("\n## OVERALL METRICS")
+        lines.append("-" * 50)
+        for metric_name, value in sorted(metrics.get("overall", {}).items()):
+            if isinstance(value, float):
+                lines.append(f"  {metric_name:20s}: {value:.4f}")
+            else:
+                lines.append(f"  {metric_name:20s}: {value}")
+
+        # Per-jurisdiction metrics
+        for jur in ALL_JURISDICTIONS:
+            jur_metrics = metrics.get(jur, {})
+            if not jur_metrics or jur_metrics.get("num_queries", 0) == 0:
+                continue
+
+            lines.append(f"\n## {jur} PATENTS")
+            lines.append("-" * 50)
+            for metric_name, value in sorted(jur_metrics.items()):
+                if isinstance(value, float):
+                    lines.append(f"  {metric_name:20s}: {value:.4f}")
+                else:
+                    lines.append(f"  {metric_name:20s}: {value}")
+
+        lines.append("\n" + "=" * 70)
+        return "\n".join(lines)
+
+    def format_full_international_report(
+        self,
+        jurisdiction_metrics: Dict[str, Dict[str, float]],
+        doc_type_metrics: Optional[Dict[str, Dict[str, float]]] = None,
+        cross_analysis: Optional[Dict[str, Any]] = None,
+        name: str = "Model",
+    ) -> str:
+        """Format comprehensive international benchmark report (v3.0).
+
+        Combines jurisdiction breakdown, doc type breakdown, and cross-analysis
+        into a single detailed report.
+
+        Args:
+            jurisdiction_metrics: From compute_metrics_by_jurisdiction.
+            doc_type_metrics: Optional from compute_metrics_by_doc_type.
+            cross_analysis: Optional from compute_cross_jurisdiction_analysis.
+            name: Model/run name.
+
+        Returns:
+            Formatted comprehensive report string.
+        """
+        lines = [
+            f"\n{'=' * 80}",
+            f"BIOPAT v3.0 INTERNATIONAL BENCHMARK REPORT",
+            f"Model: {name}",
+            "=" * 80,
+        ]
+
+        # Section 1: Overall Performance
+        lines.append("\n" + "#" * 80)
+        lines.append("# SECTION 1: OVERALL PERFORMANCE")
+        lines.append("#" * 80)
+
+        overall = jurisdiction_metrics.get("overall", {})
+        lines.append(f"\n  Total Queries:         {overall.get('num_queries', 0)}")
+        lines.append(f"  Total Relevant Docs:   {overall.get('num_relevant_docs', 0)}")
+        lines.append("")
+
+        key_metrics = ["MAP", "MRR", "NDCG@10", "NDCG@100", "Recall@100"]
+        for m in key_metrics:
+            if m in overall:
+                lines.append(f"  {m:20s}: {overall[m]:.4f}")
+
+        # Section 2: Performance by Jurisdiction
+        lines.append("\n" + "#" * 80)
+        lines.append("# SECTION 2: PERFORMANCE BY JURISDICTION")
+        lines.append("#" * 80)
+
+        # Table header
+        lines.append(f"\n  {'Jurisdiction':<12} {'Queries':>10} {'Rel Docs':>10} {'MAP':>10} {'NDCG@10':>10} {'Recall@100':>12}")
+        lines.append("  " + "-" * 66)
+
+        for jur in ALL_JURISDICTIONS:
+            jur_m = jurisdiction_metrics.get(jur, {})
+            if jur_m.get("num_queries", 0) > 0:
+                lines.append(
+                    f"  {jur:<12} "
+                    f"{jur_m.get('num_queries', 0):>10} "
+                    f"{jur_m.get('num_relevant_docs', 0):>10} "
+                    f"{jur_m.get('MAP', 0):>10.4f} "
+                    f"{jur_m.get('NDCG@10', 0):>10.4f} "
+                    f"{jur_m.get('Recall@100', 0):>12.4f}"
+                )
+
+        # Section 3: Performance by Document Type (if available)
+        if doc_type_metrics:
+            lines.append("\n" + "#" * 80)
+            lines.append("# SECTION 3: PERFORMANCE BY DOCUMENT TYPE")
+            lines.append("#" * 80)
+
+            lines.append(f"\n  {'Doc Type':<12} {'Queries':>10} {'Rel Docs':>10} {'MAP':>10} {'NDCG@10':>10} {'Recall@100':>12}")
+            lines.append("  " + "-" * 66)
+
+            for dtype, label in [("papers", "Papers"), ("patents", "Patents")]:
+                dt_m = doc_type_metrics.get(dtype, {})
+                if dt_m.get("num_queries", 0) > 0:
+                    lines.append(
+                        f"  {label:<12} "
+                        f"{dt_m.get('num_queries', 0):>10} "
+                        f"{dt_m.get('num_relevant_docs', 0):>10} "
+                        f"{dt_m.get('MAP', 0):>10.4f} "
+                        f"{dt_m.get('NDCG@10', 0):>10.4f} "
+                        f"{dt_m.get('Recall@100', 0):>12.4f}"
+                    )
+
+        # Section 4: Cross-Jurisdiction Analysis (if available)
+        if cross_analysis and "retrieval_distribution" in cross_analysis:
+            lines.append("\n" + "#" * 80)
+            lines.append("# SECTION 4: CROSS-JURISDICTION RETRIEVAL ANALYSIS")
+            lines.append("#" * 80)
+
+            dist = cross_analysis.get("retrieval_distribution", {})
+            if "@100" in dist:
+                lines.append("\n  Recall@100 by Document Jurisdiction:")
+                for jur in ALL_JURISDICTIONS:
+                    jur_data = dist["@100"].get(jur, {})
+                    if jur_data.get("relevant", 0) > 0:
+                        lines.append(
+                            f"    {jur}: {jur_data.get('recall', 0):.4f} "
+                            f"({jur_data.get('retrieved', 0)}/{jur_data.get('relevant', 0)} docs)"
+                        )
+
+        lines.append("\n" + "=" * 80)
         return "\n".join(lines)

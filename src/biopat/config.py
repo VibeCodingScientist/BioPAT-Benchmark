@@ -41,6 +41,10 @@ class ApiConfig(BaseModel):
     ncbi_key: Optional[str] = Field(default=None)
     openalex_mailto: Optional[str] = Field(default=None)
     use_bulk_data: bool = Field(default=True)
+    # Phase 6 (v3.0): International patent APIs
+    epo_consumer_key: Optional[str] = Field(default=None)
+    epo_consumer_secret: Optional[str] = Field(default=None)
+    wipo_api_token: Optional[str] = Field(default=None)
 
     def __init__(self, **data):
         # Map user-friendly names from YAML to internal field names
@@ -62,6 +66,13 @@ class ApiConfig(BaseModel):
             object.__setattr__(self, 'ncbi_key', os.environ.get("NCBI_API_KEY"))
         if self.openalex_mailto is None:
             object.__setattr__(self, 'openalex_mailto', os.environ.get("OPENALEX_MAILTO"))
+        # Phase 6: EPO and WIPO credentials
+        if self.epo_consumer_key is None:
+            object.__setattr__(self, 'epo_consumer_key', os.environ.get("EPO_CONSUMER_KEY"))
+        if self.epo_consumer_secret is None:
+            object.__setattr__(self, 'epo_consumer_secret', os.environ.get("EPO_CONSUMER_SECRET"))
+        if self.wipo_api_token is None:
+            object.__setattr__(self, 'wipo_api_token', os.environ.get("WIPO_API_TOKEN"))
 
 
 class Phase1Config(BaseModel):
@@ -91,6 +102,31 @@ class Phase5Config(BaseModel):
     seed: int = 42
 
 
+class JurisdictionConfig(BaseModel):
+    """Configuration for jurisdiction inclusion (v3.0)."""
+    include_us: bool = True
+    include_ep: bool = True
+    include_wo: bool = True
+    max_patents_per_jurisdiction: Optional[int] = None
+
+
+class Phase6Config(BaseModel):
+    """Configuration for Phase 6 (v3.0) International Patent Coverage."""
+    enabled: bool = False
+    jurisdictions: JurisdictionConfig = Field(default_factory=JurisdictionConfig)
+    # IPC filtering for biomedical domain
+    ipc_prefixes: List[str] = ["A61", "C07", "C12"]
+    # Publication date range (YYYYMMDD format for EPO, YYYY-MM-DD for WIPO)
+    publication_date_from: Optional[str] = None
+    publication_date_to: Optional[str] = None
+    # Family deduplication: avoid including US+EP+WO versions of same patent
+    deduplicate_families: bool = True
+    # Target corpus size (~500K-1M for v3.0)
+    target_corpus_size: int = 1000000
+    # Random seed
+    seed: int = 42
+
+
 class BioPatConfig(BaseModel):
     """Main configuration for BioPAT benchmark."""
     phase: str = "phase1"
@@ -98,6 +134,7 @@ class BioPatConfig(BaseModel):
     api: ApiConfig = Field(default_factory=ApiConfig)
     phase1: Phase1Config = Field(default_factory=Phase1Config)
     phase5: Phase5Config = Field(default_factory=Phase5Config)
+    phase6: Phase6Config = Field(default_factory=Phase6Config)
 
     @classmethod
     def load(cls, config_path: str = "configs/default.yaml") -> "BioPatConfig":

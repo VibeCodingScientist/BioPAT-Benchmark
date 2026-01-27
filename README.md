@@ -36,7 +36,7 @@ BioPAT is evolving from a literature-only benchmark to a **Full Prior Art retrie
 
 - **Phases 1-3**: [DONE] Baseline implementation, Examiner-grade ground truth, and Evaluation framework.
 - **Phases 4-5**: [DONE] **BioPAT v2.0: Full Novelty Search** - Expansion to include US patents.
-- **Phase 6**: [IN PROGRESS] **BioPAT v3.0: Global Prior Art** - International coverage (EP, WO) and multi-jurisdictional evaluation.
+- **Phase 6**: [DONE] **BioPAT v3.0: Global Prior Art** - International coverage (EP, WO) and multi-jurisdictional evaluation.
 - **Phase 7**: [PLANNED] Formal academic publication and public dataset release (HuggingFace & Zenodo).
 
 ## Quick Start

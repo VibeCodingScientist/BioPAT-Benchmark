@@ -1,7 +1,15 @@
 """Evaluation modules for BioPAT baselines."""
 
 from .bm25 import BM25Evaluator
-from .metrics import MetricsComputer
+from .metrics import (
+    MetricsComputer,
+    DOC_TYPE_PAPER,
+    DOC_TYPE_PATENT,
+    JURISDICTION_US,
+    JURISDICTION_EP,
+    JURISDICTION_WO,
+    ALL_JURISDICTIONS,
+)
 from .dense import DenseRetriever, DenseRetrieverConfig, DenseEvaluator, MODEL_REGISTRY
 from .hybrid import ResultFusion, FusionConfig, HybridRetriever, BM25DenseHybrid
 from .reranker import (
@@ -37,6 +45,12 @@ __all__ = [
     "BM25Evaluator",
     # Metrics
     "MetricsComputer",
+    "DOC_TYPE_PAPER",
+    "DOC_TYPE_PATENT",
+    "JURISDICTION_US",
+    "JURISDICTION_EP",
+    "JURISDICTION_WO",
+    "ALL_JURISDICTIONS",
     # Dense retrieval
     "DenseRetriever",
     "DenseRetrieverConfig",

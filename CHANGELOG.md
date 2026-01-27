@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2026-01-27
+
+### Added - Phase 6: International Patent Coverage (v3.0)
+- **EPO OPS Client**: New `EPOClient` class in `ingestion/epo.py` with OAuth 2.0 authentication for European Patent Office data access. Supports publication retrieval, bibliographic search, citation extraction, and search report parsing.
+- **WIPO PATENTSCOPE Client**: New `WIPOClient` class in `ingestion/wipo.py` for PCT/WO patent data access. Supports search, publication retrieval, and International Search Report citation extraction.
+- **Patent ID Normalization**: New `patent_ids.py` module in `processing/` with `normalize_patent_id()`, `ParsedPatentId`, `PatentIdNormalizer`, and jurisdiction detection for consistent patent ID handling across US, EP, WO, and other jurisdictions.
+- **EP Search Report Parser**: New `ep_citations.py` module in `groundtruth/` with `EPSearchReportParser` class for extracting citations from European search reports and mapping EP categories (X, Y, A) to relevance scores.
+- **International Corpus Assembly**: New `international_patents.py` module in `processing/` with `InternationalCorpusBuilder` class for merging US, EP, and WO patents into a unified corpus with family deduplication.
+- **Per-Jurisdiction Metrics**: New `compute_metrics_by_jurisdiction()` and `compute_cross_jurisdiction_analysis()` methods in `MetricsComputer` for breakdown reporting by patent jurisdiction.
+- **Phase 6 Configuration**: New `Phase6Config` and `JurisdictionConfig` classes with options for `include_us`, `include_ep`, `include_wo`, `deduplicate_families`, and publication date filtering.
+
+### Changed
+- **ApiConfig**: Extended with `epo_consumer_key`, `epo_consumer_secret`, and `wipo_api_token` fields for international API access.
+- **Config**: Extended `BioPatConfig` with `phase6` settings for v3.0 features.
+- **Metrics**: Added `JURISDICTION_US`, `JURISDICTION_EP`, `JURISDICTION_WO`, and `ALL_JURISDICTIONS` constants.
+- **Evaluation Reports**: New `format_jurisdiction_report()` and `format_full_international_report()` methods for comprehensive v3.0 reporting.
+
 ## [0.2.0] - 2026-01-27
 
 ### Added - Phase 5: Full Novelty Benchmark (v2.0)
