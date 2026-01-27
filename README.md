@@ -15,32 +15,33 @@ In the pharmaceutical and biotechnology industries, prior art search is critical
 
 ## Key Features
 
-- **Claim-Level Granularity**: Unlike full-document benchmarks, BioPAT assesses relevance at the **claim level**, matching the actual unit of legal novelty.
-- **Graded Relevance (0-3)**: Moves beyond binary "relevant/not-relevant" to reflect real-world prior art rejections (§102 Novelty-destroying vs. §103 Obviousness).
-- **Hard Temporal Constraints**: Strictly enforces that prior art must predate the patent's priority date to be valid.
-- **API-First & Reproducible**: Built using public APIs (PatentsView, OpenAlex) with full SHA256 checksumming and deterministic sampling for academic audit.
+- **Claim-Level Granularity**: BioPAT assesses relevance at the **claim level**, matching the actual unit of legal novelty.
+- **Tri-Modal Retrieval (v4.0)**: Supports simultaneous searching across **Text** (lexical/dense), **Chemical Structures** (Morgan/FAISS), and **Biological Sequences** (BLAST).
+- **Global Coverage**: Fully normalized data from **USPTO**, **EPO**, and **WIPO**, mirroring real-world patent family searches.
+- **Graded Relevance (0-3)**: Reflects legal certainty, from background context (§103/Category Y) to novelty-destroying anticipation (§102/Category X).
+- **Hard Temporal Constraints**: Strictly enforces priority-date filtering to prevent citation leakage.
+- **API-First & Reproducible**: Fully automated pipeline with built-in audit logging and SHA256 checksumming.
 
-## BioPAT v2.0: Full Novelty Search
+## BioPAT v4.0: Global Multi-Modal Retrieval
 
-BioPAT is evolving from a literature-only benchmark to a **Full Prior Art retrieval benchmark**, matching the real-world complexity of patent examination.
+BioPAT v4.0 is a **Global Discovery Engine**, enabling researchers to search for prior art across disparate data modalities.
 
-| Attribute | v1.0 (Phases 1-4) | v2.0 (Phase 5) | v3.0 (Phase 6) | **v4.0 (Advanced)** |
-|-----------|-------------------|-----------------|-----------------|-------------------|
+| Attribute | v1.0 | v2.0 | v3.0 | **v4.0 (Advanced)** |
+|-----------|------|------|------|--------------------|
 | **Jurisdictions** | US only | US only | Global (US+EP+WO) | **Global + Data Linking** |
-| **Corpus** | papers | papers + patents | papers + intl patents | **Papers + Patents + BioEntities**|
+| **Corpus** | Papers | Papers + Patents | Papers + Intl Patents | **Unified Multi-Modal Corpus**|
 | **Modality** | Text only | Text only | Text only | **Trimodal (Text + Chem + Seq)**|
-| **Ground Truth**| NPL citations | NPL + US patents | NPL + Global citations | **Cross-Reference + Similarity**|
-| **Size** | ~200K | ~500K | ~1M documents | **Multi-Million Entities** |
+| **Search Engine**| BM25 | BM25 + Dense | Hybrid Text | **FAISS + BLAST + Weighted Fusion**|
+| **Status** | Stable | Stable | Stable | **CODE COMPLETE** |
 
 ## Project Roadmap
 
 The BioPAT codebase is structured for iterative expansion, transitioning from a text-based benchmark to a full multi-modal discovery engine.
 
-- **Phases 1-3**: [CORE READY] Baseline engine, Examiner-grade ground truth logic, and evaluation framework.
-- **Phases 4-5**: [CORE READY] **v2.0: Dual-Corpus** - Support for US Patents and graded relevance.
-- **Phase 6**: [CODE COMPLETE] **v3.0: Global Expansion** - EPO & WIPO ingestion and international normalization.
-- **Phase 7**: [IN PROGRESS] **Production Run & Audit** - Execution of v3.0 pipeline at scale (~1M docs).
-- **Phases 8-10**: [PLANNING] **v4.0: Multi-Modal** - Chemical structure matching (SureChEMBL), Sequence similarity (BLAST), and Data Harmonization.
+- **Phases 1-5**: [CORE READY] v2.0: Dual-Corpus search (US Patents + Literature).
+- **Phase 6-7**: [CORE READY] v3.0: Global Expansion (EPO & WIPO) and production-scale retrieval (~1M docs).
+- **Phases 8-11**: [CODE COMPLETE] v4.0: Multi-Modal Discovery - Chemical (Morgan/FAISS), Sequence (BLAST+), and Tri-modal fusion.
+- **Future**: [PLANNED] **Public Release** via HuggingFace/Zenodo.
 - **Future**: [PLANNED] **Public Release** via HuggingFace/Zenodo.
 
 ## Quick Start
