@@ -1,6 +1,8 @@
 # BioPAT Methodology (v4.0)
 
-This document outlines the construction methodology for the BioPAT benchmark, which has evolved from a text-only retrieval task to a **Global Multi-Modal Prior Art Discovery** system.
+This document outlines the construction methodology for the BioPAT benchmark, which has evolved from a text-only retrieval task to a **Global Multi-Modal Prior Art Discovery** system specifically designed to evaluate **Agentic Novelty Determination**. 
+
+In an era where AI agents generate hypotheses at scale, BioPAT serves as the definitive audit layer for validating claimed innovations.
 
 ## 1. Scope & Jurisdiction
 
