@@ -1,13 +1,20 @@
 """Metrics computation module.
 
 Computes standard IR evaluation metrics for the benchmark.
+
+Phase 5 (v2.0): Extended to support multi-dimensional reporting
+with breakdowns by document type (papers vs patents).
 """
 
 import logging
-from typing import Any, Dict, List, Optional, Set, Tuple, Optional
+from typing import Any, Dict, List, Optional, Set, Tuple
 import math
 
 logger = logging.getLogger(__name__)
+
+# Document type constants for v2.0
+DOC_TYPE_PAPER = "paper"
+DOC_TYPE_PATENT = "patent"
 
 
 class MetricsComputer:
@@ -291,4 +298,200 @@ class MetricsComputer:
             lines.append(f"{metric_name:15s}: {value:.4f}")
 
         lines.append("=" * 50)
+        return "\n".join(lines)
+
+    def compute_metrics_by_doc_type(
+        self,
+        results: Dict[str, Dict[str, float]],
+        qrels: Dict[str, Dict[str, int]],
+        doc_types: Dict[str, str],
+        k_values: List[int] = [10, 50, 100],
+    ) -> Dict[str, Dict[str, float]]:
+        """Compute metrics broken down by document type (v2.0).
+
+        Multi-dimensional reporting for dual-corpus benchmark:
+        - Overall: Combined performance across all documents
+        - Papers Only: Performance on scientific literature subset
+        - Patents Only: Performance on prior patent subset
+
+        Args:
+            results: Retrieved results {query_id: {doc_id: score}}.
+            qrels: Ground truth {query_id: {doc_id: relevance}}.
+            doc_types: Mapping of doc_id to doc_type ("paper" or "patent").
+            k_values: Values of k for metrics.
+
+        Returns:
+            Dictionary with metrics for each subset:
+            {"overall": {...}, "papers": {...}, "patents": {...}}
+        """
+        # Overall metrics
+        overall_metrics = self.compute_all_metrics(results, qrels, k_values)
+
+        # Filter qrels by doc_type
+        paper_qrels = {}
+        patent_qrels = {}
+
+        for query_id, doc_rels in qrels.items():
+            paper_docs = {
+                doc_id: rel for doc_id, rel in doc_rels.items()
+                if doc_types.get(doc_id) == DOC_TYPE_PAPER
+            }
+            patent_docs = {
+                doc_id: rel for doc_id, rel in doc_rels.items()
+                if doc_types.get(doc_id) == DOC_TYPE_PATENT
+            }
+
+            if paper_docs:
+                paper_qrels[query_id] = paper_docs
+            if patent_docs:
+                patent_qrels[query_id] = patent_docs
+
+        # Compute metrics for each subset
+        paper_metrics = self.compute_all_metrics(results, paper_qrels, k_values) if paper_qrels else {}
+        patent_metrics = self.compute_all_metrics(results, patent_qrels, k_values) if patent_qrels else {}
+
+        # Add counts
+        overall_metrics["num_queries"] = len(qrels)
+        overall_metrics["num_relevant_docs"] = sum(len(docs) for docs in qrels.values())
+
+        paper_metrics["num_queries"] = len(paper_qrels)
+        paper_metrics["num_relevant_docs"] = sum(len(docs) for docs in paper_qrels.values())
+
+        patent_metrics["num_queries"] = len(patent_qrels)
+        patent_metrics["num_relevant_docs"] = sum(len(docs) for docs in patent_qrels.values())
+
+        return {
+            "overall": overall_metrics,
+            "papers": paper_metrics,
+            "patents": patent_metrics,
+        }
+
+    def compute_cross_type_retrieval_metrics(
+        self,
+        results: Dict[str, Dict[str, float]],
+        qrels: Dict[str, Dict[str, int]],
+        doc_types: Dict[str, str],
+        k_values: List[int] = [10, 50, 100],
+    ) -> Dict[str, Any]:
+        """Compute detailed cross-type retrieval analysis (v2.0).
+
+        Analyzes how well the system retrieves each document type
+        and whether there's bias toward papers or patents.
+
+        Args:
+            results: Retrieved results {query_id: {doc_id: score}}.
+            qrels: Ground truth {query_id: {doc_id: relevance}}.
+            doc_types: Mapping of doc_id to doc_type.
+            k_values: Values of k for metrics.
+
+        Returns:
+            Detailed analysis dictionary.
+        """
+        analysis = {
+            "by_doc_type": self.compute_metrics_by_doc_type(
+                results, qrels, doc_types, k_values
+            ),
+            "retrieval_bias": {},
+            "per_query_analysis": [],
+        }
+
+        # Analyze retrieval bias
+        for k in k_values:
+            paper_retrieved = 0
+            patent_retrieved = 0
+            total_relevant_papers = 0
+            total_relevant_patents = 0
+
+            for query_id, retrieved_scores in results.items():
+                if query_id not in qrels:
+                    continue
+
+                query_qrels = qrels[query_id]
+
+                # Count relevant by type
+                for doc_id, rel in query_qrels.items():
+                    if rel > 0:
+                        if doc_types.get(doc_id) == DOC_TYPE_PAPER:
+                            total_relevant_papers += 1
+                        elif doc_types.get(doc_id) == DOC_TYPE_PATENT:
+                            total_relevant_patents += 1
+
+                # Count retrieved by type at k
+                sorted_docs = sorted(
+                    retrieved_scores.keys(),
+                    key=lambda x: retrieved_scores[x],
+                    reverse=True
+                )[:k]
+
+                for doc_id in sorted_docs:
+                    if doc_id in query_qrels and query_qrels[doc_id] > 0:
+                        if doc_types.get(doc_id) == DOC_TYPE_PAPER:
+                            paper_retrieved += 1
+                        elif doc_types.get(doc_id) == DOC_TYPE_PATENT:
+                            patent_retrieved += 1
+
+            # Calculate bias metrics
+            paper_recall = paper_retrieved / total_relevant_papers if total_relevant_papers > 0 else 0
+            patent_recall = patent_retrieved / total_relevant_patents if total_relevant_patents > 0 else 0
+
+            analysis["retrieval_bias"][f"@{k}"] = {
+                "paper_recall": paper_recall,
+                "patent_recall": patent_recall,
+                "bias_ratio": paper_recall / patent_recall if patent_recall > 0 else float('inf'),
+                "papers_retrieved": paper_retrieved,
+                "patents_retrieved": patent_retrieved,
+                "total_relevant_papers": total_relevant_papers,
+                "total_relevant_patents": total_relevant_patents,
+            }
+
+        return analysis
+
+    def format_dual_corpus_report(
+        self,
+        metrics: Dict[str, Dict[str, float]],
+        name: str = "Model",
+    ) -> str:
+        """Format dual-corpus metrics as a detailed report (v2.0).
+
+        Args:
+            metrics: Metrics dictionary from compute_metrics_by_doc_type.
+            name: Model/run name.
+
+        Returns:
+            Formatted report string.
+        """
+        lines = [
+            f"\n{'=' * 60}",
+            f"DUAL-CORPUS EVALUATION REPORT: {name}",
+            "=" * 60,
+        ]
+
+        # Overall metrics
+        lines.append("\n## OVERALL METRICS")
+        lines.append("-" * 40)
+        for metric_name, value in sorted(metrics.get("overall", {}).items()):
+            if isinstance(value, float):
+                lines.append(f"  {metric_name:20s}: {value:.4f}")
+            else:
+                lines.append(f"  {metric_name:20s}: {value}")
+
+        # Papers metrics
+        lines.append("\n## PAPERS ONLY")
+        lines.append("-" * 40)
+        for metric_name, value in sorted(metrics.get("papers", {}).items()):
+            if isinstance(value, float):
+                lines.append(f"  {metric_name:20s}: {value:.4f}")
+            else:
+                lines.append(f"  {metric_name:20s}: {value}")
+
+        # Patents metrics
+        lines.append("\n## PATENTS ONLY")
+        lines.append("-" * 40)
+        for metric_name, value in sorted(metrics.get("patents", {}).items()):
+            if isinstance(value, float):
+                lines.append(f"  {metric_name:20s}: {value:.4f}")
+            else:
+                lines.append(f"  {metric_name:20s}: {value}")
+
+        lines.append("\n" + "=" * 60)
         return "\n".join(lines)

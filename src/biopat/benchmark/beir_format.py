@@ -2,17 +2,24 @@
 
 Formats the benchmark data into BEIR-compatible JSON Lines format
 for use with standard IR evaluation tools.
+
+Phase 5 (v2.0): Extended to support dual-corpus (papers + patents) with
+doc_type field for cross-type evaluation.
 """
 
 import json
 import logging
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple, Optional
+from typing import Any, Dict, List, Literal, Optional, Set, Tuple
 import polars as pl
 
 from biopat import compat
 
 logger = logging.getLogger(__name__)
+
+# Document type constants for v2.0 dual-corpus
+DOC_TYPE_PAPER = "paper"
+DOC_TYPE_PATENT = "patent"
 
 
 class BEIRFormatter:
@@ -40,19 +47,23 @@ class BEIRFormatter:
         id_col: str = "paper_id",
         title_col: str = "title",
         text_col: str = "abstract",
+        doc_type: str = DOC_TYPE_PAPER,
+        date_col: Optional[str] = None,
     ) -> None:
         """Format and write corpus to BEIR JSON Lines format.
 
-        BEIR corpus format:
-        {"_id": "doc_id", "title": "...", "text": "..."}
+        BEIR corpus format (v2.0 extended):
+        {"_id": "doc_id", "title": "...", "text": "...", "doc_type": "paper|patent", "date": "..."}
 
         Args:
             papers_df: Papers DataFrame.
             id_col: Column containing document IDs.
             title_col: Column containing titles.
             text_col: Column containing main text (abstract).
+            doc_type: Document type for all entries ("paper" or "patent").
+            date_col: Optional column containing publication/priority date.
         """
-        logger.info(f"Writing {len(papers_df)} documents to {self.corpus_path}")
+        logger.info(f"Writing {len(papers_df)} {doc_type} documents to {self.corpus_path}")
 
         with open(self.corpus_path, "w", encoding="utf-8") as f:
             for row in compat.iter_rows(papers_df, named=True):
@@ -60,10 +71,114 @@ class BEIRFormatter:
                     "_id": str(row[id_col]),
                     "title": row.get(title_col, "") or "",
                     "text": row.get(text_col, "") or "",
+                    "doc_type": doc_type,
                 }
+                # Add date if available
+                if date_col and date_col in row:
+                    doc["date"] = str(row[date_col]) if row[date_col] else None
                 f.write(json.dumps(doc, ensure_ascii=False) + "\n")
 
         logger.info(f"Wrote corpus to {self.corpus_path}")
+
+    def format_dual_corpus(
+        self,
+        papers_df: pl.DataFrame,
+        patents_df: pl.DataFrame,
+        paper_id_col: str = "paper_id",
+        paper_title_col: str = "title",
+        paper_text_col: str = "abstract",
+        paper_date_col: str = "publication_date",
+        patent_id_col: str = "patent_id",
+        patent_title_col: str = "title",
+        patent_text_col: str = "corpus_text",
+        patent_date_col: str = "priority_date",
+    ) -> Dict[str, int]:
+        """Format and write dual corpus (papers + patents) to BEIR format.
+
+        v2.0 feature: Combines scientific papers and prior patents into
+        a single corpus with doc_type field for cross-type evaluation.
+
+        Args:
+            papers_df: Papers DataFrame.
+            patents_df: Patents DataFrame (with corpus_text = abstract + claim).
+            paper_id_col: Paper ID column.
+            paper_title_col: Paper title column.
+            paper_text_col: Paper text column.
+            paper_date_col: Paper date column.
+            patent_id_col: Patent ID column.
+            patent_title_col: Patent title column.
+            patent_text_col: Patent text column (abstract + first independent claim).
+            patent_date_col: Patent date column.
+
+        Returns:
+            Dictionary with corpus statistics by doc_type.
+        """
+        logger.info(
+            f"Writing dual corpus: {len(papers_df)} papers + {len(patents_df)} patents"
+        )
+
+        paper_count = 0
+        patent_count = 0
+
+        with open(self.corpus_path, "w", encoding="utf-8") as f:
+            # Write papers
+            for row in compat.iter_rows(papers_df, named=True):
+                doc = {
+                    "_id": str(row[paper_id_col]),
+                    "title": row.get(paper_title_col, "") or "",
+                    "text": row.get(paper_text_col, "") or "",
+                    "doc_type": DOC_TYPE_PAPER,
+                    "date": str(row.get(paper_date_col, "")) if row.get(paper_date_col) else None,
+                }
+                f.write(json.dumps(doc, ensure_ascii=False) + "\n")
+                paper_count += 1
+
+            # Write patents
+            for row in compat.iter_rows(patents_df, named=True):
+                doc = {
+                    "_id": str(row[patent_id_col]),
+                    "title": row.get(patent_title_col, "") or "",
+                    "text": row.get(patent_text_col, "") or "",
+                    "doc_type": DOC_TYPE_PATENT,
+                    "date": str(row.get(patent_date_col, "")) if row.get(patent_date_col) else None,
+                }
+                f.write(json.dumps(doc, ensure_ascii=False) + "\n")
+                patent_count += 1
+
+        stats = {
+            "papers": paper_count,
+            "patents": patent_count,
+            "total": paper_count + patent_count,
+        }
+        logger.info(f"Wrote dual corpus: {stats}")
+        return stats
+
+    @staticmethod
+    def create_patent_corpus_text(
+        abstract: Optional[str],
+        first_independent_claim: Optional[str],
+    ) -> str:
+        """Create corpus text for a patent by combining abstract and first claim.
+
+        v2.0 feature: Patent corpus entries consist of Abstract + first
+        independent claim to provide comparable textual length to papers.
+
+        Args:
+            abstract: Patent abstract text.
+            first_independent_claim: Text of first independent claim.
+
+        Returns:
+            Combined corpus text.
+        """
+        parts = []
+        if abstract:
+            parts.append(abstract.strip())
+        if first_independent_claim:
+            # Add separator and claim
+            if parts:
+                parts.append("\n\n[CLAIM 1]\n")
+            parts.append(first_independent_claim.strip())
+        return "".join(parts)
 
     def format_queries(
         self,
@@ -190,10 +305,27 @@ class BEIRFormatter:
             "qrels_dir_exists": self.qrels_dir.exists(),
         }
 
-        # Count records
+        # Count records and doc_types
         if results["corpus_exists"]:
+            paper_count = 0
+            patent_count = 0
+            total_count = 0
             with open(self.corpus_path, "r", encoding="utf-8") as f:
-                results["corpus_count"] = sum(1 for _ in f)
+                for line in f:
+                    total_count += 1
+                    try:
+                        doc = json.loads(line)
+                        doc_type = doc.get("doc_type", DOC_TYPE_PAPER)
+                        if doc_type == DOC_TYPE_PAPER:
+                            paper_count += 1
+                        elif doc_type == DOC_TYPE_PATENT:
+                            patent_count += 1
+                    except json.JSONDecodeError:
+                        pass
+            results["corpus_count"] = total_count
+            results["corpus_papers"] = paper_count
+            results["corpus_patents"] = patent_count
+            results["is_dual_corpus"] = patent_count > 0
 
         if results["queries_exists"]:
             with open(self.queries_path, "r", encoding="utf-8") as f:
@@ -215,8 +347,10 @@ class BEIRFormatter:
                     first_line = f.readline()
                     doc = json.loads(first_line)
                     results["corpus_valid_json"] = "_id" in doc and "text" in doc
+                    results["corpus_has_doc_type"] = "doc_type" in doc
             except (json.JSONDecodeError, KeyError):
                 results["corpus_valid_json"] = False
+                results["corpus_has_doc_type"] = False
 
         if results["queries_exists"]:
             try:
@@ -242,6 +376,14 @@ class BEIRFormatter:
             "corpus_size": validation.get("corpus_count", 0),
             "queries_size": validation.get("queries_count", 0),
         }
+
+        # v2.0: Add doc_type breakdown
+        if validation.get("is_dual_corpus"):
+            stats["corpus_papers"] = validation.get("corpus_papers", 0)
+            stats["corpus_patents"] = validation.get("corpus_patents", 0)
+            stats["is_dual_corpus"] = True
+        else:
+            stats["is_dual_corpus"] = False
 
         # Qrels per split
         qrels_splits = validation.get("qrels_splits", {})

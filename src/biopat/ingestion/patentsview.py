@@ -396,3 +396,127 @@ class PatentsViewClient:
             })
 
         return pl.DataFrame(records)
+
+    async def get_patents_for_corpus(
+        self,
+        patent_ids: List[str],
+        show_progress: bool = True,
+    ) -> pl.DataFrame:
+        """Fetch patents for corpus assembly (v2.0 dual-corpus).
+
+        Optimized batch retrieval for building the patent corpus with
+        titles, abstracts, and claims for BEIR formatting.
+
+        Args:
+            patent_ids: List of patent IDs to fetch.
+            show_progress: Show progress bar.
+
+        Returns:
+            DataFrame with patent data ready for corpus formatting.
+        """
+        # Fields needed for corpus: title, abstract, claims, dates
+        fields = [
+            "patent_id",
+            "patent_date",
+            "patent_title",
+            "patent_abstract",
+            "claims",
+            "application",
+            "ipc_current",
+        ]
+
+        logger.info(f"Fetching {len(patent_ids)} patents for corpus assembly")
+
+        # Deduplicate IDs
+        unique_ids = list(set(patent_ids))
+
+        # Use batch fetching
+        patents = await self.get_patents_batch(
+            unique_ids, fields=fields, show_progress=show_progress
+        )
+
+        logger.info(f"Fetched {len(patents)} patents successfully")
+
+        return self.patents_to_dataframe(patents)
+
+    async def search_patents_by_ids(
+        self,
+        patent_ids: List[str],
+        fields: Optional[List[str]] = None,
+        batch_size: int = 50,
+        show_progress: bool = True,
+    ) -> List[Dict[str, Any]]:
+        """Search patents by multiple IDs using OR filter.
+
+        More efficient than individual fetches for large ID lists.
+
+        Args:
+            patent_ids: List of patent IDs.
+            fields: Fields to return.
+            batch_size: Number of IDs per query batch.
+            show_progress: Show progress bar.
+
+        Returns:
+            List of patent data dicts.
+        """
+        if fields is None:
+            fields = [
+                "patent_id",
+                "patent_date",
+                "patent_title",
+                "patent_abstract",
+                "claims",
+                "application",
+                "ipc_current",
+            ]
+
+        results = []
+        batches = [
+            patent_ids[i:i + batch_size]
+            for i in range(0, len(patent_ids), batch_size)
+        ]
+
+        async with httpx.AsyncClient() as client:
+            iterator = batches
+            if show_progress:
+                from tqdm import tqdm
+                iterator = tqdm(batches, desc="Fetching patent batches")
+
+            for batch in iterator:
+                # Build OR query for patent IDs
+                query = {
+                    "_or": [{"patent_id": pid} for pid in batch]
+                }
+
+                body = {
+                    "q": query,
+                    "f": fields,
+                    "o": {"size": len(batch)},
+                }
+
+                try:
+                    result = await self._make_request(
+                        client, "patent/", body=body, method="POST"
+                    )
+                    batch_patents = result.get("patents", [])
+                    results.extend(batch_patents)
+
+                    # Cache individual patents
+                    if self.cache:
+                        for p in batch_patents:
+                            if "patent_id" in p:
+                                self.cache[f"patent:{p['patent_id']}"] = p
+
+                except Exception as e:
+                    logger.warning(f"Batch query failed: {e}, falling back to individual")
+                    # Fallback to individual fetches for this batch
+                    for pid in batch:
+                        try:
+                            p = await self._get_single_patent(client, pid, fields)
+                            if p:
+                                results.append(p)
+                        except Exception:
+                            pass
+
+        logger.info(f"Retrieved {len(results)} patents from {len(patent_ids)} IDs")
+        return results

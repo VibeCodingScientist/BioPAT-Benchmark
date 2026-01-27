@@ -12,11 +12,12 @@ paths:
   benchmark_dir: "data/benchmark"
 
 # API credentials (can also be set via environment variables)
-# PATENTSVIEW_API_KEY, NCBI_API_KEY, OPENALEX_MAILTO
 api:
-  patentsview_key: null
-  ncbi_key: null
-  openalex_mailto: null
+  patentsview_api_key: "your-first-key"
+  patentsview_api_key_2: "your-second-key"
+  ncbi_api_key: "your-ncbi-key"
+  openalex_email: "your@email.com"
+  use_bulk_data: false
 
 # Phase 1: Minimum Viable Benchmark
 phase1:
@@ -33,6 +34,31 @@ phase1:
     - "A61"  # Medical/veterinary science
     - "C07"  # Organic chemistry (including pharmaceuticals)
     - "C12"  # Biochemistry, genetic engineering
+
+  # Random seed for reproducibility
+  seed: 42
+
+# Phase 5: Full Novelty Benchmark (v2.0)
+# Extends BioPAT from paper-only retrieval to Full Prior Art Retrieval
+phase5:
+  # Enable v2.0 dual-corpus mode
+  enabled: false
+
+  # Corpus composition settings
+  corpus:
+    # Include scientific papers (NPL citations)
+    include_papers: true
+    # Include prior patents in corpus
+    include_patents: true
+    # Maximum number of prior patents (null = no limit)
+    max_prior_patents: null
+    # Include IPC-based hard negatives for training
+    include_ipc_negatives: false
+    # Max IPC negatives per query patent
+    max_ipc_negatives_per_query: 10
+
+  # Target corpus size (~500K for v2.0)
+  target_corpus_size: 500000
 
   # Random seed for reproducibility
   seed: 42

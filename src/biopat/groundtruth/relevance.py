@@ -2,17 +2,24 @@
 
 Computes graded relevance scores for query-document pairs
 based on citation source, confidence, and rejection type.
+
+Phase 5 (v2.0): Extended to support dual-corpus relevance assignment
+for both scientific papers (NPL) and prior patents.
 """
 
 import logging
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Literal
 from enum import IntEnum
 import polars as pl
 
 from biopat import compat
 
 logger = logging.getLogger(__name__)
+
+# Document type constants for v2.0
+DOC_TYPE_PAPER = "paper"
+DOC_TYPE_PATENT = "patent"
 
 
 class RelevanceLevel(IntEnum):
@@ -411,3 +418,227 @@ class RelevanceAssigner:
             logger.info(f"Saved graded qrels to {self.qrels_path}")
 
         return qrels
+
+    def assign_dual_corpus_relevance(
+        self,
+        paper_citations: pl.DataFrame,
+        patent_citations: pl.DataFrame,
+        office_action_data: Optional[pl.DataFrame] = None,
+    ) -> pl.DataFrame:
+        """Assign graded relevance for dual-corpus (v2.0).
+
+        Unified relevance assignment for both paper (NPL) and patent citations.
+        Same relevance tiers apply to both document types.
+
+        Args:
+            paper_citations: Paper/NPL citation links with query_id, paper_id, etc.
+            patent_citations: Patent citation links with query_patent_id, cited_patent_id, etc.
+            office_action_data: Optional Office Action rejection data.
+
+        Returns:
+            Unified qrels DataFrame with doc_type field.
+        """
+        all_qrels = []
+
+        # Process paper citations
+        if len(paper_citations) > 0:
+            paper_qrels = self._assign_relevance_to_citations(
+                paper_citations,
+                id_col="paper_id",
+                doc_type=DOC_TYPE_PAPER,
+                office_action_data=office_action_data,
+            )
+            if len(paper_qrels) > 0:
+                all_qrels.append(paper_qrels)
+            logger.info(f"Assigned relevance to {len(paper_qrels)} paper citations")
+
+        # Process patent citations
+        if len(patent_citations) > 0:
+            # Standardize column names
+            patent_citations_std = patent_citations.rename({
+                "query_patent_id": "query_id",
+                "cited_patent_id": "doc_id",
+            }) if "query_patent_id" in patent_citations.columns else patent_citations
+
+            patent_qrels = self._assign_relevance_to_citations(
+                patent_citations_std,
+                id_col="doc_id",
+                doc_type=DOC_TYPE_PATENT,
+                office_action_data=None,  # OA data already in patent_citations
+            )
+            if len(patent_qrels) > 0:
+                all_qrels.append(patent_qrels)
+            logger.info(f"Assigned relevance to {len(patent_qrels)} patent citations")
+
+        if not all_qrels:
+            logger.warning("No citations to assign relevance to")
+            return pl.DataFrame({
+                "query_id": [],
+                "doc_id": [],
+                "relevance": [],
+                "label": [],
+                "doc_type": [],
+                "evidence_source": [],
+            })
+
+        # Combine all qrels
+        combined = compat.concat(all_qrels)
+
+        # Deduplicate (keep highest relevance per query-doc pair)
+        combined = compat.unique(
+            combined.sort("relevance", descending=True),
+            subset=["query_id", "doc_id"],
+            keep="first"
+        )
+
+        # Filter out not_relevant
+        combined = combined.filter(pl.col("relevance") > 0)
+
+        logger.info(f"Created {len(combined)} dual-corpus relevance judgments")
+        self._log_dual_corpus_distribution(combined)
+
+        return combined
+
+    def _assign_relevance_to_citations(
+        self,
+        citations: pl.DataFrame,
+        id_col: str,
+        doc_type: str,
+        office_action_data: Optional[pl.DataFrame] = None,
+    ) -> pl.DataFrame:
+        """Assign relevance scores to a set of citations.
+
+        Internal method for unified relevance assignment.
+
+        Args:
+            citations: Citation links DataFrame.
+            id_col: Column containing document IDs.
+            doc_type: Document type ("paper" or "patent").
+            office_action_data: Optional Office Action data.
+
+        Returns:
+            Qrels DataFrame with relevance scores.
+        """
+        relevance_scores = []
+        labels = []
+
+        for row in compat.iter_rows(citations, named=True):
+            rejection_type = row.get("rejection_type")
+            source = row.get("source", "unknown")
+            confidence = row.get("confidence", 0) or 0
+
+            # Unified relevance rules for both doc types
+            if rejection_type == "102":
+                rel = RelevanceLevel.NOVELTY_DESTROYING
+            elif rejection_type == "103":
+                rel = RelevanceLevel.HIGHLY_RELEVANT
+            elif source in ("examiner", "office_action") and confidence >= 9:
+                rel = RelevanceLevel.HIGHLY_RELEVANT
+            elif source in ("examiner", "office_action") and confidence >= 7:
+                rel = RelevanceLevel.RELEVANT
+            elif source == "applicant" and confidence >= 8:
+                rel = RelevanceLevel.RELEVANT
+            elif source == "office_action":
+                # Office Action patent citations default to RELEVANT
+                rel = RelevanceLevel.RELEVANT
+            else:
+                rel = RelevanceLevel.NOT_RELEVANT
+
+            relevance_scores.append(int(rel))
+            labels.append(RELEVANCE_LABELS.get(rel, "unknown"))
+
+        # Build qrels DataFrame
+        qrels = citations.with_columns([
+            pl.Series("relevance", relevance_scores),
+            pl.Series("label", labels),
+            pl.lit(doc_type).alias("doc_type"),
+        ])
+
+        # Select output columns
+        output_cols = ["query_id", "relevance", "label", "doc_type"]
+
+        # Handle doc_id column name
+        if id_col in qrels.columns and id_col != "doc_id":
+            qrels = qrels.with_columns(pl.col(id_col).alias("doc_id"))
+        output_cols.insert(1, "doc_id")
+
+        # Add evidence source if available
+        if "source" in qrels.columns:
+            output_cols.append(pl.col("source").alias("evidence_source"))
+        elif "evidence_source" in qrels.columns:
+            output_cols.append("evidence_source")
+
+        # Add optional columns if present
+        for col in ["confidence", "rejection_type"]:
+            if col in qrels.columns:
+                output_cols.append(col)
+
+        return qrels.select(output_cols)
+
+    def _log_dual_corpus_distribution(self, qrels: pl.DataFrame):
+        """Log relevance distribution by document type."""
+        # Overall distribution
+        self._log_relevance_distribution(qrels)
+
+        # By doc_type
+        if "doc_type" in qrels.columns:
+            for doc_type in [DOC_TYPE_PAPER, DOC_TYPE_PATENT]:
+                subset = qrels.filter(pl.col("doc_type") == doc_type)
+                if len(subset) > 0:
+                    logger.info(f"\n{doc_type.upper()} distribution:")
+                    self._log_relevance_distribution(subset)
+
+    def create_dual_corpus_qrels(
+        self,
+        paper_citations: pl.DataFrame,
+        patent_citations: pl.DataFrame,
+        office_action_data: Optional[pl.DataFrame] = None,
+        save: bool = True,
+    ) -> pl.DataFrame:
+        """Create qrels for dual-corpus benchmark (v2.0).
+
+        Args:
+            paper_citations: Paper/NPL citation links.
+            patent_citations: Patent citation links.
+            office_action_data: Optional Office Action data.
+            save: Whether to save to disk.
+
+        Returns:
+            Dual-corpus qrels DataFrame.
+        """
+        qrels = self.assign_dual_corpus_relevance(
+            paper_citations, patent_citations, office_action_data
+        )
+
+        # Log statistics
+        stats = self.get_dual_corpus_qrels_stats(qrels)
+        logger.info(f"Dual-corpus qrels statistics: {stats}")
+
+        if save:
+            qrels.write_parquet(self.qrels_path)
+            logger.info(f"Saved dual-corpus qrels to {self.qrels_path}")
+
+        return qrels
+
+    def get_dual_corpus_qrels_stats(self, qrels: pl.DataFrame) -> dict:
+        """Get statistics about dual-corpus relevance judgments.
+
+        Args:
+            qrels: Qrels DataFrame with doc_type field.
+
+        Returns:
+            Statistics dictionary.
+        """
+        stats = self.get_qrels_stats(qrels)
+
+        # Add doc_type breakdown
+        if "doc_type" in qrels.columns:
+            stats["by_doc_type"] = {}
+            for doc_type in [DOC_TYPE_PAPER, DOC_TYPE_PATENT]:
+                subset = qrels.filter(pl.col("doc_type") == doc_type)
+                stats["by_doc_type"][doc_type] = {
+                    "total": len(subset),
+                    "unique_docs": subset["doc_id"].n_unique() if len(subset) > 0 else 0,
+                }
+
+        return stats

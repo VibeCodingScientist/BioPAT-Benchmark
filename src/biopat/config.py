@@ -37,10 +37,23 @@ class PathsConfig(BaseModel):
 class ApiConfig(BaseModel):
     """Configuration for API credentials."""
     patentsview_key: Optional[str] = Field(default=None)
+    patentsview_key_2: Optional[str] = Field(default=None)
     ncbi_key: Optional[str] = Field(default=None)
     openalex_mailto: Optional[str] = Field(default=None)
+    use_bulk_data: bool = Field(default=True)
 
     def __init__(self, **data):
+        # Map user-friendly names from YAML to internal field names
+        field_map = {
+            "patentsview_api_key": "patentsview_key",
+            "patentsview_api_key_2": "patentsview_key_2",
+            "ncbi_api_key": "ncbi_key",
+            "openalex_email": "openalex_mailto"
+        }
+        for yaml_key, internal_key in field_map.items():
+            if yaml_key in data and internal_key not in data:
+                data[internal_key] = data.pop(yaml_key)
+
         super().__init__(**data)
         # Load from environment variables if not set
         if self.patentsview_key is None:
@@ -61,12 +74,30 @@ class Phase1Config(BaseModel):
     seed: int = 42
 
 
+class CorpusConfig(BaseModel):
+    """Configuration for dual-corpus (v2.0)."""
+    include_papers: bool = True
+    include_patents: bool = False
+    max_prior_patents: Optional[int] = None
+    include_ipc_negatives: bool = False
+    max_ipc_negatives_per_query: int = 10
+
+
+class Phase5Config(BaseModel):
+    """Configuration for Phase 5 (v2.0) Full Novelty Benchmark."""
+    enabled: bool = False
+    corpus: CorpusConfig = Field(default_factory=CorpusConfig)
+    target_corpus_size: int = 500000
+    seed: int = 42
+
+
 class BioPatConfig(BaseModel):
     """Main configuration for BioPAT benchmark."""
     phase: str = "phase1"
     paths: PathsConfig = Field(default_factory=PathsConfig)
     api: ApiConfig = Field(default_factory=ApiConfig)
     phase1: Phase1Config = Field(default_factory=Phase1Config)
+    phase5: Phase5Config = Field(default_factory=Phase5Config)
 
     @classmethod
     def load(cls, config_path: str = "configs/default.yaml") -> "BioPatConfig":

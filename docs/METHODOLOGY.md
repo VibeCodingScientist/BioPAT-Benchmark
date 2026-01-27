@@ -26,3 +26,17 @@ The benchmark is evaluated using standard IR metrics, emphasizing top-heavy rank
 - **NDCG@10**: Primary metric for graded relevance.
 - **Recall@100**: Critical for measuring the comprehensiveness required in legal prior art searches.
 - **MRR**: Mean Reciprocal Rank.
+
+## 3.4 Data Access Strategy
+
+**Primary approach:** API-based retrieval for all sources.
+
+| Data Source | Method | Rationale |
+|-------------|--------|-----------|
+| PatentsView | API | Filtering, lower storage |
+| Reliance on Science | Bulk (Zenodo) | Pre-computed, small file |
+| Office Actions | Bulk (USPTO) | No API available |
+| OpenAlex | API | No approval needed |
+| NCBI | API | MeSH enrichment |
+
+Bulk downloads (PatentsView, USPTO XML) remain available as fallback if API rate limits cause issues.

@@ -1,0 +1,65 @@
+# BioPAT-Benchmark Project Review and Planning
+
+- [x] Review existing project files <!-- id: 0 -->
+    - [x] Analyze `README.md` and `pyproject.toml` <!-- id: 1 -->
+    - [x] Analyze `src` directory structure and contents <!-- id: 2 -->
+    - [x] Review technical specifications (`BioPAT_Technical_Specification.pdf` or `spec_text.txt`) <!-- id: 3 -->
+    - [x] Check configuration files in `configs` <!-- id: 4 -->
+- [x] Assess project status <!-- id: 5 -->
+    - [x] Identify implemented features <!-- id: 6 -->
+    - [x] Identify missing components/TODOs <!-- id: 7 -->
+- [x] Create Implementation Plan <!-- id: 8 -->
+    - [x] Define project goals and scope <!-- id: 9 -->
+    - [x] Propose architecture and changes <!-- id: 10 -->
+    - [x] Define verification plan <!-- id: 11 -->
+- [x] Final update to user <!-- id: 12 -->
+- [x] Resolve Environment Blockers <!-- id: 13 -->
+    - [x] Verify local Python version <!-- id: 14 -->
+    - [x] Install Python 3.11+ <!-- id: 15 -->
+    - [x] Re-initialize virtual environment <!-- id: 16 -->
+- [x] Push code to GitHub <!-- id: 17 -->
+- [x] Plan Phase 2 Implementation <!-- id: 18 -->
+    - [x] Review Phase 2 Specifications <!-- id: 19 -->
+    - [x] Create Phase 2 Implementation Plan <!-- id: 20 -->
+    - [x] Define Phase 2 Tasks <!-- id: 21 -->
+- [x] Implement Phase 2 (Code Claude) <!-- id: 22 -->
+    - [x] Setup Phase 2 Ingestion (`office_action.py`) <!-- id: 23 -->
+    - [x] Implement Advanced NPL Citation Linking (`linking.py`) <!-- id: 24 -->
+    - [x] Develop Claim-to-Rejection Mapping (`claims_mapping.py`) <!-- id: 25 -->
+    - [x] Upgrade `relevance.py` to 4-tier Graded Scale <!-- id: 26 -->
+    - [x] Expand Corpus and Finalize sampling <!-- id: 27 -->
+    - [x] Generate Phase 2 BEIR Benchmark Output <!-- id: 28 -->
+    - [x] Verify Temporal Constraints and Qrel consistency <!-- id: 29 -->
+- [x] Push Phase 2 code to GitHub <!-- id: 30 -->
+- [x] Plan Phase 3 Implementation <!-- id: 31 -->
+    - [x] Review Phase 3 Specifications <!-- id: 32 -->
+    - [x] Create Phase 3 Implementation Plan <!-- id: 33 -->
+    - [x] Define Phase 3 Tasks <!-- id: 34 -->
+- [x] Implement Phase 3 (Code Claude) <!-- id: 35 -->
+    - [x] Build Embedding Generation Infrastructure <!-- id: 36 -->
+    - [x] Implement Unified Retriever Interface <!-- id: 37 -->
+    - [x] Integrate Dense and Hybrid Baselines <!-- id: 38 -->
+    - [x] Create Cross-Encoder Reranking Toolkit <!-- id: 39 -->
+    - [x] Develop Ablation and Error Analysis Scripts <!-- id: 40 -->
+    - [x] Generate Comprehensive Baseline Report <!-- id: 41 -->
+- [x] Push Phase 3 code to GitHub <!-- id: 42 -->
+- [x] Implement Reproducibility & Open Science Requirements <!-- id: 43 -->
+    - [x] Plan Reproducibility Implementation <!-- id: 44 -->
+    - [x] Initialize Repository Documentation (docs/, CITATION.cff, etc.) <!-- id: 45 -->
+    - [x] Implement Checksum Logging logic <!-- id: 46 -->
+    - [x] Enforce Global Random Seeds <!-- id: 47 -->
+    - [x] Finalize README with Citations <!-- id: 48 -->
+- [x] Push all finalized code to GitHub <!-- id: 49 -->
+- [x] Refine API-First Architecture <!-- id: 50 -->
+- [x] Enhance Project README <!-- id: 55 -->
+- [x] Plan Phase 5: Full Novelty Benchmark (v2.0) <!-- id: 59 -->
+    - [x] Create Phase 5 Implementation Plan <!-- id: 60 -->
+    - [x] Define Phase 5 Implementation Tasks for Code Claude <!-- id: 61 -->
+- [x] Implement Phase 5 (Code Claude) <!-- id: 62 -->
+    - [x] Extend Schema with `doc_type` <!-- id: 63 -->
+    - [x] Implement Prior Patent Candidate Selection <!-- id: 64 -->
+    - [x] Build Patent Metadata Fetching for Corpus <!-- id: 65 -->
+    - [x] Update Ground Truth for Dual-Corpus Relevance <!-- id: 66 -->
+    - [x] Upgrade Evaluation with Cross-Type Reporting <!-- id: 67 -->
+    - [x] Execute v2.0 Baseline Evaluation <!-- id: 68 -->
+- [x] Push all BioPAT v2.0 code to GitHub <!-- id: 69 -->
