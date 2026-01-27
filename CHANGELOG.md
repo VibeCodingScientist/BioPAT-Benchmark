@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.0] - 2026-01-27
+
+### Added - Phase 4.0: Data Harmonization Layer (v4.0 Foundation)
+- **EntityResolver**: New `EntityResolver` class in `harmonization/entity_resolver.py` for unified ID generation across entity types (Patents, Publications, Chemicals, Sequences). Supports BioPAT ID format: `BP:{TYPE}:{SUBTYPE}:{ID}`.
+- **SQL Schema**: New SQLAlchemy models in `harmonization/schema.py` for `Patent`, `Publication`, `Chemical`, `Sequence` entities with comprehensive linking tables (`patent_chemical_links`, `patent_sequence_links`, etc.).
+- **EntityLinker**: New `EntityLinker` class in `harmonization/linker.py` for extracting and linking cross-references (DOIs, PMIDs, sequence accessions) from patent/paper text.
+- **BidirectionalIndex**: In-memory bidirectional index for fast entity cross-reference lookups with DataFrame import/export.
+- **CrossReferenceManager**: High-level manager for bulk cross-reference operations with database persistence.
+- **Advanced Configuration**: New `AdvancedConfig`, `HarmonizationConfig`, `ChemicalConfig`, and `SequenceConfig` classes for v4.0 features.
+
+### Changed
+- **Config**: Extended `BioPatConfig` with `advanced` section containing harmonization, chemical, and sequence settings.
+- **default.yaml**: Added comprehensive v4.0 configuration options for database, chemical fingerprints, and sequence matching.
+
 ## [0.3.0] - 2026-01-27
 
 ### Added - Phase 6: International Patent Coverage (v3.0)

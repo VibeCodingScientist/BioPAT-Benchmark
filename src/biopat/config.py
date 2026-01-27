@@ -127,6 +127,72 @@ class Phase6Config(BaseModel):
     seed: int = 42
 
 
+class DatabaseConfig(BaseModel):
+    """Configuration for SQL database (v4.0 harmonization)."""
+    backend: str = "sqlite"  # sqlite or postgresql
+    path: str = "data/biopat.db"  # For SQLite
+    host: str = "localhost"  # For PostgreSQL
+    port: int = 5432
+    user: str = "biopat"
+    password: str = ""
+    database: str = "biopat"
+
+
+class HarmonizationConfig(BaseModel):
+    """Configuration for data harmonization (v4.0)."""
+    enabled: bool = False
+    database: DatabaseConfig = Field(default_factory=DatabaseConfig)
+    # Entity resolution settings
+    use_rdkit: bool = True  # Use RDKit for chemical canonicalization
+    cache_size: int = 10000  # Resolution cache size
+    # Cross-reference extraction
+    extract_doi_from_text: bool = True
+    extract_pmid_from_text: bool = True
+    extract_sequences_from_claims: bool = True
+
+
+class ChemicalConfig(BaseModel):
+    """Configuration for chemical structure matching (v3.1)."""
+    enabled: bool = False
+    # SureChEMBL data path
+    surechembl_path: Optional[str] = None
+    # Fingerprint settings
+    fingerprint_type: str = "morgan"  # morgan or rdkit
+    fingerprint_bits: int = 2048
+    morgan_radius: int = 2
+    # FAISS index settings
+    use_gpu: bool = False
+    faiss_index_type: str = "flat"  # flat, ivf, hnsw
+    # Similarity thresholds for ground truth
+    tanimoto_high: float = 0.85  # High similarity
+    tanimoto_medium: float = 0.7  # Medium similarity
+    tanimoto_low: float = 0.5  # Low similarity
+
+
+class SequenceConfig(BaseModel):
+    """Configuration for biological sequence matching (v3.2)."""
+    enabled: bool = False
+    # BLAST+ settings
+    blast_db_path: Optional[str] = None
+    blast_type: str = "blastp"  # blastp or blastn
+    evalue_threshold: float = 1e-5
+    # Sequence identity thresholds for ground truth
+    identity_high: float = 0.95  # High identity
+    identity_medium: float = 0.7  # Medium identity
+    identity_low: float = 0.5  # Low identity
+
+
+class AdvancedConfig(BaseModel):
+    """Configuration for Advanced Phases (v4.0)."""
+    harmonization: HarmonizationConfig = Field(default_factory=HarmonizationConfig)
+    chemical: ChemicalConfig = Field(default_factory=ChemicalConfig)
+    sequence: SequenceConfig = Field(default_factory=SequenceConfig)
+    # Trimodal retrieval weights
+    text_weight: float = 0.5
+    chemical_weight: float = 0.3
+    sequence_weight: float = 0.2
+
+
 class BioPatConfig(BaseModel):
     """Main configuration for BioPAT benchmark."""
     phase: str = "phase1"
@@ -135,6 +201,7 @@ class BioPatConfig(BaseModel):
     phase1: Phase1Config = Field(default_factory=Phase1Config)
     phase5: Phase5Config = Field(default_factory=Phase5Config)
     phase6: Phase6Config = Field(default_factory=Phase6Config)
+    advanced: AdvancedConfig = Field(default_factory=AdvancedConfig)
 
     @classmethod
     def load(cls, config_path: str = "configs/default.yaml") -> "BioPatConfig":

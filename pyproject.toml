@@ -36,8 +36,14 @@ dev = [
     "isort>=5.13.0,<6.0",
     "mypy>=1.8.0,<2.0",
 ]
+advanced = [
+    "sqlalchemy>=2.0.0,<3.0",
+    "psycopg2-binary>=2.9.0,<3.0",  # PostgreSQL driver
+    "rdkit>=2023.9.1",  # Chemical structure handling
+    "biopython>=1.83,<2.0",  # Sequence handling
+]
 all = [
-    "biopat[evaluation,dev]",
+    "biopat[evaluation,dev,advanced]",
 ]
 
 [project.scripts]

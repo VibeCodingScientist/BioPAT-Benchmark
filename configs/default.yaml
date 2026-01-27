@@ -102,3 +102,67 @@ phase6:
 
   # Random seed for reproducibility
   seed: 42
+
+# Advanced Phases: Multi-Modal Retrieval (v4.0)
+# Enables chemical structure and biological sequence similarity search
+advanced:
+  # Data Harmonization Layer
+  harmonization:
+    # Enable unified entity system
+    enabled: false
+    # Database configuration (sqlite or postgresql)
+    database:
+      backend: "sqlite"
+      path: "data/biopat.db"
+      # PostgreSQL settings (if backend: postgresql)
+      host: "localhost"
+      port: 5432
+      user: "biopat"
+      password: ""
+      database: "biopat"
+    # Use RDKit for chemical canonicalization (requires rdkit package)
+    use_rdkit: true
+    # Entity resolution cache size
+    cache_size: 10000
+    # Cross-reference extraction settings
+    extract_doi_from_text: true
+    extract_pmid_from_text: true
+    extract_sequences_from_claims: true
+
+  # Chemical Structure Matching (v3.1)
+  chemical:
+    # Enable chemical similarity search
+    enabled: false
+    # Path to SureChEMBL data (optional, for bulk loading)
+    surechembl_path: null
+    # Fingerprint settings
+    fingerprint_type: "morgan"  # morgan or rdkit
+    fingerprint_bits: 2048
+    morgan_radius: 2
+    # FAISS index settings
+    use_gpu: false
+    faiss_index_type: "flat"  # flat, ivf, hnsw
+    # Tanimoto similarity thresholds for ground truth tiers
+    tanimoto_high: 0.85
+    tanimoto_medium: 0.7
+    tanimoto_low: 0.5
+
+  # Biological Sequence Matching (v3.2)
+  sequence:
+    # Enable sequence similarity search
+    enabled: false
+    # Path to BLAST+ database
+    blast_db_path: null
+    # BLAST type (blastp for protein, blastn for nucleotide)
+    blast_type: "blastp"
+    # E-value threshold
+    evalue_threshold: 1e-5
+    # Sequence identity thresholds for ground truth tiers
+    identity_high: 0.95
+    identity_medium: 0.7
+    identity_low: 0.5
+
+  # Trimodal retrieval weights
+  text_weight: 0.5
+  chemical_weight: 0.3
+  sequence_weight: 0.2

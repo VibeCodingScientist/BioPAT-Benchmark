@@ -86,10 +86,10 @@
     - [ ] Upload datasets to HuggingFace & Zenodo <!-- id: 90 -->
     - [ ] Finalize citation and DOI <!-- id: 91 -->
     - [ ] Submission to academic conference (NeurIPS/SIGIR) <!-- id: 92 -->
-- [/] Establish Data Harmonization Layer <!-- id: 93 -->
-    - [ ] Implement `EntityResolver` for unified ID handling <!-- id: 94 -->
-    - [ ] Design and deploy SQL unified entity schema <!-- id: 95 -->
-    - [ ] Build mapping system for Paper-to-Patent cross-references <!-- id: 96 -->
+- [x] Establish Data Harmonization Layer <!-- id: 93 -->
+    - [x] Implement `EntityResolver` for unified ID handling <!-- id: 94 -->
+    - [x] Design and deploy SQL unified entity schema <!-- id: 95 -->
+    - [x] Build mapping system for Paper-to-Patent cross-references <!-- id: 96 -->
 - [ ] Implement Phase 9: Chemical Structure Matching (v3.1) <!-- id: 97 -->
     - [ ] Build SureChEMBL FTP loader and parser <!-- id: 98 -->
     - [ ] Implement FAISS-based Morgan fingerprint index <!-- id: 99 -->
