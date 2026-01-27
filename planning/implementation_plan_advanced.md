@@ -55,6 +55,10 @@ Integrate structural similarity search into the retrieval pipeline.
 
 Enable sequence-level prior art findability for biotechnology/antibody patents.
 
+### [NEW] [ingestion/uniprot.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/uniprot.py)
+- UniProt REST API client wrapper.
+- Logic for resolving protein accessions and fetching FASTA sequences.
+
 ### [NEW] [ingestion/patent_sequences.py](file:///Users/LV/Library/Mobile%20Documents/com~apple~CloudDocs/VibeCoding/BioPAT-Benchmark/src/biopat/ingestion/patent_sequences.py)
 - NCBI Patent Sequence Database integration via `Biopython.Entrez`.
 - Regex extraction of `SEQ ID NO` references from claim text.

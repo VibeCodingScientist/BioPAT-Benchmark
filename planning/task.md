@@ -99,6 +99,7 @@
     - [ ] Create Chemical-aware Ground Truth (Tanimoto tiers) <!-- id: 101 -->
     - [ ] Implement Alpha-weighted Hybrid Retriever (Text + Chem) <!-- id: 102 -->
 - [ ] Implement Phase 10: Biological Sequence Similarity (v3.2) <!-- id: 103 -->
+    - [x] Integrate UniProt REST API client <!-- id: 103.1 -->
     - [ ] Integrate NCBI Patent Sequence Database API <!-- id: 104 -->
     - [ ] Build local BLAST+ index management system <!-- id: 105 -->
     - [ ] Develop sequence extraction for antibody/biotech patents <!-- id: 106 -->
