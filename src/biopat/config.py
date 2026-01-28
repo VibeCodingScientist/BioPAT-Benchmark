@@ -36,43 +36,49 @@ class PathsConfig(BaseModel):
 
 class ApiConfig(BaseModel):
     """Configuration for API credentials."""
-    patentsview_key: Optional[str] = Field(default=None)
-    patentsview_key_2: Optional[str] = Field(default=None)
+    patentsview_keys: List[str] = Field(default_factory=list)
     ncbi_key: Optional[str] = Field(default=None)
     openalex_mailto: Optional[str] = Field(default=None)
     use_bulk_data: bool = Field(default=True)
     # Phase 6 (v3.0): International patent APIs
     epo_consumer_key: Optional[str] = Field(default=None)
     epo_consumer_secret: Optional[str] = Field(default=None)
-    wipo_api_token: Optional[str] = Field(default=None)
 
     def __init__(self, **data):
         # Map user-friendly names from YAML to internal field names
         field_map = {
-            "patentsview_api_key": "patentsview_key",
-            "patentsview_api_key_2": "patentsview_key_2",
+            "patentsview_api_key": "patentsview_keys", # Map single key to list
+            "patentsview_api_keys": "patentsview_keys", # Map list of keys
             "ncbi_api_key": "ncbi_key",
             "openalex_email": "openalex_mailto"
         }
         for yaml_key, internal_key in field_map.items():
             if yaml_key in data and internal_key not in data:
-                data[internal_key] = data.pop(yaml_key)
+                # If it's a single key for patentsview_keys, convert to list
+                if internal_key == "patentsview_keys" and isinstance(data[yaml_key], str):
+                    data[internal_key] = [data.pop(yaml_key)]
+                else:
+                    data[internal_key] = data.pop(yaml_key)
 
         super().__init__(**data)
         # Load from environment variables if not set
-        if self.patentsview_key is None:
-            object.__setattr__(self, 'patentsview_key', os.environ.get("PATENTSVIEW_API_KEY"))
+        if not self.patentsview_keys:
+            keys_str = os.environ.get("PATENTSVIEW_API_KEYS")
+            if keys_str:
+                object.__setattr__(self, 'patentsview_keys', [k.strip() for k in keys_str.split(",")])
+            elif os.environ.get("PATENTSVIEW_API_KEY"):
+                # Legacy single key support
+                object.__setattr__(self, 'patentsview_keys', [os.environ.get("PATENTSVIEW_API_KEY")])
+
         if self.ncbi_key is None:
             object.__setattr__(self, 'ncbi_key', os.environ.get("NCBI_API_KEY"))
         if self.openalex_mailto is None:
             object.__setattr__(self, 'openalex_mailto', os.environ.get("OPENALEX_MAILTO"))
-        # Phase 6: EPO and WIPO credentials
+        # Phase 6: EPO credentials
         if self.epo_consumer_key is None:
             object.__setattr__(self, 'epo_consumer_key', os.environ.get("EPO_CONSUMER_KEY"))
         if self.epo_consumer_secret is None:
             object.__setattr__(self, 'epo_consumer_secret', os.environ.get("EPO_CONSUMER_SECRET"))
-        if self.wipo_api_token is None:
-            object.__setattr__(self, 'wipo_api_token', os.environ.get("WIPO_API_TOKEN"))
 
 
 class Phase1Config(BaseModel):
@@ -106,7 +112,7 @@ class JurisdictionConfig(BaseModel):
     """Configuration for jurisdiction inclusion (v3.0)."""
     include_us: bool = True
     include_ep: bool = True
-    include_wo: bool = True
+    include_wo: bool = False
     max_patents_per_jurisdiction: Optional[int] = None
 
 

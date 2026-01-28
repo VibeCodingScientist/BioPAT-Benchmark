@@ -3,8 +3,12 @@
 Following the "Datasheets for Datasets" framework (Gebru et al., 2018).
 
 ## 1. Motivation
-- **Why was the dataset created?** To benchmark information retrieval in the high-stakes biomedical domain, where valid prior art may be hidden in text, chemical formulas, or biological sequences across global jurisdictions.
+- **Why was the dataset created?** To benchmark **Agentic Novelty Determination** in the high-stakes biomedical domain. In an era of abundant AI-generated hypotheses, BioPAT provides the rigorous multi-modal audit required to determine if a claimed innovation is truly novel or already disclosed in heterogeneous global data.
 - **Who created it?** VibeCodingScientist and the BioPAT-Benchmark contributors.
+
+## 1.1 Intended Use
+- **Primary Use**: Evaluating the reasoning and discovery capabilities of **Novelty Agents** and **Agentic Scientists**.
+- **Capability Test**: Benchmarking an AI agent's ability to synthesize text, chemical structures, and biological sequences into a definitive novelty judgment (§102/§103).
 
 ## 2. Composition
 - **What do instances represent?**

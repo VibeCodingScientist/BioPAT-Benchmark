@@ -23,40 +23,83 @@ DEFAULT_RATE_LIMIT = 45  # requests per minute with API key
 DEFAULT_BATCH_SIZE = 100
 
 
+class ApiKeyPool:
+    """Manages a pool of API keys with individual rate limits."""
+
+    def __init__(self, api_keys: List[str], rate_limit: int = DEFAULT_RATE_LIMIT):
+        self.keys = api_keys
+        self.rate_limit = rate_limit
+        self._semaphores = {key: asyncio.Semaphore(1) for key in api_keys}
+        self._request_times: Dict[str, List[float]] = {key: [] for key in api_keys}
+        self._index = 0
+        self._lock = asyncio.Lock()
+
+    async def get_key_and_wait(self) -> str:
+        """Get next available key and respect its rate limit."""
+        async with self._lock:
+            key = self.keys[self._index]
+            self._index = (self._index + 1) % len(self.keys)
+
+        async with self._semaphores[key]:
+            await self._rate_limit_wait(key)
+            return key
+
+    async def _rate_limit_wait(self, key: str):
+        """Enforce rate limiting for a specific key."""
+        import time
+        now = time.time()
+        self._request_times[key] = [t for t in self._request_times[key] if now - t < 60]
+
+        if len(self._request_times[key]) >= self.rate_limit:
+            sleep_time = 60 - (now - self._request_times[key][0])
+            if sleep_time > 0:
+                logger.debug(f"Rate limiting key {key[:8]}...: sleeping {sleep_time:.2f}s")
+                await asyncio.sleep(sleep_time)
+
+        self._request_times[key].append(time.time())
+
+
 class PatentsViewClient:
-    """Async client for PatentsView API."""
+    """Async client for PatentsView API with multi-key rotation."""
 
     def __init__(
         self,
-        api_key: Optional[str] = None,
+        api_keys: Optional[List[str]] = None,
         cache_dir: Optional[Path] = None,
         rate_limit: int = DEFAULT_RATE_LIMIT,
         audit_logger: Optional[AuditLogger] = None,
     ):
-        self.api_key = api_key
+        # Allow single string or list
+        if isinstance(api_keys, str):
+            api_keys = [api_keys]
+        
+        self.api_keys = api_keys or []
         self.rate_limit = rate_limit
         self.cache = Cache(str(cache_dir / "patentsview")) if cache_dir else None
-        self._semaphore = asyncio.Semaphore(rate_limit)
-        self._request_times: List[float] = []
         self.audit_logger = audit_logger
+        
+        if self.api_keys:
+            self._pool = ApiKeyPool(self.api_keys, rate_limit)
+        else:
+            self._pool = None
+            self._semaphore = asyncio.Semaphore(rate_limit)
+            self._request_times: List[float] = []
 
-    def _get_headers(self) -> Dict[str, str]:
+    def _get_headers(self, api_key: Optional[str] = None) -> Dict[str, str]:
         headers = {"Content-Type": "application/json"}
-        if self.api_key:
-            headers["X-Api-Key"] = self.api_key
+        if api_key:
+            headers["X-Api-Key"] = api_key
         return headers
 
     async def _rate_limit_wait(self):
-        """Enforce rate limiting."""
+        """Enforce rate limiting for requests without a key pool (legacy/single)."""
         import time
         now = time.time()
-        # Remove requests older than 60 seconds
         self._request_times = [t for t in self._request_times if now - t < 60]
 
         if len(self._request_times) >= self.rate_limit:
             sleep_time = 60 - (now - self._request_times[0])
             if sleep_time > 0:
-                logger.debug(f"Rate limiting: sleeping {sleep_time:.2f}s")
                 await asyncio.sleep(sleep_time)
 
         self._request_times.append(time.time())
@@ -69,55 +112,61 @@ class PatentsViewClient:
         body: Optional[dict] = None,
         method: str = "GET",
     ) -> Dict[str, Any]:
-        """Make a rate-limited API request."""
-        async with self._semaphore:
-            await self._rate_limit_wait()
+        """Make a rate-limited API request with key rotation."""
+        if self._pool:
+            api_key = await self._pool.get_key_and_wait()
+            # Key rotation handled by the pool
+        else:
+            async with self._semaphore:
+                await self._rate_limit_wait()
+                api_key = None
 
-            url = f"{PATENTSVIEW_BASE_URL}/{endpoint}"
+        url = f"{PATENTSVIEW_BASE_URL}/{endpoint}"
+        
+        try:
+            headers = self._get_headers(api_key)
+            if method == "POST":
+                response = await client.post(
+                    url,
+                    headers=headers,
+                    json=body,
+                    timeout=60.0,
+                )
+            else:
+                response = await client.get(
+                    url,
+                    headers=headers,
+                    params=params,
+                    timeout=60.0,
+                )
+            response.raise_for_status()
+            result = response.json()
 
-            try:
-                if method == "POST":
-                    response = await client.post(
-                        url,
-                        headers=self._get_headers(),
-                        json=body,
-                        timeout=60.0,
-                    )
-                else:
-                    response = await client.get(
-                        url,
-                        headers=self._get_headers(),
-                        params=params,
-                        timeout=60.0,
-                    )
-                response.raise_for_status()
-                result = response.json()
+            # Log API call
+            if self.audit_logger:
+                response_count = None
+                if isinstance(result, dict):
+                    if "patents" in result:
+                        response_count = len(result["patents"])
+                    elif "patent_id" in result:
+                        response_count = 1
 
-                # Log API call
-                if self.audit_logger:
-                    response_count = None
-                    if isinstance(result, dict):
-                        if "patents" in result:
-                            response_count = len(result["patents"])
-                        elif "patent_id" in result:
-                            response_count = 1
+                self.audit_logger.log_api_call(
+                    service="patentsview",
+                    endpoint=endpoint,
+                    method=method,
+                    params=params or body,
+                    response_status=response.status_code,
+                    response_count=response_count,
+                )
 
-                    self.audit_logger.log_api_call(
-                        service="patentsview",
-                        endpoint=endpoint,
-                        method=method,
-                        params=params or body,
-                        response_status=response.status_code,
-                        response_count=response_count,
-                    )
-
-                return result
-            except httpx.HTTPStatusError as e:
-                logger.error(f"HTTP error {e.response.status_code}: {e.response.text}")
-                raise
-            except Exception as e:
-                logger.error(f"Request failed: {e}")
-                raise
+            return result
+        except httpx.HTTPStatusError as e:
+            logger.error(f"HTTP error {e.response.status_code}: {e.response.text}")
+            raise
+        except Exception as e:
+            logger.error(f"Request failed: {e}")
+            raise
 
     async def get_patent(
         self,

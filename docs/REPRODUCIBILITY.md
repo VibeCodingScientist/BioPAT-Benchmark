@@ -1,6 +1,6 @@
 # BioPAT Reproducibility Guide (v4.0)
 
-Follow these steps to reproduce the BioPAT benchmark from scratch, including global patent coverage and multi-modal retrieval pipelines.
+Follow these steps to reproduce the BioPAT benchmark from scratch, including global patent coverage and multi-modal retrieval pipelines. BioPAT serves as the definitive audit layer for evaluating the **Novelty Determination** capabilities of **Agentic Scientists**.
 
 ## 1. Prerequisites
 
@@ -28,9 +28,6 @@ export PATENTSVIEW_API_KEY="your_key"
 # European Patent Office (EPO)
 export EPO_CONSUMER_KEY="your_ops_key"
 export EPO_CONSUMER_SECRET="your_ops_secret"
-
-# WIPO / PATENTSCOPE
-export WIPO_API_TOKEN="your_token"
 
 # NCBI / PubMed
 export NCBI_API_KEY="your_key"

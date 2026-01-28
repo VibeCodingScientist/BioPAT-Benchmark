@@ -6,10 +6,9 @@ In an era where AI agents generate hypotheses at scale, BioPAT serves as the def
 
 ## 1. Scope & Jurisdiction
 
-BioPAT v4.0 provides ~85% total biomedical patent coverage by integrating data from:
+BioPAT v4.0 provides ~80% total biomedical patent coverage by integrating data from:
 - **United States (USPTO)**: Primary source for examiner rejections.
 - **Europe (EPO)**: Integration of EP search reports and "X/Y/A" categorical relevance.
-- **PCT (WIPO)**: International applications (WO) and International Search Reports (ISR).
 
 ## 2. Selection Criteria (The "Gold Set")
 
@@ -51,4 +50,4 @@ $$S = \alpha \cdot \text{Text} + \beta \cdot \text{Chem} + \gamma \cdot \text{Se
 
 - **NDCG@k (Primary)**: Assesses the ranking of anticipation references at the top.
 - **Recall@100**: Measures the safety margin of the search (exhaustiveness).
-- **Cross-Jurisdiction Stability**: Measures if a model performance is uniform across US/EP/WO docs.
+- **Cross-Jurisdiction Stability**: Measures if a model performance is uniform across US/EP docs.

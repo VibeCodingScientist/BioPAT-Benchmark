@@ -26,7 +26,6 @@ from biopat.processing.patent_ids import (
     group_by_jurisdiction,
 )
 from biopat.ingestion.epo import EPOClient
-from biopat.ingestion.wipo import WIPOClient
 from biopat.ingestion.patentsview import PatentsViewClient
 from biopat.reproducibility import AuditLogger
 
@@ -85,7 +84,7 @@ class InternationalCorpusConfig:
 
     include_us: bool = True
     include_ep: bool = True
-    include_wo: bool = True
+    include_wo: bool = False
     ipc_prefixes: List[str] = field(default_factory=lambda: DEFAULT_IPC_PREFIXES.copy())
     publication_date_from: Optional[str] = None
     publication_date_to: Optional[str] = None
@@ -105,7 +104,6 @@ class InternationalCorpusBuilder:
         self,
         us_client: Optional[PatentsViewClient] = None,
         epo_client: Optional[EPOClient] = None,
-        wipo_client: Optional[WIPOClient] = None,
         audit_logger: Optional[AuditLogger] = None,
         cache_dir: Optional[Path] = None,
     ):
@@ -114,13 +112,11 @@ class InternationalCorpusBuilder:
         Args:
             us_client: PatentsView client for US patents.
             epo_client: EPO OPS client for EP patents.
-            wipo_client: WIPO client for PCT/WO patents.
             audit_logger: Optional audit logger.
             cache_dir: Directory for caching.
         """
         self.us_client = us_client
         self.epo_client = epo_client
-        self.wipo_client = wipo_client
         self.audit_logger = audit_logger
         self.cache_dir = cache_dir
 
@@ -153,11 +149,6 @@ class InternationalCorpusBuilder:
             ep_patents = await self._fetch_ep_patents(config, show_progress)
             all_patents.extend(ep_patents)
             logger.info(f"Fetched {len(ep_patents)} EP patents")
-
-        if config.include_wo and self.wipo_client:
-            wo_patents = await self._fetch_wo_patents(config, show_progress)
-            all_patents.extend(wo_patents)
-            logger.info(f"Fetched {len(wo_patents)} WO patents")
 
         # Deduplicate by family if enabled
         if config.deduplicate_families:
@@ -249,45 +240,6 @@ class InternationalCorpusBuilder:
 
         return patents
 
-    async def _fetch_wo_patents(
-        self,
-        config: InternationalCorpusConfig,
-        show_progress: bool,
-    ) -> List[InternationalPatent]:
-        """Fetch WO patents from WIPO PATENTSCOPE."""
-        if not self.wipo_client:
-            return []
-
-        patents = []
-
-        try:
-            results = await self.wipo_client.get_biomedical_pct(
-                ipc_classes=config.ipc_prefixes,
-                limit=config.max_patents_per_jurisdiction,
-                publication_date_from=config.publication_date_from,
-                publication_date_to=config.publication_date_to,
-            )
-
-            # Convert to DataFrame
-            df = self.wipo_client.patents_to_dataframe(results)
-
-            for row in df.iter_rows(named=True):
-                patents.append(InternationalPatent(
-                    patent_id=row["patent_id"],
-                    jurisdiction=Jurisdiction.WO,
-                    title=row["title"],
-                    abstract=row["abstract"],
-                    publication_date=row["publication_date"],
-                    priority_date=row["priority_date"],
-                    ipc_codes=row["ipc_codes"],
-                    source="wo",
-                ))
-
-        except Exception as e:
-            logger.error(f"Failed to fetch WO patents: {e}")
-
-        return patents
-
     def _deduplicate_by_family(
         self,
         patents: List[InternationalPatent],
@@ -363,10 +315,6 @@ class InternationalCorpusBuilder:
                 ep_results = await self._fetch_ep_by_ids(id_strings)
                 results.extend(ep_results)
 
-            elif jurisdiction == Jurisdiction.WO and self.wipo_client:
-                wo_results = await self._fetch_wo_by_ids(id_strings)
-                results.extend(wo_results)
-
             else:
                 logger.warning(
                     f"No client available for jurisdiction {jurisdiction}, "
@@ -434,36 +382,6 @@ class InternationalCorpusBuilder:
 
         return patents
 
-    async def _fetch_wo_by_ids(
-        self,
-        patent_ids: List[str],
-    ) -> List[InternationalPatent]:
-        """Fetch WO patents by ID."""
-        if not self.wipo_client:
-            return []
-
-        patents = []
-        try:
-            results = await self.wipo_client.get_patents_batch(patent_ids)
-            df = self.wipo_client.patents_to_dataframe(results)
-
-            for row in df.iter_rows(named=True):
-                patents.append(InternationalPatent(
-                    patent_id=row["patent_id"],
-                    jurisdiction=Jurisdiction.WO,
-                    title=row["title"],
-                    abstract=row["abstract"],
-                    publication_date=row["publication_date"],
-                    priority_date=row["priority_date"],
-                    ipc_codes=row["ipc_codes"],
-                    source="wo",
-                ))
-
-        except Exception as e:
-            logger.error(f"Failed to fetch WO patents by ID: {e}")
-
-        return patents
-
 
 def create_international_corpus_entry(
     patent: InternationalPatent,
@@ -496,14 +414,12 @@ def create_international_corpus_entry(
 def merge_corpus_dataframes(
     us_df: Optional[pl.DataFrame],
     ep_df: Optional[pl.DataFrame],
-    wo_df: Optional[pl.DataFrame],
 ) -> pl.DataFrame:
-    """Merge corpus DataFrames from multiple jurisdictions.
+    """Merge corpus Dataframes from multiple jurisdictions.
 
     Args:
         us_df: US patent DataFrame.
         ep_df: EP patent DataFrame.
-        wo_df: WO patent DataFrame.
 
     Returns:
         Merged DataFrame with jurisdiction column.
@@ -517,10 +433,6 @@ def merge_corpus_dataframes(
     if ep_df is not None and len(ep_df) > 0:
         ep_df = ep_df.with_columns(pl.lit("EP").alias("jurisdiction"))
         dfs.append(ep_df)
-
-    if wo_df is not None and len(wo_df) > 0:
-        wo_df = wo_df.with_columns(pl.lit("WO").alias("jurisdiction"))
-        dfs.append(wo_df)
 
     if not dfs:
         return pl.DataFrame()

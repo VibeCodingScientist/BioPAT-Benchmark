@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.1] - 2026-01-28
+
+### Changed
+- **WIPO Removal**: Removed active WIPO integration and PATENTSCOPE client. BioPAT now focuses on USPTO and EPO for global patent coverage.
+- **PatentsView Multi-Key Support**: Enhanced `PatentsViewClient` to support a pool of API keys with individual rate limiting and rotation, significantly increasing throughput for large-scale ingestion.
+- **Configuration**: Updated `ApiConfig` to accept `patentsview_keys` as a list and removed `wipo_api_token`.
+
 ## [0.4.0] - 2026-01-27
 
 ### Added - Phase 4.0: Data Harmonization Layer (v4.0 Foundation)

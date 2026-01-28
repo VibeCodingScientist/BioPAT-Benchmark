@@ -5,7 +5,6 @@ from .patentsview import PatentsViewClient
 from .openalex import OpenAlexClient
 from .office_action import OfficeActionLoader
 from .epo import EPOClient
-from .wipo import WIPOClient
 
 # Re-export reproducibility utilities for convenience
 from biopat.reproducibility import ChecksumEngine, AuditLogger
@@ -16,7 +15,6 @@ __all__ = [
     "OpenAlexClient",
     "OfficeActionLoader",
     "EPOClient",
-    "WIPOClient",
     "ChecksumEngine",
     "AuditLogger",
 ]

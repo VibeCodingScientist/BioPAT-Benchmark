@@ -14,18 +14,13 @@ This document tracks all data sources, versions, and access requirements used in
 - **Ground Truth**: EP Search Reports (Register Service).
 - **Scope**: Categorical relevance (X, Y, A).
 
-### 1.3 WIPO PATENTSCOPE (International)
-- **Primary Access**: PATENTSCOPE JSON/XML Interface.
-- **Ground Truth**: PCT International Search Reports (ISR).
-- **Scope**: Global novelty retrieval.
+## 1.3 Literature & Linking
 
-## 2. Literature & Linking
-
-### 2.1 OpenAlex
+### 1.3.1 OpenAlex
 - **Access**: REST API (mailto: enabled).
 - **Scope**: Comprehensive corpus of scientific works, affiliations, and MeSH terms.
 
-### 2.2 Reliance on Science (PCS)
+### 1.3.2 Reliance on Science (PCS)
 - **URL**: [https://zenodo.org/records/7996195](https://zenodo.org/records/7996195)
 - **Version**: v2023.1 (Marx & Fuegi).
 - **Rationale**: Seed citations for determining initial relevance confidence.
