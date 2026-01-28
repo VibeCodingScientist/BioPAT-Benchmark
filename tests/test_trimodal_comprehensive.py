@@ -10,12 +10,22 @@ Tests end-to-end retrieval scenarios including:
 """
 
 import asyncio
+import sys
 import numpy as np
 import pytest
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Tuple
-from unittest.mock import MagicMock, patch, AsyncMock
+from unittest.mock import MagicMock, patch
 import polars as pl
+
+# AsyncMock is only available in Python 3.8+
+if sys.version_info >= (3, 8):
+    from unittest.mock import AsyncMock
+else:
+    # Provide a simple fallback for Python < 3.8
+    class AsyncMock(MagicMock):
+        async def __call__(self, *args, **kwargs):
+            return super().__call__(*args, **kwargs)
 
 from biopat.evaluation.trimodal_retrieval import (
     MatchType,

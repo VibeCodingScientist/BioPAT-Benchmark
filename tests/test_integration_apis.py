@@ -12,11 +12,21 @@ All HTTP calls are mocked using pytest-httpx or unittest.mock.
 
 import asyncio
 import json
+import sys
 import pytest
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import MagicMock, patch
+
+# AsyncMock is only available in Python 3.8+
+if sys.version_info >= (3, 8):
+    from unittest.mock import AsyncMock
+else:
+    # Provide a simple fallback for Python < 3.8
+    class AsyncMock(MagicMock):
+        async def __call__(self, *args, **kwargs):
+            return super().__call__(*args, **kwargs)
 
 import httpx
 import polars as pl

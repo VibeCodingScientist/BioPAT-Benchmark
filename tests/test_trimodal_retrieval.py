@@ -1,9 +1,19 @@
 """Tests for trimodal retrieval combining text, chemical, and sequence search."""
 
+import sys
 import pytest
 import asyncio
-from unittest.mock import Mock, AsyncMock
+from unittest.mock import Mock, MagicMock
 from dataclasses import dataclass
+
+# AsyncMock is only available in Python 3.8+
+if sys.version_info >= (3, 8):
+    from unittest.mock import AsyncMock
+else:
+    # Provide a simple fallback for Python < 3.8
+    class AsyncMock(MagicMock):
+        async def __call__(self, *args, **kwargs):
+            return super().__call__(*args, **kwargs)
 
 from biopat.evaluation.trimodal_retrieval import (
     MatchType,
