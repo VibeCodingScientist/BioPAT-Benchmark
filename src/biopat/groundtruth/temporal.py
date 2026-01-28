@@ -203,7 +203,7 @@ class TemporalValidator:
                     .with_columns((pl.col("days_after") / 365).floor().alias("years_after")),
                     "years_after"
                 )
-                .agg(pl.count().alias("count"))
+                .agg(pl.len().alias("count"))
                 .sort("years_after")
                 .to_dicts()
             )

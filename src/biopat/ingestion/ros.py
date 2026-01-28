@@ -213,6 +213,6 @@ class RelianceOnScienceLoader:
             df = self.load()
         return (
             compat.group_by(df, "patent_id")
-            .agg(pl.count().alias("citation_count"))
+            .agg(pl.len().alias("citation_count"))
             .sort("citation_count", descending=True)
         )

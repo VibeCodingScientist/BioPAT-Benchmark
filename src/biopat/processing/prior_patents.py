@@ -497,7 +497,7 @@ class PriorPatentSelector:
         # Source distribution
         source_counts = (
             compat.group_by(citations, "source")
-            .agg(pl.count().alias("count"))
+            .agg(pl.len().alias("count"))
             .to_dicts()
         )
         stats["by_source"] = {r["source"]: r["count"] for r in source_counts}
@@ -508,7 +508,7 @@ class PriorPatentSelector:
             if len(oa_only) > 0:
                 rej_counts = (
                     compat.group_by(oa_only, "rejection_type")
-                    .agg(pl.count().alias("count"))
+                    .agg(pl.len().alias("count"))
                     .to_dicts()
                 )
                 stats["by_rejection_type"] = {

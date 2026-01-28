@@ -67,7 +67,7 @@ class BenchmarkSampler:
             return queries_df
 
         # Get domain distribution
-        domain_counts = compat.group_by(queries_df, stratify_col).agg(pl.count().alias("count"))
+        domain_counts = compat.group_by(queries_df, stratify_col).agg(pl.len().alias("count"))
 
         # Calculate sampling fraction per domain to maintain proportions
         sampling_fraction = target_count / total
@@ -302,13 +302,13 @@ class BenchmarkSampler:
         if stratify_col in queries_df.columns:
             stats["domain_distribution"] = (
                 compat.group_by(queries_df, stratify_col)
-                .agg(pl.count().alias("count"))
+                .agg(pl.len().alias("count"))
                 .sort("count", reverse=True)
                 .to_dicts()
             )
 
         # Qrels per query
-        qrels_per_query = compat.group_by(qrels_df, "query_id").agg(pl.count().alias("count"))
+        qrels_per_query = compat.group_by(qrels_df, "query_id").agg(pl.len().alias("count"))
         stats["mean_qrels_per_query"] = qrels_per_query["count"].mean()
         stats["median_qrels_per_query"] = qrels_per_query["count"].median()
 
@@ -316,7 +316,7 @@ class BenchmarkSampler:
         if "relevance" in qrels_df.columns:
             stats["relevance_distribution"] = (
                 compat.group_by(qrels_df, "relevance")
-                .agg(pl.count().alias("count"))
+                .agg(pl.len().alias("count"))
                 .sort("relevance")
                 .to_dicts()
             )

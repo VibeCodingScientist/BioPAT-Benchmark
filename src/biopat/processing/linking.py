@@ -184,7 +184,7 @@ class CitationLinker:
         }
 
         # Citations per patent
-        per_patent = compat.group_by(citation_links, "patent_id").agg(pl.count().alias("count"))
+        per_patent = compat.group_by(citation_links, "patent_id").agg(pl.len().alias("count"))
         stats["mean_citations_per_patent"] = per_patent["count"].mean()
         stats["median_citations_per_patent"] = per_patent["count"].median()
         stats["max_citations_per_patent"] = per_patent["count"].max()
@@ -193,7 +193,7 @@ class CitationLinker:
         if "source" in citation_links.columns:
             source_counts = (
                 compat.group_by(citation_links, "source")
-                .agg(pl.count().alias("count"))
+                .agg(pl.len().alias("count"))
                 .to_dicts()
             )
             stats["source_distribution"] = {
@@ -205,7 +205,7 @@ class CitationLinker:
             stats["mean_confidence"] = citation_links["confidence"].mean()
             stats["confidence_distribution"] = (
                 compat.group_by(citation_links, "confidence")
-                .agg(pl.count().alias("count"))
+                .agg(pl.len().alias("count"))
                 .sort("confidence")
                 .to_dicts()
             )

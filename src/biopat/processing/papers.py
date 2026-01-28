@@ -172,7 +172,7 @@ class PaperProcessor:
         )
         concept_counts = (
             compat.group_by(exploded, ["concept_id", "concept_name"])
-            .agg(pl.count().alias("count"))
+            .agg(pl.len().alias("count"))
             .sort("count", descending=True)
         )
 

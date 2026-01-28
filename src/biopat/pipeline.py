@@ -34,7 +34,7 @@ class Phase1Pipeline:
             self.config.paths.cache_dir,
         )
         self.patentsview_client = PatentsViewClient(
-            api_key=self.config.api.patentsview_key,
+            api_keys=self.config.api.patentsview_keys,
             cache_dir=self.config.paths.cache_dir,
         )
         self.openalex_client = OpenAlexClient(

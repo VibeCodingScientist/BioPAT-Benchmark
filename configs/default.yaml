@@ -13,15 +13,17 @@ paths:
 
 # API credentials (can also be set via environment variables)
 api:
-  patentsview_api_key: "your-first-key"
-  patentsview_api_key_2: "your-second-key"
+  # PatentsView API keys - supports multiple keys for rotation (higher throughput)
+  # Get keys at: https://patentsview.org/apis/keyrequest
+  patentsview_api_keys:
+    - "your-first-key"
+    - "your-second-key"
   ncbi_api_key: "your-ncbi-key"
   openalex_email: "your@email.com"
   use_bulk_data: false
   # Phase 6 (v3.0): International patent APIs
   epo_consumer_key: null  # EPO OPS Consumer Key (or set EPO_CONSUMER_KEY env var)
   epo_consumer_secret: null  # EPO OPS Consumer Secret (or set EPO_CONSUMER_SECRET env var)
-  wipo_api_token: null  # WIPO PATENTSCOPE API Token (or set WIPO_API_TOKEN env var)
 
 # Phase 1: Minimum Viable Benchmark
 phase1:
@@ -79,8 +81,8 @@ phase6:
     include_us: true
     # Include European patents (EPO OPS)
     include_ep: true
-    # Include PCT/WIPO patents (PATENTSCOPE)
-    include_wo: true
+    # Include PCT/WIPO patents (via EPO family data, not direct WIPO API)
+    include_wo: false
     # Maximum patents per jurisdiction (null = no limit)
     max_patents_per_jurisdiction: null
 

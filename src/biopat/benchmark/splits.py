@@ -266,21 +266,21 @@ class DatasetSplitter:
             stats["train_domains"] = (
                 train_df
                 .group_by(stratify_col)
-                .agg(pl.count().alias("count"))
+                .agg(pl.len().alias("count"))
                 .sort(stratify_col)
                 .to_dicts()
             )
             stats["dev_domains"] = (
                 dev_df
                 .group_by(stratify_col)
-                .agg(pl.count().alias("count"))
+                .agg(pl.len().alias("count"))
                 .sort(stratify_col)
                 .to_dicts()
             ) if len(dev_df) > 0 else []
             stats["test_domains"] = (
                 test_df
                 .group_by(stratify_col)
-                .agg(pl.count().alias("count"))
+                .agg(pl.len().alias("count"))
                 .sort(stratify_col)
                 .to_dicts()
             ) if len(test_df) > 0 else []

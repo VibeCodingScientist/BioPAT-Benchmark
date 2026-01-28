@@ -35,7 +35,7 @@ class TestBenchmarkSampler:
         assert len(sampled) <= 20
 
         # Check proportions are roughly maintained
-        domain_counts = sampled.group_by("domain").agg(pl.count().alias("count"))
+        domain_counts = sampled.group_by("domain").agg(pl.len().alias("count"))
         counts_dict = {row["domain"]: row["count"] for row in domain_counts.iter_rows(named=True)}
 
         # A61K should have more than C12N

@@ -199,7 +199,7 @@ class RelevanceAssigner:
         """Log the distribution of relevance levels."""
         distribution = (
             compat.group_by(qrels, ["relevance", "label"])
-            .agg(pl.count().alias("count"))
+            .agg(pl.len().alias("count"))
             .sort("relevance", descending=True)
         )
 
@@ -225,13 +225,13 @@ class RelevanceAssigner:
         # Relevance distribution
         stats["relevance_distribution"] = (
             compat.group_by(qrels, "relevance")
-            .agg(pl.count().alias("count"))
+            .agg(pl.len().alias("count"))
             .sort("relevance")
             .to_dicts()
         )
 
         # Judgments per query
-        per_query = compat.group_by(qrels, "query_id").agg(pl.count().alias("count"))
+        per_query = compat.group_by(qrels, "query_id").agg(pl.len().alias("count"))
         stats["mean_judgments_per_query"] = per_query["count"].mean()
         stats["median_judgments_per_query"] = per_query["count"].median()
 
@@ -239,7 +239,7 @@ class RelevanceAssigner:
         if "evidence_source" in qrels.columns:
             stats["source_distribution"] = (
                 compat.group_by(qrels, "evidence_source")
-                .agg(pl.count().alias("count"))
+                .agg(pl.len().alias("count"))
                 .to_dicts()
             )
 
