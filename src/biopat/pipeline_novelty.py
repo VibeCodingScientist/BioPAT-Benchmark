@@ -30,8 +30,14 @@ class PipelineConfig:
     llm_model: str = "gpt-4"
     llm_api_key: Optional[str] = None
 
+    # Retrieval method
+    # Options: "hybrid" (BM25+dense), "splade", "colbert", "dense", "sparse"
+    retrieval_method: str = "hybrid"
+
     # Retrieval settings
     text_model: str = "BAAI/bge-base-en-v1.5"
+    splade_model: str = "naver/splade-cocondenser-ensembledistil"
+    colbert_model: str = "colbert-ir/colbertv2.0"
     chemical_method: str = "morgan"  # morgan, chemberta
     sequence_method: str = "esm2-small"  # esm2, protbert, blast
 
@@ -175,20 +181,56 @@ class NoveltyAssessmentPipeline:
         except Exception as e:
             logger.warning(f"  ✗ LLM Claim Parser: {e}")
 
-        # 2. Text Retriever (Hybrid: BM25 + Dense)
+        # 2. Text Retriever (based on config)
         try:
-            from biopat.retrieval.hybrid import HybridRetriever, SparseRetriever
-            from biopat.retrieval.dense import DenseRetriever
+            method = self.config.retrieval_method
 
-            dense = DenseRetriever(
-                model_name=self.config.text_model,
-                device="cuda" if self.config.use_gpu else "cpu",
-            )
-            self._text_retriever = HybridRetriever(
-                dense_retriever=dense,
-                sparse_retriever=SparseRetriever(),
-            )
-            logger.info("  ✓ Text Retriever (Hybrid)")
+            if method == "splade":
+                # SPLADE learned sparse retrieval
+                from biopat.retrieval.splade import SPLADERetriever
+                self._text_retriever = SPLADERetriever(
+                    model_name=self.config.splade_model,
+                )
+                logger.info("  ✓ Text Retriever (SPLADE)")
+
+            elif method == "colbert":
+                # ColBERT late interaction
+                from biopat.retrieval.colbert import ColBERTRetriever
+                self._text_retriever = ColBERTRetriever(
+                    model_name=self.config.colbert_model,
+                )
+                logger.info("  ✓ Text Retriever (ColBERT)")
+
+            elif method == "dense":
+                # Pure dense retrieval
+                from biopat.retrieval.dense import DenseRetriever
+                self._text_retriever = DenseRetriever(
+                    model_name=self.config.text_model,
+                    device="cuda" if self.config.use_gpu else "cpu",
+                )
+                logger.info("  ✓ Text Retriever (Dense)")
+
+            elif method == "sparse":
+                # Pure BM25
+                from biopat.retrieval.hybrid import SparseRetriever
+                self._text_retriever = SparseRetriever()
+                logger.info("  ✓ Text Retriever (BM25)")
+
+            else:
+                # Default: Hybrid (BM25 + Dense)
+                from biopat.retrieval.hybrid import HybridRetriever, SparseRetriever
+                from biopat.retrieval.dense import DenseRetriever
+
+                dense = DenseRetriever(
+                    model_name=self.config.text_model,
+                    device="cuda" if self.config.use_gpu else "cpu",
+                )
+                self._text_retriever = HybridRetriever(
+                    dense_retriever=dense,
+                    sparse_retriever=SparseRetriever(),
+                )
+                logger.info("  ✓ Text Retriever (Hybrid)")
+
         except Exception as e:
             logger.warning(f"  ✗ Text Retriever: {e}")
             # Fallback to sparse only

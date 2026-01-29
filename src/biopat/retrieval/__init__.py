@@ -7,6 +7,8 @@ This module implements state-of-the-art retrieval methods:
 - LLM-based query expansion (HyDE)
 - Molecular structure similarity (Morgan fingerprints, ChemBERTa)
 - Biological sequence similarity (ESM-2, ProtBERT, BLAST)
+- SPLADE learned sparse retrieval
+- ColBERT late interaction
 """
 
 from biopat.retrieval.dense import DenseRetriever, create_domain_retriever
@@ -15,6 +17,8 @@ from biopat.retrieval.reranker import CrossEncoderReranker, LLMReranker, create_
 from biopat.retrieval.hyde import HyDEQueryExpander, QueryExpansionPipeline, create_hyde_expander
 from biopat.retrieval.molecular import MolecularRetriever, MorganFingerprintEncoder, create_molecular_retriever
 from biopat.retrieval.sequence import SequenceRetriever, BLASTSearcher, create_sequence_retriever
+from biopat.retrieval.splade import SPLADERetriever, SPLADEEncoder, HybridSPLADERetriever, create_splade_retriever
+from biopat.retrieval.colbert import ColBERTRetriever, ColBERTEncoder, create_colbert_retriever
 
 __all__ = [
     # Dense retrieval
@@ -45,4 +49,15 @@ __all__ = [
     "SequenceRetriever",
     "BLASTSearcher",
     "create_sequence_retriever",
+
+    # SPLADE learned sparse
+    "SPLADERetriever",
+    "SPLADEEncoder",
+    "HybridSPLADERetriever",
+    "create_splade_retriever",
+
+    # ColBERT late interaction
+    "ColBERTRetriever",
+    "ColBERTEncoder",
+    "create_colbert_retriever",
 ]
