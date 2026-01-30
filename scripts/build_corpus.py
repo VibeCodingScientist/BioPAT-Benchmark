@@ -54,6 +54,7 @@ async def build_corpus(
     biorxiv_limit: int = 100,
     patent_limit: int = 200,
     protein_limit: int = 50,
+    patent_sequence_limit: int = 50,
     date_range: str = "2020-2024",
 ):
     """Build a corpus on a specific biomedical topic.
@@ -65,14 +66,16 @@ async def build_corpus(
         biorxiv_limit: Max bioRxiv preprints
         patent_limit: Max patents
         protein_limit: Max proteins
+        patent_sequence_limit: Max patent sequences from NCBI
         date_range: Date filter
     """
     output_dir.mkdir(parents=True, exist_ok=True)
 
     # Get API keys from environment
     config = AcquisitionConfig(
-        pubmed_api_key=os.environ.get("NCBI_API_KEY"),
+        pubmed_api_key=os.environ.get("NCBI_API_KEY"),  # Also used for NCBI sequences
         patentsview_api_key=os.environ.get("PATENTSVIEW_API_KEY"),
+        surechembl_api_key=os.environ.get("SURECHEMBL_API_KEY"),
         cache_dir=output_dir / ".cache",
     )
 
@@ -122,8 +125,8 @@ async def build_corpus(
         except Exception as e:
             logger.error(f"  Patent fetch failed: {e}")
 
-        # 4. Fetch protein sequences
-        logger.info(f"\n[4/4] Fetching UniProt proteins (limit={protein_limit})...")
+        # 4. Fetch protein sequences from UniProt
+        logger.info(f"\n[4/5] Fetching UniProt proteins (limit={protein_limit})...")
         try:
             protein_docs = await acq.fetch_proteins(
                 topic,
@@ -134,6 +137,19 @@ async def build_corpus(
             all_documents.extend(protein_docs)
         except Exception as e:
             logger.error(f"  UniProt fetch failed: {e}")
+
+        # 5. Fetch patent sequences from NCBI
+        logger.info(f"\n[5/5] Fetching NCBI patent sequences (limit={patent_sequence_limit})...")
+        try:
+            patent_seq_docs = await acq.fetch_patent_sequences(
+                topic,
+                limit=patent_sequence_limit,
+                sequence_type="protein",
+            )
+            logger.info(f"  Retrieved {len(patent_seq_docs)} patent sequences from NCBI")
+            all_documents.extend(patent_seq_docs)
+        except Exception as e:
+            logger.error(f"  NCBI patent sequences fetch failed: {e}")
 
         # Save corpus
         logger.info(f"\nSaving corpus ({len(all_documents)} total documents)...")
@@ -238,6 +254,12 @@ Examples:
         help="Maximum proteins (default: 50)",
     )
     parser.add_argument(
+        "--patent-sequence-limit",
+        type=int,
+        default=50,
+        help="Maximum patent sequences from NCBI (default: 50)",
+    )
+    parser.add_argument(
         "--date-range",
         default="2020-2024",
         help="Date range filter (default: 2020-2024)",
@@ -252,6 +274,7 @@ Examples:
         biorxiv_limit=args.biorxiv_limit,
         patent_limit=args.patent_limit,
         protein_limit=args.protein_limit,
+        patent_sequence_limit=args.patent_sequence_limit,
         date_range=args.date_range,
     ))
 

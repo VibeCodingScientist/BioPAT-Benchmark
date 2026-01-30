@@ -25,10 +25,11 @@ class AcquisitionConfig:
     """Configuration for data acquisition."""
 
     # API Keys
-    pubmed_api_key: Optional[str] = None
+    pubmed_api_key: Optional[str] = None  # Also used for NCBI sequences (GenBank, Protein, Nucleotide)
     patentsview_api_key: Optional[str] = None
     epo_consumer_key: Optional[str] = None
     epo_consumer_secret: Optional[str] = None
+    surechembl_api_key: Optional[str] = None
 
     # Cache settings
     cache_dir: Optional[Path] = None
@@ -106,6 +107,8 @@ class DataAcquisition:
         self._epo = None
         self._uniprot = None
         self._pubchem = None
+        self._ncbi_sequences = None
+        self._surechembl = None
 
     async def __aenter__(self):
         return self
@@ -117,7 +120,8 @@ class DataAcquisition:
         """Close all connectors."""
         connectors = [
             self._pubmed, self._biorxiv, self._medrxiv,
-            self._patentsview, self._epo, self._uniprot, self._pubchem
+            self._patentsview, self._epo, self._uniprot, self._pubchem,
+            self._ncbi_sequences, self._surechembl
         ]
         for conn in connectors:
             if conn:
@@ -427,6 +431,245 @@ class DataAcquisition:
             self._uniprot = UniProtConnector(config=conn_config)
 
         return await self._uniprot.get_sequence(accession)
+
+    # =========================================================================
+    # NCBI Sequence Sources (GenBank, Protein, Nucleotide)
+    # =========================================================================
+
+    async def fetch_patent_sequences(
+        self,
+        query: str,
+        limit: int = 100,
+        sequence_type: str = "protein",
+    ) -> List[Document]:
+        """
+        Fetch patent sequences from NCBI GenBank/GenPept.
+
+        Uses the same API key as PubMed (NCBI E-utilities).
+
+        Args:
+            query: Search query (e.g., "pembrolizumab antibody")
+            limit: Maximum results
+            sequence_type: "protein" or "nucleotide"
+
+        Returns:
+            List of Document objects with sequences
+        """
+        from biopat.data.ncbi_sequences import NCBISequenceConnector
+
+        if self._ncbi_sequences is None:
+            conn_config = ConnectorConfig(
+                api_key=self.config.pubmed_api_key,  # Same NCBI API key
+                cache_dir=self.config.cache_dir,
+            )
+            self._ncbi_sequences = NCBISequenceConnector(config=conn_config)
+
+        return await self._ncbi_sequences.search_patent_sequences(
+            query, limit=limit, sequence_type=sequence_type
+        )
+
+    async def fetch_ncbi_protein(
+        self,
+        query: str,
+        limit: int = 100,
+        organism: Optional[str] = None,
+    ) -> List[Document]:
+        """
+        Fetch protein sequences from NCBI Protein database.
+
+        Args:
+            query: Search query
+            limit: Maximum results
+            organism: Filter by organism (e.g., "human", "Homo sapiens")
+
+        Returns:
+            List of Document objects with protein sequences
+        """
+        from biopat.data.ncbi_sequences import NCBISequenceConnector
+
+        if self._ncbi_sequences is None:
+            conn_config = ConnectorConfig(
+                api_key=self.config.pubmed_api_key,
+                cache_dir=self.config.cache_dir,
+            )
+            self._ncbi_sequences = NCBISequenceConnector(config=conn_config)
+
+        return await self._ncbi_sequences.search_protein(
+            query, limit=limit, organism=organism
+        )
+
+    async def fetch_ncbi_nucleotide(
+        self,
+        query: str,
+        limit: int = 100,
+        organism: Optional[str] = None,
+    ) -> List[Document]:
+        """
+        Fetch nucleotide sequences from NCBI Nucleotide database.
+
+        Args:
+            query: Search query
+            limit: Maximum results
+            organism: Filter by organism
+
+        Returns:
+            List of Document objects with nucleotide sequences
+        """
+        from biopat.data.ncbi_sequences import NCBISequenceConnector
+
+        if self._ncbi_sequences is None:
+            conn_config = ConnectorConfig(
+                api_key=self.config.pubmed_api_key,
+                cache_dir=self.config.cache_dir,
+            )
+            self._ncbi_sequences = NCBISequenceConnector(config=conn_config)
+
+        return await self._ncbi_sequences.search_nucleotide(
+            query, limit=limit, organism=organism
+        )
+
+    async def get_ncbi_sequence(
+        self,
+        accession: str,
+        database: str = "protein",
+    ) -> Optional[Document]:
+        """
+        Get sequence by NCBI accession number.
+
+        Args:
+            accession: NCBI accession (e.g., "AAA123456", "NP_001234")
+            database: "protein" or "nucleotide"
+
+        Returns:
+            Document with sequence or None
+        """
+        from biopat.data.ncbi_sequences import NCBISequenceConnector
+
+        if self._ncbi_sequences is None:
+            conn_config = ConnectorConfig(
+                api_key=self.config.pubmed_api_key,
+                cache_dir=self.config.cache_dir,
+            )
+            self._ncbi_sequences = NCBISequenceConnector(config=conn_config)
+
+        return await self._ncbi_sequences.get_sequence(accession, database=database)
+
+    # =========================================================================
+    # SureChEMBL Patent-Chemical Mappings
+    # =========================================================================
+
+    async def fetch_patent_chemicals(
+        self,
+        patent_id: str,
+    ) -> List[Document]:
+        """
+        Fetch chemicals extracted from a patent via SureChEMBL.
+
+        Args:
+            patent_id: Patent number (e.g., "US10500001", "EP1234567")
+
+        Returns:
+            List of Document objects with chemical structures
+        """
+        from biopat.data.surechembl import SureChEMBLConnector
+
+        if self._surechembl is None:
+            conn_config = ConnectorConfig(
+                api_key=self.config.surechembl_api_key,
+                cache_dir=self.config.cache_dir,
+            )
+            self._surechembl = SureChEMBLConnector(config=conn_config)
+
+        chemicals = await self._surechembl.get_patent_chemicals(patent_id)
+        return [chem.to_document() for chem in chemicals]
+
+    async def similarity_search_chemicals(
+        self,
+        smiles: str,
+        threshold: float = 0.7,
+        max_results: int = 100,
+    ) -> List[Document]:
+        """
+        Search for similar chemicals in SureChEMBL by Tanimoto similarity.
+
+        Args:
+            smiles: Query SMILES string
+            threshold: Minimum Tanimoto similarity (0-1)
+            max_results: Maximum results
+
+        Returns:
+            List of Document objects with similar chemicals
+        """
+        from biopat.data.surechembl import SureChEMBLConnector
+
+        if self._surechembl is None:
+            conn_config = ConnectorConfig(
+                api_key=self.config.surechembl_api_key,
+                cache_dir=self.config.cache_dir,
+            )
+            self._surechembl = SureChEMBLConnector(config=conn_config)
+
+        chemicals = await self._surechembl.similarity_search(
+            smiles, threshold=threshold, max_results=max_results
+        )
+        return [chem.to_document() for chem in chemicals]
+
+    async def substructure_search_chemicals(
+        self,
+        smiles: str,
+        max_results: int = 100,
+    ) -> List[Document]:
+        """
+        Search for chemicals containing a substructure in SureChEMBL.
+
+        Args:
+            smiles: Query SMILES for substructure
+            max_results: Maximum results
+
+        Returns:
+            List of Document objects with matching chemicals
+        """
+        from biopat.data.surechembl import SureChEMBLConnector
+
+        if self._surechembl is None:
+            conn_config = ConnectorConfig(
+                api_key=self.config.surechembl_api_key,
+                cache_dir=self.config.cache_dir,
+            )
+            self._surechembl = SureChEMBLConnector(config=conn_config)
+
+        chemicals = await self._surechembl.substructure_search(
+            smiles, max_results=max_results
+        )
+        return [chem.to_document() for chem in chemicals]
+
+    async def get_patents_for_chemical(
+        self,
+        surechembl_id: str,
+        max_results: int = 100,
+    ) -> List[str]:
+        """
+        Find patents containing a specific chemical.
+
+        Args:
+            surechembl_id: SureChEMBL compound ID (e.g., "SCHEMBL123456")
+            max_results: Maximum number of patents
+
+        Returns:
+            List of patent IDs
+        """
+        from biopat.data.surechembl import SureChEMBLConnector
+
+        if self._surechembl is None:
+            conn_config = ConnectorConfig(
+                api_key=self.config.surechembl_api_key,
+                cache_dir=self.config.cache_dir,
+            )
+            self._surechembl = SureChEMBLConnector(config=conn_config)
+
+        return await self._surechembl.get_patents_for_chemical(
+            surechembl_id, max_results=max_results
+        )
 
     # =========================================================================
     # Corpus Building

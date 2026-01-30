@@ -67,6 +67,17 @@ from biopat.data.pubchem import (
     create_pubchem_connector,
 )
 
+from biopat.data.ncbi_sequences import (
+    NCBISequenceConnector,
+    create_ncbi_sequence_connector,
+)
+
+from biopat.data.surechembl import (
+    SureChEMBLConnector,
+    SureChEMBLChemical,
+    create_surechembl_connector,
+)
+
 __all__ = [
     # Base classes
     "BaseConnector",
@@ -101,4 +112,13 @@ __all__ = [
     # PubChem
     "PubChemConnector",
     "create_pubchem_connector",
+
+    # NCBI Sequences (GenBank, Protein, Nucleotide)
+    "NCBISequenceConnector",
+    "create_ncbi_sequence_connector",
+
+    # SureChEMBL (Patent-Chemical Mappings)
+    "SureChEMBLConnector",
+    "SureChEMBLChemical",
+    "create_surechembl_connector",
 ]
