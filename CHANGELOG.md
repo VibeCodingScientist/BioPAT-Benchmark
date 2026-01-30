@@ -2,6 +2,68 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.0.0] - 2026-01-30
+
+### Added - Complete SOTA Retrieval Framework
+
+#### Retrieval Methods
+- **SPLADE**: Learned sparse retrieval with MLM-based term expansion
+- **ColBERT**: Token-level late interaction with MaxSim scoring
+- **HyDE**: LLM-based hypothetical document expansion (OpenAI/Anthropic)
+
+#### Learning-to-Rank
+- **LambdaMARTRanker**: Gradient boosted trees with NDCG optimization (LightGBM)
+- **XGBoostRanker**: Pairwise/listwise ranking objectives
+- **RankNetModel**: Neural pairwise ranking
+- **ListNetModel**: Neural listwise ranking with cross-entropy
+- **EnsembleLTR**: Combined model ensemble
+- **RankingFeatures**: 17-feature extraction for combining retrieval signals
+
+#### Biomedical NLP
+- **BiomedicalNER**: Chemical, disease, gene/protein entity extraction
+- **ExtractedClaim**: Patent claim structure extraction
+- **EntityLinker**: Knowledge base linking (MeSH, DrugBank, UniProt)
+- **QueryEntityExpander**: Synonym-based query expansion
+
+#### Thesaurus Integration
+- **MeSHThesaurus**: Medical Subject Headings lookup
+- **ChEBIThesaurus**: Chemical Entities of Biological Interest
+- **DrugBankThesaurus**: Drug synonym database
+- **UnifiedThesaurus**: Combined expansion interface
+
+#### Molecular Search
+- **SubstructureSearcher**: RDKit-based substructure matching
+- **ScaffoldSearcher**: Bemis-Murcko scaffold extraction and matching
+- **MCSSearcher**: Maximum Common Substructure search
+- **MolecularDescriptorCalculator**: Drug-likeness filters (Lipinski, Veber, Ghose)
+
+#### Diversity Reranking
+- **MMRDiversifier**: Maximal Marginal Relevance
+- **XQuADDiversifier**: Query aspect diversification
+- **ClusterDiversifier**: Clustering-based diversification
+- **PatentDiversifier**: Patent family and assignee constraints
+
+#### Training & Adaptation
+- **DenseRetrieverTrainer**: Contrastive fine-tuning with in-batch negatives
+- **CrossEncoderTrainer**: Cross-encoder reranker fine-tuning
+- **KnowledgeDistillation**: Teacher-student model distillation
+
+#### Data Acquisition
+- **NCBISequenceConnector**: GenBank, Protein, Nucleotide databases
+- **SureChEMBLConnector**: Patent-chemical mappings
+- Extended **DataAcquisition** with patent sequences and chemicals
+
+### Changed
+- Complete README rewrite with comprehensive documentation
+- Updated documentation (METHODOLOGY, DATA_SOURCES, REPRODUCIBILITY, API_REFERENCE)
+- Removed phase-specific planning files and pipelines
+
+### Removed
+- Phase-specific planning documents (`planning/` directory)
+- Phase-specific pipelines (`pipeline_phase2.py`, `pipeline_phase3.py`)
+- Phase-specific tests (`test_phase2.py`, `test_phase3.py`)
+- Alembic database migrations (not needed for benchmark)
+
 ## [0.4.1] - 2026-01-28
 
 ### Changed
