@@ -1,63 +1,198 @@
-# BioPAT Data Sources (v4.0)
+# BioPAT Data Sources
 
-This document tracks all data sources, versions, and access requirements used in the construction and maintenance of the BioPAT Multi-Modal benchmark.
+This document provides detailed information about data sources used in BioPAT.
 
-## 1. Global Patent Sources
+## Scientific Literature
 
-### 1.1 USPTO (United States)
-- **Primary Access**: PatentsView API (2026-Q1 release).
-- **Ground Truth**: USPTO Office Action Research Dataset (OARD).
-- **Scope**: Direct examiner rejections (§102/§103).
+### PubMed
 
-### 1.2 EPO OPS (Europe)
-- **Primary Access**: Open Patent Services (OPS) v3.2 API.
-- **Ground Truth**: EP Search Reports (Register Service).
-- **Scope**: Categorical relevance (X, Y, A).
+| Attribute | Value |
+|-----------|-------|
+| **Provider** | NCBI (National Center for Biotechnology Information) |
+| **API** | E-utilities (esearch, efetch) |
+| **Coverage** | 35M+ biomedical abstracts |
+| **Update Frequency** | Daily |
+| **Access** | Free (API key recommended) |
+| **Rate Limit** | 3 req/sec (10 with API key) |
 
-## 1.3 Literature & Linking
+**Fields Retrieved**:
+- PMID, Title, Abstract
+- Authors, Journal, Publication Date
+- MeSH Terms, Keywords
+- DOI (when available)
 
-### 1.3.1 OpenAlex
-- **Access**: REST API (mailto: enabled).
-- **Scope**: Comprehensive corpus of scientific works, affiliations, and MeSH terms.
+### bioRxiv / medRxiv
 
-### 1.3.2 Reliance on Science (PCS)
-- **URL**: [https://zenodo.org/records/7996195](https://zenodo.org/records/7996195)
-- **Version**: v2023.1 (Marx & Fuegi).
-- **Rationale**: Seed citations for determining initial relevance confidence.
+| Attribute | Value |
+|-----------|-------|
+| **Provider** | Cold Spring Harbor Laboratory |
+| **API** | Content API |
+| **Coverage** | 200K+ preprints |
+| **Update Frequency** | Daily |
+| **Access** | Free |
+| **Rate Limit** | Reasonable use |
 
-### 2.3 CrossRef
-- **Access**: DOI REST API.
-- **Scope**: Entity resolution between DOIs and other publication ids.
+**Fields Retrieved**:
+- DOI, Title, Abstract
+- Authors, Posted Date
+- Category, Server (biorxiv/medrxiv)
 
-## 3. Multi-Modal Entity Sources (v4.0)
+## Patent Databases
 
-### 3.1 SureChEMBL (Chemical)
-- **URL**: [https://www.surechembl.org/](https://www.surechembl.org/)
-- **Access**: Quarterly Bulk Dumps (FTP).
-- **Scope**: ~20M Chemical structures extracted from patent text.
+### USPTO (PatentsView)
 
-### 3.2 PubChem (Chemical-Literature)
-- **Access**: PUG-REST API.
-- **Scope**: Chemical properties and PubMed-to-Structure cross-references.
+| Attribute | Value |
+|-----------|-------|
+| **Provider** | United States Patent and Trademark Office |
+| **API** | PatentsView API |
+| **Coverage** | 8M+ US patents (1976-present) |
+| **Update Frequency** | Weekly |
+| **Access** | Free (API key optional) |
+| **Rate Limit** | 45 req/min |
 
-### 3.3 ChEMBL (Bioactivity Data)
-- **Access**: `chembl-webresource-client` (Official Python Library).
-- **Rationale**: Replaces direct REST API calls; handles rate limiting and complex bioactivity queries without requiring a manual API key for public data.
+**Fields Retrieved**:
+- Patent Number, Title, Abstract
+- Claims (full text)
+- Application Date, Grant Date
+- IPC/CPC Codes
+- Assignee, Inventors
 
-### 3.4 UniProt / NCBI (Biological Sequences)
-- **UniProt**: REST API for protein sequence annotations and cross-refs.
-- **NCBI nuccore**: Patent Sequence Database via Entrez API.
-- **Scope**: SEQ ID NO extraction and alignment (BLAST).
+### EPO (Open Patent Services)
 
----
+| Attribute | Value |
+|-----------|-------|
+| **Provider** | European Patent Office |
+| **API** | Open Patent Services (OPS) |
+| **Coverage** | 130M+ patent documents worldwide |
+| **Update Frequency** | Weekly |
+| **Access** | Free (OAuth required) |
+| **Rate Limit** | Based on subscription |
 
-## Data Inventory Manifest
+**Fields Retrieved**:
+- Publication Number, Title, Abstract
+- Claims (when available)
+- Application/Publication Dates
+- IPC Codes
+- Applicants, Inventors
 
-| Dataset | Format | Version | Size (est) |
-|---------|--------|---------|------------|
-| PatentsView | TSV/JSON | 2026-Q1 | 150GB |
-| Office Actions | XML/CSV | 2017 Rel | 20GB |
-| Reliance on Science | CSV.gz | v2023 | 5GB |
-| SureChEMBL | SDF/TXT | Quarterly | 60GB |
-| UniProt/SwissProt | FASTA | 2026_01 | 1GB |
-| BioPAT Index | FAISS/SQL| 0.4.x | 200GB |
+## Chemical Databases
+
+### PubChem
+
+| Attribute | Value |
+|-----------|-------|
+| **Provider** | NCBI |
+| **API** | PUG REST |
+| **Coverage** | 100M+ compounds |
+| **Update Frequency** | Continuous |
+| **Access** | Free |
+| **Rate Limit** | 5 req/sec |
+
+**Fields Retrieved**:
+- CID (Compound ID)
+- Canonical SMILES, InChI, InChIKey
+- Molecular Formula, Molecular Weight
+- IUPAC Name, Synonyms
+
+### SureChEMBL
+
+| Attribute | Value |
+|-----------|-------|
+| **Provider** | EMBL-EBI |
+| **API** | REST API |
+| **Coverage** | 20M+ compounds from patents |
+| **Update Frequency** | Monthly |
+| **Access** | Free (API key optional) |
+| **Rate Limit** | 2 req/sec |
+
+**Fields Retrieved**:
+- SureChEMBL ID
+- SMILES, InChI, InChIKey
+- Patent IDs containing compound
+- Extraction method (CHEMICAL_NAME, SMILES, etc.)
+
+## Sequence Databases
+
+### UniProt
+
+| Attribute | Value |
+|-----------|-------|
+| **Provider** | UniProt Consortium |
+| **API** | REST API |
+| **Coverage** | 250M+ protein sequences |
+| **Update Frequency** | 8 weeks |
+| **Access** | Free |
+| **Rate Limit** | 100 req/min |
+
+**Fields Retrieved**:
+- Accession, Entry Name
+- Protein Name, Gene Name
+- Organism, Sequence
+- Function, Keywords
+
+### NCBI Sequences (GenBank, Protein, Nucleotide)
+
+| Attribute | Value |
+|-----------|-------|
+| **Provider** | NCBI |
+| **API** | E-utilities |
+| **Coverage** | 500M+ sequences |
+| **Update Frequency** | Daily |
+| **Access** | Free (API key recommended) |
+| **Rate Limit** | 3 req/sec (10 with API key) |
+
+**Fields Retrieved**:
+- Accession, Definition
+- Organism, Sequence
+- Patent references (for patent sequences)
+- Keywords, Features
+
+## Data Quality
+
+### Deduplication
+
+BioPAT deduplicates documents using:
+1. **DOI matching** for publications
+2. **Patent family** deduplication for patents
+3. **InChIKey** for chemicals
+4. **Sequence hash** for sequences
+
+### Temporal Filtering
+
+All prior art queries enforce strict temporal constraints:
+- Only documents published before the patent's **priority date** are considered
+- Publication dates are normalized to ISO 8601 format
+- Uncertain dates are handled conservatively
+
+### Data Validation
+
+| Check | Description |
+|-------|-------------|
+| Schema validation | All records conform to expected schema |
+| Required fields | Title, text, and date are mandatory |
+| Date parsing | All dates successfully parsed |
+| SMILES validation | Valid SMILES syntax (when RDKit available) |
+| Sequence validation | Valid amino acid/nucleotide alphabet |
+
+## Data Versioning
+
+Each corpus build includes:
+- **Build timestamp**: ISO 8601 datetime
+- **Source versions**: API versions and download dates
+- **SHA256 checksums**: For all data files
+- **Record counts**: By source and type
+
+Example manifest:
+```json
+{
+  "build_date": "2026-01-30T08:00:00Z",
+  "sources": {
+    "pubmed": {"version": "2026-01", "count": 1000},
+    "patents": {"version": "2026-01-28", "count": 500}
+  },
+  "checksums": {
+    "corpus.jsonl": "abc123...",
+    "chemicals.jsonl": "def456..."
+  }
+}
+```
