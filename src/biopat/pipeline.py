@@ -10,7 +10,6 @@ from typing import Optional
 
 import polars as pl
 
-from . import compat
 from .config import BioPatConfig
 from .ingestion import RelianceOnScienceLoader, PatentsViewClient, OpenAlexClient
 from .processing import PatentProcessor, PaperProcessor, CitationLinker
@@ -164,13 +163,13 @@ class Phase1Pipeline:
         logger.info("Step 4: Building literature corpus")
 
         # Get patent IDs in the benchmark
-        patent_ids = list(compat.unique(claims_df.select("patent_id"))["patent_id"].to_list())
+        patent_ids = list(claims_df.select("patent_id").unique()["patent_id"].to_list())
 
         # Filter RoS to benchmark patents
-        ros_filtered = ros_df.filter(compat.is_in(pl.col("patent_id"), patent_ids))
+        ros_filtered = ros_df.filter(pl.col("patent_id").is_in(patent_ids))
 
         # Get unique paper IDs
-        paper_ids = compat.unique(ros_filtered.select("openalex_id"))["openalex_id"].to_list()
+        paper_ids = ros_filtered.select("openalex_id").unique()["openalex_id"].to_list()
         logger.info(f"Fetching metadata for {len(paper_ids)} cited papers")
 
         # Fetch paper metadata from OpenAlex
@@ -208,16 +207,16 @@ class Phase1Pipeline:
         logger.info("Step 5: Creating ground truth")
 
         # Filter RoS to benchmark patents/papers
-        patent_ids = list(compat.unique(claims_df.select("patent_id"))["patent_id"].to_list())
-        paper_ids = list(compat.unique(papers_df.select("paper_id"))["paper_id"].to_list())
+        patent_ids = list(claims_df.select("patent_id").unique()["patent_id"].to_list())
+        paper_ids = list(papers_df.select("paper_id").unique()["paper_id"].to_list())
 
         ros_filtered = ros_df.filter(
-            compat.is_in(pl.col("patent_id"), patent_ids) &
-            compat.is_in(pl.col("openalex_id"), paper_ids)
+            pl.col("patent_id").is_in(patent_ids) &
+            pl.col("openalex_id").is_in(paper_ids)
         )
 
         # Create patent-level links with paper dates
-        patents_with_dates = compat.unique(claims_df.select(["patent_id", "priority_date"]))
+        patents_with_dates = claims_df.select(["patent_id", "priority_date"]).unique()
 
         links = ros_filtered.join(
             patents_with_dates,

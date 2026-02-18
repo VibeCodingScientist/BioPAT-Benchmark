@@ -12,7 +12,6 @@ import httpx
 import polars as pl
 from tqdm import tqdm
 
-from biopat import compat
 from biopat.reproducibility import ChecksumEngine, AuditLogger
 
 logger = logging.getLogger(__name__)
@@ -167,7 +166,7 @@ class RelianceOnScienceLoader:
         """
         if df is None:
             df = self.load()
-        return compat.unique(df.select("patent_id")).to_series()
+        return df.select("patent_id").unique().to_series()
 
     def get_unique_papers(self, df: Optional[pl.DataFrame] = None) -> pl.Series:
         """Get unique OpenAlex paper IDs from RoS data.
@@ -180,7 +179,7 @@ class RelianceOnScienceLoader:
         """
         if df is None:
             df = self.load()
-        return compat.unique(df.select("openalex_id")).to_series()
+        return df.select("openalex_id").unique().to_series()
 
     def get_citations_for_patent(
         self, patent_id: str, df: Optional[pl.DataFrame] = None
@@ -212,7 +211,7 @@ class RelianceOnScienceLoader:
         if df is None:
             df = self.load()
         return (
-            compat.group_by(df, "patent_id")
+            df.group_by("patent_id")
             .agg(pl.len().alias("citation_count"))
             .sort("citation_count", descending=True)
         )

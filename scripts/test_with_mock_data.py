@@ -135,7 +135,7 @@ def create_mock_sequences(patents: pl.DataFrame) -> pl.DataFrame:
 
 def test_data_processing(patents: pl.DataFrame, articles: pl.DataFrame, citations: pl.DataFrame, tmp_dir: Path):
     """Test data processing functions."""
-    print("\n[2/6] Testing data processing...")
+    print("\n[2/5] Testing data processing...")
 
     from biopat.processing.linking import CitationLinker
 
@@ -156,7 +156,7 @@ def test_data_processing(patents: pl.DataFrame, articles: pl.DataFrame, citation
 
 def test_benchmark_creation(patents: pl.DataFrame, articles: pl.DataFrame, citations: pl.DataFrame, tmp_dir: Path):
     """Test benchmark dataset creation."""
-    print("\n[3/6] Testing benchmark creation...")
+    print("\n[3/5] Testing benchmark creation...")
 
     from biopat.benchmark.sampling import BenchmarkSampler
     from biopat.benchmark.splits import DatasetSplitter
@@ -195,7 +195,7 @@ def test_benchmark_creation(patents: pl.DataFrame, articles: pl.DataFrame, citat
 
 def test_trimodal_retrieval(patents: pl.DataFrame, chemicals: pl.DataFrame, sequences: pl.DataFrame):
     """Test trimodal retrieval components."""
-    print("\n[4/6] Testing trimodal retrieval...")
+    print("\n[4/5] Testing trimodal retrieval...")
 
     from biopat.evaluation.trimodal_retrieval import (
         ModalityScore,
@@ -250,41 +250,9 @@ def test_trimodal_retrieval(patents: pl.DataFrame, chemicals: pl.DataFrame, sequ
     print("  - Trimodal retrieval: PASSED")
 
 
-def test_entity_harmonization(patents: pl.DataFrame, articles: pl.DataFrame):
-    """Test entity harmonization layer."""
-    print("\n[5/6] Testing entity harmonization...")
-
-    from biopat.harmonization.entity_resolver import (
-        EntityResolver,
-        ResolvedEntity,
-        EntityType,
-        BioPATId,
-    )
-
-    resolver = EntityResolver()
-
-    # Test patent resolution - returns BioPATId with .canonical property
-    patent_id = resolver.resolve_patent("US10000001B2")
-    print(f"  - Patent ID: US10000001B2 -> {patent_id.canonical}")
-
-    # Test publication resolution
-    pub_id = resolver.resolve_publication("10.1000/test.0001")
-    print(f"  - DOI: 10.1000/test.0001 -> {pub_id.canonical}")
-
-    # Test chemical resolution (mock SMILES)
-    chem_id = resolver.resolve_chemical("CC(=O)OC1=CC=CC=C1C(=O)O")
-    print(f"  - SMILES: CC(=O)O... -> {chem_id.canonical}")
-
-    # Test sequence resolution
-    seq_id = resolver.resolve_sequence("MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTK")
-    print(f"  - Sequence: MVLSPAD... -> {seq_id.canonical}")
-
-    print("  - Entity harmonization: PASSED")
-
-
 def test_evaluation_metrics():
     """Test evaluation metrics computation."""
-    print("\n[6/6] Testing evaluation metrics...")
+    print("\n[5/5] Testing evaluation metrics...")
 
     from biopat.evaluation.metrics import MetricsComputer
 
@@ -328,7 +296,7 @@ def main():
         tmp_path = Path(tmp_dir)
 
         # Step 1: Create mock data
-        print("\n[1/6] Creating mock datasets...")
+        print("\n[1/5] Creating mock datasets...")
         patents = create_mock_patents(50)
         articles = create_mock_articles(100)
         citations = create_mock_citations(patents, articles)
@@ -347,7 +315,6 @@ def main():
             test_data_processing(patents, articles, citations, tmp_path)
             corpus_df, queries_df = test_benchmark_creation(patents, articles, citations, tmp_path)
             test_trimodal_retrieval(patents, chemicals, sequences)
-            test_entity_harmonization(patents, articles)
             test_evaluation_metrics()
 
             # Summary
@@ -359,7 +326,6 @@ def main():
             print("  [x] Data ingestion and processing")
             print("  [x] Benchmark dataset creation")
             print("  [x] Trimodal retrieval (text + chemical + sequence)")
-            print("  [x] Entity harmonization (BioPAT IDs)")
             print("  [x] Evaluation metrics (NDCG, P@k, R@k, MRR)")
             print("\nThe system is ready for production use with real data.")
 

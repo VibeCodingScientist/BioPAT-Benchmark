@@ -13,8 +13,6 @@ from pathlib import Path
 from typing import Any, Dict, List, Literal, Optional, Set, Tuple
 import polars as pl
 
-from biopat import compat
-
 logger = logging.getLogger(__name__)
 
 # Document type constants for v2.0 dual-corpus
@@ -66,7 +64,7 @@ class BEIRFormatter:
         logger.info(f"Writing {len(papers_df)} {doc_type} documents to {self.corpus_path}")
 
         with open(self.corpus_path, "w", encoding="utf-8") as f:
-            for row in compat.iter_rows(papers_df, named=True):
+            for row in papers_df.iter_rows(named=True):
                 doc = {
                     "_id": str(row[id_col]),
                     "title": row.get(title_col, "") or "",
@@ -122,7 +120,7 @@ class BEIRFormatter:
 
         with open(self.corpus_path, "w", encoding="utf-8") as f:
             # Write papers
-            for row in compat.iter_rows(papers_df, named=True):
+            for row in papers_df.iter_rows(named=True):
                 doc = {
                     "_id": str(row[paper_id_col]),
                     "title": row.get(paper_title_col, "") or "",
@@ -134,7 +132,7 @@ class BEIRFormatter:
                 paper_count += 1
 
             # Write patents
-            for row in compat.iter_rows(patents_df, named=True):
+            for row in patents_df.iter_rows(named=True):
                 doc = {
                     "_id": str(row[patent_id_col]),
                     "title": row.get(patent_title_col, "") or "",
@@ -201,7 +199,7 @@ class BEIRFormatter:
         logger.info(f"Writing {len(queries_df)} queries to {self.queries_path}")
 
         with open(self.queries_path, "w", encoding="utf-8") as f:
-            for row in compat.iter_rows(queries_df, named=True):
+            for row in queries_df.iter_rows(named=True):
                 query = {
                     "_id": str(row[id_col]),
                     "text": row.get(text_col, "") or "",
@@ -256,7 +254,7 @@ class BEIRFormatter:
             logger.info(f"Writing {len(qrels_df)} qrels to {output_path}")
 
             with open(output_path, "w", encoding="utf-8") as f:
-                for row in compat.iter_rows(qrels_df, named=True):
+                for row in qrels_df.iter_rows(named=True):
                     query_id = str(row[query_col])
                     doc_id = str(row[doc_col])
                     score = int(row[relevance_col])
@@ -287,7 +285,7 @@ class BEIRFormatter:
         logger.info(f"Writing {len(qrels_df)} qrels to {output_path}")
 
         with open(output_path, "w", encoding="utf-8") as f:
-            for row in compat.iter_rows(qrels_df, named=True):
+            for row in qrels_df.iter_rows(named=True):
                 query_id = str(row[query_col])
                 doc_id = str(row[doc_col])
                 score = int(row[relevance_col])

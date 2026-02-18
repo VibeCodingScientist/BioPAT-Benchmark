@@ -9,8 +9,6 @@ from pathlib import Path
 from typing import Optional, Tuple
 import polars as pl
 
-from biopat import compat
-
 logger = logging.getLogger(__name__)
 
 
@@ -184,7 +182,7 @@ class CitationLinker:
         }
 
         # Citations per patent
-        per_patent = compat.group_by(citation_links, "patent_id").agg(pl.len().alias("count"))
+        per_patent = citation_links.group_by("patent_id").agg(pl.len().alias("count"))
         stats["mean_citations_per_patent"] = per_patent["count"].mean()
         stats["median_citations_per_patent"] = per_patent["count"].median()
         stats["max_citations_per_patent"] = per_patent["count"].max()
@@ -192,7 +190,7 @@ class CitationLinker:
         # Source distribution if available
         if "source" in citation_links.columns:
             source_counts = (
-                compat.group_by(citation_links, "source")
+                citation_links.group_by("source")
                 .agg(pl.len().alias("count"))
                 .to_dicts()
             )
@@ -204,7 +202,7 @@ class CitationLinker:
         if "confidence" in citation_links.columns:
             stats["mean_confidence"] = citation_links["confidence"].mean()
             stats["confidence_distribution"] = (
-                compat.group_by(citation_links, "confidence")
+                citation_links.group_by("confidence")
                 .agg(pl.len().alias("count"))
                 .sort("confidence")
                 .to_dicts()
