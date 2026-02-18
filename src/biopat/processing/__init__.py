@@ -18,14 +18,6 @@ from .patent_ids import (
     group_by_jurisdiction,
     validate_patent_id,
 )
-from .international_patents import (
-    InternationalPatent,
-    InternationalCorpusConfig,
-    InternationalCorpusBuilder,
-    create_international_corpus_entry,
-    merge_corpus_dataframes,
-    get_corpus_statistics,
-)
 from .sequence_index import (
     BlastHit,
     BlastResult,
@@ -69,13 +61,6 @@ __all__ = [
     "deduplicate_patent_ids",
     "group_by_jurisdiction",
     "validate_patent_id",
-    # International corpus (Phase 6)
-    "InternationalPatent",
-    "InternationalCorpusConfig",
-    "InternationalCorpusBuilder",
-    "create_international_corpus_entry",
-    "merge_corpus_dataframes",
-    "get_corpus_statistics",
     # Sequence indexing (Phase 4.0)
     "BlastHit",
     "BlastResult",
