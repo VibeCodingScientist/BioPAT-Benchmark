@@ -21,6 +21,7 @@ class PathsConfig(BaseModel):
     processed_dir: Path = Field(default=Path("data/processed"))
     cache_dir: Path = Field(default=Path("data/cache"))
     benchmark_dir: Path = Field(default=Path("data/benchmark"))
+    checkpoint_dir: Path = Field(default=Path("data/checkpoints"))
 
     class Config:
         arbitrary_types_allowed = True
@@ -32,6 +33,7 @@ class PathsConfig(BaseModel):
         self.processed_dir.mkdir(parents=True, exist_ok=True)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.benchmark_dir.mkdir(parents=True, exist_ok=True)
+        self.checkpoint_dir.mkdir(parents=True, exist_ok=True)
 
 
 class ApiConfig(BaseModel):

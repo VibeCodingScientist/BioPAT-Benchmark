@@ -6,6 +6,8 @@ pre-computed patent-to-paper citation links.
 
 import gzip
 import logging
+import random
+import time
 from pathlib import Path
 from typing import Optional
 import httpx
@@ -69,15 +71,29 @@ class RelianceOnScienceLoader:
                 params={"file": ROS_FILENAME},
             )
 
-        with httpx.stream("GET", ROS_ZENODO_URL, follow_redirects=True, timeout=300.0) as response:
-            response.raise_for_status()
-            total = int(response.headers.get("content-length", 0))
+        max_retries = 3
+        base_delay = 2.0
+        for attempt in range(max_retries + 1):
+            try:
+                with httpx.stream("GET", ROS_ZENODO_URL, follow_redirects=True, timeout=300.0) as response:
+                    response.raise_for_status()
+                    total = int(response.headers.get("content-length", 0))
 
-            with open(self.raw_file_path, "wb") as f:
-                with tqdm(total=total, unit="B", unit_scale=True, desc="Downloading RoS") as pbar:
-                    for chunk in response.iter_bytes(chunk_size=8192):
-                        f.write(chunk)
-                        pbar.update(len(chunk))
+                    with open(self.raw_file_path, "wb") as f:
+                        with tqdm(total=total, unit="B", unit_scale=True, desc="Downloading RoS") as pbar:
+                            for chunk in response.iter_bytes(chunk_size=8192):
+                                f.write(chunk)
+                                pbar.update(len(chunk))
+                break  # success
+            except (httpx.TimeoutException, httpx.ConnectError) as e:
+                if attempt == max_retries:
+                    raise
+                delay = base_delay * (2 ** attempt) + random.uniform(0, 1)
+                logger.warning(
+                    "Download failed (attempt %d/%d), retrying in %.1fs: %s",
+                    attempt + 1, max_retries + 1, delay, e,
+                )
+                time.sleep(delay)
 
         logger.info(f"Downloaded RoS dataset to {self.raw_file_path}")
 

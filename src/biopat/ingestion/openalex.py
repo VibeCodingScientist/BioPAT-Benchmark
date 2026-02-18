@@ -14,6 +14,7 @@ from diskcache import Cache
 from tqdm.asyncio import tqdm_asyncio
 
 from biopat.reproducibility import AuditLogger
+from biopat.ingestion.retry import retry_with_backoff
 
 logger = logging.getLogger(__name__)
 
@@ -82,11 +83,13 @@ class OpenAlexClient:
             url = f"{OPENALEX_BASE_URL}/{endpoint}"
 
             try:
-                response = await client.get(
-                    url,
-                    headers=self._get_headers(),
-                    params=params,
-                    timeout=60.0,
+                response = await retry_with_backoff(
+                    lambda: client.get(
+                        url,
+                        headers=self._get_headers(),
+                        params=params,
+                        timeout=60.0,
+                    )
                 )
                 response.raise_for_status()
                 result = response.json()
