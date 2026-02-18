@@ -13,8 +13,6 @@ from typing import Optional, Literal
 from enum import IntEnum
 import polars as pl
 
-from biopat import compat
-
 logger = logging.getLogger(__name__)
 
 # Document type constants for v2.0
@@ -83,8 +81,7 @@ class RelevanceAssigner:
         ])
 
         # Deduplicate (keep highest confidence if multiple citations)
-        qrels = compat.unique(
-            qrels.sort("confidence", descending=True),
+        qrels = qrels.sort("confidence", descending=True).unique(
             subset=["query_id", "doc_id"],
             keep="first"
         )
@@ -163,8 +160,7 @@ class RelevanceAssigner:
 
         # Add human-readable labels
         qrels = qrels.with_columns(
-            compat.map_elements(
-                pl.col("relevance"),
+            pl.col("relevance").map_elements(
                 lambda r: RELEVANCE_LABELS.get(r, "unknown"),
                 return_dtype=pl.Utf8
             ).alias("label")
@@ -181,8 +177,7 @@ class RelevanceAssigner:
         ])
 
         # Deduplicate (keep highest relevance if multiple entries)
-        qrels = compat.unique(
-            qrels.sort("relevance", descending=True),
+        qrels = qrels.sort("relevance", descending=True).unique(
             subset=["query_id", "doc_id"],
             keep="first"
         )
@@ -198,13 +193,13 @@ class RelevanceAssigner:
     def _log_relevance_distribution(self, qrels: pl.DataFrame):
         """Log the distribution of relevance levels."""
         distribution = (
-            compat.group_by(qrels, ["relevance", "label"])
+            qrels.group_by(["relevance", "label"])
             .agg(pl.len().alias("count"))
             .sort("relevance", descending=True)
         )
 
         logger.info("Relevance distribution:")
-        for row in compat.iter_rows(distribution, named=True):
+        for row in distribution.iter_rows(named=True):
             logger.info(f"  {row['label']} ({row['relevance']}): {row['count']}")
 
     def get_qrels_stats(self, qrels: pl.DataFrame) -> dict:
@@ -224,21 +219,21 @@ class RelevanceAssigner:
 
         # Relevance distribution
         stats["relevance_distribution"] = (
-            compat.group_by(qrels, "relevance")
+            qrels.group_by("relevance")
             .agg(pl.len().alias("count"))
             .sort("relevance")
             .to_dicts()
         )
 
         # Judgments per query
-        per_query = compat.group_by(qrels, "query_id").agg(pl.len().alias("count"))
+        per_query = qrels.group_by("query_id").agg(pl.len().alias("count"))
         stats["mean_judgments_per_query"] = per_query["count"].mean()
         stats["median_judgments_per_query"] = per_query["count"].median()
 
         # Source distribution
         if "evidence_source" in qrels.columns:
             stats["source_distribution"] = (
-                compat.group_by(qrels, "evidence_source")
+                qrels.group_by("evidence_source")
                 .agg(pl.len().alias("count"))
                 .to_dicts()
             )
@@ -334,7 +329,7 @@ class RelevanceAssigner:
             # Add missing columns to match schema
             if "confidence" not in oa_only.columns:
                 oa_only = oa_only.with_columns(pl.lit(10).alias("confidence"))
-            merged = compat.concat([merged, oa_only])
+            merged = pl.concat([merged, oa_only])
 
         logger.info(
             f"Merged citations: {len(ros_links)} RoS + {len(oa_links)} OA = {len(merged)} total "
@@ -361,7 +356,7 @@ class RelevanceAssigner:
         relevance_scores = []
         labels = []
 
-        for row in compat.iter_rows(merged_citations, named=True):
+        for row in merged_citations.iter_rows(named=True):
             rejection_type = row.get("rejection_type")
             source = row.get("source", "unknown")
             confidence = row.get("confidence", 0)
@@ -401,8 +396,7 @@ class RelevanceAssigner:
         ])
 
         # Deduplicate (keep highest relevance)
-        qrels = compat.unique(
-            qrels.sort("relevance", descending=True),
+        qrels = qrels.sort("relevance", descending=True).unique(
             subset=["query_id", "doc_id"],
             keep="first"
         )
@@ -482,11 +476,10 @@ class RelevanceAssigner:
             })
 
         # Combine all qrels
-        combined = compat.concat(all_qrels)
+        combined = pl.concat(all_qrels)
 
         # Deduplicate (keep highest relevance per query-doc pair)
-        combined = compat.unique(
-            combined.sort("relevance", descending=True),
+        combined = combined.sort("relevance", descending=True).unique(
             subset=["query_id", "doc_id"],
             keep="first"
         )
@@ -522,7 +515,7 @@ class RelevanceAssigner:
         relevance_scores = []
         labels = []
 
-        for row in compat.iter_rows(citations, named=True):
+        for row in citations.iter_rows(named=True):
             rejection_type = row.get("rejection_type")
             source = row.get("source", "unknown")
             confidence = row.get("confidence", 0) or 0

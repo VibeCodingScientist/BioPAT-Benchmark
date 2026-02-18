@@ -40,9 +40,6 @@ class ApiConfig(BaseModel):
     ncbi_key: Optional[str] = Field(default=None)
     openalex_mailto: Optional[str] = Field(default=None)
     use_bulk_data: bool = Field(default=True)
-    # Phase 6 (v3.0): International patent APIs
-    epo_consumer_key: Optional[str] = Field(default=None)
-    epo_consumer_secret: Optional[str] = Field(default=None)
 
     def __init__(self, **data):
         # Map user-friendly names from YAML to internal field names
@@ -74,11 +71,6 @@ class ApiConfig(BaseModel):
             object.__setattr__(self, 'ncbi_key', os.environ.get("NCBI_API_KEY"))
         if self.openalex_mailto is None:
             object.__setattr__(self, 'openalex_mailto', os.environ.get("OPENALEX_MAILTO"))
-        # Phase 6: EPO credentials
-        if self.epo_consumer_key is None:
-            object.__setattr__(self, 'epo_consumer_key', os.environ.get("EPO_CONSUMER_KEY"))
-        if self.epo_consumer_secret is None:
-            object.__setattr__(self, 'epo_consumer_secret', os.environ.get("EPO_CONSUMER_SECRET"))
 
 
 class Phase1Config(BaseModel):
@@ -106,55 +98,6 @@ class Phase5Config(BaseModel):
     corpus: CorpusConfig = Field(default_factory=CorpusConfig)
     target_corpus_size: int = 500000
     seed: int = 42
-
-
-class JurisdictionConfig(BaseModel):
-    """Configuration for jurisdiction inclusion (v3.0)."""
-    include_us: bool = True
-    include_ep: bool = True
-    include_wo: bool = False
-    max_patents_per_jurisdiction: Optional[int] = None
-
-
-class Phase6Config(BaseModel):
-    """Configuration for Phase 6 (v3.0) International Patent Coverage."""
-    enabled: bool = False
-    jurisdictions: JurisdictionConfig = Field(default_factory=JurisdictionConfig)
-    # IPC filtering for biomedical domain
-    ipc_prefixes: List[str] = ["A61", "C07", "C12"]
-    # Publication date range (YYYYMMDD format for EPO, YYYY-MM-DD for WIPO)
-    publication_date_from: Optional[str] = None
-    publication_date_to: Optional[str] = None
-    # Family deduplication: avoid including US+EP+WO versions of same patent
-    deduplicate_families: bool = True
-    # Target corpus size (~500K-1M for v3.0)
-    target_corpus_size: int = 1000000
-    # Random seed
-    seed: int = 42
-
-
-class DatabaseConfig(BaseModel):
-    """Configuration for SQL database (v4.0 harmonization)."""
-    backend: str = "sqlite"  # sqlite or postgresql
-    path: str = "data/biopat.db"  # For SQLite
-    host: str = "localhost"  # For PostgreSQL
-    port: int = 5432
-    user: str = "biopat"
-    password: str = ""
-    database: str = "biopat"
-
-
-class HarmonizationConfig(BaseModel):
-    """Configuration for data harmonization (v4.0)."""
-    enabled: bool = False
-    database: DatabaseConfig = Field(default_factory=DatabaseConfig)
-    # Entity resolution settings
-    use_rdkit: bool = True  # Use RDKit for chemical canonicalization
-    cache_size: int = 10000  # Resolution cache size
-    # Cross-reference extraction
-    extract_doi_from_text: bool = True
-    extract_pmid_from_text: bool = True
-    extract_sequences_from_claims: bool = True
 
 
 class ChemicalConfig(BaseModel):
@@ -189,8 +132,7 @@ class SequenceConfig(BaseModel):
 
 
 class AdvancedConfig(BaseModel):
-    """Configuration for Advanced Phases (v4.0)."""
-    harmonization: HarmonizationConfig = Field(default_factory=HarmonizationConfig)
+    """Configuration for advanced retrieval features."""
     chemical: ChemicalConfig = Field(default_factory=ChemicalConfig)
     sequence: SequenceConfig = Field(default_factory=SequenceConfig)
     # Trimodal retrieval weights
@@ -206,7 +148,6 @@ class BioPatConfig(BaseModel):
     api: ApiConfig = Field(default_factory=ApiConfig)
     phase1: Phase1Config = Field(default_factory=Phase1Config)
     phase5: Phase5Config = Field(default_factory=Phase5Config)
-    phase6: Phase6Config = Field(default_factory=Phase6Config)
     advanced: AdvancedConfig = Field(default_factory=AdvancedConfig)
 
     @classmethod
