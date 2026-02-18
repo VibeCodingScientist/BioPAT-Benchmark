@@ -4,7 +4,9 @@ Coordinates all components to build the minimum viable benchmark.
 """
 
 import asyncio
+import json
 import logging
+import shutil
 from pathlib import Path
 from typing import Optional
 
@@ -48,6 +50,60 @@ class Phase1Pipeline:
         self.sampler = BenchmarkSampler(seed=42)
         self.splitter = DatasetSplitter(seed=42)
         self.formatter = BEIRFormatter(self.config.paths.benchmark_dir)
+
+    # --- Checkpoint helpers ---
+
+    def _checkpoint_path(self, name: str) -> Path:
+        return self.config.paths.checkpoint_dir / name
+
+    def _has_checkpoint(self, name: str) -> bool:
+        return self._checkpoint_path(name).exists()
+
+    def _save_df(self, name: str, df: pl.DataFrame) -> None:
+        df.write_parquet(self._checkpoint_path(name))
+        logger.info("Checkpoint saved: %s", name)
+
+    def _load_df(self, name: str) -> pl.DataFrame:
+        logger.info("Resuming from checkpoint: %s", name)
+        return pl.read_parquet(self._checkpoint_path(name))
+
+    def _save_json(self, name: str, data: dict) -> None:
+        self._checkpoint_path(name).write_text(json.dumps(data, default=str))
+        logger.info("Checkpoint saved: %s", name)
+
+    def _load_json(self, name: str) -> dict:
+        logger.info("Resuming from checkpoint: %s", name)
+        return json.loads(self._checkpoint_path(name).read_text())
+
+    def _save_splits(self, splits: dict) -> None:
+        manifest = {}
+        for name, (queries_df, qrels_df) in splits.items():
+            q_name = f"step6_{name}_queries.parquet"
+            r_name = f"step6_{name}_qrels.parquet"
+            self._save_df(q_name, queries_df)
+            self._save_df(r_name, qrels_df)
+            manifest[name] = {"queries": q_name, "qrels": r_name}
+        self._save_json("step6_splits.json", manifest)
+
+    def _load_splits(self) -> dict:
+        manifest = self._load_json("step6_splits.json")
+        splits = {}
+        for name, files in manifest.items():
+            splits[name] = (
+                self._load_df(files["queries"]),
+                self._load_df(files["qrels"]),
+            )
+        return splits
+
+    def clear_checkpoints(self) -> None:
+        """Remove all checkpoint files."""
+        cp = self.config.paths.checkpoint_dir
+        if cp.exists():
+            shutil.rmtree(cp)
+            cp.mkdir(parents=True, exist_ok=True)
+        logger.info("Checkpoints cleared")
+
+    # --- Pipeline steps ---
 
     async def step1_download_ros(self, force: bool = False) -> pl.DataFrame:
         """Step 1: Download and load Reliance on Science data.
@@ -348,59 +404,107 @@ class Phase1Pipeline:
         self,
         skip_download: bool = False,
         skip_baseline: bool = False,
+        fresh: bool = False,
     ) -> dict:
-        """Run the complete Phase 1 pipeline.
+        """Run the complete Phase 1 pipeline with checkpoint/resume.
+
+        Completed steps are saved as checkpoints. On re-run, completed
+        steps are loaded from checkpoint instead of re-executing.
 
         Args:
             skip_download: Skip RoS download if already present.
             skip_baseline: Skip baseline evaluation.
+            fresh: Clear all checkpoints and start from scratch.
 
         Returns:
             Pipeline results including statistics and metrics.
         """
+        if fresh:
+            self.clear_checkpoints()
+
         logger.info("Starting Phase 1 pipeline")
         results = {}
 
         # Step 1: Download RoS
-        ros_df = await self.step1_download_ros(force=not skip_download)
+        cp = "step1_ros.parquet"
+        if self._has_checkpoint(cp):
+            ros_df = self._load_df(cp)
+        else:
+            ros_df = await self.step1_download_ros(force=not skip_download)
+            self._save_df(cp, ros_df)
         results["ros_citations"] = len(ros_df)
 
         # Step 2: Identify patents
-        patents_df = await self.step2_identify_patents(ros_df)
+        cp = "step2_patents.parquet"
+        if self._has_checkpoint(cp):
+            patents_df = self._load_df(cp)
+        else:
+            patents_df = await self.step2_identify_patents(ros_df)
+            self._save_df(cp, patents_df)
         results["patents_fetched"] = len(patents_df)
 
         # Step 3: Filter and extract claims
-        claims_df = await self.step3_filter_and_extract_claims(patents_df, ros_df)
+        cp = "step3_claims.parquet"
+        if self._has_checkpoint(cp):
+            claims_df = self._load_df(cp)
+        else:
+            claims_df = await self.step3_filter_and_extract_claims(patents_df, ros_df)
+            self._save_df(cp, claims_df)
         results["claims"] = len(claims_df)
         results["unique_patents"] = claims_df["patent_id"].n_unique()
 
         # Step 4: Build corpus
-        papers_df = await self.step4_build_corpus(ros_df, claims_df)
+        cp = "step4_papers.parquet"
+        if self._has_checkpoint(cp):
+            papers_df = self._load_df(cp)
+        else:
+            papers_df = await self.step4_build_corpus(ros_df, claims_df)
+            self._save_df(cp, papers_df)
         results["papers"] = len(papers_df)
 
         # Step 5: Create ground truth
-        qrels = await self.step5_create_ground_truth(ros_df, claims_df, papers_df)
+        cp = "step5_qrels.parquet"
+        if self._has_checkpoint(cp):
+            qrels = self._load_df(cp)
+        else:
+            qrels = await self.step5_create_ground_truth(ros_df, claims_df, papers_df)
+            self._save_df(cp, qrels)
         results["qrels"] = len(qrels)
 
         # Step 6: Create splits
-        splits = await self.step6_create_splits(claims_df, qrels)
+        cp = "step6_splits.json"
+        if self._has_checkpoint(cp):
+            splits = self._load_splits()
+        else:
+            splits = await self.step6_create_splits(claims_df, qrels)
+            self._save_splits(splits)
         results["splits"] = {
             name: {"queries": len(q), "qrels": len(qr)}
             for name, (q, qr) in splits.items()
         }
 
         # Step 7: Format output
-        stats = await self.step7_format_output(papers_df, claims_df, splits)
+        cp = "step7_stats.json"
+        if self._has_checkpoint(cp):
+            stats = self._load_json(cp)
+        else:
+            stats = await self.step7_format_output(papers_df, claims_df, splits)
+            self._save_json(cp, stats)
         results["benchmark_stats"] = stats
 
         # Step 8: Run baseline
         if not skip_baseline:
-            try:
-                metrics = await self.step8_run_baseline()
-                results["baseline_metrics"] = metrics
-            except Exception as e:
-                logger.warning(f"Baseline evaluation failed: {e}")
-                results["baseline_metrics"] = {"error": str(e)}
+            cp = "step8_metrics.json"
+            if self._has_checkpoint(cp):
+                metrics = self._load_json(cp)
+            else:
+                try:
+                    metrics = await self.step8_run_baseline()
+                    self._save_json(cp, metrics)
+                except Exception as e:
+                    logger.warning(f"Baseline evaluation failed: {e}")
+                    metrics = {"error": str(e)}
+            results["baseline_metrics"] = metrics
 
         logger.info("Phase 1 pipeline complete")
         logger.info(f"Results: {results}")
@@ -412,6 +516,7 @@ def run_phase1(
     config_path: str = "configs/default.yaml",
     skip_download: bool = False,
     skip_baseline: bool = False,
+    fresh: bool = False,
 ) -> dict:
     """Run Phase 1 pipeline.
 
@@ -419,6 +524,7 @@ def run_phase1(
         config_path: Path to configuration file.
         skip_download: Skip RoS download if present.
         skip_baseline: Skip baseline evaluation.
+        fresh: Clear checkpoints and start from scratch.
 
     Returns:
         Pipeline results.
@@ -436,6 +542,7 @@ def run_phase1(
         pipeline.run(
             skip_download=skip_download,
             skip_baseline=skip_baseline,
+            fresh=fresh,
         )
     )
 
@@ -459,12 +566,18 @@ if __name__ == "__main__":
         action="store_true",
         help="Skip BM25 baseline evaluation",
     )
+    parser.add_argument(
+        "--fresh",
+        action="store_true",
+        help="Clear checkpoints, start from scratch",
+    )
 
     args = parser.parse_args()
     results = run_phase1(
         config_path=args.config,
         skip_download=args.skip_download,
         skip_baseline=args.skip_baseline,
+        fresh=args.fresh,
     )
 
     print("\n" + "=" * 60)

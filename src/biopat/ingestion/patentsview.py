@@ -15,6 +15,7 @@ from diskcache import Cache
 from tqdm.asyncio import tqdm_asyncio
 
 from biopat.reproducibility import AuditLogger
+from biopat.ingestion.retry import retry_with_backoff
 
 logger = logging.getLogger(__name__)
 
@@ -126,18 +127,12 @@ class PatentsViewClient:
         try:
             headers = self._get_headers(api_key)
             if method == "POST":
-                response = await client.post(
-                    url,
-                    headers=headers,
-                    json=body,
-                    timeout=60.0,
+                response = await retry_with_backoff(
+                    lambda: client.post(url, headers=headers, json=body, timeout=60.0)
                 )
             else:
-                response = await client.get(
-                    url,
-                    headers=headers,
-                    params=params,
-                    timeout=60.0,
+                response = await retry_with_backoff(
+                    lambda: client.get(url, headers=headers, params=params, timeout=60.0)
                 )
             response.raise_for_status()
             result = response.json()
