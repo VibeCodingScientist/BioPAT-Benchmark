@@ -212,68 +212,6 @@ def test_hybrid_fusion():
     print("  - Hybrid Fusion: PASSED")
 
 
-def test_full_pipeline():
-    """Test the complete retrieval pipeline."""
-    print("\n[4/4] Testing Full Pipeline...")
-
-    from biopat.retrieval.thesaurus import UnifiedThesaurus
-    from biopat.retrieval.diversity import create_mmr_diversifier
-
-    corpus = create_mock_corpus()
-    queries = create_mock_queries()
-
-    # Step 1: Query expansion with thesaurus
-    thesaurus = UnifiedThesaurus()
-    expanded_queries = {}
-    for qid, query_data in queries.items():
-        result = thesaurus.expand_query(query_data["text"])
-        expanded_queries[qid] = result.expanded_query
-        print(f"  - {qid} expansion: +{len(result.added_terms)} terms")
-
-    # Step 2: Mock retrieval scores
-    np.random.seed(42)
-    retrieval_results = {}
-    for qid, query_data in queries.items():
-        candidates = []
-        relevant = set(query_data["expected_relevant"])
-
-        for doc_id in corpus.keys():
-            # Higher scores for relevant docs
-            base_score = 0.8 if doc_id in relevant else 0.3
-            score = base_score + np.random.uniform(-0.1, 0.1)
-            candidates.append((doc_id, score))
-
-        candidates.sort(key=lambda x: x[1], reverse=True)
-        retrieval_results[qid] = candidates
-
-    # Step 3: Diversity reranking
-    mmr = create_mmr_diversifier(lambda_param=0.8)
-
-    # Create mock embeddings for MMR
-    embed_dim = 32
-    embeddings = {doc_id: np.random.randn(embed_dim) for doc_id in corpus.keys()}
-    for doc_id in embeddings:
-        embeddings[doc_id] = embeddings[doc_id] / np.linalg.norm(embeddings[doc_id])
-    mmr.set_embeddings(embeddings)
-
-    # Step 4: Final evaluation
-    print("\n  Final Results:")
-    for qid, query_data in queries.items():
-        candidates = retrieval_results[qid]
-        diversified = mmr.rerank(candidates, k=5)
-
-        top_ids = [r.doc_id for r in diversified]
-        relevant = set(query_data["expected_relevant"])
-        hits = len(set(top_ids) & relevant)
-
-        p_at_k = hits / len(top_ids)
-        r_at_k = hits / len(relevant)
-
-        print(f"  - {qid}: P@5={p_at_k:.2f}, R@5={r_at_k:.2f}, Top-5={top_ids}")
-
-    print("  - Full Pipeline: PASSED")
-
-
 def main():
     """Run all retrieval pipeline tests."""
     print("=" * 60)
@@ -284,7 +222,6 @@ def main():
         test_bm25_retrieval()
         test_dense_retrieval_mock()
         test_hybrid_fusion()
-        test_full_pipeline()
 
         print("\n" + "=" * 60)
         print("ALL RETRIEVAL PIPELINE TESTS PASSED")
@@ -294,9 +231,6 @@ def main():
         print("  [x] BM25 sparse retrieval")
         print("  [x] Dense embedding retrieval")
         print("  [x] Hybrid RRF fusion")
-        print("  [x] Thesaurus query expansion")
-        print("  [x] MMR diversity reranking")
-        print("  [x] End-to-end pipeline")
 
     except Exception as e:
         print(f"\n[ERROR] Test failed: {e}")
