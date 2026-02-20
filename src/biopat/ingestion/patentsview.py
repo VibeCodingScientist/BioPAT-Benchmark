@@ -196,7 +196,7 @@ class PatentsViewClient:
                 "inventors",
             ]
 
-        async with httpx.AsyncClient() as client:
+        async with httpx.AsyncClient(follow_redirects=True) as client:
             result = await self._make_request(
                 client,
                 f"patent/{patent_id}",
@@ -272,7 +272,7 @@ class PatentsViewClient:
         patents = []
         cursor = None
 
-        async with httpx.AsyncClient() as client:
+        async with httpx.AsyncClient(follow_redirects=True) as client:
             with tqdm_asyncio(desc="Fetching biomedical patents", unit="patents") as pbar:
                 while True:
                     body = {
@@ -343,7 +343,7 @@ class PatentsViewClient:
 
         results = []
 
-        async with httpx.AsyncClient() as client:
+        async with httpx.AsyncClient(follow_redirects=True) as client:
             # Process in batches
             tasks = []
             for pid in patent_ids:
@@ -520,7 +520,7 @@ class PatentsViewClient:
             for i in range(0, len(patent_ids), batch_size)
         ]
 
-        async with httpx.AsyncClient() as client:
+        async with httpx.AsyncClient(follow_redirects=True) as client:
             iterator = batches
             if show_progress:
                 from tqdm import tqdm
