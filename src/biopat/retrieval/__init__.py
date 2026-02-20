@@ -13,7 +13,7 @@ This module implements state-of-the-art retrieval methods:
 
 from biopat.retrieval.dense import DenseRetriever, create_domain_retriever
 from biopat.retrieval.hybrid import HybridRetriever, SparseRetriever, create_hybrid_retriever
-from biopat.retrieval.reranker import CrossEncoderReranker, LLMReranker, create_reranker
+from biopat.retrieval.reranker import CrossEncoderReranker, LLMReranker, ListwiseLLMReranker, create_reranker
 from biopat.retrieval.hyde import HyDEQueryExpander, QueryExpansionPipeline, create_hyde_expander
 from biopat.retrieval.molecular import MolecularRetriever, MorganFingerprintEncoder, create_molecular_retriever
 from biopat.retrieval.sequence import SequenceRetriever, BLASTSearcher, create_sequence_retriever
@@ -33,6 +33,7 @@ __all__ = [
     # Reranking
     "CrossEncoderReranker",
     "LLMReranker",
+    "ListwiseLLMReranker",
     "create_reranker",
 
     # Query expansion

@@ -215,36 +215,55 @@ class LLMNoveltyReasoner:
         model: str = "gpt-4",
         api_key: Optional[str] = None,
         temperature: float = 0.1,
+        llm_provider: Optional[Any] = None,
     ):
         """Initialize the novelty reasoner.
 
         Args:
-            provider: LLM provider ("openai" or "anthropic")
+            provider: LLM provider name ("openai", "anthropic", "google")
             model: Model name
             api_key: API key
             temperature: Generation temperature
+            llm_provider: Pre-configured LLMProvider instance (preferred)
         """
         self.provider = provider
         self.model = model
         self.temperature = temperature
-        self._init_client(api_key)
+        self._llm = llm_provider
+        self._last_response = None
+
+        if self._llm is None:
+            self._init_client(api_key)
 
     def _init_client(self, api_key: Optional[str]) -> None:
         """Initialize LLM client."""
-        if self.provider == "openai":
-            import openai
-            self.client = openai.OpenAI(api_key=api_key)
-        elif self.provider == "anthropic":
-            import anthropic
-            self.client = anthropic.Anthropic(api_key=api_key)
-        else:
-            raise ValueError(f"Unknown provider: {self.provider}")
+        try:
+            from biopat.llm import create_provider
+            self._llm = create_provider(self.provider, model=self.model, api_key=api_key)
+        except (ImportError, ValueError):
+            if self.provider == "openai":
+                import openai
+                self.client = openai.OpenAI(api_key=api_key)
+            elif self.provider == "anthropic":
+                import anthropic
+                self.client = anthropic.Anthropic(api_key=api_key)
+            else:
+                raise ValueError(f"Unknown provider: {self.provider}")
 
     def _call_llm(self, prompt: str, max_tokens: int = 2000) -> str:
         """Call LLM and return response."""
         try:
-            if self.provider == "openai":
-                response = self.client.chat.completions.create(
+            if self._llm is not None:
+                response = self._llm.generate(
+                    prompt=prompt,
+                    system_prompt="You are an expert patent examiner. Respond only with valid JSON.",
+                    max_tokens=max_tokens,
+                    temperature=self.temperature,
+                )
+                self._last_response = response
+                return response.text
+            elif self.provider == "openai":
+                resp = self.client.chat.completions.create(
                     model=self.model,
                     messages=[
                         {"role": "system", "content": "You are an expert patent examiner. Respond only with valid JSON."},
@@ -253,14 +272,14 @@ class LLMNoveltyReasoner:
                     temperature=self.temperature,
                     max_tokens=max_tokens,
                 )
-                return response.choices[0].message.content.strip()
+                return resp.choices[0].message.content.strip()
             else:
-                response = self.client.messages.create(
+                resp = self.client.messages.create(
                     model=self.model,
                     max_tokens=max_tokens,
                     messages=[{"role": "user", "content": prompt}],
                 )
-                return response.content[0].text.strip()
+                return resp.content[0].text.strip()
         except Exception as e:
             logger.error(f"LLM call failed: {e}")
             raise
