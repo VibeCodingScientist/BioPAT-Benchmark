@@ -132,13 +132,30 @@ class PatentProcessor:
             DataFrame with one row per independent claim.
         """
         records = []
+        abstract_fallback_count = 0
 
         for row in compat.iter_rows(patents_df, named=True):
             patent_id = row["patent_id"]
             claims = row.get("claims", [])
 
             if not claims:
-                logger.warning(f"No claims found for patent {patent_id}")
+                # Fallback: use patent abstract as query when claims unavailable
+                abstract = row.get("abstract", "") or ""
+                title = row.get("title", "") or ""
+                if abstract or title:
+                    query_text = f"{title}. {abstract}".strip(". ")
+                    records.append({
+                        "query_id": f"{patent_id}-c0",
+                        "patent_id": patent_id,
+                        "claim_number": 0,
+                        "claim_text": query_text,
+                        "claim_type": "abstract_fallback",
+                        "priority_date": row.get("priority_date"),
+                        "ipc_codes": row.get("ipc_codes", []),
+                    })
+                    abstract_fallback_count += 1
+                else:
+                    logger.warning(f"No claims or abstract for patent {patent_id}")
                 continue
 
             for claim in claims:
@@ -162,6 +179,12 @@ class PatentProcessor:
                         "priority_date": row.get("priority_date"),
                         "ipc_codes": row.get("ipc_codes", []),
                     })
+
+        if abstract_fallback_count:
+            logger.info(
+                f"Used abstract fallback for {abstract_fallback_count} patents "
+                f"(claims not available from API)"
+            )
 
         return pl.DataFrame(records)
 

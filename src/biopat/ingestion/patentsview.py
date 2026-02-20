@@ -6,6 +6,7 @@ claims, and IPC classifications.
 
 import asyncio
 import logging
+import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 import json
@@ -22,6 +23,35 @@ logger = logging.getLogger(__name__)
 PATENTSVIEW_BASE_URL = "https://search.patentsview.org/api/v1"
 DEFAULT_RATE_LIMIT = 45  # requests per minute with API key
 DEFAULT_BATCH_SIZE = 100
+
+# Pattern: "us-<number>-<kind>" or "us-re<number>-<kind>"
+_ROS_PATENT_RE = re.compile(r"^us-(re)?(\d+)-\w+$", re.IGNORECASE)
+
+
+def normalize_patent_id(raw_id: str) -> str:
+    """Convert RoS-format patent ID to PatentsView numeric format.
+
+    Examples:
+        us-9186198-b2  -> 9186198
+        us-re49435-e   -> RE49435
+        us-6160208-a   -> 6160208
+        9186198        -> 9186198 (already numeric, pass through)
+    """
+    m = _ROS_PATENT_RE.match(raw_id.strip())
+    if m:
+        prefix, number = m.group(1), m.group(2)
+        if prefix:  # reissue
+            return f"RE{number}"
+        return number
+    # Already in numeric or unknown format — return as-is
+    return raw_id.strip()
+
+
+def _unwrap_patent(response: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    """Extract single patent dict from API v1 response wrapper."""
+    if response and "patents" in response and response["patents"]:
+        return response["patents"][0]
+    return None
 
 
 class ApiKeyPool:
@@ -171,12 +201,13 @@ class PatentsViewClient:
         """Get a single patent by ID.
 
         Args:
-            patent_id: USPTO patent ID (e.g., "US10123456B2").
+            patent_id: USPTO patent ID in any format (RoS or numeric).
             fields: Fields to return. If None, returns default fields.
 
         Returns:
             Patent data dict or None if not found.
         """
+        patent_id = normalize_patent_id(patent_id)
         # Check cache
         cache_key = f"patent:{patent_id}"
         if self.cache and cache_key in self.cache:
@@ -188,12 +219,8 @@ class PatentsViewClient:
                 "patent_date",
                 "patent_title",
                 "patent_abstract",
-                "claims",
                 "application",
-                "ipc_current",
                 "cpc_current",
-                "assignees_at_grant",
-                "inventors",
             ]
 
         async with httpx.AsyncClient(follow_redirects=True) as client:
@@ -203,11 +230,14 @@ class PatentsViewClient:
                 params={"f": json.dumps(fields)},
             )
 
-        # Cache result
-        if self.cache and result:
-            self.cache[cache_key] = result
+        # Unwrap patents array from API v1 response
+        patent = _unwrap_patent(result)
 
-        return result
+        # Cache result
+        if self.cache and patent:
+            self.cache[cache_key] = patent
+
+        return patent
 
     async def search_patents(
         self,
@@ -233,7 +263,7 @@ class PatentsViewClient:
                 "patent_date",
                 "patent_title",
                 "application",
-                "ipc_current",
+                "cpc_current",
             ]
 
         body = {
@@ -262,12 +292,12 @@ class PatentsViewClient:
         Returns:
             List of patent data dicts.
         """
-        # Build OR query for IPC prefixes
-        ipc_conditions = [
-            {"_begins": {"ipc_current.ipc_class": prefix}}
+        # Build OR query for CPC class prefixes (equivalent to IPC main classes)
+        cpc_conditions = [
+            {"_begins": {"cpc_current.cpc_class_id": prefix}}
             for prefix in ipc_prefixes
         ]
-        query = {"_or": ipc_conditions}
+        query = {"_or": cpc_conditions}
 
         patents = []
         cursor = None
@@ -283,7 +313,7 @@ class PatentsViewClient:
                             "patent_title",
                             "patent_abstract",
                             "application",
-                            "ipc_current",
+                            "cpc_current",
                         ],
                         "o": {"size": DEFAULT_BATCH_SIZE},
                     }
@@ -335,9 +365,7 @@ class PatentsViewClient:
                 "patent_date",
                 "patent_title",
                 "patent_abstract",
-                "claims",
                 "application",
-                "ipc_current",
                 "cpc_current",
             ]
 
@@ -380,13 +408,14 @@ class PatentsViewClient:
         fields: List[str],
     ) -> Optional[Dict[str, Any]]:
         """Fetch a single patent with rate limiting."""
+        patent_id = normalize_patent_id(patent_id)
         try:
             result = await self._make_request(
                 client,
                 f"patent/{patent_id}",
                 params={"f": json.dumps(fields)},
             )
-            return result
+            return _unwrap_patent(result)
         except Exception as e:
             logger.warning(f"Failed to fetch patent {patent_id}: {e}")
             return None
@@ -402,9 +431,17 @@ class PatentsViewClient:
         """
         records = []
         for p in patents:
-            # Extract IPC codes
+            # Extract IPC-equivalent codes from CPC classification
+            # CPC class IDs (e.g. "A61") correspond to IPC main classes
             ipc_codes = []
-            if "ipc_current" in p and p["ipc_current"]:
+            if "cpc_current" in p and p["cpc_current"]:
+                seen = set()
+                for cpc in p["cpc_current"]:
+                    cls_id = cpc.get("cpc_class_id")
+                    if cls_id and cls_id not in seen:
+                        ipc_codes.append(cls_id)
+                        seen.add(cls_id)
+            elif "ipc_current" in p and p["ipc_current"]:
                 for ipc in p["ipc_current"]:
                     if "ipc_class" in ipc:
                         ipc_codes.append(ipc["ipc_class"])
@@ -417,16 +454,8 @@ class PatentsViewClient:
                 priority_date = app.get("earliest_application_date")
                 filing_date = app.get("application_date")
 
-            # Extract claims
+            # Claims not available from PatentsView v1 API
             claims = []
-            if "claims" in p and p["claims"]:
-                for c in p["claims"]:
-                    claims.append({
-                        "claim_number": c.get("claim_number"),
-                        "claim_text": c.get("claim_text", ""),
-                        "claim_type": c.get("claim_type", ""),
-                        "depends_on": c.get("depends_on"),
-                    })
 
             records.append({
                 "patent_id": p.get("patent_id"),
@@ -458,15 +487,14 @@ class PatentsViewClient:
         Returns:
             DataFrame with patent data ready for corpus formatting.
         """
-        # Fields needed for corpus: title, abstract, claims, dates
+        # Fields needed for corpus: title, abstract, dates, classification
         fields = [
             "patent_id",
             "patent_date",
             "patent_title",
             "patent_abstract",
-            "claims",
             "application",
-            "ipc_current",
+            "cpc_current",
         ]
 
         logger.info(f"Fetching {len(patent_ids)} patents for corpus assembly")
@@ -495,7 +523,7 @@ class PatentsViewClient:
         More efficient than individual fetches for large ID lists.
 
         Args:
-            patent_ids: List of patent IDs.
+            patent_ids: List of patent IDs (any format, auto-normalized).
             fields: Fields to return.
             batch_size: Number of IDs per query batch.
             show_progress: Show progress bar.
@@ -503,15 +531,15 @@ class PatentsViewClient:
         Returns:
             List of patent data dicts.
         """
+        patent_ids = [normalize_patent_id(pid) for pid in patent_ids]
         if fields is None:
             fields = [
                 "patent_id",
                 "patent_date",
                 "patent_title",
                 "patent_abstract",
-                "claims",
                 "application",
-                "ipc_current",
+                "cpc_current",
             ]
 
         results = []
