@@ -166,6 +166,16 @@ class RelianceOnScienceLoader:
         if "openalex_id" in df.columns:
             df = df.with_columns(pl.col("openalex_id").cast(pl.Utf8))
 
+        # Normalize patent IDs to PatentsView numeric format
+        # RoS uses "us-9186198-b2" style; PatentsView uses "9186198"
+        if "patent_id" in df.columns:
+            from biopat.ingestion.patentsview import normalize_patent_id
+            df = df.with_columns(
+                pl.col("patent_id").map_elements(
+                    normalize_patent_id, return_dtype=pl.Utf8
+                )
+            )
+
         # Filter by confidence
         df = df.filter(pl.col("confidence") >= confidence_threshold)
 

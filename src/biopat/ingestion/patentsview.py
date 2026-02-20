@@ -226,7 +226,7 @@ class PatentsViewClient:
         async with httpx.AsyncClient(follow_redirects=True) as client:
             result = await self._make_request(
                 client,
-                f"patent/{patent_id}",
+                f"patent/{patent_id}/",
                 params={"f": json.dumps(fields)},
             )
 
@@ -412,7 +412,7 @@ class PatentsViewClient:
         try:
             result = await self._make_request(
                 client,
-                f"patent/{patent_id}",
+                f"patent/{patent_id}/",
                 params={"f": json.dumps(fields)},
             )
             return _unwrap_patent(result)
