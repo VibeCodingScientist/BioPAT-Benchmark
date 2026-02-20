@@ -1,6 +1,7 @@
-"""Evaluation modules for BioPAT baselines."""
+"""Evaluation modules for BioPAT baselines and LLM benchmarking."""
 
 from .bm25 import BM25Evaluator
+from .llm_evaluator import LLMBenchmarkRunner, ModelSpec, ExperimentResult
 from .metrics import (
     MetricsComputer,
     DOC_TYPE_PAPER,
@@ -55,6 +56,10 @@ from .trimodal_retrieval import (
 __all__ = [
     # BM25
     "BM25Evaluator",
+    # LLM benchmarking
+    "LLMBenchmarkRunner",
+    "ModelSpec",
+    "ExperimentResult",
     # Metrics
     "MetricsComputer",
     "DOC_TYPE_PAPER",

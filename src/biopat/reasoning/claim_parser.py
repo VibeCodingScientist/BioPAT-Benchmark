@@ -225,48 +225,59 @@ class LLMClaimParser:
         api_key: Optional[str] = None,
         temperature: float = 0.1,
         max_retries: int = 3,
+        llm_provider: Optional[Any] = None,
     ):
         """Initialize the LLM claim parser.
 
         Args:
-            provider: LLM provider ("openai" or "anthropic")
+            provider: LLM provider name ("openai", "anthropic", "google")
             model: Model name (e.g., "gpt-4", "claude-3-opus-20240229")
             api_key: API key (or uses environment variable)
             temperature: Generation temperature (lower = more deterministic)
             max_retries: Number of retries on failure
+            llm_provider: Pre-configured LLMProvider instance (preferred)
         """
         self.provider = provider
         self.model = model
         self.temperature = temperature
         self.max_retries = max_retries
+        self._llm = llm_provider
+        self._last_response = None
 
-        # Initialize client
-        self._init_client(api_key)
+        if self._llm is None:
+            self._init_client(api_key)
 
     def _init_client(self, api_key: Optional[str]) -> None:
         """Initialize the LLM client."""
-        if self.provider == "openai":
-            try:
+        try:
+            from biopat.llm import create_provider
+            self._llm = create_provider(self.provider, model=self.model, api_key=api_key)
+        except (ImportError, ValueError):
+            # Legacy fallback
+            if self.provider == "openai":
                 import openai
                 self.client = openai.OpenAI(api_key=api_key)
-            except ImportError:
-                raise ImportError("openai package required: pip install openai")
-
-        elif self.provider == "anthropic":
-            try:
+            elif self.provider == "anthropic":
                 import anthropic
                 self.client = anthropic.Anthropic(api_key=api_key)
-            except ImportError:
-                raise ImportError("anthropic package required: pip install anthropic")
-        else:
-            raise ValueError(f"Unknown provider: {self.provider}")
+            else:
+                raise ValueError(f"Unknown provider: {self.provider}")
 
     def _call_llm(self, prompt: str) -> str:
         """Call the LLM and return response."""
         for attempt in range(self.max_retries):
             try:
-                if self.provider == "openai":
-                    response = self.client.chat.completions.create(
+                if self._llm is not None:
+                    response = self._llm.generate(
+                        prompt=prompt,
+                        system_prompt="You are an expert patent attorney. Respond only with valid JSON.",
+                        max_tokens=4000,
+                        temperature=self.temperature,
+                    )
+                    self._last_response = response
+                    return response.text
+                elif self.provider == "openai":
+                    resp = self.client.chat.completions.create(
                         model=self.model,
                         messages=[
                             {"role": "system", "content": "You are an expert patent attorney. Respond only with valid JSON."},
@@ -275,16 +286,14 @@ class LLMClaimParser:
                         temperature=self.temperature,
                         max_tokens=4000,
                     )
-                    return response.choices[0].message.content.strip()
-
+                    return resp.choices[0].message.content.strip()
                 elif self.provider == "anthropic":
-                    response = self.client.messages.create(
+                    resp = self.client.messages.create(
                         model=self.model,
                         max_tokens=4000,
                         messages=[{"role": "user", "content": prompt}],
                     )
-                    return response.content[0].text.strip()
-
+                    return resp.content[0].text.strip()
             except Exception as e:
                 logger.warning(f"LLM call failed (attempt {attempt + 1}): {e}")
                 if attempt == self.max_retries - 1:
