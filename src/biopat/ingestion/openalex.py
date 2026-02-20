@@ -29,11 +29,13 @@ class OpenAlexClient:
     def __init__(
         self,
         mailto: Optional[str] = None,
+        api_key: Optional[str] = None,
         cache_dir: Optional[Path] = None,
         rate_limit: int = DEFAULT_RATE_LIMIT,
         audit_logger: Optional[AuditLogger] = None,
     ):
         self.mailto = mailto
+        self.api_key = api_key
         self.rate_limit = rate_limit
         self.cache = Cache(str(cache_dir / "openalex")) if cache_dir else None
         self._semaphore = asyncio.Semaphore(rate_limit)
@@ -81,6 +83,10 @@ class OpenAlexClient:
         """Make a rate-limited API request."""
         async with self._semaphore:
             url = f"{OPENALEX_BASE_URL}/{endpoint}"
+            if params is None:
+                params = {}
+            if self.api_key:
+                params["api_key"] = self.api_key
 
             try:
                 response = await retry_with_backoff(

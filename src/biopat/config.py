@@ -41,6 +41,7 @@ class ApiConfig(BaseModel):
     patentsview_keys: List[str] = Field(default_factory=list)
     ncbi_key: Optional[str] = Field(default=None)
     openalex_mailto: Optional[str] = Field(default=None)
+    openalex_api_key: Optional[str] = Field(default=None)
     use_bulk_data: bool = Field(default=True)
 
     def __init__(self, **data):
@@ -73,6 +74,8 @@ class ApiConfig(BaseModel):
             object.__setattr__(self, 'ncbi_key', os.environ.get("NCBI_API_KEY"))
         if self.openalex_mailto is None:
             object.__setattr__(self, 'openalex_mailto', os.environ.get("OPENALEX_MAILTO"))
+        if self.openalex_api_key is None:
+            object.__setattr__(self, 'openalex_api_key', os.environ.get("OPENALEX_API_KEY"))
 
 
 class Phase1Config(BaseModel):

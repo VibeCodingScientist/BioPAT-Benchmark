@@ -41,6 +41,7 @@ class Phase1Pipeline:
         )
         self.openalex_client = OpenAlexClient(
             mailto=self.config.api.openalex_mailto,
+            api_key=self.config.api.openalex_api_key,
             cache_dir=self.config.paths.cache_dir,
         )
         self.patent_processor = PatentProcessor(self.config.paths.processed_dir)
