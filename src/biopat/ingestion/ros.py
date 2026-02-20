@@ -18,8 +18,8 @@ from biopat.reproducibility import ChecksumEngine, AuditLogger
 
 logger = logging.getLogger(__name__)
 
-ROS_ZENODO_URL = "https://zenodo.org/records/7996195/files/_pcs_oa.csv.gz"
-ROS_FILENAME = "_pcs_oa.csv.gz"
+ROS_ZENODO_URL = "https://zenodo.org/api/records/7996195/files/_pcs_oa.csv/content"
+ROS_FILENAME = "_pcs_oa.csv"
 
 
 class RelianceOnScienceLoader:
