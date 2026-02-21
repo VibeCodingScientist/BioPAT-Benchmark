@@ -188,19 +188,24 @@ class PatentProcessor:
 
         return pl.DataFrame(records)
 
-    def get_ipc3(self, ipc_codes: List[str]) -> str:
+    @staticmethod
+    def get_ipc3(ipc_codes) -> str:
         """Get primary IPC3 code (first 4 characters) for domain stratification.
 
         Args:
-            ipc_codes: List of IPC codes.
+            ipc_codes: List of IPC codes (may be a Python list or Polars Series).
 
         Returns:
             Primary IPC3 code or empty string.
         """
-        if not ipc_codes:
+        # Handle Polars Series from map_elements
+        if hasattr(ipc_codes, 'to_list'):
+            ipc_codes = ipc_codes.to_list()
+        if not ipc_codes or len(ipc_codes) == 0:
             return ""
         # Return first 4 characters of first code (e.g., "A61K")
-        return ipc_codes[0][:4] if ipc_codes[0] else ""
+        first = ipc_codes[0]
+        return first[:4] if first else ""
 
     def add_domain_info(self, claims_df: pl.DataFrame) -> pl.DataFrame:
         """Add domain stratification column based on IPC codes.
