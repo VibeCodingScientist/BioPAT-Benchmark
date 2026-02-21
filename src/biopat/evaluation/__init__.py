@@ -52,6 +52,20 @@ from .trimodal_retrieval import (
     reciprocal_rank_fusion,
     create_trimodal_retriever,
 )
+from .agent_retrieval import (
+    AgentConfig,
+    AgentTrace,
+    DualCorpusSearchTool,
+    RetrievalAgent,
+    results_to_qrels_format,
+)
+from .agent_metrics import compute_agent_metrics, compute_refinement_curve
+from .dual_qrels import (
+    build_dual_corpus,
+    invert_qrels,
+    select_type_b_queries,
+    load_doc_types,
+)
 
 __all__ = [
     # BM25
@@ -113,4 +127,16 @@ __all__ = [
     "TrimodalEvaluationResult",
     "reciprocal_rank_fusion",
     "create_trimodal_retriever",
+    # Agent retrieval (Experiment 7)
+    "AgentConfig",
+    "AgentTrace",
+    "DualCorpusSearchTool",
+    "RetrievalAgent",
+    "results_to_qrels_format",
+    "compute_agent_metrics",
+    "compute_refinement_curve",
+    "build_dual_corpus",
+    "invert_qrels",
+    "select_type_b_queries",
+    "load_doc_types",
 ]

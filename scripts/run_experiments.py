@@ -54,7 +54,7 @@ def main():
     )
     parser.add_argument(
         "--experiment",
-        choices=["bm25", "dense", "hyde", "reranking", "relevance", "novelty"],
+        choices=["bm25", "dense", "hyde", "reranking", "relevance", "novelty", "agent"],
         help="Run only this experiment (default: all enabled)",
     )
     parser.add_argument(
@@ -91,6 +91,7 @@ def main():
             "reranking": "reranking",
             "relevance": "relevance_judgment",
             "novelty": "novelty_assessment",
+            "agent": "agent_retrieval",
         }
         target = exp_map[args.experiment]
         for name in config.get("experiments", {}):
