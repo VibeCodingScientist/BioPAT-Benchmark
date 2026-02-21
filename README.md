@@ -1,77 +1,192 @@
-# BioPAT: Biomedical Patent-Article Trimodal Benchmark
+# BioPAT: Biomedical Patent-to-Article Retrieval Benchmark
 
-<p align="center">
-  <strong>Multi-Modal Retrieval Benchmark for Biomedical Novelty Assessment</strong>
-</p>
+**A benchmark for evaluating retrieval systems and LLM agents on biomedical patent prior art search.**
 
-<p align="center">
-  <a href="#overview">Overview</a> •
-  <a href="#pipelines">Pipelines</a> •
-  <a href="#quick-start">Quick Start</a> •
-  <a href="#architecture">Architecture</a> •
-  <a href="#benchmarks">Benchmarks</a>
-</p>
+BioPAT constructs a large-scale benchmark from real patent-paper citation data, then evaluates how well different retrieval methods — from BM25 baselines to LLM-powered agents — can find relevant prior art across a dual corpus of scientific papers and patents.
 
 ---
 
-BioPAT constructs a reproducible benchmark for evaluating prior art retrieval in biomedical patents. It connects patent claims to scientific literature using citation evidence from the Reliance on Science (RoS) dataset, then provides a novelty assessment pipeline combining text, chemical, and sequence retrieval.
+## Benchmark at a Glance
 
-## Overview
+| Stat | Value |
+|------|-------|
+| **Queries** | 1,984 patent claims |
+| **Documents** | 158,850 scientific papers |
+| **Relevance judgments** | 842,170 qrels (764K highly relevant, 78K relevant) |
+| **Splits** | Train 586K / Dev 125K / Test 131K |
+| **Domain coverage** | A61 (medical), C07 (organic chem), C12 (biochemistry) |
+| **Format** | BEIR-compatible (corpus.jsonl, queries.jsonl, qrels/*.tsv) |
 
-BioPAT has **two pipelines**:
+Ground truth is derived from real patent examiner citations via the [Reliance on Science](https://zenodo.org/record/3888942) dataset, with temporal validation ensuring papers predate patent priority dates.
 
-| Pipeline | Purpose | Entry Point |
-|----------|---------|-------------|
-| **Phase 1** | Benchmark construction from real patent-paper citation data | `biopat.pipeline.Phase1Pipeline` |
-| **Novelty Assessment** | End-to-end prior art search + novelty reasoning for a patent | `biopat.pipeline_novelty.NoveltyAssessmentPipeline` |
+## Architecture
+
+```
+src/biopat/
+├── pipeline.py              # Phase 1: 8-step benchmark construction with checkpoint/resume
+├── pipeline_novelty.py      # End-to-end novelty assessment pipeline
+├── config.py                # Configuration (paths, APIs, LLM, evaluation)
+├── compat.py                # Polars version compatibility layer
+├── reproducibility.py       # Checksums and audit logging
+│
+├── ingestion/               # Data acquisition
+│   ├── ros.py               #   Reliance on Science patent-paper citations
+│   ├── patentsview.py       #   USPTO PatentsView API (claims, metadata)
+│   └── openalex.py          #   OpenAlex API (paper metadata, abstracts)
+│
+├── processing/              # Data transformation
+│   ├── patents.py           #   Patent filtering by IPC, claim extraction
+│   ├── papers.py            #   Paper metadata cleaning, abstract validation
+│   ├── linking.py           #   Patent-paper citation linking
+│   ├── patent_ids.py        #   Patent ID normalization (US/EP/WO)
+│   ├── chemical_index.py    #   Morgan fingerprints, FAISS chemical search
+│   ├── sequence_index.py    #   BLAST+ sequence alignment search
+│   ├── prior_patents.py     #   Prior patent reference filtering
+│   ├── international_patents.py  # EP/WO patent support
+│   ├── claim_mapper.py      #   Claim-to-citation mapping
+│   └── npl_parser.py        #   Non-patent literature reference parsing
+│
+├── groundtruth/             # Relevance judgment creation
+│   ├── relevance.py         #   Graded relevance assignment (0-3 scale)
+│   ├── temporal.py          #   Temporal validation (paper before patent)
+│   ├── stratification.py    #   Domain-stratified sampling by IPC
+│   └── ep_citations.py      #   EP search report category mapping
+│
+├── benchmark/               # Benchmark formatting
+│   ├── beir_format.py       #   BEIR output (corpus.jsonl, queries.jsonl, qrels)
+│   ├── splits.py            #   Train/dev/test splitting (stratified)
+│   └── sampling.py          #   Uniform and stratified sampling
+│
+├── evaluation/              # Retrieval evaluation (7 experiment types)
+│   ├── llm_evaluator.py     #   LLMBenchmarkRunner: orchestrates all experiments
+│   ├── bm25.py              #   BM25 baseline
+│   ├── dense.py             #   Dense retrieval (sentence-transformers, FAISS)
+│   ├── hybrid.py            #   BM25 + dense fusion (RRF, linear)
+│   ├── reranker.py          #   Cross-encoder and LLM listwise reranking
+│   ├── metrics.py           #   IR metrics: NDCG, MAP, MRR, P@k, R@k
+│   ├── trimodal_retrieval.py#   Text + chemical + sequence fusion
+│   ├── agent_retrieval.py   #   Agentic dual-corpus retrieval (Exp 7)
+│   ├── agent_metrics.py     #   Agent-specific metrics and refinement curves
+│   ├── dual_qrels.py        #   Dual corpus builder, qrel inversion
+│   ├── ablation.py          #   Ablation studies (query, doc, domain, temporal, IPC)
+│   ├── error_analysis.py    #   Failure categorization and vocabulary analysis
+│   ├── statistical_tests.py #   Significance testing
+│   └── publication.py       #   Report generation
+│
+├── retrieval/               # Retrieval methods
+│   ├── dense.py             #   Dense retrieval with domain-specific models
+│   ├── hybrid.py            #   BM25 + dense hybrid fusion
+│   ├── reranker.py          #   Cross-encoder + LLM reranking
+│   ├── hyde.py              #   HyDE query expansion via LLM
+│   ├── molecular.py         #   Chemical fingerprint retrieval (RDKit)
+│   ├── sequence.py          #   Sequence alignment retrieval (BLAST+)
+│   ├── splade.py            #   Learned sparse retrieval (SPLADE)
+│   └── colbert.py           #   Late-interaction retrieval (ColBERT)
+│
+├── reasoning/               # LLM-based novelty reasoning
+│   ├── claim_parser.py      #   Decompose claims into elements via LLM
+│   ├── novelty_reasoner.py  #   Map prior art to claims, assess novelty
+│   └── explanation_generator.py  # Generate novelty reports
+│
+└── llm/                     # Unified LLM provider interface
+    ├── providers.py         #   OpenAI, Anthropic, Google with consistent API
+    └── cost_tracker.py      #   Token tracking, cost estimation, budget enforcement
+```
+
+## Pipeline
 
 ### Phase 1: Benchmark Construction
 
-Builds a BEIR-compatible benchmark dataset:
-1. Downloads patent-paper citation links from Reliance on Science (Zenodo)
-2. Fetches patent metadata from USPTO (PatentsView API)
-3. Extracts biomedical patent claims (IPC: A61, C07, C12)
-4. Fetches cited paper metadata from OpenAlex
-5. Creates ground truth relevance judgments with temporal validation
-6. Produces train/dev/test splits in BEIR format
-7. Runs BM25 baseline evaluation
+The pipeline (`biopat pipeline`) runs 8 steps with checkpoint/resume:
 
-### Novelty Assessment
+1. **Load RoS** — Download Reliance on Science patent-paper citation data
+2. **Fetch patents** — Get patent metadata and claims from PatentsView API
+3. **Extract claims** — Parse independent claims, filter by IPC domain
+4. **Fetch papers** — Get paper metadata and abstracts from OpenAlex API
+5. **Link citations** — Match patents to papers via RoS citation links
+6. **Ground truth** — Assign graded relevance (0-3), temporal validation
+7. **Split** — Create stratified train/dev/test splits
+8. **Format** — Output BEIR-compatible benchmark files
 
-Assesses whether a patent claim is novel by:
-1. Parsing claims into structured elements (via LLM)
-2. Trimodal retrieval: text (SPLADE/ColBERT/dense/hybrid) + chemical fingerprints + sequence alignment
-3. Cross-encoder reranking of top candidates
-4. LLM-based novelty reasoning (anticipation vs. obviousness)
-5. Generating a structured novelty report
+```bash
+# Run full pipeline
+docker compose run --rm benchmark python -m biopat --config configs/default.yaml
 
-## Pipelines
+# Or locally
+pip install -e .
+biopat --config configs/default.yaml
+```
 
-### Retrieval Methods
+### Phase 2: LLM Evaluation (7 Experiments)
 
-| Method | Type | Implementation |
-|--------|------|----------------|
-| **BM25** | Sparse | Custom with k1/b tuning |
-| **Dense** | Neural | SciBERT, PubMedBERT, BioBERT, BGE, E5, Contriever |
-| **SPLADE** | Learned Sparse | MLM-based term expansion |
-| **ColBERT** | Late Interaction | Token-level MaxSim |
-| **HyDE** | Query Expansion | LLM-generated hypothetical documents |
-| **Hybrid** | Fusion | RRF, linear, convex combination |
+| # | Experiment | Type | What it measures |
+|---|-----------|------|-----------------|
+| 1 | **BM25 baseline** | CPU | Sparse retrieval floor |
+| 2 | **Dense baselines** | CPU | Neural embedding ceiling (BGE, MiniLM) |
+| 3 | **HyDE expansion** | LLM | Query expansion via hypothetical documents |
+| 4 | **Listwise reranking** | LLM | LLM reranking of BM25 top-100 |
+| 5 | **Relevance judgment** | LLM | Agreement with silver-standard qrels |
+| 6 | **Novelty assessment** | LLM | End-to-end claim→prior art→novelty pipeline |
+| 7 | **Agent dual retrieval** | LLM | Iterative agent searching papers + patents |
 
-### Multi-Modal Search
+```bash
+# Run all experiments
+python scripts/run_experiments.py --config configs/experiments.yaml
 
-| Modality | Method | Details |
-|----------|--------|---------|
-| **Text** | Dense + Sparse + Hybrid | 11 embedding models, BM25, SPLADE |
-| **Chemical** | Fingerprints + Neural | Morgan/ECFP4, ChemBERTa, MoLFormer |
-| **Sequence** | Alignment + Neural | BLAST+, ESM-2, ProtBERT, ProtT5 |
+# Run only agent experiment
+python scripts/run_experiments.py --config configs/experiments_agent.yaml --experiment agent
 
-### Reranking
+# Estimate costs without API calls
+python scripts/run_experiments.py --config configs/experiments.yaml --dry-run
+```
 
-| Component | Description |
-|-----------|-------------|
-| **Cross-Encoder** | MS-MARCO, BGE, Jina, LLM-based reranking |
-| **Score Fusion** | Weighted trimodal combination with multimodal boost |
+### Experiment 7: Agent-Based Dual Retrieval
+
+The agent is given a scientific claim and must find relevant **papers AND patents** in a dual corpus (~160K docs). It operates in three phases:
+
+1. **Plan** — LLM analyzes the claim, generates up to 5 BM25 search queries
+2. **Refine** — LLM reviews results, identifies gaps, optionally searches more
+3. **Rank** — LLM produces a final ranked list from accumulated results
+
+Agent-specific metrics include per-doc-type recall (paper vs patent), coverage balance, search efficiency, and refinement gain curves.
+
+## LLM Support
+
+Three providers with a unified interface (`LLMProvider.generate()`):
+
+| Provider | Models | Pricing tracked |
+|----------|--------|----------------|
+| **OpenAI** | GPT-4o, GPT-4o-mini, GPT-5.2 | Per-token input/output |
+| **Anthropic** | Claude Opus 4.6, Sonnet 4.5, Haiku 4.5 | Per-token input/output |
+| **Google** | Gemini 2.5 Pro, Gemini 2.0 Flash | Per-token input/output |
+
+Cost tracking with budget enforcement (`CostTracker`) is built into every experiment.
+
+## Retrieval Methods
+
+| Method | Module | Description |
+|--------|--------|-------------|
+| **BM25** | `evaluation/bm25.py` | Okapi BM25 with rank-bm25 |
+| **Dense** | `retrieval/dense.py` | Sentence-transformers + FAISS indexing |
+| **Hybrid** | `retrieval/hybrid.py` | BM25 + dense fusion (RRF, linear) |
+| **HyDE** | `retrieval/hyde.py` | LLM-generated hypothetical document expansion |
+| **Cross-encoder** | `retrieval/reranker.py` | BAAI/bge-reranker, MS-MARCO rerankers |
+| **SPLADE** | `retrieval/splade.py` | Learned sparse retrieval with term expansion |
+| **ColBERT** | `retrieval/colbert.py` | Token-level late interaction |
+| **Chemical** | `retrieval/molecular.py` | Morgan fingerprints + Tanimoto similarity |
+| **Sequence** | `retrieval/sequence.py` | BLAST+ alignment search |
+| **Trimodal** | `evaluation/trimodal_retrieval.py` | Text + chemical + sequence fusion |
+
+## Relevance Scale
+
+Graded relevance derived from patent examiner citation behavior:
+
+| Grade | Meaning | Source signal |
+|-------|---------|--------------|
+| **3** | Novelty-destroying (anticipation) | Not currently assigned automatically |
+| **2** | Highly relevant | Front-page citation (examiner-added) |
+| **1** | Relevant | In-text citation (applicant-added) |
+| **0** | Not relevant | No citation link |
 
 ## Quick Start
 
@@ -84,204 +199,86 @@ cd BioPAT-Benchmark
 python -m venv venv
 source venv/bin/activate
 
-# Core install
+# Core only
 pip install -e .
 
-# With evaluation models (sentence-transformers, FAISS, torch)
+# With evaluation (sentence-transformers, FAISS, PyTorch)
 pip install -e ".[evaluation]"
 
-# With chemical structure support (RDKit)
-pip install -e ".[advanced]"
+# With LLM experiments (OpenAI, Anthropic, Google)
+pip install -e ".[llm]"
+
+# Everything
+pip install -e ".[all]"
 ```
 
 ### Environment Variables
 
 ```bash
-# API keys (optional, increases rate limits)
-export PATENTSVIEW_API_KEYS=your_key        # USPTO patents
-export OPENALEX_MAILTO=your_email           # OpenAlex polite pool
-export OPENAI_API_KEY=your_key              # HyDE query expansion (optional)
-export ANTHROPIC_API_KEY=your_key           # LLM novelty reasoning (optional)
+# Data source APIs
+export PATENTSVIEW_API_KEY=your_key   # USPTO patent data
+export NCBI_API_KEY=your_key          # Optional: PubMed sequences
+
+# LLM providers (for experiments 3-7)
+export OPENAI_API_KEY=your_key
+export ANTHROPIC_API_KEY=your_key
+export GOOGLE_API_KEY=your_key
 ```
 
-### Run the Benchmark Pipeline
+### Docker
 
 ```bash
-# Via CLI entry point
-biopat --config configs/my_config.yaml
+# Build and run pipeline
+docker compose build
+docker compose run --rm benchmark
 
-# Or from Python
-python -c "
-from biopat.pipeline import run_phase1
-results = run_phase1(config_path='configs/my_config.yaml')
-"
+# Run LLM experiments
+docker compose run --rm benchmark python scripts/run_experiments.py \
+    --config configs/experiments.yaml
 ```
 
-### Run Tests
+## Configuration
 
-```bash
-# Core pipeline test with mock data
-python scripts/test_with_mock_data.py
+### `configs/default.yaml` — Pipeline configuration
+Controls data paths, API settings, IPC domain filters, and Phase 1 parameters.
 
-# Retrieval pipeline test
-python scripts/test_retrieval_pipeline.py
+### `configs/experiments.yaml` — Full experiment suite
+Defines all 7 experiments, model selection, budget limits, and evaluation parameters.
 
-# Unit tests
-python -m pytest tests/ -v
-```
+### `configs/experiments_agent.yaml` — Agent experiment only
+Focused config for running just the agent dual-retrieval experiment across 3 models.
 
-### Basic Usage — Novelty Assessment
+## Project Status
 
-```python
-from biopat.pipeline_novelty import NoveltyAssessmentPipeline, PipelineConfig, PatentInput
-
-# Configure
-config = PipelineConfig(
-    retrieval_method="hybrid",
-    text_model="allenai/scibert_scivocab_uncased",
-    use_reranker=True,
-)
-
-# Create pipeline
-pipeline = NoveltyAssessmentPipeline(config)
-
-# Index your corpus
-pipeline.index_corpus(corpus_docs, chemicals=chem_data, sequences=seq_data)
-
-# Assess a patent
-patent = PatentInput(
-    patent_id="US2024123456",
-    title="Novel PD-1 antibody composition",
-    abstract="The present invention relates to...",
-    claims=["A method of treating cancer comprising administering..."],
-    smiles="CC(=O)OC1=CC=CC=C1C(=O)O",  # optional
-)
-report = pipeline.assess(patent)
-```
-
-## Architecture
-
-```
-BioPAT-Benchmark/
-├── src/biopat/
-│   ├── pipeline.py              # Phase 1: benchmark construction (8 steps)
-│   ├── pipeline_novelty.py      # Novelty assessment pipeline
-│   ├── config.py                # Configuration management (YAML + env vars)
-│   ├── reproducibility.py       # Checksums, audit logging, seeds
-│   │
-│   ├── ingestion/               # Data acquisition (3 sources)
-│   │   ├── ros.py              # Reliance on Science (Zenodo)
-│   │   ├── patentsview.py      # USPTO PatentsView API
-│   │   └── openalex.py         # OpenAlex scientific papers
-│   │
-│   ├── processing/              # Data processing
-│   │   ├── patents.py          # Patent filtering, claim extraction
-│   │   ├── papers.py           # Paper validation, metadata
-│   │   ├── linking.py          # Citation linking
-│   │   ├── chemical_index.py   # Morgan fingerprints, FAISS index
-│   │   ├── sequence_index.py   # BLAST database, sequence search
-│   │   └── ...                 # Patent IDs, NPL parsing, claim mapping
-│   │
-│   ├── retrieval/               # SOTA retrieval (8 methods)
-│   │   ├── dense.py            # Dense embedding retrieval
-│   │   ├── hybrid.py           # BM25 + dense fusion (RRF)
-│   │   ├── splade.py           # Learned sparse retrieval
-│   │   ├── colbert.py          # Late interaction
-│   │   ├── hyde.py             # HyDE query expansion
-│   │   ├── molecular.py        # Chemical fingerprint search
-│   │   ├── sequence.py         # BLAST + PLM sequence search
-│   │   └── reranker.py         # Cross-encoder reranking
-│   │
-│   ├── groundtruth/             # Relevance judgment construction
-│   │   ├── relevance.py        # Graded relevance assignment
-│   │   ├── temporal.py         # Prior art date validation
-│   │   └── stratification.py   # Domain-stratified evaluation
-│   │
-│   ├── benchmark/               # Output formatting
-│   │   ├── sampling.py         # Stratified query sampling
-│   │   ├── splits.py           # Train/dev/test splits
-│   │   └── beir_format.py      # BEIR JSON Lines output
-│   │
-│   ├── evaluation/              # Metrics and baselines
-│   │   ├── metrics.py          # nDCG, MAP, MRR, P@k, R@k
-│   │   ├── bm25.py             # BM25 baseline evaluator
-│   │   ├── dense.py            # Dense retrieval evaluator
-│   │   ├── hybrid.py           # Hybrid fusion evaluator
-│   │   ├── reranker.py         # Reranking evaluator
-│   │   ├── ablation.py         # Ablation studies
-│   │   ├── error_analysis.py   # Failure analysis
-│   │   └── trimodal_retrieval.py # Trimodal fusion evaluator
-│   │
-│   └── reasoning/               # LLM-powered analysis
-│       ├── claim_parser.py     # Patent claim parsing
-│       ├── novelty_reasoner.py # Anticipation/obviousness reasoning
-│       └── explanation_generator.py # Report generation
-│
-├── scripts/
-│   ├── test_with_mock_data.py       # End-to-end mock test
-│   └── test_retrieval_pipeline.py   # Retrieval method tests
-│
-└── tests/                       # pytest test suite
-```
-
-## Benchmarks
-
-### Relevance Grades
-
-| Grade | Legal Standard | Description |
-|-------|---------------|-------------|
-| **3** | 35 USC §102 / EPO Cat. X | Novelty-destroying anticipation |
-| **2** | 35 USC §103 / EPO Cat. Y | Obviousness (with combination) |
-| **1** | Background | Relevant context, not prior art |
-| **0** | Irrelevant | No relevance to claim |
-
-### Evaluation Metrics
-
-| Metric | Description |
-|--------|-------------|
-| **nDCG@k** | Normalized Discounted Cumulative Gain (k=10, 100) |
-| **MAP** | Mean Average Precision |
-| **MRR** | Mean Reciprocal Rank |
-| **P@k** | Precision at k |
-| **R@k** | Recall at k |
-
-### Data Sources
-
-| Source | API | Content |
-|--------|-----|---------|
-| **Reliance on Science** | Zenodo | Patent-paper citation links with confidence scores |
-| **USPTO** | PatentsView | US biomedical patents with claims |
-| **OpenAlex** | REST API | Scientific paper metadata and abstracts |
+- **Phase 1 pipeline**: Complete (842K qrels, 1,984 queries, 158K docs)
+- **BM25 baseline**: Running on test split
+- **LLM evaluation framework**: 7 experiment types implemented
+- **Agent dual retrieval**: Implemented, ready for evaluation
 
 ## Dependencies
 
-**Core** (always required):
-`httpx`, `polars`, `pyyaml`, `pydantic`, `diskcache`, `tqdm`, `python-dotenv`, `rank-bm25`
+**Core**: httpx, polars, pyyaml, pydantic, diskcache, tqdm, rank-bm25
 
-**Evaluation** (optional — for neural retrieval):
-`sentence-transformers`, `faiss-cpu`, `torch`
+**Evaluation**: sentence-transformers, faiss-cpu, torch
 
-**Advanced** (optional — for chemical structure search):
-`rdkit`
+**LLM**: openai, anthropic, google-genai, scipy
+
+**Advanced**: rdkit (chemical structures)
+
+Python 3.11–3.12 required.
 
 ## Citation
 
 ```bibtex
 @software{biopat2026,
   author    = {BioPAT Contributors},
-  title     = {{BioPAT}: Biomedical Patent-Article Trimodal Benchmark},
+  title     = {{BioPAT}: Biomedical Patent-to-Article Retrieval Benchmark},
   year      = {2026},
   publisher = {GitHub},
-  url       = {https://github.com/VibeCodingScientist/BioPAT-Benchmark},
+  url       = {https://github.com/VibeCodingScientist/BioPAT-Benchmark}
 }
 ```
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details.
-
----
-
-<p align="center">
-  <sub>Built for the era of Agentic Science</sub>
-</p>
+MIT License — see [LICENSE](LICENSE) for details.

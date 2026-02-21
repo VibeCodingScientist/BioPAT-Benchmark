@@ -1,4 +1,4 @@
-"""LLM Benchmark Runner — orchestrates all 6 experiment types.
+"""LLM Benchmark Runner — orchestrates all 7 experiment types.
 
 Evaluates frontier LLMs on the BioPAT benchmark across:
   1. BM25 baseline (no LLM)
@@ -7,6 +7,7 @@ Evaluates frontier LLMs on the BioPAT benchmark across:
   4. Listwise LLM reranking (per LLM)
   5. LLM relevance judgment (per LLM)
   6. Full novelty assessment (per LLM)
+  7. Agent-based dual retrieval (per LLM)
 """
 
 import json
@@ -626,6 +627,149 @@ Respond with ONLY a JSON object: {{"score": <0-3>, "reasoning": "..."}}"""
         self._save_checkpoint(cp_name, result.__dict__)
         return result
 
+    # --- Experiment 7: Agent-based Dual Retrieval ---
+
+    def run_agent_experiment(
+        self,
+        model_spec: ModelSpec,
+        max_queries: Optional[int] = 200,
+        query_type: str = "A",
+        max_search_calls: int = 5,
+        search_top_k: int = 20,
+        final_list_size: int = 100,
+        k_values: Optional[List[int]] = None,
+    ) -> ExperimentResult:
+        """Run agent-based dual retrieval: LLM iteratively searches papers + patents.
+
+        Args:
+            model_spec: Model to evaluate.
+            max_queries: Max queries to evaluate (subsampled).
+            query_type: "A" (patent→papers) or "B" (paper→patents).
+            max_search_calls: Max BM25 searches per query.
+            search_top_k: Results per search call.
+            final_list_size: Size of final ranked list.
+            k_values: Cutoff values for metrics.
+        """
+        safe = model_spec.name
+        cp_name = f"exp7_agent_{safe}_type{query_type}"
+        if self._has_checkpoint(cp_name):
+            return ExperimentResult(**self._load_checkpoint(cp_name))
+
+        logger.info(
+            "Experiment 7: Agent retrieval with %s (Type %s)",
+            model_spec.display_name, query_type,
+        )
+        k_values = k_values or [10, 50, 100]
+        t0 = time.time()
+
+        from biopat.llm import create_provider
+        from biopat.evaluation.agent_retrieval import (
+            AgentConfig, DualCorpusSearchTool, RetrievalAgent,
+            results_to_qrels_format,
+        )
+        from biopat.evaluation.agent_metrics import compute_agent_metrics
+        from biopat.evaluation.dual_qrels import build_dual_corpus, invert_qrels
+
+        # Build dual corpus (papers + patents)
+        dual_corpus = build_dual_corpus(str(self.benchmark_dir))
+        doc_types = {did: doc["doc_type"] for did, doc in dual_corpus.items()}
+
+        # Select queries and qrels based on type
+        if query_type == "B":
+            inverted = invert_qrels(str(self.benchmark_dir))
+            from biopat.evaluation.dual_qrels import select_type_b_queries
+            available_queries = select_type_b_queries(
+                str(self.benchmark_dir), inverted, max_queries=max_queries or 200,
+                seed=self.seed,
+            )
+            eval_qrels = inverted
+        else:
+            # Type A: patent claims as queries (default)
+            available_queries = dict(self.queries)
+            eval_qrels = dict(self.qrels)
+
+        queries = self._subsample_queries_from(available_queries, max_queries)
+
+        # Build search tool (BM25 over dual corpus)
+        search_tool = DualCorpusSearchTool(dual_corpus)
+
+        # Create agent
+        provider = create_provider(model_spec.provider, model=model_spec.model_id)
+        agent_config = AgentConfig(
+            max_search_calls=max_search_calls,
+            search_top_k=search_top_k,
+            final_list_size=final_list_size,
+        )
+        agent = RetrievalAgent(
+            provider=provider,
+            search_tool=search_tool,
+            config=agent_config,
+            cost_tracker=self.cost_tracker,
+        )
+
+        # Run agent on each query
+        traces = []
+        for i, (qid, text) in enumerate(queries.items()):
+            logger.info(
+                "  Agent query %d/%d: %s", i + 1, len(queries), qid,
+            )
+            trace = agent.run(qid, text)
+            traces.append(trace)
+
+            # Periodic checkpoint
+            if (i + 1) % 25 == 0:
+                self._save_checkpoint(
+                    f"{cp_name}_partial_{i+1}",
+                    {"traces": [t.to_dict() for t in traces]},
+                )
+
+        # Convert traces to standard results format
+        results = results_to_qrels_format(traces)
+
+        # Filter qrels to evaluated queries
+        filtered_qrels = {qid: eval_qrels[qid] for qid in queries if qid in eval_qrels}
+
+        # Compute metrics
+        metrics = compute_agent_metrics(
+            results=results,
+            qrels=filtered_qrels,
+            doc_types=doc_types,
+            traces=traces,
+            k_values=k_values,
+        )
+
+        # Save traces
+        traces_path = self.results_dir / f"agent_traces_{safe}_type{query_type}.json"
+        with open(traces_path, "w") as f:
+            json.dump([t.to_dict() for t in traces], f, indent=2, default=str)
+
+        result = ExperimentResult(
+            experiment=f"agent_retrieval_type{query_type}",
+            model=model_spec.display_name,
+            metrics=metrics,
+            cost_usd=sum(t.total_cost_usd for t in traces),
+            num_queries=len(queries),
+            elapsed_seconds=time.time() - t0,
+            metadata={
+                "query_type": query_type,
+                "max_search_calls": max_search_calls,
+                "avg_search_calls": metrics.get("avg_search_calls", 0),
+                "traces_path": str(traces_path),
+            },
+        )
+        self._save_checkpoint(cp_name, result.__dict__)
+        return result
+
+    def _subsample_queries_from(
+        self, queries: Dict[str, str], max_queries: Optional[int],
+    ) -> Dict[str, str]:
+        """Subsample from an arbitrary query dict."""
+        if max_queries is None or max_queries >= len(queries):
+            return dict(queries)
+        rng = random.Random(self.seed)
+        sampled_ids = rng.sample(sorted(queries.keys()), max_queries)
+        return {qid: queries[qid] for qid in sampled_ids}
+
     # --- Run all experiments ---
 
     def run_all(
@@ -730,6 +874,23 @@ Respond with ONLY a JSON object: {{"score": <0-3>, "reasoning": "..."}}"""
                         max_refs=exp.get("max_refs_per_patent", 10),
                     ))
 
+        # Exp 7: Agent-based dual retrieval
+        exp = experiments.get("agent_retrieval", {})
+        if exp.get("enabled", False):
+            agent_params = exp.get("agent_params", {})
+            for query_type in exp.get("query_types", ["A"]):
+                for model_key in exp.get("llm_models", []):
+                    if model_key in models:
+                        results.append(self.run_agent_experiment(
+                            model_spec=models[model_key],
+                            max_queries=exp.get("max_queries", 200),
+                            query_type=query_type,
+                            max_search_calls=agent_params.get("max_search_calls", 5),
+                            search_top_k=agent_params.get("search_top_k", 20),
+                            final_list_size=agent_params.get("final_list_size", 100),
+                            k_values=exp.get("k_values"),
+                        ))
+
         # Save summary
         self._save_summary(results)
         self.cost_tracker.save(str(self.results_dir / "cost_tracker.json"))
@@ -806,6 +967,24 @@ Respond with ONLY a JSON object: {{"score": <0-3>, "reasoning": "..."}}"""
                         metrics={}, cost_usd=cost, num_queries=n,
                         metadata={"dry_run": True},
                     ))
+
+        # Agent retrieval: ~4 LLM calls per query, ~1500 tokens avg each
+        exp = experiments.get("agent_retrieval", {})
+        if exp.get("enabled"):
+            n = exp.get("max_queries", 200)
+            calls_per_query = 4  # plan + refine + rank (+ optional refine)
+            for mk in exp.get("llm_models", []):
+                if mk in models:
+                    m = models[mk]
+                    pricing = PRICING.get(m.model_id, (5.0, 15.0))
+                    cost = n * calls_per_query * (1500 * pricing[0] + 800 * pricing[1]) / 1_000_000
+                    for qt in exp.get("query_types", ["A"]):
+                        estimates.append(ExperimentResult(
+                            experiment=f"agent_retrieval_type{qt}",
+                            model=m.display_name,
+                            metrics={}, cost_usd=cost, num_queries=n,
+                            metadata={"dry_run": True, "query_type": qt},
+                        ))
 
         total = sum(e.cost_usd for e in estimates)
         logger.info("Estimated total cost: $%.2f", total)
