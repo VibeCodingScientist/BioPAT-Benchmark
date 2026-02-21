@@ -11,6 +11,7 @@ services:
       - ./results:/app/results
       - ./logs:/app/logs
       - ./configs:/app/configs
+      - ./src:/app/src
     working_dir: /app
     # Override CMD as needed:
     #   docker-compose run benchmark python -m biopat.pipeline --config configs/default.yaml

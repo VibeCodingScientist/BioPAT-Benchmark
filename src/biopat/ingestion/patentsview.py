@@ -446,13 +446,15 @@ class PatentsViewClient:
                     if "ipc_class" in ipc:
                         ipc_codes.append(ipc["ipc_class"])
 
-            # Extract priority date from application
+            # Extract priority/filing date from application
+            # v1 API returns application[].filing_date (not earliest_application_date)
             priority_date = None
             filing_date = None
             if "application" in p and p["application"]:
                 app = p["application"][0] if isinstance(p["application"], list) else p["application"]
-                priority_date = app.get("earliest_application_date")
-                filing_date = app.get("application_date")
+                filing_date = app.get("filing_date")
+                # Use filing_date as priority_date fallback (earliest filing date)
+                priority_date = app.get("earliest_application_date") or filing_date
 
             # Claims not available from PatentsView v1 API
             claims = []

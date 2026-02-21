@@ -273,8 +273,23 @@ class Phase1Pipeline:
             pl.col("openalex_id").is_in(paper_ids)
         )
 
-        # Create patent-level links with paper dates
+        # Create patent-level links with patent dates
+        # Use priority_date when available, fall back to patent_date (grant date)
         patents_with_dates = claims_df.select(["patent_id", "priority_date"]).unique()
+
+        # If priority_date is entirely null, try to get patent_date from patents checkpoint
+        if patents_with_dates["priority_date"].null_count() == len(patents_with_dates):
+            patents_cp = self.config.paths.checkpoint_dir / "step2_patents.parquet"
+            if patents_cp.exists():
+                patents_raw = pl.read_parquet(patents_cp)
+                if "patent_date" in patents_raw.columns:
+                    logger.warning(
+                        "priority_date is null for all patents, falling back to patent_date (grant date)"
+                    )
+                    date_lookup = patents_raw.select(["patent_id", "patent_date"]).unique()
+                    patents_with_dates = patents_with_dates.drop("priority_date").join(
+                        date_lookup, on="patent_id", how="left"
+                    ).rename({"patent_date": "priority_date"})
 
         links = ros_filtered.join(
             patents_with_dates,
@@ -286,6 +301,17 @@ class Phase1Pipeline:
             how="inner"
         ).rename({"openalex_id": "paper_id"})
 
+        # Map RoS examiner_applicant (front/body/both) to source (examiner/applicant)
+        if "examiner_applicant" in links.columns:
+            links = links.with_columns(
+                pl.when(pl.col("examiner_applicant").is_in(["front", "both"]))
+                .then(pl.lit("examiner"))
+                .when(pl.col("examiner_applicant") == "body")
+                .then(pl.lit("applicant"))
+                .otherwise(pl.lit("unknown"))
+                .alias("source")
+            )
+
         # Validate temporal constraints
         valid_links, report = self.temporal_validator.validate_and_report(
             links,
@@ -294,10 +320,13 @@ class Phase1Pipeline:
         )
 
         # Expand to claim level
+        select_cols = ["patent_id", "paper_id", "confidence"]
+        if "source" in valid_links.columns:
+            select_cols.append("source")
         expanded_links = (
             claims_df.select(["query_id", "patent_id"])
             .join(
-                valid_links.select(["patent_id", "paper_id", "confidence", "source"] if "source" in valid_links.columns else ["patent_id", "paper_id", "confidence"]),
+                valid_links.select(select_cols),
                 on="patent_id",
                 how="inner"
             )

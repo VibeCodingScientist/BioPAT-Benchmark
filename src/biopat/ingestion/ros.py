@@ -176,6 +176,16 @@ class RelianceOnScienceLoader:
                 )
             )
 
+        # Normalize OpenAlex IDs to W-prefixed format
+        # RoS uses bare numeric "2100342970"; OpenAlex API returns "W2100342970"
+        if "openalex_id" in df.columns:
+            from biopat.ingestion.openalex import normalize_openalex_id
+            df = df.with_columns(
+                pl.col("openalex_id").map_elements(
+                    normalize_openalex_id, return_dtype=pl.Utf8
+                )
+            )
+
         # Filter by confidence
         df = df.filter(pl.col("confidence") >= confidence_threshold)
 
