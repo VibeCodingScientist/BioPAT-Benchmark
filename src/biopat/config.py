@@ -41,7 +41,6 @@ class ApiConfig(BaseModel):
     patentsview_keys: List[str] = Field(default_factory=list)
     ncbi_key: Optional[str] = Field(default=None)
     openalex_mailto: Optional[str] = Field(default=None)
-    openalex_api_key: Optional[str] = Field(default=None)
     use_bulk_data: bool = Field(default=True)
 
     def __init__(self, **data):
@@ -74,8 +73,6 @@ class ApiConfig(BaseModel):
             object.__setattr__(self, 'ncbi_key', os.environ.get("NCBI_API_KEY"))
         if self.openalex_mailto is None:
             object.__setattr__(self, 'openalex_mailto', os.environ.get("OPENALEX_MAILTO"))
-        if self.openalex_api_key is None:
-            object.__setattr__(self, 'openalex_api_key', os.environ.get("OPENALEX_API_KEY"))
 
 
 class Phase1Config(BaseModel):
@@ -182,6 +179,27 @@ class EvaluationConfig(BaseModel):
         arbitrary_types_allowed = True
 
 
+class NovExConfig(BaseModel):
+    """Configuration for NovEx benchmark (3-tier prior art evaluation)."""
+    enabled: bool = False
+    data_dir: Path = Field(default=Path("data/novex"))
+    corpus_dir: Optional[Path] = None  # Defaults to Phase 1 benchmark corpus
+    results_dir: Path = Field(default=Path("data/novex/results"))
+    budget_usd: float = 350.0
+    seed: int = 42
+    # Curation
+    candidate_overselect: int = 120
+    min_quality_score: float = 3.5
+    # Annotation
+    candidates_per_statement: int = 50
+    # Evaluation
+    tier1_top_k: int = 100
+    tier1_k_values: List[int] = [10, 50, 100]
+
+    class Config:
+        arbitrary_types_allowed = True
+
+
 class BioPatConfig(BaseModel):
     """Main configuration for BioPAT benchmark."""
     phase: str = "phase1"
@@ -192,6 +210,7 @@ class BioPatConfig(BaseModel):
     advanced: AdvancedConfig = Field(default_factory=AdvancedConfig)
     llm: LLMConfig = Field(default_factory=LLMConfig)
     evaluation: EvaluationConfig = Field(default_factory=EvaluationConfig)
+    novex: NovExConfig = Field(default_factory=NovExConfig)
 
     @classmethod
     def load(cls, config_path: str = "configs/default.yaml") -> "BioPatConfig":

@@ -88,6 +88,13 @@ src/biopat/
 │   ├── novelty_reasoner.py  #   Map prior art to claims, assess novelty
 │   └── explanation_generator.py  # Generate novelty reports
 │
+├── novex/                   # NovEx 3-tier prior art discovery benchmark
+│   ├── curate.py            #   Statement curation pipeline (3-LLM consensus)
+│   ├── annotation.py        #   Multi-LLM annotation protocol (Fleiss' kappa)
+│   ├── benchmark.py         #   BEIR-compatible benchmark loader
+│   ├── evaluator.py         #   Tier 1/2/3 evaluation harness
+│   └── analysis.py          #   Vocabulary gap, cross-domain, agreement analysis
+│
 └── llm/                     # Unified LLM provider interface
     ├── providers.py         #   OpenAI, Anthropic, Google with consistent API
     └── cost_tracker.py      #   Token tracking, cost estimation, budget enforcement
@@ -248,12 +255,54 @@ Defines all 7 experiments, model selection, budget limits, and evaluation parame
 ### `configs/experiments_agent.yaml` — Agent experiment only
 Focused config for running just the agent dual-retrieval experiment across 3 models.
 
+### `configs/novex.yaml` — NovEx benchmark configuration
+Curation targets, annotation protocol models, 3-tier evaluation setup, and budget limits.
+
+### Phase 3: BioPAT-NovEx — Prior Art Discovery Benchmark
+
+**NovEx** extends BioPAT with a 3-tier evaluation framework for prior art discovery across scientific and patent literature:
+
+| Tier | Task | Input | Output | Metrics |
+|------|------|-------|--------|---------|
+| **1** | Retrieval | Scientific statement | Ranked documents | Recall@k, NDCG@10, MAP, per-doc-type recall |
+| **2** | Relevance | Statement + 50 candidates | 0-3 relevance grade | Cohen's kappa, Kendall's tau, accuracy, MAE |
+| **3** | Novelty | Statement + prior art set | NOVEL / ANTICIPATED / PARTIAL | Per-class F1, accuracy, macro-F1 |
+
+100 expert-curated statements (stratified: 35 multi-patent examiner, 25 single-patent, 15 cross-domain, 15 applicant-only, 10 negative controls), evaluated with multi-LLM annotation protocol (GPT-4o + Claude Sonnet 4.5 + Gemini 2.5 Pro consensus).
+
+```bash
+# Step 1: Curate statements (3-LLM extraction + quality filter)
+python scripts/curate_statements.py --config configs/novex.yaml
+
+# Step 2: Run all evaluations (8 retrieval methods × 3 LLMs × 3 tiers)
+python scripts/run_novex.py --config configs/novex.yaml
+
+# Step 3: Generate paper figures and tables
+python scripts/analyze_novex.py --config configs/novex.yaml
+
+# Single tier/method
+python scripts/run_novex.py --tier 1 --method bm25
+python scripts/run_novex.py --tier 2 --model gpt-4o
+python scripts/run_novex.py --dry-run  # Cost estimate only
+```
+
+**NovEx architecture:**
+```
+src/biopat/novex/
+├── curate.py       # Statement selection, 3-LLM extraction, ground truth
+├── annotation.py   # Multi-LLM relevance judgment protocol (Fleiss' kappa)
+├── benchmark.py    # BEIR-compatible loader with domain/category/difficulty filters
+├── evaluator.py    # Tier 1/2/3 evaluation harness
+└── analysis.py     # Vocabulary gap, cross-domain, agreement analysis, LaTeX tables
+```
+
 ## Project Status
 
 - **Phase 1 pipeline**: Complete (842K qrels, 1,984 queries, 158K docs)
 - **BM25 baseline**: Running on test split
 - **LLM evaluation framework**: 7 experiment types implemented
 - **Agent dual retrieval**: Implemented, ready for evaluation
+- **NovEx benchmark**: Framework implemented, ready for curation and evaluation
 
 ## Dependencies
 

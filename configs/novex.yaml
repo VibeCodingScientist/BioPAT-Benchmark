@@ -1,0 +1,113 @@
+# BioPAT-NovEx Benchmark Configuration
+# 100 expert-curated statements, 3 evaluation tiers
+
+# --- Curation Pipeline ---
+curation:
+  qrels_path: data/checkpoints/step5_qrels.parquet
+  papers_path: data/checkpoints/step4_papers.parquet
+  patents_path: data/checkpoints/step3_patents.parquet
+  corpus_dir: data/benchmark
+  output_dir: data/novex
+  budget_usd: 50.0
+  seed: 42
+  # Quality thresholds
+  min_quality_score: 3.5       # Average of self-contained, specific, faithful (1-5)
+  candidate_overselect: 120    # Select 120 to filter to 100
+  # Category targets (sum = 100)
+  categories:
+    multi_patent_examiner: 35
+    single_patent_examiner: 25
+    cross_domain: 15
+    applicant_only: 15
+    negative_control: 10
+  # Domain distribution targets
+  domains:
+    A61: 40
+    C07: 30
+    C12: 30
+
+# --- Annotation Protocol ---
+annotation:
+  output_dir: data/novex/annotation
+  budget_usd: 100.0
+  candidates_per_statement: 50   # Number of docs to judge per statement
+  models:
+    openai:
+      provider: openai
+      model_id: gpt-4o
+    anthropic:
+      provider: anthropic
+      model_id: claude-sonnet-4-5-20250929
+    google:
+      provider: google
+      model_id: gemini-2.5-pro
+
+# --- Evaluation ---
+evaluation:
+  results_dir: data/novex/results
+  budget_usd: 200.0
+  seed: 42
+
+  # Tier 1: Retrieval
+  tier1:
+    top_k: 100
+    k_values: [10, 50, 100]
+    bm25:
+      enabled: true
+    dense:
+      enabled: true
+      models:
+        - BAAI/bge-base-en-v1.5
+    hybrid:
+      enabled: true
+      fusion_method: rrf
+    hyde:
+      enabled: true
+    rerank:
+      enabled: true
+      bm25_top_k: 100
+    agent:
+      enabled: true
+      max_search_calls: 5
+      search_top_k: 20
+    # LLM models for HyDE, reranking, agent
+    llm_models:
+      - provider: openai
+        model_id: gpt-4o
+      - provider: anthropic
+        model_id: claude-sonnet-4-5-20250929
+      - provider: google
+        model_id: gemini-2.5-pro
+
+  # Tier 2: Relevance Assessment
+  tier2:
+    max_pairs: null  # null = all (100 statements × 50 docs = 5000)
+    models:
+      - provider: openai
+        model_id: gpt-4o
+      - provider: anthropic
+        model_id: claude-sonnet-4-5-20250929
+      - provider: google
+        model_id: gemini-2.5-pro
+
+  # Tier 3: Novelty Determination
+  tier3:
+    run_zero_shot: true  # Also run without prior art context
+    models:
+      - provider: openai
+        model_id: gpt-4o
+      - provider: anthropic
+        model_id: claude-sonnet-4-5-20250929
+      - provider: google
+        model_id: gemini-2.5-pro
+
+# --- Analysis ---
+analysis:
+  output_dir: data/novex/analysis
+  generate_latex: true
+  generate_figures: true
+
+# --- Budget ---
+budget:
+  max_total_usd: 350.0    # Curation + Annotation + Evaluation
+  warn_at_usd: 300.0
