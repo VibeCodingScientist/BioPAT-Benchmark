@@ -29,23 +29,24 @@ curation:
 # --- Annotation Protocol ---
 annotation:
   output_dir: data/novex/annotation
-  budget_usd: 100.0
+  budget_usd: 200.0
   candidates_per_statement: 50   # Number of docs to judge per statement
+  thinking: true                  # Enable extended reasoning for judgments
   models:
     openai:
       provider: openai
-      model_id: gpt-4o
+      model_id: gpt-5.2
     anthropic:
       provider: anthropic
-      model_id: claude-sonnet-4-5-20250929
+      model_id: claude-sonnet-4-6
     google:
       provider: google
-      model_id: gemini-2.5-pro
+      model_id: gemini-3-pro-preview
 
 # --- Evaluation ---
 evaluation:
   results_dir: data/novex/results
-  budget_usd: 200.0
+  budget_usd: 400.0
   seed: 42
 
   # Tier 1: Retrieval
@@ -70,36 +71,38 @@ evaluation:
       enabled: true
       max_search_calls: 5
       search_top_k: 20
-    # LLM models for HyDE, reranking, agent
+    # LLM models for HyDE, reranking, agent (no thinking — generation tasks)
     llm_models:
       - provider: openai
-        model_id: gpt-4o
+        model_id: gpt-5.2
       - provider: anthropic
-        model_id: claude-sonnet-4-5-20250929
+        model_id: claude-sonnet-4-6
       - provider: google
-        model_id: gemini-2.5-pro
+        model_id: gemini-3-pro-preview
 
-  # Tier 2: Relevance Assessment
+  # Tier 2: Relevance Assessment (thinking enabled for deep reasoning)
   tier2:
     max_pairs: null  # null = all (100 statements × 50 docs = 5000)
+    thinking: true
     models:
       - provider: openai
-        model_id: gpt-4o
+        model_id: gpt-5.2
       - provider: anthropic
-        model_id: claude-sonnet-4-5-20250929
+        model_id: claude-sonnet-4-6
       - provider: google
-        model_id: gemini-2.5-pro
+        model_id: gemini-3-pro-preview
 
-  # Tier 3: Novelty Determination
+  # Tier 3: Novelty Determination (thinking enabled for synthesis)
   tier3:
     run_zero_shot: true  # Also run without prior art context
+    thinking: true
     models:
       - provider: openai
-        model_id: gpt-4o
+        model_id: gpt-5.2
       - provider: anthropic
-        model_id: claude-sonnet-4-5-20250929
+        model_id: claude-sonnet-4-6
       - provider: google
-        model_id: gemini-2.5-pro
+        model_id: gemini-3-pro-preview
 
 # --- Analysis ---
 analysis:
@@ -109,5 +112,5 @@ analysis:
 
 # --- Budget ---
 budget:
-  max_total_usd: 350.0    # Curation + Annotation + Evaluation
-  warn_at_usd: 300.0
+  max_total_usd: 700.0    # Curation + Annotation + Evaluation (with thinking)
+  warn_at_usd: 600.0

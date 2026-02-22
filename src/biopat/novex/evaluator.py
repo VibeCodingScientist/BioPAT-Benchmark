@@ -236,7 +236,8 @@ class NovExEvaluator(CheckpointMixin):
                     try:
                         parsed = parse_llm_json(provider, prompt,
                             "Patent relevance expert. Output JSON: {\"score\": <0-3>}",
-                            self.cost_tracker, f"{qid}_{did}", "tier2_eval")
+                            self.cost_tracker, f"{qid}_{did}", "tier2_eval",
+                            thinking=True)
                         preds[qid][did] = min(3, max(0, int(parsed.get("score", 0))))
                     except Exception:
                         pass
@@ -300,7 +301,8 @@ class NovExEvaluator(CheckpointMixin):
                 try:
                     parsed = parse_llm_json(provider, prompt,
                         'Novelty expert. Output JSON: {"label": "<>", "confidence": <0-1>}',
-                        self.cost_tracker, qid, "tier3_eval")
+                        self.cost_tracker, qid, "tier3_eval",
+                        thinking=True)
                     preds[qid] = parsed.get("label", "NOVEL")
                 except Exception:
                     pass

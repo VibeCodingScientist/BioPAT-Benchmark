@@ -32,9 +32,11 @@ class CheckpointMixin:
             return json.load(f)
 
 
-def parse_llm_json(provider, prompt: str, system: str, cost_tracker, query_id: str, task: str) -> Dict[str, Any]:
+def parse_llm_json(provider, prompt: str, system: str, cost_tracker, query_id: str, task: str,
+                    thinking: bool = False) -> Dict[str, Any]:
     """Call provider.generate(), track cost, parse JSON from response."""
-    resp = provider.generate(prompt=prompt, system_prompt=system, max_tokens=300, temperature=0.0)
+    resp = provider.generate(prompt=prompt, system_prompt=system, max_tokens=300,
+                             temperature=0.0, thinking=thinking)
     cost_tracker.record_response(resp, task=task, query_id=query_id)
     text = resp.text.strip()
     # Strip markdown fences

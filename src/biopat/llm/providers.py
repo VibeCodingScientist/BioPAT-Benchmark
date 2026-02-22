@@ -18,21 +18,21 @@ logger = logging.getLogger(__name__)
 # Token pricing per million tokens (input, output) in USD
 PRICING = {
     # OpenAI
+    "gpt-5.2": (1.75, 14.00),
     "gpt-4o": (2.50, 10.00),
     "gpt-4o-mini": (0.15, 0.60),
     "gpt-4-turbo": (10.00, 30.00),
     "gpt-4": (30.00, 60.00),
     "gpt-3.5-turbo": (0.50, 1.50),
-    "gpt-5.2": (2.50, 10.00),  # Estimated — same tier as 4o
     # Anthropic
-    "claude-opus-4-6": (15.00, 75.00),
-    "claude-sonnet-4-5-20250929": (3.00, 15.00),
     "claude-sonnet-4-6": (3.00, 15.00),
-    "claude-haiku-4-5-20251001": (0.80, 4.00),
-    "claude-3-opus-20240229": (15.00, 75.00),
+    "claude-opus-4-6": (5.00, 25.00),
+    "claude-sonnet-4-5-20250929": (3.00, 15.00),
+    "claude-haiku-4-5-20251001": (1.00, 5.00),
     "claude-3-5-sonnet-20241022": (3.00, 15.00),
     "claude-3-haiku-20240307": (0.25, 1.25),
     # Google Gemini
+    "gemini-3-pro-preview": (2.00, 12.00),
     "gemini-2.5-pro": (1.25, 10.00),
     "gemini-2.0-flash": (0.10, 0.40),
     "gemini-1.5-pro": (1.25, 5.00),
@@ -89,8 +89,9 @@ class LLMProvider(ABC):
         system_prompt: Optional[str] = None,
         max_tokens: int = 2000,
         temperature: float = 0.1,
+        thinking: bool = False,
     ) -> LLMResponse:
-        """Generate a text completion."""
+        """Generate a text completion. If thinking=True, enable extended reasoning."""
 
     def generate_json(
         self,
@@ -121,11 +122,11 @@ class LLMProvider(ABC):
 
 
 class OpenAIProvider(LLMProvider):
-    """OpenAI API provider (GPT-4o, GPT-5.2, etc.)."""
+    """OpenAI API provider (GPT-5.2, GPT-4o, etc.)."""
 
     provider_name = "openai"
 
-    def __init__(self, model: str = "gpt-4o", api_key: Optional[str] = None):
+    def __init__(self, model: str = "gpt-5.2", api_key: Optional[str] = None):
         super().__init__(model, api_key or os.environ.get("OPENAI_API_KEY"))
         try:
             import openai
@@ -139,19 +140,25 @@ class OpenAIProvider(LLMProvider):
         system_prompt: Optional[str] = None,
         max_tokens: int = 2000,
         temperature: float = 0.1,
+        thinking: bool = False,
     ) -> LLMResponse:
         messages = []
         if system_prompt:
             messages.append({"role": "system", "content": system_prompt})
         messages.append({"role": "user", "content": prompt})
 
+        kwargs: Dict[str, Any] = {
+            "model": self.model,
+            "messages": messages,
+            "max_tokens": max_tokens,
+        }
+        if thinking:
+            kwargs["reasoning_effort"] = "high"
+        else:
+            kwargs["temperature"] = temperature
+
         t0 = time.perf_counter()
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=messages,
-            max_tokens=max_tokens,
-            temperature=temperature,
-        )
+        response = self.client.chat.completions.create(**kwargs)
         latency = (time.perf_counter() - t0) * 1000
 
         usage = response.usage
@@ -171,11 +178,11 @@ class OpenAIProvider(LLMProvider):
 
 
 class AnthropicProvider(LLMProvider):
-    """Anthropic API provider (Claude Opus 4.6, Sonnet 4.5, etc.)."""
+    """Anthropic API provider (Claude Sonnet 4.6, Opus 4.6, etc.)."""
 
     provider_name = "anthropic"
 
-    def __init__(self, model: str = "claude-sonnet-4-5-20250929", api_key: Optional[str] = None):
+    def __init__(self, model: str = "claude-sonnet-4-6", api_key: Optional[str] = None):
         super().__init__(model, api_key or os.environ.get("ANTHROPIC_API_KEY"))
         try:
             import anthropic
@@ -189,6 +196,7 @@ class AnthropicProvider(LLMProvider):
         system_prompt: Optional[str] = None,
         max_tokens: int = 2000,
         temperature: float = 0.1,
+        thinking: bool = False,
     ) -> LLMResponse:
         kwargs: Dict[str, Any] = {
             "model": self.model,
@@ -197,7 +205,10 @@ class AnthropicProvider(LLMProvider):
         }
         if system_prompt:
             kwargs["system"] = system_prompt
-        if temperature > 0:
+        if thinking:
+            kwargs["thinking"] = {"type": "adaptive"}
+            # Temperature must not be set with adaptive thinking
+        elif temperature > 0:
             kwargs["temperature"] = temperature
 
         t0 = time.perf_counter()
@@ -207,8 +218,17 @@ class AnthropicProvider(LLMProvider):
         input_tokens = response.usage.input_tokens
         output_tokens = response.usage.output_tokens
 
+        # With thinking enabled, response has multiple content blocks
+        text = ""
+        for block in response.content:
+            if block.type == "text":
+                text = block.text.strip()
+                break
+        if not text and response.content:
+            text = response.content[-1].text.strip() if hasattr(response.content[-1], "text") else ""
+
         return LLMResponse(
-            text=response.content[0].text.strip(),
+            text=text,
             model=self.model,
             provider=self.provider_name,
             input_tokens=input_tokens,
@@ -224,7 +244,7 @@ class GoogleProvider(LLMProvider):
 
     provider_name = "google"
 
-    def __init__(self, model: str = "gemini-2.5-pro", api_key: Optional[str] = None):
+    def __init__(self, model: str = "gemini-3-pro-preview", api_key: Optional[str] = None):
         super().__init__(model, api_key or os.environ.get("GOOGLE_API_KEY"))
         try:
             from google import genai
@@ -239,11 +259,14 @@ class GoogleProvider(LLMProvider):
         system_prompt: Optional[str] = None,
         max_tokens: int = 2000,
         temperature: float = 0.1,
+        thinking: bool = False,
     ) -> LLMResponse:
-        config = self._genai.types.GenerateContentConfig(
-            max_output_tokens=max_tokens,
-            temperature=temperature,
-        )
+        config_kwargs: Dict[str, Any] = {"max_output_tokens": max_tokens}
+        if thinking:
+            config_kwargs["thinking_config"] = self._genai.types.ThinkingConfig(thinking_level="HIGH")
+        else:
+            config_kwargs["temperature"] = temperature
+        config = self._genai.types.GenerateContentConfig(**config_kwargs)
         if system_prompt:
             config.system_instruction = system_prompt
 
