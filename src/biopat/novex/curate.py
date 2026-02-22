@@ -72,7 +72,7 @@ class StatementCurator(CheckpointMixin):
 
     def _get_provider(self, name: str):
         if name not in self._providers:
-            models = {"openai": "gpt-4o", "anthropic": "claude-sonnet-4-5-20250929", "google": "gemini-2.5-pro"}
+            models = {"openai": "gpt-5.2", "anthropic": "claude-sonnet-4-6", "google": "gemini-3-pro-preview"}
             self._providers[name] = create_provider(name, model=models[name])
         return self._providers[name]
 

@@ -29,9 +29,9 @@ NOVELTY_SYSTEM = (
 )
 
 DEFAULT_MODELS = {
-    "openai": {"provider": "openai", "model_id": "gpt-4o"},
-    "anthropic": {"provider": "anthropic", "model_id": "claude-sonnet-4-5-20250929"},
-    "google": {"provider": "google", "model_id": "gemini-2.5-pro"},
+    "openai": {"provider": "openai", "model_id": "gpt-5.2"},
+    "anthropic": {"provider": "anthropic", "model_id": "claude-sonnet-4-6"},
+    "google": {"provider": "google", "model_id": "gemini-3-pro-preview"},
 }
 
 
@@ -116,6 +116,7 @@ class AnnotationProtocol(CheckpointMixin):
                         parsed = parse_llm_json(
                             self._get_provider(mname), prompt, RELEVANCE_SYSTEM,
                             self.cost_tracker, f"{sid}_{did}", "tier2",
+                            thinking=True,
                         )
                         score = min(3, max(0, int(parsed.get("relevance_score", 0))))
                         scores[mname] = score
@@ -177,6 +178,7 @@ class AnnotationProtocol(CheckpointMixin):
                     parsed = parse_llm_json(
                         self._get_provider(mname), prompt, NOVELTY_SYSTEM,
                         self.cost_tracker, sid, "tier3",
+                        thinking=True,
                     )
                     label = parsed.get("novelty_label", "NOVEL")
                     labels[mname] = label
