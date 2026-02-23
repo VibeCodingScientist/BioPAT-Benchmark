@@ -147,10 +147,12 @@ class OpenAIProvider(LLMProvider):
             messages.append({"role": "system", "content": system_prompt})
         messages.append({"role": "user", "content": prompt})
 
+        # GPT-5+ uses max_completion_tokens; older models use max_tokens
+        token_key = "max_completion_tokens" if self.model.startswith("gpt-5") else "max_tokens"
         kwargs: Dict[str, Any] = {
             "model": self.model,
             "messages": messages,
-            "max_tokens": max_tokens,
+            token_key: max_tokens,
         }
         if thinking:
             kwargs["reasoning_effort"] = "high"

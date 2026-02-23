@@ -1,0 +1,15 @@
+{
+  "tier": 2,
+  "method": "relevance",
+  "model": "gpt-5.2",
+  "metrics": {
+    "accuracy": 0,
+    "mae": 0,
+    "weighted_kappa": 0,
+    "num_pairs": 0
+  },
+  "per_query": {},
+  "cost_usd": 0.0,
+  "elapsed_seconds": 1.0519719123840332,
+  "metadata": {}
+}

@@ -5,7 +5,7 @@
 curation:
   qrels_path: data/checkpoints/step5_qrels.parquet
   papers_path: data/checkpoints/step4_papers.parquet
-  patents_path: data/checkpoints/step3_patents.parquet
+  patents_path: data/checkpoints/step2_patents.parquet
   corpus_dir: data/benchmark
   output_dir: data/novex
   budget_usd: 50.0
@@ -56,14 +56,14 @@ evaluation:
     bm25:
       enabled: true
     dense:
-      enabled: true
+      enabled: false       # Requires GPU — skip on CPU VPS
       models:
         - BAAI/bge-base-en-v1.5
     hybrid:
-      enabled: true
+      enabled: false       # Requires dense index — skip on CPU VPS
       fusion_method: rrf
     hyde:
-      enabled: true
+      enabled: false       # Requires dense index — skip on CPU VPS
     rerank:
       enabled: true
       bm25_top_k: 100

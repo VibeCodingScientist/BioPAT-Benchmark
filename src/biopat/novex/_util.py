@@ -35,7 +35,10 @@ class CheckpointMixin:
 def parse_llm_json(provider, prompt: str, system: str, cost_tracker, query_id: str, task: str,
                     thinking: bool = False) -> Dict[str, Any]:
     """Call provider.generate(), track cost, parse JSON from response."""
-    resp = provider.generate(prompt=prompt, system_prompt=system, max_tokens=300,
+    import re
+    # Thinking tokens share the max_tokens budget — need much more headroom
+    max_tok = 4000 if thinking else 300
+    resp = provider.generate(prompt=prompt, system_prompt=system, max_tokens=max_tok,
                              temperature=0.0, thinking=thinking)
     cost_tracker.record_response(resp, task=task, query_id=query_id)
     text = resp.text.strip()
@@ -46,7 +49,16 @@ def parse_llm_json(provider, prompt: str, system: str, cost_tracker, query_id: s
         if lines and lines[-1].strip() == "```":
             lines = lines[:-1]
         text = "\n".join(lines)
-    return json.loads(text)
+    # Try direct parse first
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+    # Fallback: extract first JSON object via brace matching
+    match = re.search(r'\{[^{}]*\}', text)
+    if match:
+        return json.loads(match.group())
+    raise ValueError(f"No JSON found in response: {text[:200]}")
 
 
 def majority_vote(labels: Dict[str, Any]) -> tuple:

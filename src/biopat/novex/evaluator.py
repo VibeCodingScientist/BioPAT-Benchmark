@@ -63,9 +63,9 @@ class NovExEvaluator(CheckpointMixin):
             t0 = time.time()
             from biopat.evaluation.bm25 import BM25Evaluator
             ev = BM25Evaluator(benchmark_dir=str(self.benchmark.corpus_dir), results_dir=str(self.results_dir))
-            ev.corpus = self.benchmark.corpus
-            ev.queries = self.benchmark.queries
-            results = ev.retrieve(top_k=top_k)
+            ev.build_index(self.benchmark.corpus)
+            raw = ev.retrieve(queries=self.benchmark.queries, top_k=top_k)
+            results = _normalize_results(raw)
             m = self._tier1_metrics(results, k_values)
             return TierResult(tier=1, method="bm25", model="N/A", metrics=m,
                               per_query=self._tier1_per_query(results, k_values), elapsed_seconds=time.time()-t0)
@@ -123,11 +123,11 @@ class NovExEvaluator(CheckpointMixin):
             from biopat.evaluation.bm25 import BM25Evaluator
             from biopat.retrieval.reranker import LLMReranker
             ev = BM25Evaluator(benchmark_dir=str(self.benchmark.corpus_dir), results_dir=str(self.results_dir))
-            ev.corpus = self.benchmark.corpus
-            ev.queries = self.benchmark.queries
-            bm25 = ev.retrieve(top_k=bm25_top_k)
+            ev.build_index(self.benchmark.corpus)
+            bm25_raw = ev.retrieve(queries=self.benchmark.queries, top_k=bm25_top_k)
+            bm25 = _normalize_results(bm25_raw)
             provider = create_provider(provider_name, model=model_id)
-            reranker = LLMReranker(provider=provider)
+            reranker = LLMReranker(llm_provider=provider)
             results = {}
             for qid, cands in bm25.items():
                 results[qid] = reranker.rerank(self.benchmark.queries[qid], cands, self.benchmark.corpus, top_k)
@@ -145,8 +145,9 @@ class NovExEvaluator(CheckpointMixin):
             provider = create_provider(provider_name, model=model_id)
             tool = DualCorpusSearchTool(corpus=self.benchmark.corpus)
             agent = RetrievalAgent(provider=provider, search_tool=tool, config=AgentConfig(final_list_size=top_k))
-            traces = [agent.run(query=q, query_id=qid) for qid, q in self.benchmark.queries.items()]
-            results = results_to_qrels_format(traces)
+            traces = [agent.run(query_id=qid, query_text=q) for qid, q in self.benchmark.queries.items()]
+            raw = results_to_qrels_format(traces)
+            results = _normalize_results(raw)
             m = self._tier1_metrics(results, k_values)
             return TierResult(tier=1, method="agent", model=model_id, metrics=m,
                               per_query=self._tier1_per_query(results, k_values), elapsed_seconds=time.time()-t0)
@@ -303,8 +304,10 @@ class NovExEvaluator(CheckpointMixin):
                         'Novelty expert. Output JSON: {"label": "<>", "confidence": <0-1>}',
                         self.cost_tracker, qid, "tier3_eval",
                         thinking=True)
-                    preds[qid] = parsed.get("label", "NOVEL")
-                except Exception:
+                    raw_label = parsed.get("label", "NOVEL")
+                    preds[qid] = raw_label.upper().replace(" ", "_")
+                except Exception as exc:
+                    logger.warning("Tier3 parse failed for %s (%s): %s", qid, model_id, exc)
                     pass
             m = self._tier3_metrics(preds, self.benchmark.tier3_labels)
             return TierResult(tier=3, method=f"novelty_{'ctx' if with_context else 'zs'}", model=model_id,
@@ -333,32 +336,37 @@ class NovExEvaluator(CheckpointMixin):
 
     def run_all(self, config: Dict) -> List[TierResult]:
         results = []
-        t1 = config.get("tier1", {})
-        t2 = config.get("tier2", {})
-        t3 = config.get("tier3", {})
-        kv = t1.get("k_values", [10, 50, 100])
+        t1 = config.get("tier1")
+        t2 = config.get("tier2")
+        t3 = config.get("tier3")
 
-        if t1.get("bm25", {}).get("enabled", True):
-            results.append(self.run_tier1_bm25(k_values=kv))
-        if t1.get("dense", {}).get("enabled", True):
-            for m in t1.get("dense", {}).get("models", ["BAAI/bge-base-en-v1.5"]):
-                results.append(self.run_tier1_dense(m, k_values=kv))
-        if t1.get("hybrid", {}).get("enabled", True):
-            results.append(self.run_tier1_hybrid(k_values=kv))
-        for mc in t1.get("llm_models", []):
-            p, mid = mc["provider"], mc["model_id"]
-            if t1.get("hyde", {}).get("enabled", True):
-                results.append(self.run_tier1_hyde(p, mid, k_values=kv))
-            if t1.get("rerank", {}).get("enabled", True):
-                results.append(self.run_tier1_rerank(p, mid, k_values=kv))
-            if t1.get("agent", {}).get("enabled", True):
-                results.append(self.run_tier1_agent(p, mid, k_values=kv))
-        for mc in t2.get("models", []):
-            results.append(self.run_tier2(mc["provider"], mc["model_id"], t2.get("max_pairs")))
-        for mc in t3.get("models", []):
-            results.append(self.run_tier3(mc["provider"], mc["model_id"], with_context=True))
-            if t3.get("run_zero_shot", True):
-                results.append(self.run_tier3(mc["provider"], mc["model_id"], with_context=False))
+        if t1 is not None:
+            kv = t1.get("k_values", [10, 50, 100])
+            if t1.get("bm25", {}).get("enabled", True):
+                results.append(self.run_tier1_bm25(k_values=kv))
+            if t1.get("dense", {}).get("enabled", True):
+                for m in t1.get("dense", {}).get("models", ["BAAI/bge-base-en-v1.5"]):
+                    results.append(self.run_tier1_dense(m, k_values=kv))
+            if t1.get("hybrid", {}).get("enabled", True):
+                results.append(self.run_tier1_hybrid(k_values=kv))
+            for mc in t1.get("llm_models", []):
+                p, mid = mc["provider"], mc["model_id"]
+                if t1.get("hyde", {}).get("enabled", True):
+                    results.append(self.run_tier1_hyde(p, mid, k_values=kv))
+                if t1.get("rerank", {}).get("enabled", True):
+                    results.append(self.run_tier1_rerank(p, mid, k_values=kv))
+                if t1.get("agent", {}).get("enabled", True):
+                    results.append(self.run_tier1_agent(p, mid, k_values=kv))
+
+        if t2 is not None:
+            for mc in t2.get("models", []):
+                results.append(self.run_tier2(mc["provider"], mc["model_id"], t2.get("max_pairs")))
+
+        if t3 is not None:
+            for mc in t3.get("models", []):
+                results.append(self.run_tier3(mc["provider"], mc["model_id"], with_context=True))
+                if t3.get("run_zero_shot", True):
+                    results.append(self.run_tier3(mc["provider"], mc["model_id"], with_context=False))
 
         with open(self.results_dir / "all_results.json", "w") as f:
             json.dump([r.__dict__ for r in results], f, indent=2, default=str)
@@ -368,3 +376,17 @@ class NovExEvaluator(CheckpointMixin):
 
 def _mean(vals: List[float]) -> float:
     return sum(vals) / len(vals) if vals else 0.0
+
+
+def _normalize_results(results: Dict) -> Dict[str, List[Tuple[str, float]]]:
+    """Convert retrieval results to sorted list-of-tuples format.
+
+    Handles both Dict[str, Dict[str, float]] and Dict[str, List[Tuple[str, float]]].
+    """
+    out: Dict[str, List[Tuple[str, float]]] = {}
+    for qid, val in results.items():
+        if isinstance(val, dict):
+            out[qid] = sorted(val.items(), key=lambda x: -x[1])
+        else:
+            out[qid] = val
+    return out

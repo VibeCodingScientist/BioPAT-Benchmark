@@ -79,7 +79,7 @@ class NovExBenchmark:
                                 self.doc_types[doc["_id"]] = doc["doc_type"]
                     break
 
-        # Qrels
+        # Qrels — load from TSV files if they exist
         qd = self.data_dir / "qrels"
         if qd.exists():
             for name, attr in [("tier1", "tier1_qrels"), ("tier2", "tier2_qrels"), ("tier3", "tier3_qrels")]:
@@ -89,6 +89,27 @@ class NovExBenchmark:
             for qid, docs in self.tier3_qrels.items():
                 for _, score in docs.items():
                     self.tier3_labels[qid] = NOVELTY_MAP.get(score, "NOVEL")
+
+        # Fallback: populate from statement ground_truth when TSV files don't exist
+        if not self.tier1_qrels and self.statements:
+            for sid, stmt in self.statements.items():
+                gt = stmt.ground_truth
+                rel_docs = gt.get("tier1_relevant_docs", [])
+                if rel_docs:
+                    self.tier1_qrels[sid] = {d: 1 for d in rel_docs}
+            logger.info("Populated tier1_qrels from statements: %d queries",
+                        len(self.tier1_qrels))
+
+        if not self.tier3_labels and self.statements:
+            label_to_score = {"NOVEL": 0, "PARTIALLY_ANTICIPATED": 1, "ANTICIPATED": 2}
+            for sid, stmt in self.statements.items():
+                gt = stmt.ground_truth
+                label = gt.get("tier3_novelty_label")
+                if label:
+                    self.tier3_labels[sid] = label
+                    self.tier3_qrels[sid] = {sid: label_to_score.get(label, 0)}
+            logger.info("Populated tier3_labels from statements: %d labels",
+                        len(self.tier3_labels))
 
         self._loaded = True
         logger.info("NovEx: %d statements, %d docs, T1=%d T2=%d T3=%d qrels",
