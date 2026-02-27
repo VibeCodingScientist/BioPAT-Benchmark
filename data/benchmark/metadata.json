@@ -1,0 +1,54 @@
+{
+  "benchmark": "BioPAT",
+  "version": "1.0.0",
+  "corpus": {
+    "num_queries": 1984,
+    "num_docs": 158850,
+    "num_qrels": 842170
+  },
+  "domain_distribution": {
+    "A61": 811,
+    "C07": 513,
+    "C12": 508,
+    "G01": 57,
+    "A01": 30,
+    "B01": 13,
+    "G16": 11,
+    "C08": 10,
+    "C40": 8,
+    "H01": 4,
+    "G06": 3,
+    "G11": 3,
+    "H05": 2,
+    "A21": 2,
+    "C11": 2,
+    "G02": 2,
+    "H04": 1,
+    "C05": 1,
+    "C13": 1,
+    "A23": 1,
+    "G03": 1
+  },
+  "splits": {
+    "train": {
+      "queries": 1388,
+      "qrels": 586296
+    },
+    "dev": {
+      "queries": 292,
+      "qrels": 124969
+    },
+    "test": {
+      "queries": 304,
+      "qrels": 130905
+    }
+  },
+  "checksums": {
+    "corpus.jsonl": "aa8d27f0affe055034924c05f9bf52de544d9347479343095b10ac78ccc7e59d",
+    "metadata.json": "85dfbdc884a19aea591fbe2094302c1be3d5c455172bc7befa459f260dbc17ff",
+    "qrels/dev.tsv": "c157a9aecc59e7b3fffdc1f9cde58f3dbfd22490c630262b5179f0d396b6aa36",
+    "qrels/test.tsv": "1de7f3042430b895988a5bb97a83c7444dc62fffc9d4547bfcd674399f6d91c6",
+    "qrels/train.tsv": "ca824c9df1635a80536a07621b86e3a920c0a758268211b5c668b16f845bac49",
+    "queries.jsonl": "0ebb3e07866a6da12292721dcacc771158c826f3b6bb2075b28de26f7021a123"
+  }
+}

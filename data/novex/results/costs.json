@@ -1,0 +1,6036 @@
+{
+  "summary": {
+    "total_cost_usd": 4.292146749999998,
+    "total_calls": 600,
+    "total_input_tokens": 297103,
+    "total_output_tokens": 244024,
+    "budget_usd": 700.0,
+    "budget_remaining_usd": 695.70785325,
+    "by_task": {
+      "tier3_eval": {
+        "calls": 600,
+        "cost": 4.292146749999998,
+        "tokens": 541127
+      }
+    },
+    "by_model": {
+      "openai/gpt-5.2": {
+        "calls": 200,
+        "cost": 0.5621997500000001,
+        "tokens": 121008
+      },
+      "anthropic/claude-sonnet-4-6": {
+        "calls": 200,
+        "cost": 3.4556490000000015,
+        "tokens": 319195
+      },
+      "google/gemini-3-pro-preview": {
+        "calls": 200,
+        "cost": 0.27429800000000004,
+        "tokens": 100924
+      }
+    }
+  },
+  "records": [
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-010",
+      "input_tokens": 790,
+      "output_tokens": 181,
+      "cost_usd": 0.0039165,
+      "latency_ms": 4200.459272018634
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-004",
+      "input_tokens": 838,
+      "output_tokens": 136,
+      "cost_usd": 0.0033705,
+      "latency_ms": 3592.6057980395854
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-011",
+      "input_tokens": 1015,
+      "output_tokens": 120,
+      "cost_usd": 0.00345625,
+      "latency_ms": 3364.3607510020956
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-027",
+      "input_tokens": 716,
+      "output_tokens": 276,
+      "cost_usd": 0.005117,
+      "latency_ms": 5567.7991199772805
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-038",
+      "input_tokens": 906,
+      "output_tokens": 108,
+      "cost_usd": 0.0030975,
+      "latency_ms": 2412.6061130082235
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-019",
+      "input_tokens": 932,
+      "output_tokens": 401,
+      "cost_usd": 0.007245,
+      "latency_ms": 6817.149318987504
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-040",
+      "input_tokens": 978,
+      "output_tokens": 200,
+      "cost_usd": 0.0045115,
+      "latency_ms": 4028.422205010429
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-026",
+      "input_tokens": 895,
+      "output_tokens": 242,
+      "cost_usd": 0.00495425,
+      "latency_ms": 4865.33869698178
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-005",
+      "input_tokens": 791,
+      "output_tokens": 85,
+      "cost_usd": 0.00257425,
+      "latency_ms": 1774.3903149385005
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-034",
+      "input_tokens": 678,
+      "output_tokens": 103,
+      "cost_usd": 0.0026285,
+      "latency_ms": 2297.735132975504
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-023",
+      "input_tokens": 986,
+      "output_tokens": 167,
+      "cost_usd": 0.0040635,
+      "latency_ms": 3249.900117982179
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-012",
+      "input_tokens": 800,
+      "output_tokens": 248,
+      "cost_usd": 0.004872,
+      "latency_ms": 4963.507214910351
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-030",
+      "input_tokens": 911,
+      "output_tokens": 132,
+      "cost_usd": 0.00344225,
+      "latency_ms": 3017.3102860571817
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-022",
+      "input_tokens": 515,
+      "output_tokens": 116,
+      "cost_usd": 0.00252525,
+      "latency_ms": 2544.7912050876766
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-013",
+      "input_tokens": 713,
+      "output_tokens": 69,
+      "cost_usd": 0.00221375,
+      "latency_ms": 1749.428611015901
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-025",
+      "input_tokens": 902,
+      "output_tokens": 144,
+      "cost_usd": 0.0035945,
+      "latency_ms": 3968.0103809805587
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-036",
+      "input_tokens": 653,
+      "output_tokens": 117,
+      "cost_usd": 0.00278075,
+      "latency_ms": 2650.1710299635306
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-037",
+      "input_tokens": 806,
+      "output_tokens": 83,
+      "cost_usd": 0.0025725,
+      "latency_ms": 2678.788894903846
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-033",
+      "input_tokens": 668,
+      "output_tokens": 84,
+      "cost_usd": 0.002345,
+      "latency_ms": 2014.3947179894894
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-014",
+      "input_tokens": 907,
+      "output_tokens": 179,
+      "cost_usd": 0.00409325,
+      "latency_ms": 4736.914640059695
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-024",
+      "input_tokens": 634,
+      "output_tokens": 135,
+      "cost_usd": 0.0029995,
+      "latency_ms": 3631.3330359989777
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-021",
+      "input_tokens": 583,
+      "output_tokens": 133,
+      "cost_usd": 0.00288225,
+      "latency_ms": 3102.87675797008
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-029",
+      "input_tokens": 961,
+      "output_tokens": 56,
+      "cost_usd": 0.00246575,
+      "latency_ms": 2137.281486997381
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-039",
+      "input_tokens": 654,
+      "output_tokens": 85,
+      "cost_usd": 0.0023345,
+      "latency_ms": 2372.055131010711
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-031",
+      "input_tokens": 623,
+      "output_tokens": 184,
+      "cost_usd": 0.00366625,
+      "latency_ms": 3693.858021055348
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-020",
+      "input_tokens": 434,
+      "output_tokens": 441,
+      "cost_usd": 0.0069335,
+      "latency_ms": 8425.206362036988
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-017",
+      "input_tokens": 845,
+      "output_tokens": 64,
+      "cost_usd": 0.00237475,
+      "latency_ms": 1688.4317309595644
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-042",
+      "input_tokens": 1056,
+      "output_tokens": 276,
+      "cost_usd": 0.005712,
+      "latency_ms": 5829.0478070266545
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-035",
+      "input_tokens": 743,
+      "output_tokens": 151,
+      "cost_usd": 0.00341425,
+      "latency_ms": 2766.263456083834
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-032",
+      "input_tokens": 708,
+      "output_tokens": 74,
+      "cost_usd": 0.002275,
+      "latency_ms": 2809.1033989330754
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-001",
+      "input_tokens": 884,
+      "output_tokens": 65,
+      "cost_usd": 0.002457,
+      "latency_ms": 1748.237923020497
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-003",
+      "input_tokens": 806,
+      "output_tokens": 188,
+      "cost_usd": 0.0040425,
+      "latency_ms": 3726.6390960430726
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-028",
+      "input_tokens": 1199,
+      "output_tokens": 202,
+      "cost_usd": 0.00492625,
+      "latency_ms": 3961.2933789612725
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-006",
+      "input_tokens": 662,
+      "output_tokens": 186,
+      "cost_usd": 0.0037625,
+      "latency_ms": 3699.1468380438164
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-007",
+      "input_tokens": 659,
+      "output_tokens": 150,
+      "cost_usd": 0.00325325,
+      "latency_ms": 3171.389332972467
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-068",
+      "input_tokens": 993,
+      "output_tokens": 107,
+      "cost_usd": 0.00323575,
+      "latency_ms": 2255.373539053835
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-061",
+      "input_tokens": 924,
+      "output_tokens": 155,
+      "cost_usd": 0.003787,
+      "latency_ms": 2898.354711011052
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-048",
+      "input_tokens": 787,
+      "output_tokens": 127,
+      "cost_usd": 0.00315525,
+      "latency_ms": 2485.981232021004
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-065",
+      "input_tokens": 932,
+      "output_tokens": 117,
+      "cost_usd": 0.003269,
+      "latency_ms": 2316.174815990962
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-053",
+      "input_tokens": 823,
+      "output_tokens": 114,
+      "cost_usd": 0.00303625,
+      "latency_ms": 2855.7436170522124
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-050",
+      "input_tokens": 576,
+      "output_tokens": 148,
+      "cost_usd": 0.00308,
+      "latency_ms": 3594.943796051666
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-049",
+      "input_tokens": 749,
+      "output_tokens": 199,
+      "cost_usd": 0.00409675,
+      "latency_ms": 4315.01333496999
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-069",
+      "input_tokens": 856,
+      "output_tokens": 124,
+      "cost_usd": 0.003234,
+      "latency_ms": 2806.0902329161763
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-047",
+      "input_tokens": 976,
+      "output_tokens": 233,
+      "cost_usd": 0.00497,
+      "latency_ms": 3914.7618270944804
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-056",
+      "input_tokens": 619,
+      "output_tokens": 182,
+      "cost_usd": 0.00363125,
+      "latency_ms": 4352.967398008332
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-043",
+      "input_tokens": 932,
+      "output_tokens": 105,
+      "cost_usd": 0.003101,
+      "latency_ms": 2266.066591022536
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-067",
+      "input_tokens": 870,
+      "output_tokens": 127,
+      "cost_usd": 0.0033005,
+      "latency_ms": 2519.319383893162
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-058",
+      "input_tokens": 961,
+      "output_tokens": 192,
+      "cost_usd": 0.00436975,
+      "latency_ms": 4194.617973989807
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-063",
+      "input_tokens": 944,
+      "output_tokens": 85,
+      "cost_usd": 0.002842,
+      "latency_ms": 2558.275251998566
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-059",
+      "input_tokens": 804,
+      "output_tokens": 90,
+      "cost_usd": 0.002667,
+      "latency_ms": 2379.2980619473383
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-071",
+      "input_tokens": 1028,
+      "output_tokens": 85,
+      "cost_usd": 0.002989,
+      "latency_ms": 2263.9402559725568
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-052",
+      "input_tokens": 1020,
+      "output_tokens": 112,
+      "cost_usd": 0.003353,
+      "latency_ms": 2743.7024399405345
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-064",
+      "input_tokens": 792,
+      "output_tokens": 197,
+      "cost_usd": 0.004144,
+      "latency_ms": 4056.997096980922
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-045",
+      "input_tokens": 687,
+      "output_tokens": 337,
+      "cost_usd": 0.00592025,
+      "latency_ms": 7442.935731029138
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-055",
+      "input_tokens": 1098,
+      "output_tokens": 123,
+      "cost_usd": 0.0036435,
+      "latency_ms": 3053.758339956403
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-046",
+      "input_tokens": 932,
+      "output_tokens": 148,
+      "cost_usd": 0.003703,
+      "latency_ms": 2438.224512967281
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-060",
+      "input_tokens": 988,
+      "output_tokens": 134,
+      "cost_usd": 0.003605,
+      "latency_ms": 3638.168197008781
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-057",
+      "input_tokens": 995,
+      "output_tokens": 50,
+      "cost_usd": 0.00244125,
+      "latency_ms": 1491.8486999813467
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-066",
+      "input_tokens": 996,
+      "output_tokens": 98,
+      "cost_usd": 0.003115,
+      "latency_ms": 1952.73559296038
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-044",
+      "input_tokens": 719,
+      "output_tokens": 124,
+      "cost_usd": 0.00299425,
+      "latency_ms": 2505.2176780300215
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-081",
+      "input_tokens": 760,
+      "output_tokens": 168,
+      "cost_usd": 0.003682,
+      "latency_ms": 3732.0109310094267
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-080",
+      "input_tokens": 983,
+      "output_tokens": 56,
+      "cost_usd": 0.00250425,
+      "latency_ms": 1460.0324430502951
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-084",
+      "input_tokens": 551,
+      "output_tokens": 52,
+      "cost_usd": 0.00169225,
+      "latency_ms": 1244.3711759988219
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-074",
+      "input_tokens": 681,
+      "output_tokens": 97,
+      "cost_usd": 0.00254975,
+      "latency_ms": 2098.894751048647
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-073",
+      "input_tokens": 818,
+      "output_tokens": 168,
+      "cost_usd": 0.0037835,
+      "latency_ms": 4079.887290019542
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-079",
+      "input_tokens": 836,
+      "output_tokens": 138,
+      "cost_usd": 0.003395,
+      "latency_ms": 3220.365082961507
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-082",
+      "input_tokens": 986,
+      "output_tokens": 291,
+      "cost_usd": 0.0057995,
+      "latency_ms": 6755.496086087078
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-077",
+      "input_tokens": 874,
+      "output_tokens": 141,
+      "cost_usd": 0.0035035,
+      "latency_ms": 2742.8733620326966
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-076",
+      "input_tokens": 605,
+      "output_tokens": 82,
+      "cost_usd": 0.00220675,
+      "latency_ms": 1933.3733569364995
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-087",
+      "input_tokens": 659,
+      "output_tokens": 311,
+      "cost_usd": 0.00550725,
+      "latency_ms": 5597.26866602432
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-085",
+      "input_tokens": 875,
+      "output_tokens": 146,
+      "cost_usd": 0.00357525,
+      "latency_ms": 3309.9285629577935
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-075",
+      "input_tokens": 852,
+      "output_tokens": 90,
+      "cost_usd": 0.002751,
+      "latency_ms": 1787.780896993354
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-078",
+      "input_tokens": 813,
+      "output_tokens": 330,
+      "cost_usd": 0.00604275,
+      "latency_ms": 6315.0477160234
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-086",
+      "input_tokens": 648,
+      "output_tokens": 76,
+      "cost_usd": 0.002198,
+      "latency_ms": 2211.1036870628595
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-083",
+      "input_tokens": 889,
+      "output_tokens": 153,
+      "cost_usd": 0.00369775,
+      "latency_ms": 3107.30800696183
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-101",
+      "input_tokens": 982,
+      "output_tokens": 91,
+      "cost_usd": 0.0029925,
+      "latency_ms": 2405.258720042184
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-100",
+      "input_tokens": 781,
+      "output_tokens": 104,
+      "cost_usd": 0.00282275,
+      "latency_ms": 2048.5813980922103
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-103",
+      "input_tokens": 723,
+      "output_tokens": 74,
+      "cost_usd": 0.00230125,
+      "latency_ms": 1518.4021779568866
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-097",
+      "input_tokens": 981,
+      "output_tokens": 112,
+      "cost_usd": 0.00328475,
+      "latency_ms": 2054.736161022447
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-090",
+      "input_tokens": 904,
+      "output_tokens": 75,
+      "cost_usd": 0.002632,
+      "latency_ms": 2086.3011319888756
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-095",
+      "input_tokens": 748,
+      "output_tokens": 103,
+      "cost_usd": 0.002751,
+      "latency_ms": 2757.944572949782
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-089",
+      "input_tokens": 1143,
+      "output_tokens": 48,
+      "cost_usd": 0.00267225,
+      "latency_ms": 1639.681683969684
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-088",
+      "input_tokens": 944,
+      "output_tokens": 137,
+      "cost_usd": 0.00357,
+      "latency_ms": 2915.827563032508
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-104",
+      "input_tokens": 980,
+      "output_tokens": 225,
+      "cost_usd": 0.004865,
+      "latency_ms": 4940.711012925021
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-091",
+      "input_tokens": 832,
+      "output_tokens": 116,
+      "cost_usd": 0.00308,
+      "latency_ms": 2655.360693926923
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-096",
+      "input_tokens": 1129,
+      "output_tokens": 71,
+      "cost_usd": 0.00296975,
+      "latency_ms": 1721.7108239419758
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-099",
+      "input_tokens": 952,
+      "output_tokens": 89,
+      "cost_usd": 0.002912,
+      "latency_ms": 2055.1915920805186
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-098",
+      "input_tokens": 692,
+      "output_tokens": 53,
+      "cost_usd": 0.001953,
+      "latency_ms": 1313.3332270663232
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-092",
+      "input_tokens": 854,
+      "output_tokens": 171,
+      "cost_usd": 0.0038885,
+      "latency_ms": 3728.105429909192
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-094",
+      "input_tokens": 781,
+      "output_tokens": 56,
+      "cost_usd": 0.00215075,
+      "latency_ms": 1910.2360350079834
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-107",
+      "input_tokens": 161,
+      "output_tokens": 41,
+      "cost_usd": 0.00085575,
+      "latency_ms": 1201.5397120267153
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-106",
+      "input_tokens": 140,
+      "output_tokens": 129,
+      "cost_usd": 0.002051,
+      "latency_ms": 3118.9130489947274
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-105",
+      "input_tokens": 165,
+      "output_tokens": 703,
+      "cost_usd": 0.01013075,
+      "latency_ms": 14383.342991000973
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-109",
+      "input_tokens": 145,
+      "output_tokens": 343,
+      "cost_usd": 0.00505575,
+      "latency_ms": 8039.856933988631
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-111",
+      "input_tokens": 138,
+      "output_tokens": 77,
+      "cost_usd": 0.0013195,
+      "latency_ms": 1945.7825149875134
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-112",
+      "input_tokens": 132,
+      "output_tokens": 182,
+      "cost_usd": 0.002779,
+      "latency_ms": 4314.565144944936
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-113",
+      "input_tokens": 138,
+      "output_tokens": 101,
+      "cost_usd": 0.0016555,
+      "latency_ms": 2509.335125912912
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-115",
+      "input_tokens": 182,
+      "output_tokens": 60,
+      "cost_usd": 0.0011585,
+      "latency_ms": 1643.1742750573903
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-110",
+      "input_tokens": 199,
+      "output_tokens": 42,
+      "cost_usd": 0.00093625,
+      "latency_ms": 1327.0502371015027
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-114",
+      "input_tokens": 133,
+      "output_tokens": 265,
+      "cost_usd": 0.00394275,
+      "latency_ms": 4916.296867886558
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-010",
+      "input_tokens": 181,
+      "output_tokens": 317,
+      "cost_usd": 0.00475475,
+      "latency_ms": 6314.549873932265
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-004",
+      "input_tokens": 170,
+      "output_tokens": 39,
+      "cost_usd": 0.0008435,
+      "latency_ms": 1076.796256005764
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-011",
+      "input_tokens": 158,
+      "output_tokens": 293,
+      "cost_usd": 0.0043785,
+      "latency_ms": 5670.00885005109
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-027",
+      "input_tokens": 145,
+      "output_tokens": 143,
+      "cost_usd": 0.00225575,
+      "latency_ms": 3145.7468370208517
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-038",
+      "input_tokens": 186,
+      "output_tokens": 173,
+      "cost_usd": 0.0027475,
+      "latency_ms": 3741.025285096839
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-019",
+      "input_tokens": 172,
+      "output_tokens": 44,
+      "cost_usd": 0.000917,
+      "latency_ms": 1403.7424450507388
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-040",
+      "input_tokens": 130,
+      "output_tokens": 267,
+      "cost_usd": 0.0039655,
+      "latency_ms": 5474.089983967133
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-026",
+      "input_tokens": 180,
+      "output_tokens": 78,
+      "cost_usd": 0.001407,
+      "latency_ms": 2063.3470281027257
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-005",
+      "input_tokens": 131,
+      "output_tokens": 89,
+      "cost_usd": 0.00147525,
+      "latency_ms": 1712.4116339255124
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-034",
+      "input_tokens": 153,
+      "output_tokens": 380,
+      "cost_usd": 0.00558775,
+      "latency_ms": 8414.247723994777
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-023",
+      "input_tokens": 170,
+      "output_tokens": 231,
+      "cost_usd": 0.0035315,
+      "latency_ms": 4758.279219968244
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-012",
+      "input_tokens": 147,
+      "output_tokens": 504,
+      "cost_usd": 0.00731325,
+      "latency_ms": 9875.345202977769
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-030",
+      "input_tokens": 175,
+      "output_tokens": 145,
+      "cost_usd": 0.00233625,
+      "latency_ms": 3288.393951021135
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-022",
+      "input_tokens": 159,
+      "output_tokens": 325,
+      "cost_usd": 0.00482825,
+      "latency_ms": 6186.127969995141
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-013",
+      "input_tokens": 110,
+      "output_tokens": 99,
+      "cost_usd": 0.0015785,
+      "latency_ms": 2398.773551918566
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-025",
+      "input_tokens": 170,
+      "output_tokens": 56,
+      "cost_usd": 0.0010815,
+      "latency_ms": 1566.8265839340165
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-036",
+      "input_tokens": 201,
+      "output_tokens": 92,
+      "cost_usd": 0.00163975,
+      "latency_ms": 2065.320670022629
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-037",
+      "input_tokens": 157,
+      "output_tokens": 638,
+      "cost_usd": 0.00920675,
+      "latency_ms": 19391.20302302763
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-033",
+      "input_tokens": 185,
+      "output_tokens": 47,
+      "cost_usd": 0.00098175,
+      "latency_ms": 1362.4745510751382
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-014",
+      "input_tokens": 186,
+      "output_tokens": 259,
+      "cost_usd": 0.0039515,
+      "latency_ms": 5947.470924002118
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-024",
+      "input_tokens": 173,
+      "output_tokens": 362,
+      "cost_usd": 0.00537075,
+      "latency_ms": 7872.345897019841
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-021",
+      "input_tokens": 176,
+      "output_tokens": 74,
+      "cost_usd": 0.001344,
+      "latency_ms": 2003.83687694557
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-029",
+      "input_tokens": 188,
+      "output_tokens": 167,
+      "cost_usd": 0.002667,
+      "latency_ms": 3389.6628780057654
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-039",
+      "input_tokens": 176,
+      "output_tokens": 38,
+      "cost_usd": 0.00084,
+      "latency_ms": 1290.2832739055157
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-031",
+      "input_tokens": 169,
+      "output_tokens": 385,
+      "cost_usd": 0.00568575,
+      "latency_ms": 7095.47251497861
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-020",
+      "input_tokens": 152,
+      "output_tokens": 90,
+      "cost_usd": 0.001526,
+      "latency_ms": 2305.301151005551
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-017",
+      "input_tokens": 177,
+      "output_tokens": 116,
+      "cost_usd": 0.00193375,
+      "latency_ms": 2840.4899809975177
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-042",
+      "input_tokens": 145,
+      "output_tokens": 115,
+      "cost_usd": 0.00186375,
+      "latency_ms": 2378.678089939058
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-035",
+      "input_tokens": 159,
+      "output_tokens": 258,
+      "cost_usd": 0.00389025,
+      "latency_ms": 6704.3431480415165
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-032",
+      "input_tokens": 140,
+      "output_tokens": 41,
+      "cost_usd": 0.000819,
+      "latency_ms": 1264.0448849415407
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-001",
+      "input_tokens": 155,
+      "output_tokens": 80,
+      "cost_usd": 0.00139125,
+      "latency_ms": 1975.1716060563922
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-003",
+      "input_tokens": 160,
+      "output_tokens": 40,
+      "cost_usd": 0.00084,
+      "latency_ms": 1264.4834339153022
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-028",
+      "input_tokens": 160,
+      "output_tokens": 42,
+      "cost_usd": 0.000868,
+      "latency_ms": 1298.7466369522735
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-006",
+      "input_tokens": 137,
+      "output_tokens": 58,
+      "cost_usd": 0.00105175,
+      "latency_ms": 1364.9405430769548
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-007",
+      "input_tokens": 127,
+      "output_tokens": 178,
+      "cost_usd": 0.00271425,
+      "latency_ms": 3562.8807899774984
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-068",
+      "input_tokens": 159,
+      "output_tokens": 438,
+      "cost_usd": 0.00641025,
+      "latency_ms": 9070.217611035332
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-061",
+      "input_tokens": 178,
+      "output_tokens": 52,
+      "cost_usd": 0.0010395,
+      "latency_ms": 1516.372337937355
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-048",
+      "input_tokens": 157,
+      "output_tokens": 34,
+      "cost_usd": 0.00075075,
+      "latency_ms": 1171.8530100770295
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-065",
+      "input_tokens": 171,
+      "output_tokens": 44,
+      "cost_usd": 0.00091525,
+      "latency_ms": 1418.1302939541638
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-053",
+      "input_tokens": 133,
+      "output_tokens": 46,
+      "cost_usd": 0.00087675,
+      "latency_ms": 1383.9444760233164
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-050",
+      "input_tokens": 141,
+      "output_tokens": 305,
+      "cost_usd": 0.00451675,
+      "latency_ms": 6974.587155971676
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-049",
+      "input_tokens": 172,
+      "output_tokens": 238,
+      "cost_usd": 0.003633,
+      "latency_ms": 4714.9230759823695
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-069",
+      "input_tokens": 128,
+      "output_tokens": 96,
+      "cost_usd": 0.001568,
+      "latency_ms": 2474.135174998082
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-047",
+      "input_tokens": 180,
+      "output_tokens": 48,
+      "cost_usd": 0.000987,
+      "latency_ms": 1451.5791920712218
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-056",
+      "input_tokens": 154,
+      "output_tokens": 138,
+      "cost_usd": 0.0022015,
+      "latency_ms": 3206.6289369249716
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-043",
+      "input_tokens": 168,
+      "output_tokens": 40,
+      "cost_usd": 0.000854,
+      "latency_ms": 1323.6268300097436
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-067",
+      "input_tokens": 175,
+      "output_tokens": 67,
+      "cost_usd": 0.00124425,
+      "latency_ms": 1814.8601369466633
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-058",
+      "input_tokens": 170,
+      "output_tokens": 37,
+      "cost_usd": 0.0008155,
+      "latency_ms": 996.8637940473855
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-063",
+      "input_tokens": 163,
+      "output_tokens": 46,
+      "cost_usd": 0.00092925,
+      "latency_ms": 1147.7966459933668
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-059",
+      "input_tokens": 142,
+      "output_tokens": 225,
+      "cost_usd": 0.0033985,
+      "latency_ms": 5867.456597974524
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-071",
+      "input_tokens": 181,
+      "output_tokens": 53,
+      "cost_usd": 0.00105875,
+      "latency_ms": 1538.4646720485762
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-052",
+      "input_tokens": 171,
+      "output_tokens": 43,
+      "cost_usd": 0.00090125,
+      "latency_ms": 1200.7814629469067
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-064",
+      "input_tokens": 177,
+      "output_tokens": 101,
+      "cost_usd": 0.00172375,
+      "latency_ms": 2662.423399044201
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-045",
+      "input_tokens": 141,
+      "output_tokens": 114,
+      "cost_usd": 0.00184275,
+      "latency_ms": 2394.694041926414
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-055",
+      "input_tokens": 178,
+      "output_tokens": 36,
+      "cost_usd": 0.0008155,
+      "latency_ms": 1162.6342660747468
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-046",
+      "input_tokens": 190,
+      "output_tokens": 64,
+      "cost_usd": 0.0012285,
+      "latency_ms": 1601.5794060658664
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-060",
+      "input_tokens": 182,
+      "output_tokens": 104,
+      "cost_usd": 0.0017745,
+      "latency_ms": 2589.252738049254
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-057",
+      "input_tokens": 161,
+      "output_tokens": 92,
+      "cost_usd": 0.00156975,
+      "latency_ms": 1960.4228669777513
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-066",
+      "input_tokens": 151,
+      "output_tokens": 73,
+      "cost_usd": 0.00128625,
+      "latency_ms": 1754.22395800706
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-044",
+      "input_tokens": 157,
+      "output_tokens": 159,
+      "cost_usd": 0.00250075,
+      "latency_ms": 4402.244038996287
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-081",
+      "input_tokens": 109,
+      "output_tokens": 153,
+      "cost_usd": 0.00233275,
+      "latency_ms": 3487.4977790750563
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-080",
+      "input_tokens": 163,
+      "output_tokens": 65,
+      "cost_usd": 0.00119525,
+      "latency_ms": 1877.4123820476234
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-084",
+      "input_tokens": 151,
+      "output_tokens": 209,
+      "cost_usd": 0.00319025,
+      "latency_ms": 4112.636134959757
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-074",
+      "input_tokens": 194,
+      "output_tokens": 50,
+      "cost_usd": 0.0010395,
+      "latency_ms": 1698.0356218991801
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-073",
+      "input_tokens": 163,
+      "output_tokens": 66,
+      "cost_usd": 0.00120925,
+      "latency_ms": 1547.3347409861162
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-079",
+      "input_tokens": 107,
+      "output_tokens": 151,
+      "cost_usd": 0.00230125,
+      "latency_ms": 3231.7469619447365
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-082",
+      "input_tokens": 197,
+      "output_tokens": 96,
+      "cost_usd": 0.00168875,
+      "latency_ms": 2137.3833710094914
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-077",
+      "input_tokens": 178,
+      "output_tokens": 62,
+      "cost_usd": 0.0011795,
+      "latency_ms": 1675.3828229848295
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-076",
+      "input_tokens": 169,
+      "output_tokens": 76,
+      "cost_usd": 0.00135975,
+      "latency_ms": 2281.647152034566
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-087",
+      "input_tokens": 178,
+      "output_tokens": 55,
+      "cost_usd": 0.0010815,
+      "latency_ms": 1944.4753209827468
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-085",
+      "input_tokens": 125,
+      "output_tokens": 92,
+      "cost_usd": 0.00150675,
+      "latency_ms": 2369.666845072061
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-075",
+      "input_tokens": 85,
+      "output_tokens": 140,
+      "cost_usd": 0.00210875,
+      "latency_ms": 2833.4750740323216
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-078",
+      "input_tokens": 168,
+      "output_tokens": 40,
+      "cost_usd": 0.000854,
+      "latency_ms": 1104.5934810535982
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-086",
+      "input_tokens": 141,
+      "output_tokens": 300,
+      "cost_usd": 0.00444675,
+      "latency_ms": 5578.167231054977
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-083",
+      "input_tokens": 133,
+      "output_tokens": 95,
+      "cost_usd": 0.00156275,
+      "latency_ms": 2219.1720369737595
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-101",
+      "input_tokens": 179,
+      "output_tokens": 39,
+      "cost_usd": 0.00085925,
+      "latency_ms": 1258.4757999284193
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-100",
+      "input_tokens": 150,
+      "output_tokens": 37,
+      "cost_usd": 0.0007805,
+      "latency_ms": 1181.8051870213822
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-103",
+      "input_tokens": 154,
+      "output_tokens": 148,
+      "cost_usd": 0.0023415,
+      "latency_ms": 2705.6871550157666
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-097",
+      "input_tokens": 136,
+      "output_tokens": 46,
+      "cost_usd": 0.000882,
+      "latency_ms": 1534.1001360211521
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-090",
+      "input_tokens": 133,
+      "output_tokens": 154,
+      "cost_usd": 0.00238875,
+      "latency_ms": 4829.960756003857
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-095",
+      "input_tokens": 131,
+      "output_tokens": 256,
+      "cost_usd": 0.00381325,
+      "latency_ms": 5492.2131759813055
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-089",
+      "input_tokens": 187,
+      "output_tokens": 37,
+      "cost_usd": 0.00084525,
+      "latency_ms": 1298.109125928022
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-088",
+      "input_tokens": 134,
+      "output_tokens": 86,
+      "cost_usd": 0.0014385,
+      "latency_ms": 1965.2712859679013
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-104",
+      "input_tokens": 187,
+      "output_tokens": 330,
+      "cost_usd": 0.00494725,
+      "latency_ms": 7188.204644946381
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-091",
+      "input_tokens": 148,
+      "output_tokens": 62,
+      "cost_usd": 0.001127,
+      "latency_ms": 1430.033706012182
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-096",
+      "input_tokens": 146,
+      "output_tokens": 40,
+      "cost_usd": 0.0008155,
+      "latency_ms": 1099.3564689997584
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-099",
+      "input_tokens": 107,
+      "output_tokens": 97,
+      "cost_usd": 0.00154525,
+      "latency_ms": 2030.43040598277
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-098",
+      "input_tokens": 150,
+      "output_tokens": 38,
+      "cost_usd": 0.0007945,
+      "latency_ms": 1147.501767030917
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-092",
+      "input_tokens": 166,
+      "output_tokens": 56,
+      "cost_usd": 0.0010745,
+      "latency_ms": 1605.45692499727
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-094",
+      "input_tokens": 118,
+      "output_tokens": 581,
+      "cost_usd": 0.0083405,
+      "latency_ms": 13232.356318971142
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-107",
+      "input_tokens": 161,
+      "output_tokens": 54,
+      "cost_usd": 0.00103775,
+      "latency_ms": 1655.0587629899383
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-106",
+      "input_tokens": 140,
+      "output_tokens": 245,
+      "cost_usd": 0.003675,
+      "latency_ms": 4759.17265098542
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-105",
+      "input_tokens": 165,
+      "output_tokens": 56,
+      "cost_usd": 0.00107275,
+      "latency_ms": 1495.3863320406526
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-109",
+      "input_tokens": 145,
+      "output_tokens": 37,
+      "cost_usd": 0.00077175,
+      "latency_ms": 1159.0045809280127
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-111",
+      "input_tokens": 138,
+      "output_tokens": 81,
+      "cost_usd": 0.0013755,
+      "latency_ms": 1837.764143012464
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-112",
+      "input_tokens": 132,
+      "output_tokens": 114,
+      "cost_usd": 0.001827,
+      "latency_ms": 2347.406246000901
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-113",
+      "input_tokens": 138,
+      "output_tokens": 75,
+      "cost_usd": 0.0012915,
+      "latency_ms": 1634.885924984701
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-115",
+      "input_tokens": 182,
+      "output_tokens": 230,
+      "cost_usd": 0.0035385,
+      "latency_ms": 5201.1620190460235
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-110",
+      "input_tokens": 199,
+      "output_tokens": 46,
+      "cost_usd": 0.00099225,
+      "latency_ms": 1283.1053690752015
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "tier3_eval",
+      "query_id": "NX-114",
+      "input_tokens": 133,
+      "output_tokens": 195,
+      "cost_usd": 0.00296275,
+      "latency_ms": 4918.478306033649
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-010",
+      "input_tokens": 947,
+      "output_tokens": 1340,
+      "cost_usd": 0.022941,
+      "latency_ms": 22444.075385923497
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-004",
+      "input_tokens": 1015,
+      "output_tokens": 958,
+      "cost_usd": 0.017415,
+      "latency_ms": 16131.684227031656
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-011",
+      "input_tokens": 1235,
+      "output_tokens": 829,
+      "cost_usd": 0.01614,
+      "latency_ms": 14140.505803981796
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-027",
+      "input_tokens": 846,
+      "output_tokens": 945,
+      "cost_usd": 0.016713,
+      "latency_ms": 17139.46528499946
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-038",
+      "input_tokens": 1058,
+      "output_tokens": 725,
+      "cost_usd": 0.014049,
+      "latency_ms": 11552.989510004409
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-019",
+      "input_tokens": 1109,
+      "output_tokens": 1481,
+      "cost_usd": 0.025542,
+      "latency_ms": 23754.462031065486
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-040",
+      "input_tokens": 1138,
+      "output_tokens": 822,
+      "cost_usd": 0.015744,
+      "latency_ms": 15377.763663069345
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-026",
+      "input_tokens": 1046,
+      "output_tokens": 1005,
+      "cost_usd": 0.018213,
+      "latency_ms": 15582.964789005928
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-005",
+      "input_tokens": 916,
+      "output_tokens": 919,
+      "cost_usd": 0.016533,
+      "latency_ms": 16127.068766974844
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-034",
+      "input_tokens": 811,
+      "output_tokens": 767,
+      "cost_usd": 0.013938,
+      "latency_ms": 12647.15056004934
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-023",
+      "input_tokens": 1174,
+      "output_tokens": 1336,
+      "cost_usd": 0.023562,
+      "latency_ms": 25654.35502002947
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-012",
+      "input_tokens": 976,
+      "output_tokens": 1344,
+      "cost_usd": 0.023088,
+      "latency_ms": 22381.458200979978
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-030",
+      "input_tokens": 1101,
+      "output_tokens": 6,
+      "cost_usd": 0.003393,
+      "latency_ms": 1550.782578997314
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-022",
+      "input_tokens": 595,
+      "output_tokens": 8,
+      "cost_usd": 0.001905,
+      "latency_ms": 1881.9708210648969
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-013",
+      "input_tokens": 857,
+      "output_tokens": 415,
+      "cost_usd": 0.008796,
+      "latency_ms": 7580.626979004592
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-025",
+      "input_tokens": 1072,
+      "output_tokens": 722,
+      "cost_usd": 0.014046,
+      "latency_ms": 12470.239964080974
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-036",
+      "input_tokens": 758,
+      "output_tokens": 1278,
+      "cost_usd": 0.021444,
+      "latency_ms": 16969.963193987496
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-037",
+      "input_tokens": 969,
+      "output_tokens": 631,
+      "cost_usd": 0.012372,
+      "latency_ms": 10885.13753109146
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-033",
+      "input_tokens": 778,
+      "output_tokens": 681,
+      "cost_usd": 0.012549,
+      "latency_ms": 12321.41863903962
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-014",
+      "input_tokens": 1060,
+      "output_tokens": 918,
+      "cost_usd": 0.01695,
+      "latency_ms": 15284.567671944387
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-024",
+      "input_tokens": 770,
+      "output_tokens": 907,
+      "cost_usd": 0.015915,
+      "latency_ms": 13949.821112910286
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-021",
+      "input_tokens": 687,
+      "output_tokens": 669,
+      "cost_usd": 0.012096,
+      "latency_ms": 10846.68073093053
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-029",
+      "input_tokens": 1143,
+      "output_tokens": 672,
+      "cost_usd": 0.013509,
+      "latency_ms": 10929.924394004047
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-039",
+      "input_tokens": 776,
+      "output_tokens": 708,
+      "cost_usd": 0.012948,
+      "latency_ms": 11068.486300995573
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-031",
+      "input_tokens": 740,
+      "output_tokens": 852,
+      "cost_usd": 0.015,
+      "latency_ms": 14108.786644996144
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-020",
+      "input_tokens": 525,
+      "output_tokens": 1552,
+      "cost_usd": 0.024855,
+      "latency_ms": 24734.489236958325
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-017",
+      "input_tokens": 1020,
+      "output_tokens": 668,
+      "cost_usd": 0.01308,
+      "latency_ms": 9942.198202945292
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-042",
+      "input_tokens": 1272,
+      "output_tokens": 659,
+      "cost_usd": 0.013701,
+      "latency_ms": 13204.29908693768
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-035",
+      "input_tokens": 867,
+      "output_tokens": 598,
+      "cost_usd": 0.011571,
+      "latency_ms": 10722.582310903817
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-032",
+      "input_tokens": 853,
+      "output_tokens": 605,
+      "cost_usd": 0.011634,
+      "latency_ms": 11276.837926008739
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-001",
+      "input_tokens": 1077,
+      "output_tokens": 23,
+      "cost_usd": 0.003576,
+      "latency_ms": 1626.1228549992666
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-003",
+      "input_tokens": 966,
+      "output_tokens": 1114,
+      "cost_usd": 0.019608,
+      "latency_ms": 18315.149351023138
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-028",
+      "input_tokens": 1578,
+      "output_tokens": 875,
+      "cost_usd": 0.017859,
+      "latency_ms": 15559.761750977486
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-006",
+      "input_tokens": 810,
+      "output_tokens": 862,
+      "cost_usd": 0.01536,
+      "latency_ms": 13966.24623495154
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-007",
+      "input_tokens": 782,
+      "output_tokens": 791,
+      "cost_usd": 0.014211,
+      "latency_ms": 12622.573380009271
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-068",
+      "input_tokens": 1187,
+      "output_tokens": 425,
+      "cost_usd": 0.009936,
+      "latency_ms": 9073.98645801004
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-061",
+      "input_tokens": 1114,
+      "output_tokens": 695,
+      "cost_usd": 0.013767,
+      "latency_ms": 12339.869741932489
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-048",
+      "input_tokens": 953,
+      "output_tokens": 1178,
+      "cost_usd": 0.020529,
+      "latency_ms": 17920.323060941882
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-065",
+      "input_tokens": 1112,
+      "output_tokens": 808,
+      "cost_usd": 0.015456,
+      "latency_ms": 12827.047227998264
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-053",
+      "input_tokens": 1027,
+      "output_tokens": 855,
+      "cost_usd": 0.015906,
+      "latency_ms": 12422.78390203137
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-050",
+      "input_tokens": 685,
+      "output_tokens": 781,
+      "cost_usd": 0.01377,
+      "latency_ms": 12062.80016398523
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-049",
+      "input_tokens": 887,
+      "output_tokens": 848,
+      "cost_usd": 0.015381,
+      "latency_ms": 13694.949902012013
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-069",
+      "input_tokens": 991,
+      "output_tokens": 572,
+      "cost_usd": 0.011553,
+      "latency_ms": 10891.138849896379
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-047",
+      "input_tokens": 1151,
+      "output_tokens": 1430,
+      "cost_usd": 0.024903,
+      "latency_ms": 21259.28333599586
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-056",
+      "input_tokens": 730,
+      "output_tokens": 1124,
+      "cost_usd": 0.01905,
+      "latency_ms": 19460.857796948403
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-043",
+      "input_tokens": 1120,
+      "output_tokens": 1182,
+      "cost_usd": 0.02109,
+      "latency_ms": 16669.186157989316
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-067",
+      "input_tokens": 1048,
+      "output_tokens": 736,
+      "cost_usd": 0.014184,
+      "latency_ms": 10958.708800957538
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-058",
+      "input_tokens": 1175,
+      "output_tokens": 1187,
+      "cost_usd": 0.02133,
+      "latency_ms": 20273.37331895251
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-063",
+      "input_tokens": 1148,
+      "output_tokens": 949,
+      "cost_usd": 0.017679,
+      "latency_ms": 13961.622452014126
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-059",
+      "input_tokens": 987,
+      "output_tokens": 340,
+      "cost_usd": 0.008061,
+      "latency_ms": 7006.26881304197
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-071",
+      "input_tokens": 1237,
+      "output_tokens": 880,
+      "cost_usd": 0.016911,
+      "latency_ms": 16087.490328936838
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-052",
+      "input_tokens": 1191,
+      "output_tokens": 589,
+      "cost_usd": 0.012408,
+      "latency_ms": 10569.263015058823
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-064",
+      "input_tokens": 960,
+      "output_tokens": 1684,
+      "cost_usd": 0.02814,
+      "latency_ms": 26519.75052896887
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-045",
+      "input_tokens": 810,
+      "output_tokens": 827,
+      "cost_usd": 0.014835,
+      "latency_ms": 16189.468291006051
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-055",
+      "input_tokens": 1337,
+      "output_tokens": 1555,
+      "cost_usd": 0.027336,
+      "latency_ms": 26329.77802597452
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-046",
+      "input_tokens": 1123,
+      "output_tokens": 532,
+      "cost_usd": 0.011349,
+      "latency_ms": 10393.84337910451
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-060",
+      "input_tokens": 1180,
+      "output_tokens": 644,
+      "cost_usd": 0.0132,
+      "latency_ms": 13103.571261977777
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-057",
+      "input_tokens": 1170,
+      "output_tokens": 570,
+      "cost_usd": 0.01206,
+      "latency_ms": 12881.659560021944
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-066",
+      "input_tokens": 1158,
+      "output_tokens": 558,
+      "cost_usd": 0.011844,
+      "latency_ms": 10056.494278018363
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-044",
+      "input_tokens": 835,
+      "output_tokens": 639,
+      "cost_usd": 0.01209,
+      "latency_ms": 12442.499408032745
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-081",
+      "input_tokens": 880,
+      "output_tokens": 894,
+      "cost_usd": 0.01605,
+      "latency_ms": 16075.174450990744
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-080",
+      "input_tokens": 1191,
+      "output_tokens": 531,
+      "cost_usd": 0.011538,
+      "latency_ms": 9051.544883986935
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-084",
+      "input_tokens": 659,
+      "output_tokens": 560,
+      "cost_usd": 0.010377,
+      "latency_ms": 10213.514568051323
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-074",
+      "input_tokens": 839,
+      "output_tokens": 955,
+      "cost_usd": 0.016842,
+      "latency_ms": 13618.875609943643
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-073",
+      "input_tokens": 995,
+      "output_tokens": 484,
+      "cost_usd": 0.010245,
+      "latency_ms": 9069.647407042794
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-079",
+      "input_tokens": 1013,
+      "output_tokens": 441,
+      "cost_usd": 0.009654,
+      "latency_ms": 7623.664370039478
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-082",
+      "input_tokens": 1169,
+      "output_tokens": 2203,
+      "cost_usd": 0.036552,
+      "latency_ms": 35666.11646593083
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-077",
+      "input_tokens": 1054,
+      "output_tokens": 736,
+      "cost_usd": 0.014202,
+      "latency_ms": 12676.056924974546
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-076",
+      "input_tokens": 713,
+      "output_tokens": 583,
+      "cost_usd": 0.010884,
+      "latency_ms": 11073.947974015027
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-087",
+      "input_tokens": 767,
+      "output_tokens": 1177,
+      "cost_usd": 0.019956,
+      "latency_ms": 19867.033559945412
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-085",
+      "input_tokens": 1028,
+      "output_tokens": 756,
+      "cost_usd": 0.014424,
+      "latency_ms": 12391.965424991213
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-075",
+      "input_tokens": 1006,
+      "output_tokens": 582,
+      "cost_usd": 0.011748,
+      "latency_ms": 11335.986085003242
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-078",
+      "input_tokens": 982,
+      "output_tokens": 629,
+      "cost_usd": 0.012381,
+      "latency_ms": 11395.780773018487
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-086",
+      "input_tokens": 761,
+      "output_tokens": 23,
+      "cost_usd": 0.002628,
+      "latency_ms": 2040.6474330229685
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-083",
+      "input_tokens": 1060,
+      "output_tokens": 837,
+      "cost_usd": 0.015735,
+      "latency_ms": 17477.075405069627
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-101",
+      "input_tokens": 1165,
+      "output_tokens": 749,
+      "cost_usd": 0.01473,
+      "latency_ms": 13061.223868979141
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-100",
+      "input_tokens": 927,
+      "output_tokens": 23,
+      "cost_usd": 0.003126,
+      "latency_ms": 1727.1404910134152
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-103",
+      "input_tokens": 866,
+      "output_tokens": 639,
+      "cost_usd": 0.012183,
+      "latency_ms": 9956.281404942274
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-097",
+      "input_tokens": 1151,
+      "output_tokens": 480,
+      "cost_usd": 0.010653,
+      "latency_ms": 10238.648175960407
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-090",
+      "input_tokens": 1061,
+      "output_tokens": 568,
+      "cost_usd": 0.011703,
+      "latency_ms": 9240.063452045433
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-095",
+      "input_tokens": 902,
+      "output_tokens": 668,
+      "cost_usd": 0.012726,
+      "latency_ms": 10510.067928000353
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-089",
+      "input_tokens": 1390,
+      "output_tokens": 6,
+      "cost_usd": 0.00426,
+      "latency_ms": 1508.9084740029648
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-088",
+      "input_tokens": 1124,
+      "output_tokens": 6,
+      "cost_usd": 0.003462,
+      "latency_ms": 1465.3738379711285
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-104",
+      "input_tokens": 1179,
+      "output_tokens": 1709,
+      "cost_usd": 0.029172,
+      "latency_ms": 27403.66010798607
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-091",
+      "input_tokens": 993,
+      "output_tokens": 816,
+      "cost_usd": 0.015219,
+      "latency_ms": 15547.972670989111
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-096",
+      "input_tokens": 1344,
+      "output_tokens": 23,
+      "cost_usd": 0.004377,
+      "latency_ms": 1514.7444679168984
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-099",
+      "input_tokens": 1118,
+      "output_tokens": 688,
+      "cost_usd": 0.013674,
+      "latency_ms": 11904.399171937257
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-098",
+      "input_tokens": 846,
+      "output_tokens": 8,
+      "cost_usd": 0.002658,
+      "latency_ms": 1787.3193189734593
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-092",
+      "input_tokens": 1027,
+      "output_tokens": 1127,
+      "cost_usd": 0.019986,
+      "latency_ms": 18689.305634004995
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-094",
+      "input_tokens": 917,
+      "output_tokens": 415,
+      "cost_usd": 0.008976,
+      "latency_ms": 6579.4700720580295
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-107",
+      "input_tokens": 195,
+      "output_tokens": 8,
+      "cost_usd": 0.000705,
+      "latency_ms": 2243.2118980214
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-106",
+      "input_tokens": 162,
+      "output_tokens": 715,
+      "cost_usd": 0.011211,
+      "latency_ms": 15911.41093405895
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-105",
+      "input_tokens": 201,
+      "output_tokens": 1841,
+      "cost_usd": 0.028218,
+      "latency_ms": 36130.77520101797
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-109",
+      "input_tokens": 177,
+      "output_tokens": 1831,
+      "cost_usd": 0.027996,
+      "latency_ms": 34932.245997013524
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-111",
+      "input_tokens": 162,
+      "output_tokens": 1018,
+      "cost_usd": 0.015756,
+      "latency_ms": 21405.243119923398
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-112",
+      "input_tokens": 164,
+      "output_tokens": 924,
+      "cost_usd": 0.014352,
+      "latency_ms": 17781.209059990942
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-113",
+      "input_tokens": 166,
+      "output_tokens": 1099,
+      "cost_usd": 0.016983,
+      "latency_ms": 23382.132126949728
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-115",
+      "input_tokens": 240,
+      "output_tokens": 1506,
+      "cost_usd": 0.02331,
+      "latency_ms": 26320.070876041427
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-110",
+      "input_tokens": 247,
+      "output_tokens": 959,
+      "cost_usd": 0.015126,
+      "latency_ms": 19180.339197977446
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-114",
+      "input_tokens": 163,
+      "output_tokens": 1382,
+      "cost_usd": 0.021219,
+      "latency_ms": 26316.41679396853
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-010",
+      "input_tokens": 231,
+      "output_tokens": 1612,
+      "cost_usd": 0.024873,
+      "latency_ms": 31817.45699502062
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-004",
+      "input_tokens": 210,
+      "output_tokens": 1113,
+      "cost_usd": 0.017325,
+      "latency_ms": 19936.166884028353
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-011",
+      "input_tokens": 196,
+      "output_tokens": 1239,
+      "cost_usd": 0.019173,
+      "latency_ms": 24958.066810970195
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-027",
+      "input_tokens": 178,
+      "output_tokens": 638,
+      "cost_usd": 0.010104,
+      "latency_ms": 13618.696584948339
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-038",
+      "input_tokens": 224,
+      "output_tokens": 2107,
+      "cost_usd": 0.032277,
+      "latency_ms": 40221.87280305661
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-019",
+      "input_tokens": 215,
+      "output_tokens": 1336,
+      "cost_usd": 0.020685,
+      "latency_ms": 24797.60431405157
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-040",
+      "input_tokens": 161,
+      "output_tokens": 1005,
+      "cost_usd": 0.015558,
+      "latency_ms": 19671.447518048808
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-026",
+      "input_tokens": 216,
+      "output_tokens": 1199,
+      "cost_usd": 0.018633,
+      "latency_ms": 22607.858687988482
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-005",
+      "input_tokens": 151,
+      "output_tokens": 748,
+      "cost_usd": 0.011673,
+      "latency_ms": 15447.521149995737
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-034",
+      "input_tokens": 200,
+      "output_tokens": 1278,
+      "cost_usd": 0.01977,
+      "latency_ms": 23362.130164983682
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-023",
+      "input_tokens": 214,
+      "output_tokens": 2401,
+      "cost_usd": 0.036657,
+      "latency_ms": 42782.40245208144
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-012",
+      "input_tokens": 185,
+      "output_tokens": 2791,
+      "cost_usd": 0.04242,
+      "latency_ms": 51775.03279200755
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-030",
+      "input_tokens": 229,
+      "output_tokens": 6,
+      "cost_usd": 0.000777,
+      "latency_ms": 1547.1045909216627
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-022",
+      "input_tokens": 201,
+      "output_tokens": 8,
+      "cost_usd": 0.000723,
+      "latency_ms": 1852.818495943211
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-013",
+      "input_tokens": 137,
+      "output_tokens": 693,
+      "cost_usd": 0.010806,
+      "latency_ms": 14272.488342947327
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-025",
+      "input_tokens": 217,
+      "output_tokens": 975,
+      "cost_usd": 0.015276,
+      "latency_ms": 18320.887687965296
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-036",
+      "input_tokens": 243,
+      "output_tokens": 3106,
+      "cost_usd": 0.047319,
+      "latency_ms": 51928.305351990275
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-037",
+      "input_tokens": 193,
+      "output_tokens": 2474,
+      "cost_usd": 0.037689,
+      "latency_ms": 44190.60425099451
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-033",
+      "input_tokens": 219,
+      "output_tokens": 2317,
+      "cost_usd": 0.035412,
+      "latency_ms": 62450.74726105668
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-014",
+      "input_tokens": 226,
+      "output_tokens": 1538,
+      "cost_usd": 0.023748,
+      "latency_ms": 25756.38080202043
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-024",
+      "input_tokens": 222,
+      "output_tokens": 3282,
+      "cost_usd": 0.049896,
+      "latency_ms": 60716.4397330489
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-021",
+      "input_tokens": 216,
+      "output_tokens": 2051,
+      "cost_usd": 0.031413,
+      "latency_ms": 40634.24212997779
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-029",
+      "input_tokens": 235,
+      "output_tokens": 1523,
+      "cost_usd": 0.02355,
+      "latency_ms": 26481.049575959332
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-039",
+      "input_tokens": 207,
+      "output_tokens": 1968,
+      "cost_usd": 0.030141,
+      "latency_ms": 38615.28346198611
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-031",
+      "input_tokens": 204,
+      "output_tokens": 1692,
+      "cost_usd": 0.025992,
+      "latency_ms": 29482.618427020498
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-020",
+      "input_tokens": 189,
+      "output_tokens": 2408,
+      "cost_usd": 0.036687,
+      "latency_ms": 42621.798965963535
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-017",
+      "input_tokens": 215,
+      "output_tokens": 701,
+      "cost_usd": 0.01116,
+      "latency_ms": 13029.16793199256
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-042",
+      "input_tokens": 174,
+      "output_tokens": 749,
+      "cost_usd": 0.011757,
+      "latency_ms": 15010.551910032518
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-035",
+      "input_tokens": 188,
+      "output_tokens": 553,
+      "cost_usd": 0.008859,
+      "latency_ms": 11118.984572938643
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-032",
+      "input_tokens": 169,
+      "output_tokens": 892,
+      "cost_usd": 0.013887,
+      "latency_ms": 18071.69154298026
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-001",
+      "input_tokens": 196,
+      "output_tokens": 354,
+      "cost_usd": 0.005898,
+      "latency_ms": 7122.505965060554
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-003",
+      "input_tokens": 212,
+      "output_tokens": 827,
+      "cost_usd": 0.013041,
+      "latency_ms": 19789.147070026956
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-028",
+      "input_tokens": 198,
+      "output_tokens": 897,
+      "cost_usd": 0.014049,
+      "latency_ms": 15241.468724911101
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-006",
+      "input_tokens": 181,
+      "output_tokens": 1353,
+      "cost_usd": 0.020838,
+      "latency_ms": 23317.578546935692
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-007",
+      "input_tokens": 156,
+      "output_tokens": 1712,
+      "cost_usd": 0.026148,
+      "latency_ms": 35242.83479596488
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-068",
+      "input_tokens": 190,
+      "output_tokens": 1995,
+      "cost_usd": 0.030495,
+      "latency_ms": 37237.16995597351
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-061",
+      "input_tokens": 214,
+      "output_tokens": 2040,
+      "cost_usd": 0.031242,
+      "latency_ms": 37024.82781803701
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-048",
+      "input_tokens": 190,
+      "output_tokens": 1709,
+      "cost_usd": 0.026205,
+      "latency_ms": 31786.24549601227
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-065",
+      "input_tokens": 216,
+      "output_tokens": 2317,
+      "cost_usd": 0.035403,
+      "latency_ms": 40476.29198606592
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-053",
+      "input_tokens": 167,
+      "output_tokens": 643,
+      "cost_usd": 0.010146,
+      "latency_ms": 14092.526408960111
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-050",
+      "input_tokens": 175,
+      "output_tokens": 958,
+      "cost_usd": 0.014895,
+      "latency_ms": 19724.502555909567
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-049",
+      "input_tokens": 194,
+      "output_tokens": 1032,
+      "cost_usd": 0.016062,
+      "latency_ms": 19795.87536503095
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-069",
+      "input_tokens": 157,
+      "output_tokens": 967,
+      "cost_usd": 0.014976,
+      "latency_ms": 15638.279270962812
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-047",
+      "input_tokens": 229,
+      "output_tokens": 1594,
+      "cost_usd": 0.024597,
+      "latency_ms": 26435.126116033643
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-056",
+      "input_tokens": 187,
+      "output_tokens": 692,
+      "cost_usd": 0.010941,
+      "latency_ms": 12882.816158933565
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-043",
+      "input_tokens": 208,
+      "output_tokens": 1203,
+      "cost_usd": 0.018669,
+      "latency_ms": 21602.156152017415
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-067",
+      "input_tokens": 214,
+      "output_tokens": 1523,
+      "cost_usd": 0.023487,
+      "latency_ms": 27791.687284014188
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-058",
+      "input_tokens": 210,
+      "output_tokens": 2149,
+      "cost_usd": 0.032865,
+      "latency_ms": 41546.05192900635
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-063",
+      "input_tokens": 210,
+      "output_tokens": 769,
+      "cost_usd": 0.012165,
+      "latency_ms": 14450.067808968015
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-059",
+      "input_tokens": 189,
+      "output_tokens": 1515,
+      "cost_usd": 0.023292,
+      "latency_ms": 27660.43923399411
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-071",
+      "input_tokens": 218,
+      "output_tokens": 545,
+      "cost_usd": 0.008829,
+      "latency_ms": 8941.382830962539
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-052",
+      "input_tokens": 206,
+      "output_tokens": 2702,
+      "cost_usd": 0.041148,
+      "latency_ms": 50100.8940290194
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-064",
+      "input_tokens": 214,
+      "output_tokens": 1777,
+      "cost_usd": 0.027297,
+      "latency_ms": 33650.77291300986
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-045",
+      "input_tokens": 171,
+      "output_tokens": 1045,
+      "cost_usd": 0.016188,
+      "latency_ms": 17938.83796001319
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-055",
+      "input_tokens": 224,
+      "output_tokens": 1146,
+      "cost_usd": 0.017862,
+      "latency_ms": 20733.728751074523
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-046",
+      "input_tokens": 240,
+      "output_tokens": 1565,
+      "cost_usd": 0.024195,
+      "latency_ms": 28928.984457976185
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-060",
+      "input_tokens": 222,
+      "output_tokens": 1651,
+      "cost_usd": 0.025431,
+      "latency_ms": 31116.72065104358
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-057",
+      "input_tokens": 197,
+      "output_tokens": 1930,
+      "cost_usd": 0.029541,
+      "latency_ms": 36424.11143996287
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-066",
+      "input_tokens": 175,
+      "output_tokens": 1404,
+      "cost_usd": 0.021585,
+      "latency_ms": 25324.742456083186
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-044",
+      "input_tokens": 195,
+      "output_tokens": 1312,
+      "cost_usd": 0.020265,
+      "latency_ms": 24445.61466993764
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-081",
+      "input_tokens": 136,
+      "output_tokens": 1366,
+      "cost_usd": 0.020898,
+      "latency_ms": 25139.090174925514
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-080",
+      "input_tokens": 210,
+      "output_tokens": 711,
+      "cost_usd": 0.011295,
+      "latency_ms": 12815.651320968755
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-084",
+      "input_tokens": 193,
+      "output_tokens": 1035,
+      "cost_usd": 0.016104,
+      "latency_ms": 22103.83771196939
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-074",
+      "input_tokens": 231,
+      "output_tokens": 1238,
+      "cost_usd": 0.019263,
+      "latency_ms": 20745.64084294252
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-073",
+      "input_tokens": 191,
+      "output_tokens": 971,
+      "cost_usd": 0.015138,
+      "latency_ms": 17741.935656988062
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-079",
+      "input_tokens": 132,
+      "output_tokens": 463,
+      "cost_usd": 0.007341,
+      "latency_ms": 9626.50792801287
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-082",
+      "input_tokens": 240,
+      "output_tokens": 928,
+      "cost_usd": 0.01464,
+      "latency_ms": 18080.151827074587
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-077",
+      "input_tokens": 223,
+      "output_tokens": 1309,
+      "cost_usd": 0.020304,
+      "latency_ms": 23631.915129953995
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-076",
+      "input_tokens": 197,
+      "output_tokens": 516,
+      "cost_usd": 0.008331,
+      "latency_ms": 11769.125227932818
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-087",
+      "input_tokens": 214,
+      "output_tokens": 2119,
+      "cost_usd": 0.032427,
+      "latency_ms": 40478.55046496261
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-085",
+      "input_tokens": 150,
+      "output_tokens": 902,
+      "cost_usd": 0.01398,
+      "latency_ms": 19187.599014956504
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-075",
+      "input_tokens": 106,
+      "output_tokens": 642,
+      "cost_usd": 0.009948,
+      "latency_ms": 13945.606905035675
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-078",
+      "input_tokens": 207,
+      "output_tokens": 791,
+      "cost_usd": 0.012486,
+      "latency_ms": 14498.851157957688
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-086",
+      "input_tokens": 171,
+      "output_tokens": 2092,
+      "cost_usd": 0.031893,
+      "latency_ms": 40299.861181061715
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-083",
+      "input_tokens": 159,
+      "output_tokens": 716,
+      "cost_usd": 0.011217,
+      "latency_ms": 13498.477288987488
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-101",
+      "input_tokens": 213,
+      "output_tokens": 2657,
+      "cost_usd": 0.040494,
+      "latency_ms": 48857.25601809099
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-100",
+      "input_tokens": 183,
+      "output_tokens": 703,
+      "cost_usd": 0.011094,
+      "latency_ms": 12579.779608990066
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-103",
+      "input_tokens": 181,
+      "output_tokens": 1574,
+      "cost_usd": 0.024153,
+      "latency_ms": 27783.93746598158
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-097",
+      "input_tokens": 166,
+      "output_tokens": 684,
+      "cost_usd": 0.010758,
+      "latency_ms": 14097.115452983417
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-090",
+      "input_tokens": 163,
+      "output_tokens": 1220,
+      "cost_usd": 0.018789,
+      "latency_ms": 24852.25646093022
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-095",
+      "input_tokens": 158,
+      "output_tokens": 1634,
+      "cost_usd": 0.024984,
+      "latency_ms": 31462.104598991573
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-089",
+      "input_tokens": 222,
+      "output_tokens": 6,
+      "cost_usd": 0.000756,
+      "latency_ms": 2760.435725096613
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-088",
+      "input_tokens": 158,
+      "output_tokens": 6,
+      "cost_usd": 0.000564,
+      "latency_ms": 1554.4437390053645
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-104",
+      "input_tokens": 234,
+      "output_tokens": 507,
+      "cost_usd": 0.008307,
+      "latency_ms": 8746.696496964432
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-091",
+      "input_tokens": 191,
+      "output_tokens": 1967,
+      "cost_usd": 0.030078,
+      "latency_ms": 36507.286840933375
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-096",
+      "input_tokens": 178,
+      "output_tokens": 1197,
+      "cost_usd": 0.018489,
+      "latency_ms": 22586.5533730248
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-099",
+      "input_tokens": 133,
+      "output_tokens": 532,
+      "cost_usd": 0.008379,
+      "latency_ms": 9706.884177052416
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-098",
+      "input_tokens": 188,
+      "output_tokens": 6,
+      "cost_usd": 0.000654,
+      "latency_ms": 1424.3184149963781
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-092",
+      "input_tokens": 201,
+      "output_tokens": 985,
+      "cost_usd": 0.015378,
+      "latency_ms": 19991.984575986862
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-094",
+      "input_tokens": 150,
+      "output_tokens": 1298,
+      "cost_usd": 0.01992,
+      "latency_ms": 24182.3762540007
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-107",
+      "input_tokens": 195,
+      "output_tokens": 6,
+      "cost_usd": 0.000675,
+      "latency_ms": 1437.2425249312073
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-106",
+      "input_tokens": 162,
+      "output_tokens": 700,
+      "cost_usd": 0.010986,
+      "latency_ms": 15568.200175999664
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-105",
+      "input_tokens": 201,
+      "output_tokens": 1004,
+      "cost_usd": 0.015663,
+      "latency_ms": 20378.89403104782
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-109",
+      "input_tokens": 177,
+      "output_tokens": 1237,
+      "cost_usd": 0.019086,
+      "latency_ms": 22227.28531807661
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-111",
+      "input_tokens": 162,
+      "output_tokens": 874,
+      "cost_usd": 0.013596,
+      "latency_ms": 18949.195605004206
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-112",
+      "input_tokens": 164,
+      "output_tokens": 858,
+      "cost_usd": 0.013362,
+      "latency_ms": 17907.48087898828
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-113",
+      "input_tokens": 166,
+      "output_tokens": 1245,
+      "cost_usd": 0.019173,
+      "latency_ms": 27603.5365620628
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-115",
+      "input_tokens": 240,
+      "output_tokens": 2096,
+      "cost_usd": 0.03216,
+      "latency_ms": 36581.73968701158
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-110",
+      "input_tokens": 247,
+      "output_tokens": 1039,
+      "cost_usd": 0.016326,
+      "latency_ms": 17921.72806302551
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "tier3_eval",
+      "query_id": "NX-114",
+      "input_tokens": 163,
+      "output_tokens": 1737,
+      "cost_usd": 0.026544,
+      "latency_ms": 33235.21249007899
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-010",
+      "input_tokens": 822,
+      "output_tokens": 299,
+      "cost_usd": 0.005232,
+      "latency_ms": 14656.913204933517
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-004",
+      "input_tokens": 880,
+      "output_tokens": 21,
+      "cost_usd": 0.002012,
+      "latency_ms": 8963.427204987966
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-011",
+      "input_tokens": 975,
+      "output_tokens": 18,
+      "cost_usd": 0.002166,
+      "latency_ms": 9598.596645053476
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-027",
+      "input_tokens": 750,
+      "output_tokens": 339,
+      "cost_usd": 0.005568,
+      "latency_ms": 19547.42083698511
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-038",
+      "input_tokens": 943,
+      "output_tokens": 21,
+      "cost_usd": 0.002138,
+      "latency_ms": 7949.54487902578
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-019",
+      "input_tokens": 939,
+      "output_tokens": 18,
+      "cost_usd": 0.002094,
+      "latency_ms": 9173.49957791157
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-040",
+      "input_tokens": 984,
+      "output_tokens": 18,
+      "cost_usd": 0.002184,
+      "latency_ms": 9949.256476946175
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-026",
+      "input_tokens": 911,
+      "output_tokens": 18,
+      "cost_usd": 0.002038,
+      "latency_ms": 9405.604504048824
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-005",
+      "input_tokens": 843,
+      "output_tokens": 25,
+      "cost_usd": 0.001986,
+      "latency_ms": 8850.049308035523
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-034",
+      "input_tokens": 706,
+      "output_tokens": 18,
+      "cost_usd": 0.001628,
+      "latency_ms": 9718.093857984059
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-023",
+      "input_tokens": 1004,
+      "output_tokens": 21,
+      "cost_usd": 0.00226,
+      "latency_ms": 8682.561071007513
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-012",
+      "input_tokens": 832,
+      "output_tokens": 16,
+      "cost_usd": 0.001856,
+      "latency_ms": 10992.545371991582
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-030",
+      "input_tokens": 943,
+      "output_tokens": 18,
+      "cost_usd": 0.002102,
+      "latency_ms": 9088.954722043127
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-022",
+      "input_tokens": 546,
+      "output_tokens": 20,
+      "cost_usd": 0.001332,
+      "latency_ms": 8190.029559074901
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-013",
+      "input_tokens": 759,
+      "output_tokens": 18,
+      "cost_usd": 0.001734,
+      "latency_ms": 9553.432408953086
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-025",
+      "input_tokens": 937,
+      "output_tokens": 18,
+      "cost_usd": 0.00209,
+      "latency_ms": 9926.426633028314
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-036",
+      "input_tokens": 653,
+      "output_tokens": 20,
+      "cost_usd": 0.001546,
+      "latency_ms": 9041.419410030358
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-037",
+      "input_tokens": 830,
+      "output_tokens": 18,
+      "cost_usd": 0.001876,
+      "latency_ms": 8388.824993046
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-033",
+      "input_tokens": 688,
+      "output_tokens": 172,
+      "cost_usd": 0.00344,
+      "latency_ms": 10144.363161060028
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-014",
+      "input_tokens": 885,
+      "output_tokens": 20,
+      "cost_usd": 0.00201,
+      "latency_ms": 9648.396887932904
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-024",
+      "input_tokens": 682,
+      "output_tokens": 18,
+      "cost_usd": 0.00158,
+      "latency_ms": 10227.9529790394
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-021",
+      "input_tokens": 615,
+      "output_tokens": 18,
+      "cost_usd": 0.001446,
+      "latency_ms": 7348.7988309934735
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-029",
+      "input_tokens": 966,
+      "output_tokens": 18,
+      "cost_usd": 0.002148,
+      "latency_ms": 8751.86313490849
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-039",
+      "input_tokens": 717,
+      "output_tokens": 18,
+      "cost_usd": 0.00165,
+      "latency_ms": 8504.404767998494
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-031",
+      "input_tokens": 671,
+      "output_tokens": 18,
+      "cost_usd": 0.001558,
+      "latency_ms": 9492.65185801778
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-020",
+      "input_tokens": 468,
+      "output_tokens": 21,
+      "cost_usd": 0.001188,
+      "latency_ms": 9240.470874938183
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-017",
+      "input_tokens": 903,
+      "output_tokens": 20,
+      "cost_usd": 0.002046,
+      "latency_ms": 7717.807117034681
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-042",
+      "input_tokens": 1082,
+      "output_tokens": 21,
+      "cost_usd": 0.002416,
+      "latency_ms": 9576.148911030032
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-035",
+      "input_tokens": 810,
+      "output_tokens": 18,
+      "cost_usd": 0.001836,
+      "latency_ms": 9334.235307993367
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-032",
+      "input_tokens": 753,
+      "output_tokens": 20,
+      "cost_usd": 0.001746,
+      "latency_ms": 8434.207842918113
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-001",
+      "input_tokens": 897,
+      "output_tokens": 18,
+      "cost_usd": 0.00201,
+      "latency_ms": 6623.125498066656
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-003",
+      "input_tokens": 846,
+      "output_tokens": 21,
+      "cost_usd": 0.001944,
+      "latency_ms": 9234.088798984885
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-028",
+      "input_tokens": 1146,
+      "output_tokens": 19,
+      "cost_usd": 0.00252,
+      "latency_ms": 9538.49366598297
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-006",
+      "input_tokens": 689,
+      "output_tokens": 21,
+      "cost_usd": 0.00163,
+      "latency_ms": 14031.140518025495
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-007",
+      "input_tokens": 705,
+      "output_tokens": 20,
+      "cost_usd": 0.00165,
+      "latency_ms": 8371.814953978173
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-068",
+      "input_tokens": 1044,
+      "output_tokens": 15,
+      "cost_usd": 0.002268,
+      "latency_ms": 7536.9736650027335
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-061",
+      "input_tokens": 959,
+      "output_tokens": 18,
+      "cost_usd": 0.002134,
+      "latency_ms": 8376.466529094614
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-048",
+      "input_tokens": 852,
+      "output_tokens": 143,
+      "cost_usd": 0.00342,
+      "latency_ms": 11093.84319500532
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-065",
+      "input_tokens": 886,
+      "output_tokens": 18,
+      "cost_usd": 0.001988,
+      "latency_ms": 6929.604685981758
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-053",
+      "input_tokens": 824,
+      "output_tokens": 21,
+      "cost_usd": 0.0019,
+      "latency_ms": 7207.5949490536
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-050",
+      "input_tokens": 616,
+      "output_tokens": 20,
+      "cost_usd": 0.001472,
+      "latency_ms": 9917.138215969317
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-049",
+      "input_tokens": 795,
+      "output_tokens": 18,
+      "cost_usd": 0.001806,
+      "latency_ms": 12441.331870038994
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-069",
+      "input_tokens": 885,
+      "output_tokens": 18,
+      "cost_usd": 0.001986,
+      "latency_ms": 8858.311828109436
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-047",
+      "input_tokens": 971,
+      "output_tokens": 18,
+      "cost_usd": 0.002158,
+      "latency_ms": 11951.857205014676
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-056",
+      "input_tokens": 649,
+      "output_tokens": 242,
+      "cost_usd": 0.004202,
+      "latency_ms": 25236.12694593612
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-043",
+      "input_tokens": 951,
+      "output_tokens": 15,
+      "cost_usd": 0.002082,
+      "latency_ms": 8617.558999918401
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-067",
+      "input_tokens": 909,
+      "output_tokens": 18,
+      "cost_usd": 0.002034,
+      "latency_ms": 11903.952089953236
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-058",
+      "input_tokens": 996,
+      "output_tokens": 21,
+      "cost_usd": 0.002244,
+      "latency_ms": 9049.002248095348
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-063",
+      "input_tokens": 986,
+      "output_tokens": 20,
+      "cost_usd": 0.002212,
+      "latency_ms": 8971.041499986313
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-059",
+      "input_tokens": 833,
+      "output_tokens": 21,
+      "cost_usd": 0.001918,
+      "latency_ms": 7877.791287959553
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-071",
+      "input_tokens": 1023,
+      "output_tokens": 18,
+      "cost_usd": 0.002262,
+      "latency_ms": 9292.243391973898
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-052",
+      "input_tokens": 1049,
+      "output_tokens": 20,
+      "cost_usd": 0.002338,
+      "latency_ms": 8371.28938199021
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-064",
+      "input_tokens": 831,
+      "output_tokens": 18,
+      "cost_usd": 0.001878,
+      "latency_ms": 10063.38654505089
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-045",
+      "input_tokens": 720,
+      "output_tokens": 178,
+      "cost_usd": 0.003576,
+      "latency_ms": 10569.829710992053
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-055",
+      "input_tokens": 1131,
+      "output_tokens": 440,
+      "cost_usd": 0.007542,
+      "latency_ms": 23107.010341016576
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-046",
+      "input_tokens": 975,
+      "output_tokens": 21,
+      "cost_usd": 0.002202,
+      "latency_ms": 8482.727112947032
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-060",
+      "input_tokens": 1009,
+      "output_tokens": 18,
+      "cost_usd": 0.002234,
+      "latency_ms": 11502.610040013678
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-057",
+      "input_tokens": 1023,
+      "output_tokens": 21,
+      "cost_usd": 0.002298,
+      "latency_ms": 9014.50258505065
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-066",
+      "input_tokens": 1015,
+      "output_tokens": 21,
+      "cost_usd": 0.002282,
+      "latency_ms": 7798.510785098188
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-044",
+      "input_tokens": 767,
+      "output_tokens": 18,
+      "cost_usd": 0.00175,
+      "latency_ms": 11207.24425802473
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-081",
+      "input_tokens": 799,
+      "output_tokens": 21,
+      "cost_usd": 0.00185,
+      "latency_ms": 14901.933487970382
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-080",
+      "input_tokens": 1006,
+      "output_tokens": 18,
+      "cost_usd": 0.002228,
+      "latency_ms": 8882.681881892495
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-084",
+      "input_tokens": 579,
+      "output_tokens": 20,
+      "cost_usd": 0.001398,
+      "latency_ms": 10021.746292011812
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-074",
+      "input_tokens": 694,
+      "output_tokens": 20,
+      "cost_usd": 0.001628,
+      "latency_ms": 8311.41679896973
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-073",
+      "input_tokens": 856,
+      "output_tokens": 20,
+      "cost_usd": 0.001952,
+      "latency_ms": 7372.373786056414
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-079",
+      "input_tokens": 845,
+      "output_tokens": 20,
+      "cost_usd": 0.00193,
+      "latency_ms": 7513.914569048211
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-082",
+      "input_tokens": 1017,
+      "output_tokens": 16,
+      "cost_usd": 0.002226,
+      "latency_ms": 23628.326311940327
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-077",
+      "input_tokens": 931,
+      "output_tokens": 20,
+      "cost_usd": 0.002102,
+      "latency_ms": 8942.615699023008
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-076",
+      "input_tokens": 625,
+      "output_tokens": 18,
+      "cost_usd": 0.001466,
+      "latency_ms": 13668.539557023905
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-087",
+      "input_tokens": 685,
+      "output_tokens": 20,
+      "cost_usd": 0.00161,
+      "latency_ms": 7356.73792695161
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-085",
+      "input_tokens": 881,
+      "output_tokens": 18,
+      "cost_usd": 0.001978,
+      "latency_ms": 13404.06032197643
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-075",
+      "input_tokens": 871,
+      "output_tokens": 21,
+      "cost_usd": 0.001994,
+      "latency_ms": 8678.97945502773
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-078",
+      "input_tokens": 879,
+      "output_tokens": 370,
+      "cost_usd": 0.006198,
+      "latency_ms": 15902.901479043067
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-086",
+      "input_tokens": 699,
+      "output_tokens": 20,
+      "cost_usd": 0.001638,
+      "latency_ms": 10278.82543602027
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-083",
+      "input_tokens": 924,
+      "output_tokens": 22,
+      "cost_usd": 0.002112,
+      "latency_ms": 25300.116750062443
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-101",
+      "input_tokens": 964,
+      "output_tokens": 21,
+      "cost_usd": 0.00218,
+      "latency_ms": 8893.291221931577
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-100",
+      "input_tokens": 792,
+      "output_tokens": 18,
+      "cost_usd": 0.0018,
+      "latency_ms": 7657.393801026046
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-103",
+      "input_tokens": 749,
+      "output_tokens": 18,
+      "cost_usd": 0.001714,
+      "latency_ms": 9243.253345019184
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-097",
+      "input_tokens": 1019,
+      "output_tokens": 20,
+      "cost_usd": 0.002278,
+      "latency_ms": 9984.80163293425
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-090",
+      "input_tokens": 960,
+      "output_tokens": 18,
+      "cost_usd": 0.002136,
+      "latency_ms": 10593.672265065834
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-095",
+      "input_tokens": 794,
+      "output_tokens": 18,
+      "cost_usd": 0.001804,
+      "latency_ms": 9741.48329300806
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-089",
+      "input_tokens": 1135,
+      "output_tokens": 21,
+      "cost_usd": 0.002522,
+      "latency_ms": 10611.51051800698
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-088",
+      "input_tokens": 981,
+      "output_tokens": 18,
+      "cost_usd": 0.002178,
+      "latency_ms": 8409.6057980787
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-104",
+      "input_tokens": 1029,
+      "output_tokens": 22,
+      "cost_usd": 0.002322,
+      "latency_ms": 15634.459508000873
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-091",
+      "input_tokens": 847,
+      "output_tokens": 20,
+      "cost_usd": 0.001934,
+      "latency_ms": 12583.044738974422
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-096",
+      "input_tokens": 1101,
+      "output_tokens": 20,
+      "cost_usd": 0.002442,
+      "latency_ms": 7458.418334950693
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-099",
+      "input_tokens": 989,
+      "output_tokens": 15,
+      "cost_usd": 0.002158,
+      "latency_ms": 10737.384289037436
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-098",
+      "input_tokens": 710,
+      "output_tokens": 21,
+      "cost_usd": 0.001672,
+      "latency_ms": 6651.931605068967
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-092",
+      "input_tokens": 846,
+      "output_tokens": 18,
+      "cost_usd": 0.001908,
+      "latency_ms": 11006.280884961598
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-094",
+      "input_tokens": 808,
+      "output_tokens": 18,
+      "cost_usd": 0.001832,
+      "latency_ms": 8962.559925974347
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-107",
+      "input_tokens": 153,
+      "output_tokens": 18,
+      "cost_usd": 0.000522,
+      "latency_ms": 16481.72208305914
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-106",
+      "input_tokens": 133,
+      "output_tokens": 23,
+      "cost_usd": 0.000542,
+      "latency_ms": 18903.45114900265
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-105",
+      "input_tokens": 164,
+      "output_tokens": 18,
+      "cost_usd": 0.000544,
+      "latency_ms": 5898.21702206973
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-109",
+      "input_tokens": 134,
+      "output_tokens": 18,
+      "cost_usd": 0.000484,
+      "latency_ms": 25369.04242890887
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-111",
+      "input_tokens": 130,
+      "output_tokens": 21,
+      "cost_usd": 0.000512,
+      "latency_ms": 14229.725040029734
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-112",
+      "input_tokens": 130,
+      "output_tokens": 18,
+      "cost_usd": 0.000476,
+      "latency_ms": 8741.08858697582
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-113",
+      "input_tokens": 129,
+      "output_tokens": 21,
+      "cost_usd": 0.00051,
+      "latency_ms": 4736.415587016381
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-115",
+      "input_tokens": 165,
+      "output_tokens": 26,
+      "cost_usd": 0.000642,
+      "latency_ms": 8914.604999939911
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-110",
+      "input_tokens": 186,
+      "output_tokens": 18,
+      "cost_usd": 0.000588,
+      "latency_ms": 8260.580446920358
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-114",
+      "input_tokens": 127,
+      "output_tokens": 24,
+      "cost_usd": 0.000542,
+      "latency_ms": 4423.804995021783
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-010",
+      "input_tokens": 188,
+      "output_tokens": 24,
+      "cost_usd": 0.000664,
+      "latency_ms": 27947.792376042344
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-004",
+      "input_tokens": 152,
+      "output_tokens": 24,
+      "cost_usd": 0.000592,
+      "latency_ms": 14394.931004033424
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-011",
+      "input_tokens": 148,
+      "output_tokens": 18,
+      "cost_usd": 0.000512,
+      "latency_ms": 14985.755520989187
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-027",
+      "input_tokens": 134,
+      "output_tokens": 18,
+      "cost_usd": 0.000484,
+      "latency_ms": 18107.232325011864
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-038",
+      "input_tokens": 194,
+      "output_tokens": 20,
+      "cost_usd": 0.000628,
+      "latency_ms": 23174.41537207924
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-019",
+      "input_tokens": 158,
+      "output_tokens": 20,
+      "cost_usd": 0.000556,
+      "latency_ms": 17763.143907068297
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-040",
+      "input_tokens": 122,
+      "output_tokens": 20,
+      "cost_usd": 0.000484,
+      "latency_ms": 5294.999647070654
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-026",
+      "input_tokens": 164,
+      "output_tokens": 24,
+      "cost_usd": 0.000616,
+      "latency_ms": 7810.512367985211
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-005",
+      "input_tokens": 123,
+      "output_tokens": 21,
+      "cost_usd": 0.000498,
+      "latency_ms": 28543.533680960536
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-034",
+      "input_tokens": 140,
+      "output_tokens": 24,
+      "cost_usd": 0.000568,
+      "latency_ms": 14682.520859059878
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-023",
+      "input_tokens": 168,
+      "output_tokens": 18,
+      "cost_usd": 0.000552,
+      "latency_ms": 15697.523795068264
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-012",
+      "input_tokens": 134,
+      "output_tokens": 20,
+      "cost_usd": 0.000508,
+      "latency_ms": 7791.811628965661
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-030",
+      "input_tokens": 161,
+      "output_tokens": 18,
+      "cost_usd": 0.000538,
+      "latency_ms": 4378.195018041879
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-022",
+      "input_tokens": 144,
+      "output_tokens": 160,
+      "cost_usd": 0.002208,
+      "latency_ms": 41053.10798599385
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-013",
+      "input_tokens": 101,
+      "output_tokens": 18,
+      "cost_usd": 0.000418,
+      "latency_ms": 10561.262196977623
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-025",
+      "input_tokens": 157,
+      "output_tokens": 18,
+      "cost_usd": 0.00053,
+      "latency_ms": 4040.108756045811
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-036",
+      "input_tokens": 183,
+      "output_tokens": 157,
+      "cost_usd": 0.00225,
+      "latency_ms": 41995.42522896081
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-037",
+      "input_tokens": 142,
+      "output_tokens": 71,
+      "cost_usd": 0.001136,
+      "latency_ms": 40054.071709979326
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-033",
+      "input_tokens": 177,
+      "output_tokens": 24,
+      "cost_usd": 0.000642,
+      "latency_ms": 6646.429740008898
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-014",
+      "input_tokens": 164,
+      "output_tokens": 158,
+      "cost_usd": 0.002224,
+      "latency_ms": 45865.0182710262
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-024",
+      "input_tokens": 173,
+      "output_tokens": 15,
+      "cost_usd": 0.000526,
+      "latency_ms": 7628.767449990846
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-021",
+      "input_tokens": 165,
+      "output_tokens": 19,
+      "cost_usd": 0.000558,
+      "latency_ms": 28056.879529962316
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-029",
+      "input_tokens": 169,
+      "output_tokens": 20,
+      "cost_usd": 0.000578,
+      "latency_ms": 8174.114441964775
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-039",
+      "input_tokens": 168,
+      "output_tokens": 20,
+      "cost_usd": 0.000576,
+      "latency_ms": 6576.138598960824
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-031",
+      "input_tokens": 158,
+      "output_tokens": 26,
+      "cost_usd": 0.000628,
+      "latency_ms": 7673.708813032135
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-020",
+      "input_tokens": 130,
+      "output_tokens": 23,
+      "cost_usd": 0.000536,
+      "latency_ms": 44116.64595094044
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-017",
+      "input_tokens": 175,
+      "output_tokens": 20,
+      "cost_usd": 0.00059,
+      "latency_ms": 11024.410836980678
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-042",
+      "input_tokens": 134,
+      "output_tokens": 21,
+      "cost_usd": 0.00052,
+      "latency_ms": 3908.0814650515094
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-035",
+      "input_tokens": 159,
+      "output_tokens": 18,
+      "cost_usd": 0.000534,
+      "latency_ms": 4663.027661037631
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-032",
+      "input_tokens": 131,
+      "output_tokens": 20,
+      "cost_usd": 0.000502,
+      "latency_ms": 12116.288825985976
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-001",
+      "input_tokens": 150,
+      "output_tokens": 20,
+      "cost_usd": 0.00054,
+      "latency_ms": 5315.599613939412
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-003",
+      "input_tokens": 145,
+      "output_tokens": 21,
+      "cost_usd": 0.000542,
+      "latency_ms": 4885.807164013386
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-028",
+      "input_tokens": 148,
+      "output_tokens": 21,
+      "cost_usd": 0.000548,
+      "latency_ms": 10947.777644963935
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-006",
+      "input_tokens": 124,
+      "output_tokens": 22,
+      "cost_usd": 0.000512,
+      "latency_ms": 6268.284477060661
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-007",
+      "input_tokens": 112,
+      "output_tokens": 20,
+      "cost_usd": 0.000464,
+      "latency_ms": 9178.416887996718
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-068",
+      "input_tokens": 144,
+      "output_tokens": 23,
+      "cost_usd": 0.000564,
+      "latency_ms": 42591.606516973116
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-061",
+      "input_tokens": 162,
+      "output_tokens": 18,
+      "cost_usd": 0.00054,
+      "latency_ms": 7337.702146032825
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-048",
+      "input_tokens": 163,
+      "output_tokens": 15,
+      "cost_usd": 0.000506,
+      "latency_ms": 5186.731769004837
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-065",
+      "input_tokens": 152,
+      "output_tokens": 300,
+      "cost_usd": 0.003904,
+      "latency_ms": 19960.421383962967
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-053",
+      "input_tokens": 122,
+      "output_tokens": 18,
+      "cost_usd": 0.00046,
+      "latency_ms": 8072.956659947522
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-050",
+      "input_tokens": 131,
+      "output_tokens": 21,
+      "cost_usd": 0.000514,
+      "latency_ms": 18261.33687607944
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-049",
+      "input_tokens": 160,
+      "output_tokens": 20,
+      "cost_usd": 0.00056,
+      "latency_ms": 6937.005048966967
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-069",
+      "input_tokens": 113,
+      "output_tokens": 22,
+      "cost_usd": 0.00049,
+      "latency_ms": 16110.373361036181
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-047",
+      "input_tokens": 162,
+      "output_tokens": 18,
+      "cost_usd": 0.00054,
+      "latency_ms": 7672.527039074339
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-056",
+      "input_tokens": 146,
+      "output_tokens": 24,
+      "cost_usd": 0.00058,
+      "latency_ms": 24302.15630296152
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-043",
+      "input_tokens": 158,
+      "output_tokens": 24,
+      "cost_usd": 0.000604,
+      "latency_ms": 5841.091901063919
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-067",
+      "input_tokens": 167,
+      "output_tokens": 21,
+      "cost_usd": 0.000586,
+      "latency_ms": 26447.923842002638
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-058",
+      "input_tokens": 159,
+      "output_tokens": 24,
+      "cost_usd": 0.000606,
+      "latency_ms": 7887.0852258987725
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-063",
+      "input_tokens": 168,
+      "output_tokens": 18,
+      "cost_usd": 0.000552,
+      "latency_ms": 7227.049089036882
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-059",
+      "input_tokens": 126,
+      "output_tokens": 20,
+      "cost_usd": 0.000492,
+      "latency_ms": 18469.759757979773
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-071",
+      "input_tokens": 159,
+      "output_tokens": 25,
+      "cost_usd": 0.000618,
+      "latency_ms": 8897.72013493348
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-052",
+      "input_tokens": 154,
+      "output_tokens": 158,
+      "cost_usd": 0.002204,
+      "latency_ms": 41642.76587602217
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-064",
+      "input_tokens": 163,
+      "output_tokens": 26,
+      "cost_usd": 0.000638,
+      "latency_ms": 6321.55282702297
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-045",
+      "input_tokens": 130,
+      "output_tokens": 20,
+      "cost_usd": 0.0005,
+      "latency_ms": 4912.980196066201
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-055",
+      "input_tokens": 161,
+      "output_tokens": 18,
+      "cost_usd": 0.000538,
+      "latency_ms": 8578.374741016887
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-046",
+      "input_tokens": 189,
+      "output_tokens": 20,
+      "cost_usd": 0.000618,
+      "latency_ms": 9636.812584009022
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-060",
+      "input_tokens": 171,
+      "output_tokens": 18,
+      "cost_usd": 0.000558,
+      "latency_ms": 6772.349511040375
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-057",
+      "input_tokens": 153,
+      "output_tokens": 26,
+      "cost_usd": 0.000618,
+      "latency_ms": 8198.727465001866
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-066",
+      "input_tokens": 137,
+      "output_tokens": 21,
+      "cost_usd": 0.000526,
+      "latency_ms": 5342.717061052099
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-044",
+      "input_tokens": 145,
+      "output_tokens": 160,
+      "cost_usd": 0.00221,
+      "latency_ms": 46557.16810002923
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-081",
+      "input_tokens": 103,
+      "output_tokens": 20,
+      "cost_usd": 0.000446,
+      "latency_ms": 5402.742438018322
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-080",
+      "input_tokens": 161,
+      "output_tokens": 20,
+      "cost_usd": 0.000562,
+      "latency_ms": 11528.581234975718
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-084",
+      "input_tokens": 144,
+      "output_tokens": 26,
+      "cost_usd": 0.0006,
+      "latency_ms": 8358.853238052689
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-074",
+      "input_tokens": 176,
+      "output_tokens": 20,
+      "cost_usd": 0.000592,
+      "latency_ms": 19904.9961399287
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-073",
+      "input_tokens": 159,
+      "output_tokens": 18,
+      "cost_usd": 0.000534,
+      "latency_ms": 6324.119896045886
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-079",
+      "input_tokens": 98,
+      "output_tokens": 18,
+      "cost_usd": 0.000412,
+      "latency_ms": 6089.947658008896
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-082",
+      "input_tokens": 189,
+      "output_tokens": 15,
+      "cost_usd": 0.000558,
+      "latency_ms": 4278.246346046217
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-077",
+      "input_tokens": 168,
+      "output_tokens": 63,
+      "cost_usd": 0.001092,
+      "latency_ms": 31777.930409065448
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-076",
+      "input_tokens": 149,
+      "output_tokens": 20,
+      "cost_usd": 0.000538,
+      "latency_ms": 9646.681646001525
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-087",
+      "input_tokens": 160,
+      "output_tokens": 97,
+      "cost_usd": 0.001484,
+      "latency_ms": 33762.21238495782
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-085",
+      "input_tokens": 114,
+      "output_tokens": 21,
+      "cost_usd": 0.00048,
+      "latency_ms": 21354.00538193062
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-075",
+      "input_tokens": 77,
+      "output_tokens": 21,
+      "cost_usd": 0.000406,
+      "latency_ms": 25623.13807802275
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-078",
+      "input_tokens": 174,
+      "output_tokens": 20,
+      "cost_usd": 0.000588,
+      "latency_ms": 6654.6084199799225
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-086",
+      "input_tokens": 129,
+      "output_tokens": 26,
+      "cost_usd": 0.00057,
+      "latency_ms": 10081.44059998449
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-083",
+      "input_tokens": 127,
+      "output_tokens": 20,
+      "cost_usd": 0.000494,
+      "latency_ms": 19494.510724092834
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-101",
+      "input_tokens": 163,
+      "output_tokens": 26,
+      "cost_usd": 0.000638,
+      "latency_ms": 8881.229295977391
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-100",
+      "input_tokens": 141,
+      "output_tokens": 20,
+      "cost_usd": 0.000522,
+      "latency_ms": 5338.583142030984
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-103",
+      "input_tokens": 143,
+      "output_tokens": 24,
+      "cost_usd": 0.000574,
+      "latency_ms": 24666.460396023467
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-097",
+      "input_tokens": 130,
+      "output_tokens": 21,
+      "cost_usd": 0.000512,
+      "latency_ms": 4252.912147087045
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-090",
+      "input_tokens": 126,
+      "output_tokens": 20,
+      "cost_usd": 0.000492,
+      "latency_ms": 7343.671464943327
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-095",
+      "input_tokens": 123,
+      "output_tokens": 67,
+      "cost_usd": 0.00105,
+      "latency_ms": 22144.545926945284
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-089",
+      "input_tokens": 165,
+      "output_tokens": 21,
+      "cost_usd": 0.000582,
+      "latency_ms": 4444.704847992398
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-088",
+      "input_tokens": 127,
+      "output_tokens": 20,
+      "cost_usd": 0.000494,
+      "latency_ms": 8160.6056180316955
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-104",
+      "input_tokens": 187,
+      "output_tokens": 20,
+      "cost_usd": 0.000614,
+      "latency_ms": 7744.736613007262
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-091",
+      "input_tokens": 137,
+      "output_tokens": 18,
+      "cost_usd": 0.00049,
+      "latency_ms": 7921.896983985789
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-096",
+      "input_tokens": 134,
+      "output_tokens": 18,
+      "cost_usd": 0.000484,
+      "latency_ms": 4925.56738993153
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-099",
+      "input_tokens": 100,
+      "output_tokens": 22,
+      "cost_usd": 0.000464,
+      "latency_ms": 20264.829201973043
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-098",
+      "input_tokens": 133,
+      "output_tokens": 18,
+      "cost_usd": 0.000482,
+      "latency_ms": 5272.058464004658
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-092",
+      "input_tokens": 151,
+      "output_tokens": 61,
+      "cost_usd": 0.001034,
+      "latency_ms": 30524.37588199973
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-094",
+      "input_tokens": 105,
+      "output_tokens": 24,
+      "cost_usd": 0.000498,
+      "latency_ms": 23825.989852077328
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-107",
+      "input_tokens": 153,
+      "output_tokens": 24,
+      "cost_usd": 0.000594,
+      "latency_ms": 6411.494935047813
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-106",
+      "input_tokens": 133,
+      "output_tokens": 20,
+      "cost_usd": 0.000506,
+      "latency_ms": 25960.270737996325
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-105",
+      "input_tokens": 164,
+      "output_tokens": 20,
+      "cost_usd": 0.000568,
+      "latency_ms": 7486.25448695384
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-109",
+      "input_tokens": 134,
+      "output_tokens": 20,
+      "cost_usd": 0.000508,
+      "latency_ms": 19634.240097017027
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-111",
+      "input_tokens": 130,
+      "output_tokens": 21,
+      "cost_usd": 0.000512,
+      "latency_ms": 11887.702638981864
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-112",
+      "input_tokens": 130,
+      "output_tokens": 20,
+      "cost_usd": 0.0005,
+      "latency_ms": 18815.89737406466
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-113",
+      "input_tokens": 129,
+      "output_tokens": 20,
+      "cost_usd": 0.000498,
+      "latency_ms": 10432.338649989106
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-115",
+      "input_tokens": 165,
+      "output_tokens": 18,
+      "cost_usd": 0.000546,
+      "latency_ms": 8737.212559091859
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-110",
+      "input_tokens": 186,
+      "output_tokens": 15,
+      "cost_usd": 0.000552,
+      "latency_ms": 4789.083644980565
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "tier3_eval",
+      "query_id": "NX-114",
+      "input_tokens": 127,
+      "output_tokens": 24,
+      "cost_usd": 0.000542,
+      "latency_ms": 9557.884106063284
+    }
+  ]
+}

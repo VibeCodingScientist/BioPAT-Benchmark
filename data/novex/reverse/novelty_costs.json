@@ -1,0 +1,2586 @@
+{
+  "summary": {
+    "total_cost_usd": 2.4950275000000013,
+    "total_calls": 255,
+    "total_input_tokens": 291284,
+    "total_output_tokens": 126700,
+    "budget_usd": 5.0,
+    "budget_remaining_usd": 2.5049724999999987,
+    "by_task": {
+      "novelty": {
+        "calls": 255,
+        "cost": 2.4950275000000013,
+        "tokens": 417984
+      }
+    },
+    "by_model": {
+      "openai/gpt-5.2": {
+        "calls": 85,
+        "cost": 0.6330415,
+        "tokens": 126503
+      },
+      "anthropic/claude-sonnet-4-6": {
+        "calls": 85,
+        "cost": 1.5282539999999998,
+        "tokens": 186730
+      },
+      "google/gemini-3-pro-preview": {
+        "calls": 85,
+        "cost": 0.333732,
+        "tokens": 104751
+      }
+    }
+  },
+  "records": [
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN001",
+      "input_tokens": 623,
+      "output_tokens": 348,
+      "cost_usd": 0.00596225,
+      "latency_ms": 6867.0691039878875
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN001",
+      "input_tokens": 741,
+      "output_tokens": 1227,
+      "cost_usd": 0.020628,
+      "latency_ms": 20682.369385031052
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN001",
+      "input_tokens": 636,
+      "output_tokens": 140,
+      "cost_usd": 0.002952,
+      "latency_ms": 23354.50773697812
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN002",
+      "input_tokens": 576,
+      "output_tokens": 481,
+      "cost_usd": 0.007742,
+      "latency_ms": 8981.700932024978
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN002",
+      "input_tokens": 661,
+      "output_tokens": 929,
+      "cost_usd": 0.015918,
+      "latency_ms": 16634.99139295891
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN002",
+      "input_tokens": 516,
+      "output_tokens": 153,
+      "cost_usd": 0.002868,
+      "latency_ms": 16191.043165046722
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN003",
+      "input_tokens": 2494,
+      "output_tokens": 621,
+      "cost_usd": 0.0130585,
+      "latency_ms": 11982.536043040454
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN003",
+      "input_tokens": 2874,
+      "output_tokens": 718,
+      "cost_usd": 0.019392,
+      "latency_ms": 14654.577582958154
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN003",
+      "input_tokens": 2512,
+      "output_tokens": 111,
+      "cost_usd": 0.006356,
+      "latency_ms": 15314.357205061242
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN004",
+      "input_tokens": 407,
+      "output_tokens": 364,
+      "cost_usd": 0.00580825,
+      "latency_ms": 8142.684859922156
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN004",
+      "input_tokens": 467,
+      "output_tokens": 1174,
+      "cost_usd": 0.019011,
+      "latency_ms": 20470.762918004766
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN004",
+      "input_tokens": 385,
+      "output_tokens": 146,
+      "cost_usd": 0.002522,
+      "latency_ms": 14125.754626002163
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN005",
+      "input_tokens": 2321,
+      "output_tokens": 345,
+      "cost_usd": 0.00889175,
+      "latency_ms": 5539.300306001678
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN005",
+      "input_tokens": 2729,
+      "output_tokens": 625,
+      "cost_usd": 0.017562,
+      "latency_ms": 11719.40134500619
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN005",
+      "input_tokens": 2351,
+      "output_tokens": 145,
+      "cost_usd": 0.006442,
+      "latency_ms": 11386.48597302381
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN006",
+      "input_tokens": 408,
+      "output_tokens": 330,
+      "cost_usd": 0.005334,
+      "latency_ms": 6892.50705903396
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN006",
+      "input_tokens": 483,
+      "output_tokens": 862,
+      "cost_usd": 0.014379,
+      "latency_ms": 13912.453635944985
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN006",
+      "input_tokens": 401,
+      "output_tokens": 126,
+      "cost_usd": 0.002314,
+      "latency_ms": 16978.35841192864
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN007",
+      "input_tokens": 1520,
+      "output_tokens": 208,
+      "cost_usd": 0.005572,
+      "latency_ms": 4084.70068895258
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN007",
+      "input_tokens": 1884,
+      "output_tokens": 529,
+      "cost_usd": 0.013587,
+      "latency_ms": 10495.071706012823
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN007",
+      "input_tokens": 1566,
+      "output_tokens": 113,
+      "cost_usd": 0.004488,
+      "latency_ms": 8350.8710549213
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN008",
+      "input_tokens": 1733,
+      "output_tokens": 244,
+      "cost_usd": 0.00644875,
+      "latency_ms": 4025.08847694844
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN008",
+      "input_tokens": 2103,
+      "output_tokens": 764,
+      "cost_usd": 0.017769,
+      "latency_ms": 13977.623688988388
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN008",
+      "input_tokens": 1813,
+      "output_tokens": 166,
+      "cost_usd": 0.005618,
+      "latency_ms": 11387.832726933993
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN009",
+      "input_tokens": 1098,
+      "output_tokens": 247,
+      "cost_usd": 0.0053795,
+      "latency_ms": 4501.465916051529
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN009",
+      "input_tokens": 1214,
+      "output_tokens": 386,
+      "cost_usd": 0.009432,
+      "latency_ms": 7332.340940949507
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN009",
+      "input_tokens": 1107,
+      "output_tokens": 147,
+      "cost_usd": 0.003978,
+      "latency_ms": 10554.797481978312
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN010",
+      "input_tokens": 894,
+      "output_tokens": 791,
+      "cost_usd": 0.0126385,
+      "latency_ms": 11845.646340982057
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN010",
+      "input_tokens": 991,
+      "output_tokens": 1346,
+      "cost_usd": 0.023163,
+      "latency_ms": 21348.009395063855
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN010",
+      "input_tokens": 919,
+      "output_tokens": 155,
+      "cost_usd": 0.003698,
+      "latency_ms": 35203.78953299951
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN011",
+      "input_tokens": 1696,
+      "output_tokens": 231,
+      "cost_usd": 0.006202,
+      "latency_ms": 3826.3545349473134
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN011",
+      "input_tokens": 2040,
+      "output_tokens": 1006,
+      "cost_usd": 0.02121,
+      "latency_ms": 19865.91708706692
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN011",
+      "input_tokens": 1690,
+      "output_tokens": 105,
+      "cost_usd": 0.00464,
+      "latency_ms": 12341.245166026056
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN012",
+      "input_tokens": 1983,
+      "output_tokens": 616,
+      "cost_usd": 0.01209425,
+      "latency_ms": 13292.725041974336
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN012",
+      "input_tokens": 2311,
+      "output_tokens": 977,
+      "cost_usd": 0.021588,
+      "latency_ms": 16598.649085965008
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN012",
+      "input_tokens": 1993,
+      "output_tokens": 109,
+      "cost_usd": 0.005294,
+      "latency_ms": 15366.038679960184
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN013",
+      "input_tokens": 416,
+      "output_tokens": 326,
+      "cost_usd": 0.005292,
+      "latency_ms": 5909.087399020791
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN013",
+      "input_tokens": 452,
+      "output_tokens": 573,
+      "cost_usd": 0.009951,
+      "latency_ms": 10304.528867010958
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN013",
+      "input_tokens": 414,
+      "output_tokens": 129,
+      "cost_usd": 0.002376,
+      "latency_ms": 12832.400350016542
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN014",
+      "input_tokens": 1238,
+      "output_tokens": 317,
+      "cost_usd": 0.0066045,
+      "latency_ms": 6074.162633973174
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN014",
+      "input_tokens": 1403,
+      "output_tokens": 2584,
+      "cost_usd": 0.042969,
+      "latency_ms": 43018.86080892291
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN014",
+      "input_tokens": 1193,
+      "output_tokens": 160,
+      "cost_usd": 0.004306,
+      "latency_ms": 42557.186807040125
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN015",
+      "input_tokens": 1311,
+      "output_tokens": 327,
+      "cost_usd": 0.00687225,
+      "latency_ms": 7262.8569370135665
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN015",
+      "input_tokens": 1404,
+      "output_tokens": 514,
+      "cost_usd": 0.011922,
+      "latency_ms": 7903.065901948139
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN015",
+      "input_tokens": 1382,
+      "output_tokens": 139,
+      "cost_usd": 0.004432,
+      "latency_ms": 14210.913656977937
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN016",
+      "input_tokens": 508,
+      "output_tokens": 181,
+      "cost_usd": 0.003423,
+      "latency_ms": 3607.4483359698206
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN016",
+      "input_tokens": 587,
+      "output_tokens": 632,
+      "cost_usd": 0.011241,
+      "latency_ms": 9881.908251903951
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN016",
+      "input_tokens": 486,
+      "output_tokens": 112,
+      "cost_usd": 0.002316,
+      "latency_ms": 11603.877195040695
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN017",
+      "input_tokens": 1520,
+      "output_tokens": 219,
+      "cost_usd": 0.005726,
+      "latency_ms": 3527.7652390068397
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN017",
+      "input_tokens": 1682,
+      "output_tokens": 614,
+      "cost_usd": 0.014256,
+      "latency_ms": 15515.540956985205
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN017",
+      "input_tokens": 1537,
+      "output_tokens": 98,
+      "cost_usd": 0.00425,
+      "latency_ms": 11647.489560069516
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN018",
+      "input_tokens": 1266,
+      "output_tokens": 307,
+      "cost_usd": 0.0065135,
+      "latency_ms": 4902.415073942393
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN018",
+      "input_tokens": 1471,
+      "output_tokens": 1200,
+      "cost_usd": 0.022413,
+      "latency_ms": 18475.68742290605
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN018",
+      "input_tokens": 1286,
+      "output_tokens": 188,
+      "cost_usd": 0.004828,
+      "latency_ms": 20221.433761995286
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN019",
+      "input_tokens": 1084,
+      "output_tokens": 322,
+      "cost_usd": 0.006405,
+      "latency_ms": 7471.7945359880105
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN019",
+      "input_tokens": 1225,
+      "output_tokens": 728,
+      "cost_usd": 0.014595,
+      "latency_ms": 12671.633074060082
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN019",
+      "input_tokens": 1111,
+      "output_tokens": 170,
+      "cost_usd": 0.004262,
+      "latency_ms": 17962.722448050044
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN020",
+      "input_tokens": 472,
+      "output_tokens": 392,
+      "cost_usd": 0.006314,
+      "latency_ms": 7512.794102076441
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN020",
+      "input_tokens": 509,
+      "output_tokens": 716,
+      "cost_usd": 0.012267,
+      "latency_ms": 11869.336450006813
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN020",
+      "input_tokens": 449,
+      "output_tokens": 163,
+      "cost_usd": 0.002854,
+      "latency_ms": 39820.58754796162
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN021",
+      "input_tokens": 1768,
+      "output_tokens": 249,
+      "cost_usd": 0.00658,
+      "latency_ms": 4053.6737580550835
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN021",
+      "input_tokens": 1969,
+      "output_tokens": 678,
+      "cost_usd": 0.016077,
+      "latency_ms": 11677.705825073645
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN021",
+      "input_tokens": 1727,
+      "output_tokens": 121,
+      "cost_usd": 0.004906,
+      "latency_ms": 11940.890287980437
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN022",
+      "input_tokens": 441,
+      "output_tokens": 323,
+      "cost_usd": 0.00529375,
+      "latency_ms": 5548.719155951403
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN022",
+      "input_tokens": 526,
+      "output_tokens": 1051,
+      "cost_usd": 0.017343,
+      "latency_ms": 15296.699481084943
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN022",
+      "input_tokens": 416,
+      "output_tokens": 108,
+      "cost_usd": 0.002128,
+      "latency_ms": 7661.915311939083
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN023",
+      "input_tokens": 1622,
+      "output_tokens": 345,
+      "cost_usd": 0.0076685,
+      "latency_ms": 6485.226226970553
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN023",
+      "input_tokens": 1964,
+      "output_tokens": 900,
+      "cost_usd": 0.019392,
+      "latency_ms": 14653.31472910475
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN023",
+      "input_tokens": 1540,
+      "output_tokens": 132,
+      "cost_usd": 0.004664,
+      "latency_ms": 10818.179470021278
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN024",
+      "input_tokens": 1560,
+      "output_tokens": 498,
+      "cost_usd": 0.009702,
+      "latency_ms": 9012.816946953535
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN024",
+      "input_tokens": 1722,
+      "output_tokens": 2262,
+      "cost_usd": 0.039096,
+      "latency_ms": 34643.3010189794
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN024",
+      "input_tokens": 1499,
+      "output_tokens": 413,
+      "cost_usd": 0.007954,
+      "latency_ms": 39517.36964308657
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN025",
+      "input_tokens": 1472,
+      "output_tokens": 295,
+      "cost_usd": 0.006706,
+      "latency_ms": 5163.31240197178
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN025",
+      "input_tokens": 1749,
+      "output_tokens": 672,
+      "cost_usd": 0.015327,
+      "latency_ms": 13793.333719018847
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN025",
+      "input_tokens": 1418,
+      "output_tokens": 186,
+      "cost_usd": 0.005068,
+      "latency_ms": 20680.91839796398
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN026",
+      "input_tokens": 2229,
+      "output_tokens": 254,
+      "cost_usd": 0.00745675,
+      "latency_ms": 4737.974173971452
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN026",
+      "input_tokens": 2513,
+      "output_tokens": 710,
+      "cost_usd": 0.018189,
+      "latency_ms": 15580.238196998835
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN026",
+      "input_tokens": 2320,
+      "output_tokens": 115,
+      "cost_usd": 0.00602,
+      "latency_ms": 15772.217449033633
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN028",
+      "input_tokens": 1075,
+      "output_tokens": 661,
+      "cost_usd": 0.01113525,
+      "latency_ms": 11565.96284196712
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN028",
+      "input_tokens": 1279,
+      "output_tokens": 1750,
+      "cost_usd": 0.030087,
+      "latency_ms": 23965.785035979934
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN028",
+      "input_tokens": 1056,
+      "output_tokens": 205,
+      "cost_usd": 0.004572,
+      "latency_ms": 33242.45170003269
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN029",
+      "input_tokens": 901,
+      "output_tokens": 156,
+      "cost_usd": 0.00376075,
+      "latency_ms": 2999.931809026748
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN029",
+      "input_tokens": 1083,
+      "output_tokens": 428,
+      "cost_usd": 0.009669,
+      "latency_ms": 5899.382530944422
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN029",
+      "input_tokens": 921,
+      "output_tokens": 122,
+      "cost_usd": 0.003306,
+      "latency_ms": 7797.442312003113
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN031",
+      "input_tokens": 977,
+      "output_tokens": 467,
+      "cost_usd": 0.00824775,
+      "latency_ms": 11712.186143966392
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN031",
+      "input_tokens": 1124,
+      "output_tokens": 1182,
+      "cost_usd": 0.021102,
+      "latency_ms": 20459.20313708484
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN031",
+      "input_tokens": 986,
+      "output_tokens": 139,
+      "cost_usd": 0.00364,
+      "latency_ms": 26684.18904999271
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN034",
+      "input_tokens": 696,
+      "output_tokens": 237,
+      "cost_usd": 0.004536,
+      "latency_ms": 4307.21733905375
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN034",
+      "input_tokens": 779,
+      "output_tokens": 649,
+      "cost_usd": 0.012072,
+      "latency_ms": 10002.485389006324
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN034",
+      "input_tokens": 669,
+      "output_tokens": 159,
+      "cost_usd": 0.003246,
+      "latency_ms": 41580.42867702898
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN035",
+      "input_tokens": 1001,
+      "output_tokens": 346,
+      "cost_usd": 0.00659575,
+      "latency_ms": 6454.849236062728
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN035",
+      "input_tokens": 1139,
+      "output_tokens": 922,
+      "cost_usd": 0.017247,
+      "latency_ms": 13482.477221055888
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN035",
+      "input_tokens": 1013,
+      "output_tokens": 141,
+      "cost_usd": 0.003718,
+      "latency_ms": 13346.176417078823
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN036",
+      "input_tokens": 490,
+      "output_tokens": 326,
+      "cost_usd": 0.0054215,
+      "latency_ms": 7056.008130079135
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN036",
+      "input_tokens": 550,
+      "output_tokens": 833,
+      "cost_usd": 0.014145,
+      "latency_ms": 12986.769480980001
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN036",
+      "input_tokens": 477,
+      "output_tokens": 140,
+      "cost_usd": 0.002634,
+      "latency_ms": 40356.73002700787
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN037",
+      "input_tokens": 562,
+      "output_tokens": 287,
+      "cost_usd": 0.0050015,
+      "latency_ms": 4150.695704040118
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN037",
+      "input_tokens": 632,
+      "output_tokens": 740,
+      "cost_usd": 0.012996,
+      "latency_ms": 11130.418145097792
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN037",
+      "input_tokens": 544,
+      "output_tokens": 103,
+      "cost_usd": 0.002324,
+      "latency_ms": 10433.705114992335
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN038",
+      "input_tokens": 404,
+      "output_tokens": 391,
+      "cost_usd": 0.006181,
+      "latency_ms": 6999.566314043477
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN038",
+      "input_tokens": 427,
+      "output_tokens": 1288,
+      "cost_usd": 0.020601,
+      "latency_ms": 22724.127594963647
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN038",
+      "input_tokens": 404,
+      "output_tokens": 152,
+      "cost_usd": 0.002632,
+      "latency_ms": 25433.92016692087
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN039",
+      "input_tokens": 1197,
+      "output_tokens": 187,
+      "cost_usd": 0.00471275,
+      "latency_ms": 3462.2990869684145
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN039",
+      "input_tokens": 1309,
+      "output_tokens": 464,
+      "cost_usd": 0.010887,
+      "latency_ms": 8200.80531493295
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN039",
+      "input_tokens": 1249,
+      "output_tokens": 117,
+      "cost_usd": 0.003902,
+      "latency_ms": 17584.687952999957
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN041",
+      "input_tokens": 769,
+      "output_tokens": 199,
+      "cost_usd": 0.00413175,
+      "latency_ms": 3772.3746040137485
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN041",
+      "input_tokens": 856,
+      "output_tokens": 629,
+      "cost_usd": 0.012003,
+      "latency_ms": 9215.835844981484
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN041",
+      "input_tokens": 753,
+      "output_tokens": 110,
+      "cost_usd": 0.002826,
+      "latency_ms": 12023.868946009316
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN042",
+      "input_tokens": 431,
+      "output_tokens": 342,
+      "cost_usd": 0.00554225,
+      "latency_ms": 6426.792233949527
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN042",
+      "input_tokens": 504,
+      "output_tokens": 983,
+      "cost_usd": 0.016257,
+      "latency_ms": 15000.00951695256
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN042",
+      "input_tokens": 410,
+      "output_tokens": 139,
+      "cost_usd": 0.002488,
+      "latency_ms": 18138.11211194843
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN043",
+      "input_tokens": 1427,
+      "output_tokens": 365,
+      "cost_usd": 0.00760725,
+      "latency_ms": 6268.1166279362515
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN043",
+      "input_tokens": 1586,
+      "output_tokens": 470,
+      "cost_usd": 0.011808,
+      "latency_ms": 10856.963012949564
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN043",
+      "input_tokens": 1406,
+      "output_tokens": 181,
+      "cost_usd": 0.004984,
+      "latency_ms": 11424.44470897317
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN044",
+      "input_tokens": 469,
+      "output_tokens": 451,
+      "cost_usd": 0.00713475,
+      "latency_ms": 10219.05793400947
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN044",
+      "input_tokens": 527,
+      "output_tokens": 1404,
+      "cost_usd": 0.022641,
+      "latency_ms": 25996.985838981345
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN044",
+      "input_tokens": 454,
+      "output_tokens": 169,
+      "cost_usd": 0.002936,
+      "latency_ms": 23689.15540794842
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN045",
+      "input_tokens": 872,
+      "output_tokens": 1012,
+      "cost_usd": 0.015694,
+      "latency_ms": 17375.989244901575
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN045",
+      "input_tokens": 1040,
+      "output_tokens": 1767,
+      "cost_usd": 0.029625,
+      "latency_ms": 23912.33680595178
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN045",
+      "input_tokens": 852,
+      "output_tokens": 147,
+      "cost_usd": 0.003468,
+      "latency_ms": 36535.386626957916
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN046",
+      "input_tokens": 806,
+      "output_tokens": 146,
+      "cost_usd": 0.0034545,
+      "latency_ms": 2717.66435704194
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN046",
+      "input_tokens": 868,
+      "output_tokens": 392,
+      "cost_usd": 0.008484,
+      "latency_ms": 13812.333871959709
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN046",
+      "input_tokens": 821,
+      "output_tokens": 118,
+      "cost_usd": 0.003058,
+      "latency_ms": 9639.209380024113
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN047",
+      "input_tokens": 1425,
+      "output_tokens": 196,
+      "cost_usd": 0.00523775,
+      "latency_ms": 3750.2813530154526
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN047",
+      "input_tokens": 1625,
+      "output_tokens": 826,
+      "cost_usd": 0.017265,
+      "latency_ms": 15832.375539001077
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN047",
+      "input_tokens": 1463,
+      "output_tokens": 145,
+      "cost_usd": 0.004666,
+      "latency_ms": 18360.58791296091
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN048",
+      "input_tokens": 1371,
+      "output_tokens": 353,
+      "cost_usd": 0.00734125,
+      "latency_ms": 6719.34803109616
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN048",
+      "input_tokens": 1512,
+      "output_tokens": 968,
+      "cost_usd": 0.019056,
+      "latency_ms": 18612.67523409333
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN048",
+      "input_tokens": 1342,
+      "output_tokens": 159,
+      "cost_usd": 0.004592,
+      "latency_ms": 33479.82285299804
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN049",
+      "input_tokens": 997,
+      "output_tokens": 742,
+      "cost_usd": 0.01213275,
+      "latency_ms": 14779.07727798447
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN049",
+      "input_tokens": 1132,
+      "output_tokens": 1361,
+      "cost_usd": 0.023811,
+      "latency_ms": 22181.53205490671
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN049",
+      "input_tokens": 1012,
+      "output_tokens": 141,
+      "cost_usd": 0.003716,
+      "latency_ms": 21396.131218993105
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN050",
+      "input_tokens": 412,
+      "output_tokens": 273,
+      "cost_usd": 0.004543,
+      "latency_ms": 4987.054600962438
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN050",
+      "input_tokens": 446,
+      "output_tokens": 742,
+      "cost_usd": 0.012468,
+      "latency_ms": 12216.813548002392
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN050",
+      "input_tokens": 409,
+      "output_tokens": 124,
+      "cost_usd": 0.002306,
+      "latency_ms": 12579.261264996603
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN052",
+      "input_tokens": 1034,
+      "output_tokens": 581,
+      "cost_usd": 0.0099435,
+      "latency_ms": 9786.671440000646
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN052",
+      "input_tokens": 1217,
+      "output_tokens": 1176,
+      "cost_usd": 0.021291,
+      "latency_ms": 21029.082534019835
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN052",
+      "input_tokens": 1005,
+      "output_tokens": 191,
+      "cost_usd": 0.004302,
+      "latency_ms": 19494.85326197464
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN054",
+      "input_tokens": 869,
+      "output_tokens": 312,
+      "cost_usd": 0.00588875,
+      "latency_ms": 7564.963422017172
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN054",
+      "input_tokens": 971,
+      "output_tokens": 1457,
+      "cost_usd": 0.024768,
+      "latency_ms": 22545.880474965088
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN054",
+      "input_tokens": 890,
+      "output_tokens": 186,
+      "cost_usd": 0.004012,
+      "latency_ms": 36054.48221496772
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN055",
+      "input_tokens": 1384,
+      "output_tokens": 264,
+      "cost_usd": 0.006118,
+      "latency_ms": 4290.984489955008
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN055",
+      "input_tokens": 1440,
+      "output_tokens": 895,
+      "cost_usd": 0.017745,
+      "latency_ms": 11500.557246035896
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN055",
+      "input_tokens": 1431,
+      "output_tokens": 163,
+      "cost_usd": 0.004818,
+      "latency_ms": 11796.861191978678
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN056",
+      "input_tokens": 440,
+      "output_tokens": 679,
+      "cost_usd": 0.010276,
+      "latency_ms": 12969.954942003824
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN056",
+      "input_tokens": 518,
+      "output_tokens": 1185,
+      "cost_usd": 0.019329,
+      "latency_ms": 17673.865339020267
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN056",
+      "input_tokens": 416,
+      "output_tokens": 160,
+      "cost_usd": 0.002752,
+      "latency_ms": 41594.720494002104
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN057",
+      "input_tokens": 1353,
+      "output_tokens": 296,
+      "cost_usd": 0.00651175,
+      "latency_ms": 5195.0688059441745
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN057",
+      "input_tokens": 1496,
+      "output_tokens": 295,
+      "cost_usd": 0.008913,
+      "latency_ms": 6993.026759941131
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN057",
+      "input_tokens": 1327,
+      "output_tokens": 130,
+      "cost_usd": 0.004214,
+      "latency_ms": 11324.229868943803
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN058",
+      "input_tokens": 389,
+      "output_tokens": 336,
+      "cost_usd": 0.00538475,
+      "latency_ms": 6947.751353960484
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN058",
+      "input_tokens": 445,
+      "output_tokens": 1099,
+      "cost_usd": 0.01782,
+      "latency_ms": 18486.205246066675
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN058",
+      "input_tokens": 380,
+      "output_tokens": 136,
+      "cost_usd": 0.002392,
+      "latency_ms": 16165.003482019529
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN059",
+      "input_tokens": 642,
+      "output_tokens": 1039,
+      "cost_usd": 0.0156695,
+      "latency_ms": 15960.439802031033
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN059",
+      "input_tokens": 720,
+      "output_tokens": 1150,
+      "cost_usd": 0.01941,
+      "latency_ms": 16810.19261700567
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN059",
+      "input_tokens": 606,
+      "output_tokens": 148,
+      "cost_usd": 0.002988,
+      "latency_ms": 34206.982514006086
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN061",
+      "input_tokens": 1748,
+      "output_tokens": 587,
+      "cost_usd": 0.011277,
+      "latency_ms": 9466.882951906882
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN061",
+      "input_tokens": 1976,
+      "output_tokens": 732,
+      "cost_usd": 0.016908,
+      "latency_ms": 11458.33950303495
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN061",
+      "input_tokens": 1603,
+      "output_tokens": 183,
+      "cost_usd": 0.005402,
+      "latency_ms": 12463.462959043682
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN062",
+      "input_tokens": 1601,
+      "output_tokens": 239,
+      "cost_usd": 0.00614775,
+      "latency_ms": 4035.9132699668407
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN062",
+      "input_tokens": 1771,
+      "output_tokens": 658,
+      "cost_usd": 0.015183,
+      "latency_ms": 12034.928152919747
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN062",
+      "input_tokens": 1623,
+      "output_tokens": 158,
+      "cost_usd": 0.005142,
+      "latency_ms": 11321.956561994739
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN063",
+      "input_tokens": 954,
+      "output_tokens": 324,
+      "cost_usd": 0.0062055,
+      "latency_ms": 5030.084938975051
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN063",
+      "input_tokens": 1097,
+      "output_tokens": 736,
+      "cost_usd": 0.014331,
+      "latency_ms": 13498.941938974895
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN063",
+      "input_tokens": 1028,
+      "output_tokens": 156,
+      "cost_usd": 0.003928,
+      "latency_ms": 31444.43738902919
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN064",
+      "input_tokens": 1060,
+      "output_tokens": 930,
+      "cost_usd": 0.014875,
+      "latency_ms": 14058.683599927463
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN064",
+      "input_tokens": 1191,
+      "output_tokens": 1844,
+      "cost_usd": 0.031233,
+      "latency_ms": 27205.711294081993
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN064",
+      "input_tokens": 1054,
+      "output_tokens": 217,
+      "cost_usd": 0.004712,
+      "latency_ms": 20406.77273296751
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN065",
+      "input_tokens": 860,
+      "output_tokens": 194,
+      "cost_usd": 0.004221,
+      "latency_ms": 3295.5320000182837
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN065",
+      "input_tokens": 985,
+      "output_tokens": 743,
+      "cost_usd": 0.0141,
+      "latency_ms": 13312.08887998946
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN065",
+      "input_tokens": 807,
+      "output_tokens": 116,
+      "cost_usd": 0.003006,
+      "latency_ms": 17731.664056074806
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN066",
+      "input_tokens": 482,
+      "output_tokens": 148,
+      "cost_usd": 0.0029155,
+      "latency_ms": 3315.8825979335234
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN066",
+      "input_tokens": 543,
+      "output_tokens": 380,
+      "cost_usd": 0.007329,
+      "latency_ms": 5931.409286917187
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN066",
+      "input_tokens": 473,
+      "output_tokens": 101,
+      "cost_usd": 0.002158,
+      "latency_ms": 10499.991238000803
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN067",
+      "input_tokens": 2134,
+      "output_tokens": 430,
+      "cost_usd": 0.0097545,
+      "latency_ms": 7436.193021945655
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN067",
+      "input_tokens": 2516,
+      "output_tokens": 1140,
+      "cost_usd": 0.024648,
+      "latency_ms": 21893.109209020622
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN067",
+      "input_tokens": 2148,
+      "output_tokens": 164,
+      "cost_usd": 0.006264,
+      "latency_ms": 39405.812778975815
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN068",
+      "input_tokens": 1826,
+      "output_tokens": 1045,
+      "cost_usd": 0.0178255,
+      "latency_ms": 22693.768268916756
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN068",
+      "input_tokens": 2197,
+      "output_tokens": 3134,
+      "cost_usd": 0.053601,
+      "latency_ms": 53747.32211290393
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN068",
+      "input_tokens": 1804,
+      "output_tokens": 160,
+      "cost_usd": 0.005528,
+      "latency_ms": 43737.77679493651
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN069",
+      "input_tokens": 949,
+      "output_tokens": 202,
+      "cost_usd": 0.00448875,
+      "latency_ms": 3559.267768985592
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN069",
+      "input_tokens": 1061,
+      "output_tokens": 825,
+      "cost_usd": 0.015558,
+      "latency_ms": 11231.49643803481
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN069",
+      "input_tokens": 916,
+      "output_tokens": 138,
+      "cost_usd": 0.003488,
+      "latency_ms": 10375.717896036804
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN072",
+      "input_tokens": 852,
+      "output_tokens": 1223,
+      "cost_usd": 0.018613,
+      "latency_ms": 20627.558875014074
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN072",
+      "input_tokens": 982,
+      "output_tokens": 1364,
+      "cost_usd": 0.023406,
+      "latency_ms": 21053.27724898234
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN072",
+      "input_tokens": 830,
+      "output_tokens": 174,
+      "cost_usd": 0.003748,
+      "latency_ms": 24159.51266104821
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN073",
+      "input_tokens": 1280,
+      "output_tokens": 993,
+      "cost_usd": 0.016142,
+      "latency_ms": 17418.908923049457
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN073",
+      "input_tokens": 1533,
+      "output_tokens": 1871,
+      "cost_usd": 0.032664,
+      "latency_ms": 30918.779745930806
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN073",
+      "input_tokens": 1278,
+      "output_tokens": 157,
+      "cost_usd": 0.00444,
+      "latency_ms": 16616.47848400753
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN075",
+      "input_tokens": 782,
+      "output_tokens": 141,
+      "cost_usd": 0.0033425,
+      "latency_ms": 3466.803632094525
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN075",
+      "input_tokens": 868,
+      "output_tokens": 390,
+      "cost_usd": 0.008454,
+      "latency_ms": 5847.022078931332
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN075",
+      "input_tokens": 765,
+      "output_tokens": 120,
+      "cost_usd": 0.00297,
+      "latency_ms": 10228.758972021751
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN077",
+      "input_tokens": 1411,
+      "output_tokens": 279,
+      "cost_usd": 0.00637525,
+      "latency_ms": 5352.349169901572
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN077",
+      "input_tokens": 1587,
+      "output_tokens": 660,
+      "cost_usd": 0.014661,
+      "latency_ms": 8969.854081980884
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN077",
+      "input_tokens": 1429,
+      "output_tokens": 133,
+      "cost_usd": 0.004454,
+      "latency_ms": 10765.878065023571
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN078",
+      "input_tokens": 566,
+      "output_tokens": 439,
+      "cost_usd": 0.0071365,
+      "latency_ms": 7310.100191971287
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN078",
+      "input_tokens": 667,
+      "output_tokens": 1306,
+      "cost_usd": 0.021591,
+      "latency_ms": 21794.76404597517
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN078",
+      "input_tokens": 542,
+      "output_tokens": 180,
+      "cost_usd": 0.003244,
+      "latency_ms": 18932.258035987616
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN079",
+      "input_tokens": 1247,
+      "output_tokens": 174,
+      "cost_usd": 0.00461825,
+      "latency_ms": 3896.6174899833277
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN079",
+      "input_tokens": 1390,
+      "output_tokens": 527,
+      "cost_usd": 0.012075,
+      "latency_ms": 8072.9096659924835
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN079",
+      "input_tokens": 1211,
+      "output_tokens": 113,
+      "cost_usd": 0.003778,
+      "latency_ms": 12691.394003923051
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN080",
+      "input_tokens": 447,
+      "output_tokens": 157,
+      "cost_usd": 0.00298025,
+      "latency_ms": 3042.36573795788
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN080",
+      "input_tokens": 510,
+      "output_tokens": 483,
+      "cost_usd": 0.008775,
+      "latency_ms": 7066.681822994724
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN080",
+      "input_tokens": 399,
+      "output_tokens": 108,
+      "cost_usd": 0.002094,
+      "latency_ms": 11586.155307944864
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN081",
+      "input_tokens": 549,
+      "output_tokens": 303,
+      "cost_usd": 0.00520275,
+      "latency_ms": 5421.167585998774
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN081",
+      "input_tokens": 606,
+      "output_tokens": 1876,
+      "cost_usd": 0.029958,
+      "latency_ms": 28275.201302953064
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN081",
+      "input_tokens": 563,
+      "output_tokens": 102,
+      "cost_usd": 0.00235,
+      "latency_ms": 11739.79321308434
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN082",
+      "input_tokens": 1430,
+      "output_tokens": 191,
+      "cost_usd": 0.0051765,
+      "latency_ms": 3538.1694509414956
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN082",
+      "input_tokens": 1635,
+      "output_tokens": 890,
+      "cost_usd": 0.018255,
+      "latency_ms": 16017.416382092051
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN082",
+      "input_tokens": 1468,
+      "output_tokens": 173,
+      "cost_usd": 0.005012,
+      "latency_ms": 23319.270676001906
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN083",
+      "input_tokens": 641,
+      "output_tokens": 660,
+      "cost_usd": 0.01036175,
+      "latency_ms": 16241.388770053163
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN083",
+      "input_tokens": 746,
+      "output_tokens": 1181,
+      "cost_usd": 0.019953,
+      "latency_ms": 19907.452488085255
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN083",
+      "input_tokens": 649,
+      "output_tokens": 167,
+      "cost_usd": 0.003302,
+      "latency_ms": 27578.31995608285
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN084",
+      "input_tokens": 557,
+      "output_tokens": 216,
+      "cost_usd": 0.00399875,
+      "latency_ms": 7635.386973968707
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN084",
+      "input_tokens": 647,
+      "output_tokens": 864,
+      "cost_usd": 0.014901,
+      "latency_ms": 12521.859742933884
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN084",
+      "input_tokens": 556,
+      "output_tokens": 125,
+      "cost_usd": 0.002612,
+      "latency_ms": 9309.97313093394
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN085",
+      "input_tokens": 818,
+      "output_tokens": 156,
+      "cost_usd": 0.0036155,
+      "latency_ms": 2938.2462450303137
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN085",
+      "input_tokens": 892,
+      "output_tokens": 642,
+      "cost_usd": 0.012306,
+      "latency_ms": 8979.476926964708
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN085",
+      "input_tokens": 843,
+      "output_tokens": 127,
+      "cost_usd": 0.00321,
+      "latency_ms": 9936.96122802794
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN086",
+      "input_tokens": 1647,
+      "output_tokens": 1595,
+      "cost_usd": 0.02521225,
+      "latency_ms": 26278.233398101293
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN086",
+      "input_tokens": 1990,
+      "output_tokens": 1772,
+      "cost_usd": 0.03255,
+      "latency_ms": 28347.486237995327
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN086",
+      "input_tokens": 1554,
+      "output_tokens": 153,
+      "cost_usd": 0.004944,
+      "latency_ms": 24205.372367985547
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN089",
+      "input_tokens": 2022,
+      "output_tokens": 300,
+      "cost_usd": 0.0077385,
+      "latency_ms": 4628.076346009038
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN089",
+      "input_tokens": 2298,
+      "output_tokens": 847,
+      "cost_usd": 0.019599,
+      "latency_ms": 16589.82069103513
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN089",
+      "input_tokens": 2008,
+      "output_tokens": 127,
+      "cost_usd": 0.00554,
+      "latency_ms": 23756.117327022366
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN090",
+      "input_tokens": 1935,
+      "output_tokens": 209,
+      "cost_usd": 0.00631225,
+      "latency_ms": 3797.0584840513766
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN090",
+      "input_tokens": 2187,
+      "output_tokens": 562,
+      "cost_usd": 0.014991,
+      "latency_ms": 9617.599961929955
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN090",
+      "input_tokens": 1779,
+      "output_tokens": 155,
+      "cost_usd": 0.005418,
+      "latency_ms": 82660.65225400962
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN091",
+      "input_tokens": 544,
+      "output_tokens": 452,
+      "cost_usd": 0.00728,
+      "latency_ms": 8650.713124894537
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN091",
+      "input_tokens": 612,
+      "output_tokens": 841,
+      "cost_usd": 0.014451,
+      "latency_ms": 14836.366747040302
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN091",
+      "input_tokens": 539,
+      "output_tokens": 149,
+      "cost_usd": 0.002866,
+      "latency_ms": 13493.309427984059
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN092",
+      "input_tokens": 1357,
+      "output_tokens": 248,
+      "cost_usd": 0.00584675,
+      "latency_ms": 5235.121662961319
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN092",
+      "input_tokens": 1486,
+      "output_tokens": 847,
+      "cost_usd": 0.017163,
+      "latency_ms": 14890.247818082571
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN092",
+      "input_tokens": 1376,
+      "output_tokens": 140,
+      "cost_usd": 0.004432,
+      "latency_ms": 15215.971475001425
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN093",
+      "input_tokens": 1350,
+      "output_tokens": 488,
+      "cost_usd": 0.0091945,
+      "latency_ms": 9211.493063019589
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN093",
+      "input_tokens": 1568,
+      "output_tokens": 1045,
+      "cost_usd": 0.020379,
+      "latency_ms": 17009.345646947622
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN093",
+      "input_tokens": 1281,
+      "output_tokens": 153,
+      "cost_usd": 0.004398,
+      "latency_ms": 12136.206545983441
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN094",
+      "input_tokens": 446,
+      "output_tokens": 139,
+      "cost_usd": 0.0027265,
+      "latency_ms": 2976.7799850087613
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN094",
+      "input_tokens": 476,
+      "output_tokens": 343,
+      "cost_usd": 0.006573,
+      "latency_ms": 5416.07776703313
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN094",
+      "input_tokens": 418,
+      "output_tokens": 126,
+      "cost_usd": 0.002348,
+      "latency_ms": 6812.96095601283
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN095",
+      "input_tokens": 2011,
+      "output_tokens": 321,
+      "cost_usd": 0.00801325,
+      "latency_ms": 6483.155771973543
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN095",
+      "input_tokens": 2309,
+      "output_tokens": 485,
+      "cost_usd": 0.014202,
+      "latency_ms": 9927.154714008793
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN095",
+      "input_tokens": 2025,
+      "output_tokens": 197,
+      "cost_usd": 0.006414,
+      "latency_ms": 17451.748532010242
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN096",
+      "input_tokens": 1553,
+      "output_tokens": 272,
+      "cost_usd": 0.00652575,
+      "latency_ms": 6454.0116840507835
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN096",
+      "input_tokens": 1755,
+      "output_tokens": 511,
+      "cost_usd": 0.01293,
+      "latency_ms": 9661.220073932782
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN096",
+      "input_tokens": 1532,
+      "output_tokens": 119,
+      "cost_usd": 0.004492,
+      "latency_ms": 15287.95825690031
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN098",
+      "input_tokens": 1195,
+      "output_tokens": 172,
+      "cost_usd": 0.00449925,
+      "latency_ms": 4324.229183024727
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN098",
+      "input_tokens": 1308,
+      "output_tokens": 408,
+      "cost_usd": 0.010044,
+      "latency_ms": 6846.5751089388505
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN098",
+      "input_tokens": 1246,
+      "output_tokens": 117,
+      "cost_usd": 0.003896,
+      "latency_ms": 10269.113857066259
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN099",
+      "input_tokens": 1160,
+      "output_tokens": 163,
+      "cost_usd": 0.004312,
+      "latency_ms": 3387.0063830399886
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN099",
+      "input_tokens": 1304,
+      "output_tokens": 422,
+      "cost_usd": 0.010242,
+      "latency_ms": 6556.887721060775
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN099",
+      "input_tokens": 1199,
+      "output_tokens": 121,
+      "cost_usd": 0.00385,
+      "latency_ms": 11832.833094988018
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.2",
+      "task": "novelty",
+      "query_id": "RN100",
+      "input_tokens": 431,
+      "output_tokens": 390,
+      "cost_usd": 0.00621425,
+      "latency_ms": 8090.125249931589
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "task": "novelty",
+      "query_id": "RN100",
+      "input_tokens": 466,
+      "output_tokens": 911,
+      "cost_usd": 0.015063,
+      "latency_ms": 16324.5848340448
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "task": "novelty",
+      "query_id": "RN100",
+      "input_tokens": 419,
+      "output_tokens": 119,
+      "cost_usd": 0.002266,
+      "latency_ms": 9898.322481079958
+    }
+  ]
+}

@@ -1,0 +1,3570 @@
+[
+  {
+    "patent_id": "10302653",
+    "title": "Distinguishing antagonistic and agonistic anti B7-H1 antibodies",
+    "abstract": "Materials and methods for distinguishing agonistic anti-B7-H1 antibodies from antagonistic anti-B7-H1 antibodies, and for treating subjects diagnosed with clinical conditions such as cancer, pathogenic infection, or autoimmune disease.",
+    "domain": "A61",
+    "claim": "A method for distinguishing agonistic anti-B7-H1 (PD-L1) antibodies from antagonistic anti-B7-H1 antibodies using a functional assay or binding characterization that differentiates antibodies that activate B7-H1 signaling from those that block B7-H1/PD-1 interactions, enabling selection of the appropriate antibody class for treating cancer, infectious disease, or autoimmune conditions.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2105567953",
+      "W2171853585"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 2,
+    "statement_id": "RN001",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "majority",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "NOVEL",
+        "google": "NOVEL"
+      }
+    }
+  },
+  {
+    "patent_id": "6207876",
+    "title": "Adenosine deaminase deficient transgenic mice and methods for the use thereof",
+    "abstract": "The present invention relates to the production of adenosine deaminase (ADA) deficient mice and the use of such mice as an animal model for dysfunctions associated with elevated adenosine levels. Also, provided by the present invention are methods of treating dysfunctions associated with elevated adenosine levels and methods of screening compounds for pharmaceutical activity in the treatment of dysfunctions associated with elevated adenosine levels.",
+    "domain": "A61",
+    "claim": "Transgenic mice engineered to be deficient in adenosine deaminase (ADA), resulting in chronically elevated systemic adenosine levels, which serve as an animal model for studying and screening therapeutic compounds against pathological conditions caused by adenosine accumulation.",
+    "quality_scores": {
+      "self_contained": 5,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.666666666666667,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2150598424",
+      "W2169344912"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 2,
+    "statement_id": "RN002",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "majority",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8202980",
+    "title": "Method and medicament for inhibiting the expression of a given gene",
+    "abstract": "The present invention provides methods and compositions for inhibiting gene expression using double stranded RNA molecules that are between 15 and 21 nucleotides in length and are complementary to a target gene sequence.",
+    "domain": "C07",
+    "claim": "Double-stranded RNA molecules between 15 and 21 nucleotides in length that are complementary to a target gene sequence are used to inhibit expression of that target gene.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "both",
+    "relevant_papers": [
+      "W2045653120",
+      "W2103392842",
+      "W2038544294",
+      "W2114735542",
+      "W2324865838",
+      "W1984251559",
+      "W2113657260",
+      "W2144158368",
+      "W147652200",
+      "W2113513945"
+    ],
+    "relevant_patents": [
+      "8101584",
+      "8168776",
+      "8119608",
+      "8114851",
+      "8729037",
+      "10508277",
+      "9994853",
+      "8283329",
+      "8580754",
+      "9102939",
+      "10000754",
+      "10351852",
+      "10662428",
+      "10889815",
+      "9181551",
+      "9657294",
+      "9732344",
+      "9738899",
+      "9771588",
+      "9957517",
+      "10041068",
+      "8604183",
+      "9260471",
+      "9970005"
+    ],
+    "n_relevant": 34,
+    "statement_id": "RN003",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9301993",
+    "title": "Modified polynucleotides encoding apoptosis inducing factor 1",
+    "abstract": "The invention relates to compositions and methods for the preparation, manufacture and therapeutic use of oncology-related polynucleotides, oncology-related primary transcripts and oncology-related mmRNA molecules.",
+    "domain": "A61",
+    "claim": "Modified mRNA polynucleotides encoding apoptosis inducing factor 1 (AIF1) incorporating chemical modifications to enhance stability and translational efficiency for therapeutic oncology applications.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "both",
+    "relevant_papers": [
+      "W2058647478"
+    ],
+    "relevant_patents": [
+      "9216205"
+    ],
+    "n_relevant": 2,
+    "statement_id": "RN004",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "PARTIALLY_ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10526361",
+    "title": "E-selectin antagonist compounds, compositions, and methods of use",
+    "abstract": "Methods and compositions using E-selectin antagonists are provided for the treatment and prevention of diseases and disorders treatable by inhibiting binding of E-selectin to an E-selectin ligand. Described herein are E-selectin antagonists including, for example, glycomimetic compounds, antibodies, aptamers and peptides that are useful in methods for treatment of cancers, and treatment and prevention of metastasis, inhibiting infiltration of the cancer cells into bone marrow, reducing or inhibiting adhesion of the cancer cells to endothelial cells including cells in bone marrow, and inhibiting thrombus formation.",
+    "domain": "C07",
+    "claim": "Small molecule glycomimetic compounds that function as E-selectin antagonists by inhibiting binding of E-selectin to its ligands, useful for treating cancer metastasis by blocking adhesion of cancer cells to bone marrow endothelial cells and inhibiting cancer cell infiltration into bone marrow.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "both",
+    "relevant_papers": [
+      "W1871629237",
+      "W2047942414",
+      "W2562574582",
+      "W1725142663",
+      "W2480666200",
+      "W2979826324",
+      "W2568387171",
+      "W4248903596",
+      "W2557946695",
+      "W2564443150"
+    ],
+    "relevant_patents": [
+      "10766916",
+      "9109002",
+      "9796745",
+      "9867841",
+      "11072625"
+    ],
+    "n_relevant": 15,
+    "statement_id": "RN005",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10857152",
+    "title": "Methods and compositions for treating viral or virally-induced conditions",
+    "abstract": "Provided are methods and compositions for the prevention and/or treatment of viral conditions, virally-induced conditions and inflammatory conditions. The methods can comprise administering to a subject a viral inducing agent with an antiviral agent, and optionally an additional agent. The viral inducing agent can be a HDAC inhibitor administered orally.",
+    "domain": "A61",
+    "claim": "A method for treating viral or virally-induced conditions comprising orally administering a histone deacetylase (HDAC) inhibitor as a viral inducing agent in combination with an antiviral agent, wherein the HDAC inhibitor activates latent virus to render it susceptible to the antiviral agent.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2147447587"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 1,
+    "statement_id": "RN006",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "PARTIALLY_ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9890210",
+    "title": "Antagonist antibodies directed against calcitonin gene-related peptide",
+    "abstract": "The invention features methods for preventing or treating CGRP associated disorders such as vasomotor symptoms, including headaches (e.g., migraine, cluster headache, and tension headache) and hot flushes, by administering an anti-CGRP antagonist antibody. Antagonist antibody G1 and antibodies derived from G1 directed to CGRP are also described.",
+    "domain": "C12",
+    "claim": "An anti-CGRP antagonist antibody (G1) that binds to calcitonin gene-related peptide and blocks its activity, used to prevent or treat CGRP-associated disorders including migraine, cluster headache, tension headache, and vasomotor symptoms such as hot flushes.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "both",
+    "relevant_papers": [
+      "W2075728979",
+      "W2607327290"
+    ],
+    "relevant_patents": [
+      "9890211",
+      "10329343",
+      "9884907",
+      "9884908",
+      "10556945",
+      "9896502",
+      "9708393",
+      "10266587",
+      "11325967",
+      "10597448"
+    ],
+    "n_relevant": 12,
+    "statement_id": "RN007",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9822171",
+    "title": "Amyloid-beta binding proteins",
+    "abstract": "The present invention relates to amyloid-beta (A\u03b2) binding proteins. Antibodies of the invention have high affinity to A\u03b2(20-42) globulomer or any A\u03b2 form that comprises the globulomer epitope. Method of making and method of using the antibodies of the invention are also provided.",
+    "domain": "C12",
+    "claim": "Antibodies with high binding affinity specifically targeting the A\u03b2(20-42) globulomer epitope, wherein the antibodies recognize an epitope present on amyloid-beta globulomer conformational variants comprising residues 20-42 of the amyloid-beta peptide.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "both",
+    "relevant_papers": [
+      "W2120096591",
+      "W2056092494",
+      "W2126958454",
+      "W1996037698"
+    ],
+    "relevant_patents": [
+      "8987419",
+      "9062101",
+      "10047121",
+      "10538581",
+      "8691224",
+      "9540432",
+      "8497072",
+      "8877190",
+      "9359430"
+    ],
+    "n_relevant": 13,
+    "statement_id": "RN008",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10702193",
+    "title": "Analyte sensing biointerface",
+    "abstract": "Disclosed herein is an analyte sensing biointerface that comprises a sensing electrode incorporated within a non-conductive matrix comprising a plurality of passageways extending through the matrix to the sensing electrode. Also disclosed herein are methods of manufacturing a sensing biointerface and methods of detecting an analyte within tissue of a host using an analyte sensing biointerface.",
+    "domain": "A61",
+    "claim": "An analyte sensing biointerface comprising a sensing electrode embedded within a non-conductive matrix that contains a plurality of discrete passageways extending through the matrix to provide direct fluidic access from tissue to the sensing electrode surface, enabling analyte detection in vivo.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "10376188",
+      "10667729",
+      "10667730",
+      "8060174",
+      "9788766",
+      "8509871",
+      "10022078",
+      "8118877",
+      "8840552"
+    ],
+    "n_relevant": 9,
+    "statement_id": "RN009",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10379121",
+    "title": "Method and device for combined detection of viral and bacterial infections",
+    "abstract": "A lateral flow assay is capable of detecting and differentiating viral and bacterial infections. A combined point of care diagnostic device tests markers for viral infection and markers for bacterial infection, to effectively assist in the rapid differentiation of viral and bacterial infections. In some preferred embodiments, bimodal methods and devices determine if an infection is bacterial and/or viral. A dual use two strip sample analysis device includes a first lateral flow chromatographic test strip to detect MxA and a low level of C-reactive protein and a second lateral flow chromatographic test strip to detect high levels of C-reactive protein. In some preferred embodiments, the sample is a fingerstick blood sample.",
+    "domain": "C12",
+    "claim": "A dual-strip lateral flow assay device that simultaneously differentiates viral from bacterial infections by using a first chromatographic test strip to detect MxA protein and low-level C-reactive protein as viral infection markers, and a second chromatographic test strip to detect high-level C-reactive protein as a bacterial infection marker, operating on a fingerstick blood sample.",
+    "quality_scores": {
+      "self_contained": 5,
+      "specific": 5,
+      "searchable": 5
+    },
+    "quality_avg": 5.0,
+    "category": "both",
+    "relevant_papers": [
+      "W2160132348",
+      "W2322987389",
+      "W4232042142",
+      "W1991577015"
+    ],
+    "relevant_patents": [
+      "10408835",
+      "10808287"
+    ],
+    "n_relevant": 6,
+    "statement_id": "RN010",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8518962",
+    "title": "Use of opioid antagonists",
+    "abstract": "Embodiments of the invention provide methods of attenuating, e.g., inhibiting or reducing, cellular proliferation and migration, particularly endothelial cell proliferation and migration, including that associated with angiogenesis, as well as attenuating cancerous tumor growth and metastasis, using opioid antagonists, including, but not limited to, those that are peripherally restricted antagonists.",
+    "domain": "C12",
+    "claim": "Opioid antagonists, including peripherally restricted opioid antagonists, are used to attenuate endothelial cell proliferation and migration associated with angiogenesis, thereby inhibiting cancerous tumor growth and metastasis.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "both",
+    "relevant_papers": [
+      "W2735739709",
+      "W2127881618",
+      "W2994038732",
+      "W2156405505",
+      "W1985834247",
+      "W2552328241"
+    ],
+    "relevant_patents": [
+      "8524731",
+      "9662325",
+      "9662390",
+      "9675602",
+      "9717725",
+      "10383869",
+      "8685995",
+      "9526723"
+    ],
+    "n_relevant": 14,
+    "statement_id": "RN011",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10221461",
+    "title": "Immunocompetence assessment by adaptive immune receptor diversity and clonality characterization",
+    "abstract": "Disclosed are methods for determining the immunological status of the adaptive immune system of a subject by identifying and quantifying rearranged DNA (and/or subsequently transcribed RNA) sequences encoding T cell receptor (TCR) and/or immunoglobulin (IG) polypeptides, in a lymphoid DNA-containing sample from the subject TCR and/or IG sequence diversity and sequence distribution permit immunocompetence and immune repertoire assessment and reflect the degree of T cell or B cell clonality and clerical expansion in the sample. Methods for stratifying patient populations on the basis of immunocompetence including likelihood of responding to immunotherapy are also described.",
+    "domain": "A61",
+    "claim": "A method for assessing immunocompetence by sequencing rearranged TCR and/or immunoglobulin DNA or RNA from a lymphoid sample to quantify adaptive immune receptor diversity and clonal distribution, wherein the resulting repertoire metrics are used to stratify patients by immune status and predict likelihood of response to immunotherapy.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "both",
+    "relevant_papers": [
+      "W3005826182",
+      "W2043071551",
+      "W80473510",
+      "W2085156070",
+      "W1551566597"
+    ],
+    "relevant_patents": [
+      "11180813",
+      "11066705",
+      "11214793",
+      "9809813",
+      "9824179",
+      "10214770",
+      "9150905",
+      "9371558",
+      "10155992",
+      "10519511",
+      "10760133",
+      "10865453",
+      "11021757",
+      "9512487"
+    ],
+    "n_relevant": 19,
+    "statement_id": "RN012",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10865437",
+    "title": "Processing particle-containing samples",
+    "abstract": "A microfluidic device includes an input port for inputting a particle-containing liquidic samples into the device, a retention member, and a pressure actuator. The retention member is in communication with the input port and is configured to spatially separate particles of the particle-containing liquidic sample from a first portion of the liquid of the particle containing fluidic sample. The pressure actuator recombines at least some of the separated particles with a subset of the first portion of the liquid separated from the particles. The device can also include a lysing chamber that receives the particles and liquid from the retention member. The lysing chamber thermally lyses the particles to release contents thereof.",
+    "domain": "A61",
+    "claim": "A microfluidic device comprising a retention member that spatially separates particles from a liquid sample, and a pressure actuator that recombines at least some of the separated particles with a controlled subset of the separated liquid, enabling concentration or dilution of particle-containing samples on-chip, optionally followed by thermal lysis of the particles in an integrated lysing chamber.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "11078523"
+    ],
+    "n_relevant": 1,
+    "statement_id": "RN013",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9249456",
+    "title": "Base specific cleavage of methylation-specific amplification products in combination with mass analysis",
+    "abstract": "Methods, combinations and kits are provided for identifying the methylation state of a target nucleic acid molecule, the methylation state of a nucleotide locus in a target nucleic acid molecule, or for identifying the locus of one or more methylated or unmethylated nucleotides in a target nucleic acid molecule. Methylation state identification is performed by treating a methylated target nucleic acid molecule with a reagent that modifies one or more nucleotides in the target nucleic acid molecule as a function of the methylation state of the target nucleic acid molecule, methylation specifically amplifying treated target nucleic acid molecule, fragmenting amplified products, and detecting one or more fragments to thereby identify the methylation state of a target nucleic acid molecule, the methylation state of a nucleotide locus in a target nucleic acid molecule, or the locus of one or more methylated or unmethylated nucleotides in a target nucleic acid molecule.",
+    "domain": "C07",
+    "claim": "A method for identifying DNA methylation state by treating a target nucleic acid with a reagent that modifies nucleotides based on methylation state (e.g., bisulfite conversion), performing methylation-specific amplification of the treated target, fragmenting the amplified products by base-specific cleavage, and detecting the resulting fragments by mass spectrometry to identify the methylation state or precise locus of methylated or unmethylated nucleotides.",
+    "quality_scores": {
+      "self_contained": 5,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.666666666666667,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2098362718",
+      "W1970833628",
+      "W1994465394",
+      "W2089662278",
+      "W2130572312",
+      "W2111183991",
+      "W2106340111"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 7,
+    "statement_id": "RN014",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9741139",
+    "title": "Integrated medicament delivery device for use with continuous analyte sensor",
+    "abstract": "An integrated system for the monitoring and treating diabetes is provided, including an integrated receiver/hand-held medicament injection pen, including electronics, for use with a continuous glucose sensor. In some embodiments, the receiver is configured to receive continuous glucose sensor data, to calculate a medicament therapy (e.g., via the integrated system electronics) and to automatically set a bolus dose of the integrated hand-held medicament injection pen, whereby the user can manually inject the bolus dose of medicament into the host. In some embodiments, the integrated receiver and hand-held medicament injection pen are integrally formed, while in other embodiments they are detachably connected and communicated via mutually engaging electrical contacts and/or via wireless communication.",
+    "domain": "A61",
+    "claim": "An integrated receiver and hand-held medicament injection pen system wherein a continuous glucose sensor receiver calculates a medicament therapy and automatically sets a bolus dose on the injection pen, with the receiver and pen being either integrally formed or detachably connected via mutually engaging electrical contacts or wireless communication.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "10278580",
+      "10403012",
+      "10966609",
+      "11373347",
+      "8562558",
+      "8808228",
+      "7927274",
+      "10653835",
+      "10835672",
+      "11246990",
+      "7976492",
+      "8721585",
+      "8882741",
+      "8920401",
+      "8926585",
+      "9050413",
+      "9155843"
+    ],
+    "n_relevant": 17,
+    "statement_id": "RN015",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10279016",
+    "title": "Method of treatment of schizophreniform disorder",
+    "abstract": "Described herein are compositions which include digestive enzymes and which are formulated to reduce one or more symptoms of a neuropsychiatric disorder. Also described herein is a method for treating an individual with a neuropsychiatric disorder using digestive enzymes and their derivatives to alleviate the symptoms of neuropsychiatric disorders. The method comprises administering to the individual an effective amount of digestive enzymes that are either naturally or recombinantly derived, or their derivatives, in an amount effective to reduce one or more symptoms of the neuropsychiatric disorder.",
+    "domain": "C12",
+    "claim": "A method of treating neuropsychiatric disorders, including schizophreniform disorder, by administering an effective amount of digestive enzymes (naturally or recombinantly derived) or their derivatives to reduce one or more symptoms of the neuropsychiatric disorder.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "10940187",
+      "11016104"
+    ],
+    "n_relevant": 2,
+    "statement_id": "RN016",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8840552",
+    "title": "Membrane for use with implantable devices",
+    "abstract": "The present invention provides a biointerface membrane for use with an implantable device that interferes with the formation of a barrier cell layer including; a first domain distal to the implantable device wherein the first domain supports tissue attachment and interferes with barrier cell layer formation and a second domain proximal to the implantable device wherein the second domain is resistant to cellular attachment and is impermeable to cells. In addition, the present invention provides sensors including the biointerface membrane, implantable devices including these sensors or biointerface membranes, and methods of monitoring glucose levels in a host utilizing the analyte detection implantable device of the invention. Other implantable devices which include the biointerface membrane of the present invention, such as devices for cell transplantation, drug delivery devices, and electrical signal delivery or measuring devices are also provided.",
+    "domain": "A61",
+    "claim": "A biointerface membrane for implantable devices comprising a first domain distal to the device that supports tissue ingrowth and attachment while inhibiting barrier cell layer formation, and a second domain proximal to the device that is resistant to cellular attachment and impermeable to cells, thereby preventing formation of a fibrous barrier that would impede analyte transport to the implanted device.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "both",
+    "relevant_papers": [
+      "W1984583685",
+      "W1586651582"
+    ],
+    "relevant_patents": [
+      "8118877",
+      "10022078",
+      "7792562",
+      "7835777",
+      "7970448",
+      "7974672",
+      "8527025",
+      "8676288",
+      "9339223",
+      "8527026",
+      "8923947",
+      "9439589",
+      "9931067"
+    ],
+    "n_relevant": 15,
+    "statement_id": "RN017",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10655186",
+    "title": "Point mutations in TRK inhibitor-resistant cancer and methods relating to the same",
+    "abstract": "Provided herein are methods of treating a subject having a cancer, methods of selecting a treatment for a subject having a cancer, methods of selecting a subject having a cancer for a treatment that does not include a Trk inhibitor, methods of determining the likelihood that a subject having a cancer will have a positive response to a treatment with a Trk inhibitor, methods of predicting the efficacy of a Trk inhibitor in a subject having cancer, methods of determining a subject's risk for developing a Trk inhibitor-resistant cancer, and methods of determining the presence of a Trk inhibitor-resistant cancer in a subject, based on the detection of a cell from a sample from the subject that has at least one of the point mutations in NTRK1 and/or NTRK2 and/or NTRK3.",
+    "domain": "C12",
+    "claim": "Specific point mutations in NTRK1, NTRK2, and/or NTRK3 genes confer resistance to Trk inhibitors in cancer, and detection of these mutations in patient tumor samples can be used to predict Trk inhibitor efficacy, determine resistance risk, and guide treatment selection away from Trk inhibitor therapy.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "both",
+    "relevant_papers": [
+      "W2620626563",
+      "W2338990099",
+      "W2500669545",
+      "W2194998434",
+      "W2148089871"
+    ],
+    "relevant_patents": [
+      "10724102",
+      "10907215"
+    ],
+    "n_relevant": 7,
+    "statement_id": "RN018",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "11519028",
+    "title": "Compositions and methods for identifying nucleic acid molecules",
+    "abstract": "The present disclosure provides methods and compositions for sequencing nucleic acid molecules and identifying individual sample nucleic acid molecules using Molecular Index Tags (MITs). Furthermore, reaction mixtures, kits, and adapter libraries are provided.",
+    "domain": "C07",
+    "claim": "Nucleic acid sequencing method that uses Molecular Index Tags (MITs) attached to adapter sequences to uniquely label and identify individual sample nucleic acid molecules, enabling differentiation of distinct molecules with the same sequence during sequencing workflows.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "both",
+    "relevant_papers": [
+      "W2009039142",
+      "W987420839",
+      "W2303585199"
+    ],
+    "relevant_patents": [
+      "10011870",
+      "10577650",
+      "11530442",
+      "10077473",
+      "10526650",
+      "9708657"
+    ],
+    "n_relevant": 9,
+    "statement_id": "RN019",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "7799554",
+    "title": "Lateral flow devices",
+    "abstract": "An analytical test for an analyte comprises (a) a base, having a reaction area and a visualization area, (b) a capture species, on the base in the visualization area, comprising nucleic acid, and (c) analysis chemistry reagents, on the base in the reaction area. The analysis chemistry reagents comprise (i) a substrate comprising nucleic acid and a first label, and (ii) a reactor comprising nucleic acid. The analysis chemistry reagents can react with a sample comprising the analyte and water, to produce a visualization species comprising nucleic acid and the first label, and the capture species can bind the visualization species.",
+    "domain": "C12",
+    "claim": "An analytical test device comprising a base with a reaction area and visualization area, where analysis chemistry reagents include a nucleic acid substrate with a first label and a nucleic acid reactor that react with an analyte-containing sample to produce a labeled nucleic acid visualization species, which is then captured by a nucleic acid capture species in the visualization area, enabling lateral flow detection through nucleic acid-nucleic acid binding interactions.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2074603803"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 1,
+    "statement_id": "RN020",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "no_consensus",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "NOVEL"
+      }
+    }
+  },
+  {
+    "patent_id": "6399861",
+    "title": "Methods and compositions for the production of stably transformed, fertile monocot plants and cells thereof",
+    "abstract": "This invention relates to a reproducible system for the production of stable, genetically transformed maize cells, and to methods of selecting cells that have been transformed. One method of selection disclosed employs the Streptomyces bar gene introduced by microprojectile bombardment into embryogenic maize cells which were grown in suspension cultures, followed by exposure to the herbicide bialaphos. The methods of achieving stable transformation disclosed herein include tissue culture methods and media, methods for the bombardment of recipient cells with the desired transforming DNA, and methods of growing fertile plants from the transformed cells. This invention also relates to the transformed cells and seeds and to the fertile plants grown from the transformed cells and to their pollen.",
+    "domain": "C12",
+    "claim": "Stable genetic transformation of maize cells is achieved by introducing the Streptomyces bar gene into embryogenic maize suspension culture cells via microprojectile bombardment, followed by selection of transformed cells using the herbicide bialaphos, and subsequent regeneration of fertile transformed maize plants from the selected cells.",
+    "quality_scores": {
+      "self_contained": 5,
+      "specific": 5,
+      "searchable": 5
+    },
+    "quality_avg": 5.0,
+    "category": "both",
+    "relevant_papers": [
+      "W2163621988",
+      "W2091843088",
+      "W4243845639",
+      "W2012129665",
+      "W2125582909",
+      "W2146611372"
+    ],
+    "relevant_patents": [
+      "6803499",
+      "7705215",
+      "6329574",
+      "6025545",
+      "6777589",
+      "5990390"
+    ],
+    "n_relevant": 12,
+    "statement_id": "RN021",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "7833978",
+    "title": "Thrombomodulin derivatives and conjugates",
+    "abstract": "The transmembrane human protein thrombomodulin (TM), as a critical regulator of the protein C pathway, represents the major anticoagulant mechanism that is operative in both normal and injured blood vessels under physiologic conditions in vivo. Compositions and methods are disclosed relating to thrombomodulin derivatives and conjugates, including methods for site-specific pegylation and compositions of a truncated thrombomodulin derivative.",
+    "domain": "C12",
+    "claim": "A truncated thrombomodulin derivative conjugated to polyethylene glycol (PEG) via site-specific pegylation, wherein the pegylation is directed to a defined site on the truncated thrombomodulin protein to produce a thrombomodulin conjugate with preserved protein C pathway regulatory activity.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W1517078815"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 1,
+    "statement_id": "RN022",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "majority",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "NOVEL"
+      }
+    }
+  },
+  {
+    "patent_id": "9279136",
+    "title": "Methods of producing triacylglyceride compositions comprising tailored oils",
+    "abstract": "Methods and compositions for the production of food compositions, oils, fuels, oleochemicals, and other compounds in recombinant microorganisms are provided, including oil-bearing microorganisms and methods of low cost cultivation of such microorganisms. Microalgal cells containing exogenous genes encoding, for example, a lipase, a sucrose transporter, a sucrose invertase, a fructokinase, a polysaccharide-degrading enzyme, a keto acyl-ACP synthase enzyme, a fatty acyl-ACP thioesterase, a fatty acyl-CoA/aldehyde reductase, a fatty acyl-CoA reductase, a fatty aldehyde reductase, a fatty aldehyde decarbonylase, and/or an acyl carrier protein are useful in manufacturing food compositions, and transportation fuels such as renewable diesel, biodiesel, and renewable jet fuel, as well as oleochemicals such as functional fluids, surfactants, soaps and lubricants.",
+    "domain": "C07",
+    "claim": "Recombinant microalgal cells engineered with exogenous genes encoding a combination of lipid-pathway enzymes\u2014including fatty acyl-ACP thioesterase, keto acyl-ACP synthase, and sucrose transporter/invertase\u2014to enable heterotrophic cultivation on sucrose while producing triacylglyceride compositions with tailored fatty acid profiles suitable for food, fuel, and oleochemical applications.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "9255282",
+      "10100341",
+      "9249436",
+      "8852885",
+      "10006034",
+      "10167489",
+      "10344305",
+      "9388435",
+      "9719114",
+      "10053715",
+      "8945908",
+      "9102973",
+      "9200307",
+      "10287613",
+      "10683522",
+      "11401538",
+      "9551017",
+      "9909155",
+      "9068213"
+    ],
+    "n_relevant": 19,
+    "statement_id": "RN023",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8084026",
+    "title": "Multispecific binding molecules comprising connecting peptides",
+    "abstract": "The instant invention describes novel multispecific binding molecules comprising synthetic connecting peptides. The synthetic connecting peptides result in the preferential synthesis of multispecific binding molecules comprising polypeptide chains that are linked via at least one interchain disulfide linkage. In addition, the invention pertains to compositions in which a majority of the multispecific binding molecules comprising polypeptide chain that are linked via at least one interchain disulfide linkage or are not linked via at least one intrachain disulfide linkage. In a specific embodiment, the invention pertains to compositions comprising multispecific dimeric binding molecules said molecules comprising at least a first binding site specific for a tumor necrosis factor (TNF) receptor or a ligand of a TNF receptor family member and at least a second binding site; and at least two polypeptide chains comprising at least one heavy chain portion and a synthetic connecting peptide; wherein greater than about 50% of the dimers comprise polypeptide chains that are linked via at least one interchain disulfide linkage.",
+    "domain": "C07",
+    "claim": "A multispecific binding molecule comprising at least two polypeptide chains each containing a heavy chain portion and a synthetic connecting peptide, wherein the synthetic connecting peptide is designed to preferentially drive formation of interchain disulfide linkages over intrachain disulfide linkages, such that greater than 50% of the resulting dimers comprise polypeptide chains linked via at least one interchain disulfide bond rather than intrachain disulfide bonds.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "both",
+    "relevant_papers": [
+      "W1998744147",
+      "W1571113921",
+      "W1993370938"
+    ],
+    "relevant_patents": [
+      "8603473",
+      "9889197",
+      "10093738",
+      "10093739",
+      "9284375",
+      "9296816",
+      "9963510"
+    ],
+    "n_relevant": 10,
+    "statement_id": "RN024",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "11560554",
+    "title": "Lysosomal storage disease enzymes",
+    "abstract": "The present invention provides compositions of recombinant human lysosomal acid lipase having particular glycosylation patterns for internalization into target cells, a vector containing the nucleic acid encoding human lysosomal acid lipase, a host cell transformed with the vector, pharmaceutical compositions comprising the recombinant human lysosomal acid lipase and method of treating conditions associated with lysosomal acid lipase deficiency.",
+    "domain": "A61",
+    "claim": "Recombinant human lysosomal acid lipase (LAL) engineered with specific glycosylation patterns that facilitate internalization into target cells via mannose or mannose-6-phosphate receptor-mediated uptake, for use in enzyme replacement therapy of lysosomal acid lipase deficiency conditions such as Wolman disease and cholesteryl ester storage disease.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "both",
+    "relevant_papers": [
+      "W1578923307",
+      "W2046407155",
+      "W1479884104",
+      "W2162765266",
+      "W1632247257",
+      "W2157991447"
+    ],
+    "relevant_patents": [
+      "10407671",
+      "10858638",
+      "8945542"
+    ],
+    "n_relevant": 9,
+    "statement_id": "RN025",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10793912",
+    "title": "Methods for simultaneous amplification of target loci",
+    "abstract": "The invention provides methods for simultaneously amplifying multiple nucleic acid regions of interest in one reaction volume as well as methods for selecting a library of primers for use in such amplification methods. The invention also provides library of primers with desirable characteristics, such as minimal formation of amplified primer dimers or other non-target amplicons.",
+    "domain": "C12",
+    "claim": "A method for simultaneously amplifying multiple nucleic acid target loci in a single reaction volume using a library of primers selected to minimize formation of primer dimers and non-target amplicons, wherein the primer library selection process optimizes primer compatibility across all primer pairs to enable highly multiplexed PCR amplification.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "both",
+    "relevant_papers": [
+      "W2137167287",
+      "W2118555972",
+      "W2033609627",
+      "W2120335901",
+      "W2318103124",
+      "W2171719398",
+      "W2168585454",
+      "W2412513069",
+      "W2106888005",
+      "W2157463520",
+      "W2075922438",
+      "W2173498175",
+      "W2052383391",
+      "W2118811947"
+    ],
+    "relevant_patents": [
+      "10316362",
+      "10351906",
+      "10526658",
+      "10538814",
+      "10557172",
+      "10597708",
+      "10597709",
+      "10597723",
+      "10655180",
+      "10731220",
+      "11111545",
+      "11286530",
+      "11312996",
+      "11332793",
+      "11390916",
+      "11519035",
+      "11525162",
+      "10214770",
+      "9150905",
+      "9371558",
+      "10894977"
+    ],
+    "n_relevant": 35,
+    "statement_id": "RN026",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8930191",
+    "title": "Paraphrasing of user requests and results by automated digital assistant",
+    "abstract": "Methods, systems, and computer readable storage medium related to operating an intelligent digital assistant are disclosed. A user request is received, the user request including at least a speech input received from a user. In response to the user request, (1) an echo of the speech input based on a textual interpretation of the speech input, and (2) a paraphrase of the user request based at least in part on a respective semantic interpretation of the speech input are presented to the user.",
+    "domain": "A61",
+    "claim": "An automated digital assistant that, in response to a user's speech input, simultaneously presents both a verbatim text echo of the speech input based on its textual interpretation and a semantic paraphrase of the user's request based on its interpreted meaning, allowing the user to distinguish between what was heard and what was understood.",
+    "quality_scores": {
+      "self_contained": 5,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "novel",
+    "relevant_papers": [],
+    "relevant_patents": [],
+    "n_relevant": 0,
+    "statement_id": "RN027",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "override",
+      "individual": {}
+    }
+  },
+  {
+    "patent_id": "9452228",
+    "title": "Antibodies reactive with an epitope located in the N-terminal region of MUC5AC comprising cysteine-rich subdomain 2 (Cys2)",
+    "abstract": "The present invention concerns compositions and methods of use of antibodies or antibody fragments that bind to an epitope located within the second cysteine-rich domain (Cys2, amino acid residues 1575-1725) of MUC5AC. The antibodies bind with high specificity and selectivity to pancreatic cancer and are of use for therapy, detection and/or diagnosis of pancreatic cancer. In preferred embodiments, therapeutic antibody may be conjugated to at least one therapeutic agent, such as 90Y. Both in vivo and in vitro detection of pancreatic cancer may be performed with the subject methods and compositions. Specific dosages of radiolabeled antibody and/or gemcitabine, of use in human pancreatic cancer patients, are disclosed herein.",
+    "domain": "A61",
+    "claim": "Antibodies or antibody fragments that bind to an epitope located within the second cysteine-rich subdomain (Cys2, amino acid residues 1575-1725) of MUC5AC with high specificity and selectivity for pancreatic cancer, enabling therapy when conjugated to therapeutic agents such as 90Y and in vivo/in vitro detection and diagnosis of pancreatic cancer.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 5,
+      "searchable": 4
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W1544575922",
+      "W1982492189",
+      "W2130301749",
+      "W2038933154",
+      "W2085055581"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 5,
+    "statement_id": "RN028",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10004746",
+    "title": "Use of inhibitors of Bruton's tyrosine kinase (Btk)",
+    "abstract": "Disclosed herein are methods for treating a cancer comprising: a. administering a Btk inhibitor to a subject sufficient to result in an increase or appearance in the blood of a subpopulation of lymphocytes defined by immunophenotyping; b. determining the expression profile of one or more biomarkers from one or more subpopulation of lymphocytes; and c. administering a second agent based on the determined expression profile.",
+    "domain": "A61",
+    "claim": "A method for treating cancer by administering a Btk inhibitor to mobilize a lymphocyte subpopulation into blood, determining the expression profile of one or more biomarkers from that subpopulation via immunophenotyping, and then selecting and administering a second therapeutic agent based on the determined biomarker expression profile.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "10004745",
+      "10016435",
+      "10478439",
+      "10653696",
+      "10751342",
+      "9814721"
+    ],
+    "n_relevant": 6,
+    "statement_id": "RN029",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10209253",
+    "title": "Methods for diagnosing pervasive development disorders, dysautonomia and other neurological conditions",
+    "abstract": "Methods for aiding in the diagnosis of disorders including, but not limited to, PDDs (Pervasive Development Disorders), Dysautonomic disorders, Parkinson's disease and SIDS (Sudden Infant Death Syndrome). In one aspect, a diagnosis method comprises analyzing a stool sample of an individual for the presence of a biological marker (or marker compound) comprising one or more pathogens, which provides an indication of whether the individual has, or can develop, a disorder including, but not limited to, a PDD, Dysautonomia, Parkinsons disease and SIDS. Preferably, the presence of one or more pathogens is determined using a stool immunoassay to determine the presence of antigens in a stool sample, wherein such antigens are associated with one or more pathogens including, but not limited to, Giardia, Cryptosporidium, E. histolytica, C. difficile, Adenovirus, Rotavirus or H. pylori.",
+    "domain": "C07",
+    "claim": "A method for diagnosing pervasive developmental disorders (PDDs), dysautonomia, Parkinson's disease, and SIDS by analyzing a stool sample using immunoassay to detect antigens associated with specific pathogens including Giardia, Cryptosporidium, E. histolytica, C. difficile, Adenovirus, Rotavirus, or H. pylori as biological markers indicative of neurological condition risk or presence.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 3
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "novel",
+    "relevant_papers": [],
+    "relevant_patents": [],
+    "n_relevant": 0,
+    "statement_id": "RN030",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "override",
+      "individual": {}
+    }
+  },
+  {
+    "patent_id": "9260725",
+    "title": "Methods and compositions relating to improved lentiviral vector production systems",
+    "abstract": "The present invention provides HIV-derived lentivectors which are multiply modified to create highly safe, efficient, and potent vectors for expressing transgenes for gene therapy. The lentiviral vectors comprise various combinations of an inactive central polypurine tract, a stuffer sequence, which may encode drug susceptibility genes, and a mutated hairpin in the 5\u2032 leader sequence that substantially abolishes replication. These elements are provided in conjunction with other features of lentiviral vectors, such as a self-inactivating configuration for biosafety and promoters such as the EF1\u03b1 promoter as one example. Additional promoters are also described. The vectors can also comprise additional transcription enhancing elements such as the wood chuck hepatitis virus post-transcriptional regulatory element. These vectors therefore provide useful tools for genetic treatments for inherited and acquired disorders, gene-therapies for cancers and other disease, the creation of industrial and experimental production systems utilizing transformed cells, as well as for the study of basic cellular and genetic processes.",
+    "domain": "A61",
+    "claim": "A lentiviral vector comprising a combination of an inactivated central polypurine tract, a stuffer sequence encoding drug susceptibility genes, and a mutated hairpin in the 5\u2032 leader sequence that substantially abolishes replication, integrated within a self-inactivating vector configuration to enhance biosafety while maintaining efficient transgene expression for gene therapy applications.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2154853638",
+      "W2089579355",
+      "W2167523976",
+      "W1835972708",
+      "W2136355116"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 5,
+    "statement_id": "RN031",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "majority",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "NOVEL"
+      }
+    }
+  },
+  {
+    "patent_id": "9682123",
+    "title": "Methods of treating metabolic disease",
+    "abstract": "The invention provides methods for treating metabolic disease in a subject and methods for increasing the expression of ILDR2 in a subject. The invention further provides a method for identifying an agent which modulates expression of an Ildr2 RNA comprising contacting a cell with an agent; determining expression of the Ildr2 RNA in the presence and the absence of the agent; and comparing expression of the Ildr2 RNA in the presence and the absence of the agent, wherein a change in the expression of the Ildr2 RNA in the presence of the agent is indicative of an agent which modulates the level of expression of the RNA.",
+    "domain": "C12",
+    "claim": "A method for treating metabolic disease by increasing expression of ILDR2 (Immunoglobulin-Like Domain Receptor 2) in a subject, wherein agents that upregulate ILDR2/Ildr2 RNA expression are identified by contacting cells with candidate compounds and comparing Ildr2 RNA expression levels in the presence and absence of the agent.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "novel",
+    "relevant_papers": [],
+    "relevant_patents": [],
+    "n_relevant": 0,
+    "statement_id": "RN032",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "override",
+      "individual": {}
+    }
+  },
+  {
+    "patent_id": "11242528",
+    "title": "Engineered immunostimulatory bacterial strains and uses thereof",
+    "abstract": "Provided are immunostimulatory bacteria and oncolytic viruses, and pharmaceutical compositions containing the bacteria and/or viruses, that act as three prime repair exonuclease 1 (TREX1) antagonists. The bacteria and viruses are for treating tumors that are human papillomavirus (HPV) positive or that have a high tumor mutational burden (TMB). The immunostimulatory bacteria and oncolytic viruses encode therapeutic products such RNAi, such as shRNA and microRNA, that mediate gene disruption and/or inhibit expression of TREX1, or that inhibit TREX1. The bacteria contain additional modifications to enhance their anti-tumor activity. The bacteria and viruses are used for treatment of tumors in which TREX1 expression correlates with the presence of the tumor or properties of the tumor, such that inhibition of TREX1 advantageously treats the tumor.",
+    "domain": "A61",
+    "claim": "Engineered immunostimulatory bacteria encoding RNAi molecules (shRNA or microRNA) that inhibit TREX1 (three prime repair exonuclease 1) expression, formulated for treating HPV-positive tumors or tumors with high tumor mutational burden where TREX1 expression correlates with tumor presence or properties.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "novel",
+    "relevant_papers": [],
+    "relevant_patents": [],
+    "n_relevant": 0,
+    "statement_id": "RN033",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "override",
+      "individual": {}
+    }
+  },
+  {
+    "patent_id": "10392611",
+    "title": "Polymer conjugates having reduced antigenicity and methods of using the same",
+    "abstract": "Disclosed herein are compositions and methods for reducing the antigenicity of molecules, wherein the molecule comprises a uricase. The antigenicity of a molecule may be reduced or eliminated by conjugating at least one branched polymer to the molecule to form a molecule-polymer conjugate. The branched polymer may include a backbone and a plurality of side chains, each side chain covalently attached to the backbone.",
+    "domain": "C07",
+    "claim": "A uricase-polymer conjugate wherein at least one branched polymer comprising a backbone with a plurality of covalently attached side chains is conjugated to uricase to reduce or eliminate the antigenicity of the uricase molecule.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "both",
+    "relevant_papers": [
+      "W1989411256",
+      "W1943625917"
+    ],
+    "relevant_patents": [
+      "10364451"
+    ],
+    "n_relevant": 3,
+    "statement_id": "RN034",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "11547384",
+    "title": "Vascular characterization using ultrasound imaging",
+    "abstract": "Ultrasound methods provide for the motion tracking of both vessel wall motion and blood flow (e.g., with use of high frame rate ultrasound pulse echo data and speckle tracking both wall motion and flow can be tracked simultaneously). Ultrasound systems provide for the motion tracking of both vessel wall motion and blood flow (e.g., with use of high frame rate ultrasound pulse echo data and speckle tracking both wall motion and flow can be tracked simultaneously).",
+    "domain": "A61",
+    "claim": "An ultrasound method that simultaneously tracks both vessel wall motion and blood flow velocity using high frame rate pulse-echo ultrasound data combined with speckle tracking applied to both the vessel wall and intraluminal blood, enabling concurrent characterization of vascular wall dynamics and flow patterns from a single acquisition sequence.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2110282218",
+      "W2544030031",
+      "W2096578443",
+      "W2098349201",
+      "W2153891623",
+      "W1975573633",
+      "W2112636735"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 7,
+    "statement_id": "RN035",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8128963",
+    "title": "Methods for treating ischemic disorders using carbon monoxide",
+    "abstract": "The present invention provides for a method for treating an ischemic disorder in a subject which comprises administering to the subject a pharmaceutically acceptable form of a selectin antagonist in a sufficient amount over a sufficient time period to prevent white blood cell accumulation so as to treat the ischemic disorder in the subject. The invention further provides a method for treating an ischemic disorder in a subject which comprises administering to the subject carbon monoxide gas in a sufficient amount over a sufficient period of time thereby treating the ischemic disorder in the subject. The invention further provides a method for treating an ischemic disorder in a subject which comprises administering to the subject a pharmaceutically acceptable form of inactivated Factor IX in a sufficient amount over a sufficient period of time to inhibit coagulation so as to treat the ischemic disorder in the subject.",
+    "domain": "A61",
+    "claim": "Administering carbon monoxide gas to a subject in a therapeutically sufficient amount and duration treats ischemic disorders, with additional methods employing selectin antagonists to prevent white blood cell accumulation or inactivated Factor IX to inhibit coagulation as alternative treatments for ischemic disorders.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2160800132"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 1,
+    "statement_id": "RN036",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "majority",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "NOVEL"
+      }
+    }
+  },
+  {
+    "patent_id": "10274488",
+    "title": "Glycan arrays on PTFE-like aluminum coated glass slides and related methods",
+    "abstract": "Aluminum coated glass slides provide a novel glycan array platform. Specifically, aluminum coated glass slides increase sensitivity of fluorescent based assay methods. Additionally, aluminum coated glass slides allows for mass spectroscopic analysis of carbohydrates and provide a platform for examining activity of cellulases. The unique properties of ACG slides include: 1) the metal oxide layer on the surface can be activated for grafting organic compounds such as modified oligosaccharides; 2) the surface remains electrically conductive, and the grafted oligosaccharides can be simultaneously characterized by mass spectrometry and carbohydrate-binding assay; and 3) the slides are more sensitive than transparent glass slides in binding analysis.",
+    "domain": "C07",
+    "claim": "Aluminum-coated glass slides with a metal oxide surface layer that enables covalent grafting of modified oligosaccharides, providing simultaneous fluorescence-based binding analysis and mass spectrometric characterization of carbohydrates on the same electrically conductive substrate with greater sensitivity than transparent glass slides.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2089319310",
+      "W1965423278"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 2,
+    "statement_id": "RN037",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10101822",
+    "title": "Language input correction",
+    "abstract": "The present disclosure generally relates to language input correction. In one example process, a sequence of contact inputs can be detected via a keyboard interface on a touch-sensitive display. A contact input of the sequence of contact inputs can include a contact motion from a first position to a second position of the keyboard interface. A plurality of candidate words corresponding to the sequence of contact inputs can be determined. The plurality of candidate words can be ranked based on a probability that the contact input is an intended input to select a first key of the keyboard interface, and a probability that the contact input is an intended input to select a second key of the keyboard interface. A portion of the plurality of candidate words can be displayed for user selection.",
+    "domain": "C12",
+    "claim": "A touch keyboard input correction method that interprets a single contact motion spanning from a first position to a second position on a keyboard interface as a potentially ambiguous key selection, then ranks candidate words by computing probabilities that the motion was intended to select each of multiple different keys, using these per-key probabilities to order candidate word suggestions presented to the user.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "9798393"
+    ],
+    "n_relevant": 1,
+    "statement_id": "RN038",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "PARTIALLY_ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9693721",
+    "title": "Polymer membranes for continuous analyte sensors",
+    "abstract": "Devices and methods are described for providing continuous measurement of an analyte concentration. In some embodiments, the device has a sensing mechanism and a sensing membrane that includes at least one surface-active group-containing polymer and that is located over the sensing mechanism. The sensing membrane may have a bioprotective layer configured to substantially block the effect and/or influence of non-constant noise-causing species.",
+    "domain": "A61",
+    "claim": "A continuous analyte sensor comprising a sensing membrane that includes at least one surface-active group-containing polymer configured as a bioprotective layer that substantially blocks the effect of non-constant noise-causing species on the sensing mechanism while allowing target analyte transport to the sensing mechanism.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "10143410",
+      "11147483",
+      "8583204",
+      "8682408",
+      "8954128",
+      "9173606",
+      "9173607",
+      "9549699",
+      "9566026",
+      "9572523"
+    ],
+    "n_relevant": 10,
+    "statement_id": "RN039",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8449908",
+    "title": "Transdermal delivery of cannabidiol",
+    "abstract": "The present invention overcomes the problems associated with existing drug delivery systems by delivering cannabinoids transdermally. Preferably, the cannabinoids are delivered via an occlusive body (i.e., a patch) to alleviate harmful side effects and avoid gastrointestinal (first-pass) metabolism of the drug by the patient. A first aspect of the invention provides a method for relieving symptoms associated with illness or associated with the treatment of illness in a mammalian subject, comprising the steps of selecting at least one cannabinoid from the group consisting of cannabinol, cannabidiol, nabilone, levonantradol, (\u2212)-HU-210, (+)-HU-210, 11-hydroxy-\u03949-THC, \u03948-THC-11-oic acid, CP 55,940, and R(+)-WIN 55,212-2, selecting at least one permeation enhancer from the group consisting of propylene glycol monolaurate, diethylene glycol monoethyl ether, an oleoyl macrogolglyceride, a caprylocaproyl macrogolglyceride, and an oleyl alcohol, and delivering the selected cannabinoid and permeation enhancer transdermally to treat an illness.",
+    "domain": "A61",
+    "claim": "A transdermal drug delivery method using an occlusive patch to deliver cannabinoids\u2014including cannabidiol, cannabinol, nabilone, or specific THC derivatives\u2014in combination with specific permeation enhancers (propylene glycol monolaurate, diethylene glycol monoethyl ether, oleoyl macrogolglyceride, caprylocaproyl macrogolglyceride, or oleyl alcohol) to bypass gastrointestinal first-pass metabolism and treat illness symptoms in mammals.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "novel",
+    "relevant_papers": [],
+    "relevant_patents": [],
+    "n_relevant": 0,
+    "statement_id": "RN040",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "override",
+      "individual": {}
+    }
+  },
+  {
+    "patent_id": "8559012",
+    "title": "Speckle reduction in optical coherence tomography by path length encoded angular compounding",
+    "abstract": "Accordingly, exemplary embodiments of an apparatus probe catheter and method can be provided for irradiating a structure. In particular, an interferometer may forward forwarding an electromagnetic radiation. In addition, a sample arm may receive the electromagnetic radiation, and can include an arrangement which facilitates a production of at least two radiations from the electromagnetic radiation so as to irradiate the structure. Such exemplary arrangement can be configured to delay a first radiation of the at least two radiations with respect to a second radiation of the at least two radiations.",
+    "domain": "C07",
+    "claim": "An optical coherence tomography system that reduces speckle by using a sample arm arrangement that splits electromagnetic radiation into at least two beams and introduces a path length delay between the beams to irradiate a structure from different angles, enabling angular compounding through path length encoding to reduce speckle noise in the resulting OCT image.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "both",
+    "relevant_papers": [
+      "W1967985611",
+      "W2103457061"
+    ],
+    "relevant_patents": [
+      "8174702",
+      "9226665"
+    ],
+    "n_relevant": 4,
+    "statement_id": "RN041",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9193827",
+    "title": "Poly(beta-amino alcohols), their preparation, and uses thereof",
+    "abstract": "A new class of poly(beta-amino alcohols) (PBAAs) has been prepared using combinatorial polymerization. The inventive PBAAs may be used in biotechnology and biomedical applications as coatings (such as coatings of films or multilayer films for medical devices or implants), additives, materials, excipients, non-biofouling agents, micropatterning agents, and cellular encapsulation agents. When used as surface coatings, these PBAAs elicited different levels of inflammation, both in vitro and in vivo, depending on their chemical structures. The large chemical diversity of this class of materials allowed us to identify polymer coatings that inhibit macrophage activation in vitro. Furthermore, these coatings reduce the recruitment of inflammatory cells, and reduce fibrosis, following the subcutaneous implantation of carboxylated polystyrene microparticles. These polymers may be used to form polyelectrolyte complex capsules for cell encapsulation. The invention may also have many other biological applications such as antimicrobial coatings, DNA or siRNA delivery, and stem cell tissue engineering.",
+    "domain": "C07",
+    "claim": "Poly(beta-amino alcohols) (PBAAs) synthesized via combinatorial polymerization serve as surface coatings that modulate inflammatory response in a structure-dependent manner, inhibiting macrophage activation in vitro and reducing inflammatory cell recruitment and fibrosis in vivo following subcutaneous implantation, and can form polyelectrolyte complex capsules for cellular encapsulation.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W1995934164"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 1,
+    "statement_id": "RN042",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "PARTIALLY_ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8741616",
+    "title": "Regio- and enantioselective alkane hydroxylation with modified cytochrome P450",
+    "abstract": "Cytochrome P450 BM-3 from Bacillus megaterium was engineered using a combination of directed evolution and site-directed mutagenesis to hydroxylate linear alkanes regio- and enantioselectively using atmospheric dioxygen as an oxidant. Mutant 9-10A-A328V hydroxylates octane primarily at the 2-positio to form S-2-octanol (40% ee). Another mutant, 1-12G, hydroxylates alkanes larger than hexane primarily at the 2-position, but forms R-2-alcohols (40-55% ee). These biocatalysts are highly active for alkane substrates and support thousands of product turnovers. These regio- and enantio-selectivities are retained in whole-cell biotransformations with E. coli, where the engineered P450s can be expressed at high levels and the expensive cofactor is supplied endogenously.",
+    "domain": "C12",
+    "claim": "Engineered cytochrome P450 BM-3 mutants (9-10A-A328V and 1-12G) created through directed evolution and site-directed mutagenesis that hydroxylate linear alkanes regioselectively at the 2-position using atmospheric dioxygen, producing opposite enantiomers of 2-octanol (S- and R-configured, respectively) with 40-55% enantiomeric excess and thousands of product turnovers, with activity retained in whole-cell E. coli biotransformations using endogenous cofactor supply.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 5,
+      "searchable": 4
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "both",
+    "relevant_papers": [
+      "W2083112939",
+      "W2063112093",
+      "W2133834597"
+    ],
+    "relevant_patents": [
+      "8343744",
+      "9145549",
+      "7863030"
+    ],
+    "n_relevant": 6,
+    "statement_id": "RN043",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "11377637",
+    "title": "Transgenic T cell and chimeric antigen receptor T cell compositions and related methods",
+    "abstract": "The invention provides a T cell wherein one or more therapeutic transgenes is integrated at a within the genome of the cell such that expression of the transgene is under control of an endogenous promoter of the T cell. The invention additional provides methods of making and using such cells to treat a subject with T cell therapy. The invention also provides a T cell wherein a recombinant nucleic acid sequence encoding a chimeric antigen receptor (CAR) is integrated at a first site within the genome of the cell such that the CAR is expressed by the cell at the surface of the cell, and wherein integration of the nucleic acid encoding the CAR at the first site reduces or prevents expression of a functional T cell receptor (TCR) complex at the surface of the cell. The invention additional provides methods of making and using such cells to treat a subject with CAR therapy.",
+    "domain": "A61",
+    "claim": "A T cell in which a recombinant nucleic acid sequence encoding a chimeric antigen receptor (CAR) is integrated at a specific genomic site such that CAR expression is driven by an endogenous T cell promoter, and wherein integration at that site simultaneously reduces or prevents expression of a functional endogenous T cell receptor (TCR) complex at the cell surface.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 5,
+      "searchable": 5
+    },
+    "quality_avg": 4.666666666666667,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W1976400767"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 1,
+    "statement_id": "RN044",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "majority",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "NOVEL"
+      }
+    }
+  },
+  {
+    "patent_id": "6420414",
+    "title": "Amino derivatives of EM-138 and methods of treating angiogenesis with same",
+    "abstract": "The present invention comprises a group of compounds that effectively inhibit angiogenesis. More specifically, thalidomide and various related compounds such as thalidomide precursors, analogs, metabolites and hydrolysis products have been shown to inhibit angiogenesis and to treat disease states resulting from angiogenesis. Importantly, these compounds can be administered orally.",
+    "domain": "C07",
+    "claim": "Amino derivatives of EM-138 (a thalidomide-related compound) and their thalidomide precursors, analogs, metabolites, and hydrolysis products inhibit angiogenesis when administered orally, providing treatment for disease states resulting from pathological angiogenesis.",
+    "quality_scores": {
+      "self_contained": 3,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "6469045",
+      "7723361",
+      "8143283",
+      "8039488",
+      "6114355",
+      "6518298",
+      "6228879"
+    ],
+    "n_relevant": 7,
+    "statement_id": "RN045",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "PARTIALLY_ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10201301",
+    "title": "Analyte monitoring device and methods of use",
+    "abstract": "In aspects of the present disclosure, a no coding blood glucose monitoring unit including a calibration unit is integrated with one or more components of an analyte monitoring system to provide compatibility with in vitro test strip that do not require a calibration code is provided. Also disclosed are methods, systems, devices and kits for providing the same.",
+    "domain": "A61",
+    "claim": "A blood glucose monitoring unit integrates a calibration unit that eliminates the need for user-entered calibration codes by automatically calibrating in vitro test strips, providing compatibility with codeless test strips within an analyte monitoring system.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "8346337",
+      "8920319",
+      "8688188",
+      "8915850",
+      "9326716",
+      "8465425",
+      "9078607"
+    ],
+    "n_relevant": 7,
+    "statement_id": "RN046",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10526619",
+    "title": "Methods and compositions for RNA-directed target DNA modification and for RNA-directed modulation of transcription",
+    "abstract": "The present disclosure provides a DNA-targeting RNA that comprises a targeting sequence and, together with a modifying polypeptide, provides for site-specific modification of a target DNA and/or a polypeptide associated with the target DNA. The present disclosure further provides site-specific modifying polypeptides. The present disclosure further provides methods of site-specific modification of a target DNA and/or a polypeptide associated with the target DNA The present disclosure provides methods of modulating transcription of a target nucleic acid in a target cell, generally involving contacting the target nucleic acid with an enzymatically inactive Cas9 polypeptide and a DNA-targeting RNA. Kits and compositions for carrying out the methods are also provided. The present disclosure provides genetically modified cells that produce Cas9; and Cas9 transgenic non-human multicellular organisms.",
+    "domain": "C12",
+    "claim": "A DNA-targeting RNA comprising a targeting sequence that, together with an enzymatically inactive Cas9 polypeptide, enables site-specific modulation of transcription at a target DNA locus without cleaving the DNA, wherein the RNA-Cas9 complex is directed to a specific genomic site by the targeting sequence to modulate gene expression.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "10000772",
+      "10113167",
+      "10227611",
+      "10266850",
+      "10308961",
+      "10337029",
+      "10351878",
+      "10358658",
+      "10358659",
+      "10385360",
+      "10400253",
+      "10407697",
+      "10415061",
+      "10421980",
+      "10428352",
+      "10443076",
+      "10487341",
+      "10513712",
+      "10519467",
+      "10533190"
+    ],
+    "n_relevant": 20,
+    "statement_id": "RN047",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10898114",
+    "title": "System and methods for processing analyte sensor data for sensor calibration",
+    "abstract": "Systems and methods for processing sensor analyte data are disclosed, including initiating calibration, updating calibration, evaluating clinical acceptability of reference and sensor analyte data, and evaluating the quality of sensor calibration. The sensor can be calibrated using a calibration set of one or more matched sensor and reference analyte data pairs. Reference data resulting from benchtop testing an analyte sensor prior to its insertion can be used to provide initial calibration of the sensor data. Reference data from a short term continuous analyte sensor implanted in a user can be used to initially calibrate or update sensor data from a long term continuous analyte sensor.",
+    "domain": "A61",
+    "claim": "A continuous analyte sensor calibration system that uses reference data from a short-term implanted continuous analyte sensor to initially calibrate or update sensor data from a separately implanted long-term continuous analyte sensor, and alternatively uses pre-insertion benchtop testing reference data to provide initial calibration of sensor data without requiring in vivo reference measurements.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "10610135",
+      "10610136",
+      "10610137",
+      "10617336",
+      "10709364",
+      "10716498",
+      "10743801",
+      "10856787",
+      "10918316",
+      "10918317",
+      "10918318",
+      "10925524",
+      "11000213",
+      "11051726",
+      "7920906",
+      "8560037",
+      "8579816",
+      "8611978",
+      "9078608",
+      "9314196",
+      "9918668",
+      "10786185",
+      "7797028",
+      "7826981",
+      "8052601",
+      "8060173",
+      "8206297",
+      "8394021",
+      "8442610",
+      "8548553",
+      "8622905",
+      "8676287",
+      "8700117",
+      "8761856",
+      "8788006",
+      "8788008",
+      "8801612",
+      "8808182",
+      "9895089",
+      "10980461"
+    ],
+    "n_relevant": 40,
+    "statement_id": "RN048",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "majority",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "11453906",
+    "title": "Multiplexed diagnostic detection apparatus and methods",
+    "abstract": "Disclosed herein are devices configured for the amplification and detection of multiple targets from a sample, and methods of using the same. The devices disclosed herein comprise microfluidic cartridges have a first stage (amplification) and a second (detection) stage. The two-stage design of the cartridges enables testing for multiple targets within a sample, i.e., from a single nucleic acid amplification reaction. Methods for the amplification and detection of a plurality of target nucleic acids from a sample are also disclosed herein.",
+    "domain": "C12",
+    "claim": "A two-stage microfluidic cartridge that performs nucleic acid amplification in a first stage and then distributes amplified products to a second detection stage, enabling multiplexed detection of multiple target nucleic acids from a single amplification reaction within an integrated device.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "both",
+    "relevant_papers": [
+      "W2089922757",
+      "W2114840438",
+      "W2035285327"
+    ],
+    "relevant_patents": [
+      "10370705",
+      "9447461",
+      "11266987",
+      "10131934"
+    ],
+    "n_relevant": 7,
+    "statement_id": "RN049",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "majority",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "NOVEL"
+      }
+    }
+  },
+  {
+    "patent_id": "11078523",
+    "title": "Processing particle-containing samples",
+    "abstract": "A microfluidic device includes an input port for inputting a particle-containing liquidic samples into the device, a retention member, and a pressure actuator. The retention member is in communication with the input port and is configured to spatially separate particles of the particle-containing liquidic sample from a first portion of the liquid of the particle containing fluidic sample. The pressure actuator recombines at least some of the separated particles with a subset of the first portion of the liquid separated from the particles. The device can also include a lysing chamber that receives the particles and liquid from the retention member. The lysing chamber thermally lyses the particles to release contents thereof.",
+    "domain": "A61",
+    "claim": "A microfluidic device comprising a retention member that spatially separates particles from liquid in a particle-containing sample, and a pressure actuator that recombines the separated particles with only a subset of the separated liquid, thereby concentrating the particles, followed by thermal lysis of the concentrated particles in a lysing chamber to release their contents.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "10865437"
+    ],
+    "n_relevant": 1,
+    "statement_id": "RN050",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "PARTIALLY_ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10463028",
+    "title": "Genetically modified non-human animals expressing human EPO",
+    "abstract": "Genetically modified non-human animals expressing human EPO from the animal genome are provided. Also provided are methods for making non-human animals expressing human EPO from the non-human animal genome, and methods for using non-human animals expressing human EPO from the non-human animal genome. These animals and methods find many uses in the art, including, for example, in modeling human erythropoiesis and erythrocyte function; in modeling human pathogen infection of erythrocytes; in in vivo screens for agents that modulate erythropoiesis and/or erythrocyte function, e.g. in a healthy or a diseased state; in in vivo screens for agents that are toxic to erythrocytes or erythrocyte progenitors; in in vivo screens for agents that prevent against, mitigate, or reverse the toxic effects of toxic agents on erythrocytes or erythrocyte progenitors; in in vivo screens of erythrocytes or erythrocyte progenitors from an individual to predict the responsiveness of an individual to a disease therapy.",
+    "domain": "C12",
+    "claim": "A genetically modified non-human animal whose genome comprises an endogenous EPO gene locus modified to express human erythropoietin (EPO), enabling humanized erythropoiesis modeling and in vivo screening for agents that modulate erythrocyte function or pathogen infection of erythrocytes.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "novel",
+    "relevant_papers": [],
+    "relevant_patents": [],
+    "n_relevant": 0,
+    "statement_id": "RN051",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "override",
+      "individual": {}
+    }
+  },
+  {
+    "patent_id": "9533297",
+    "title": "Ligands designed to provide highly active catalyst complexes",
+    "abstract": "A series of ligands with site specific electron donating substituents that form a catalyst complex with a transition metal and are suitable for catalysis of atom transfer radical reactions, including ATRP are described. Faster catalysis rates were observed allowing for low catalyst concentrations and linear increases in molecular weight with monomer conversion, and narrow molecular weight distributions. Cyclic voltammetry revealed that increasing the strength and number of conjugated electron donating groups resulted in more stable complexes and larger ATRP equilibrium constants.",
+    "domain": "A61",
+    "claim": "Ligands bearing site-specific conjugated electron-donating substituents that form transition metal catalyst complexes with enhanced ATRP equilibrium constants, enabling atom transfer radical polymerization at low catalyst concentrations while maintaining linear molecular weight growth with monomer conversion and narrow molecular weight distributions.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2314034520",
+      "W2014690667",
+      "W2017313815",
+      "W2148804555",
+      "W2087177903"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 5,
+    "statement_id": "RN052",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "majority",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "NOVEL",
+        "google": "NOVEL"
+      }
+    }
+  },
+  {
+    "patent_id": "RE44042",
+    "title": "System and method for optical coherence imaging",
+    "abstract": "A system and method for imaging of a sample, e.g., biological sample, are provided. In particular, at least one source electro-magnetic radiation forwarded to the sample and a reference may be generated. A plurality of detectors may be used, at least one of the detectors capable of detecting a signal associated with a combination of at least one first electro-magnetic radiation received from the sample and at least one second electro-magnetic radiation received from the reference. At least one particular detector may have a particular electrical integration time, and can receive at least a portion of the signal for a time duration which has a first portion with a first power level greater than a predetermined threshold and a second portion immediately preceding or following the first portion. The second portion may have a second power level that is less than the predetermined threshold, and extends for a time period which may be, e.g., approximately more than 10% of the particular electrical integration time.",
+    "domain": "C12",
+    "claim": "An optical coherence imaging detector system wherein at least one detector has an electrical integration time during which it receives a signal combining sample and reference electromagnetic radiation, where the signal includes a first portion exceeding a predetermined power threshold and an immediately adjacent second portion with power below the threshold that extends for more than 10% of the electrical integration time, enabling detection of partially illuminated integration periods to improve imaging performance.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 3
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "novel",
+    "relevant_papers": [],
+    "relevant_patents": [],
+    "n_relevant": 0,
+    "statement_id": "RN053",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "override",
+      "individual": {}
+    }
+  },
+  {
+    "patent_id": "8862196",
+    "title": "System and method for automatic detection of a plurality of SP02 time series pattern types",
+    "abstract": "The disclosed embodiments relate to a patient monitor for evaluating a patient. The patient monitor may comprise a sensor that is adapted to detect a sound associated with breathing of the patient and to produce a first output indicative of the sound, an oximeter that is adapted to receive an input from the patient and to produce a second output indicative of oxygen saturation of blood of the patient, and a processor adapted to receive at least the first output and the second output and to correlate the first output with the second output.",
+    "domain": "A61",
+    "claim": "A patient monitor that correlates acoustic breathing sound signals from a respiratory sensor with SpO2 oxygen saturation time series data from a pulse oximeter using a processor to automatically detect and classify multiple SpO2 pattern types associated with respiratory events.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "both",
+    "relevant_papers": [
+      "W4243470037"
+    ],
+    "relevant_patents": [
+      "9042952",
+      "8365730",
+      "9044558",
+      "8398555"
+    ],
+    "n_relevant": 5,
+    "statement_id": "RN054",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "majority",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "PARTIALLY_ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9077694",
+    "title": "Agile network protocol for secure communications using secure domain names",
+    "abstract": "A client device comprises: (a) a memory, (b) an application program, and (c) a signal processing configuration. The memory is configured and arranged to facilitate a connection of the client device with a target device over a secure communication link created based on (i) an address request generated by the client device, and (ii) a determination as a result of the address request that the target device is a device with which a secure communication link can be established when the requested address is identified in an address lookup. The application program is configured and arranged so as to allow participation in audio/video communications with the target device over the secure communication link once the secure communication link is established. The signal processing configuration is arranged to execute the application program.",
+    "domain": "C12",
+    "claim": "A client device establishes a secure communication link with a target device by generating an address request, performing an address lookup to determine whether the target device supports secure communications based on whether the requested address is identified in a secure domain name lookup, and then enabling audio/video communications over the established secure link.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "9077695",
+      "8868705",
+      "10511573",
+      "9374346",
+      "8850009",
+      "8843643",
+      "9860283",
+      "8904516",
+      "9819649",
+      "9100375",
+      "9037713",
+      "9967240",
+      "9038163",
+      "9027115",
+      "9094399",
+      "8943201",
+      "9413766",
+      "9769128",
+      "10187387"
+    ],
+    "n_relevant": 19,
+    "statement_id": "RN055",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8450271",
+    "title": "Peptide-based scaffolds for cartilage regeneration and methods for their use",
+    "abstract": "Disclosed herein are novel peptide amphiphile molecules and compositions composed of a peptide sequence that non-covalently binds the growth factor TGF-\u03b21. Also disclosed are methods of using these peptide amphiphiles to create a gel scaffold in situ that enhances articular cartilage regeneration when used in combination with microfracture. Significant improvement in tissue quality and overall O'Driscoll histological scores were observed in rabbits with full thickness articular cartilage defects treated with the TGF-binding peptide amphiphile. The gel can further serve as a delivery vehicle for recombinant TGF-\u03b21 protein growth factor. Scaffolds that localize and retain chondrogenic growth factors may synergistically enhance cartilage repair when combined with microfracture, by inducing bone marrow mesenchymal stem cells into chondrogenic differentiation. This invention represents a promising new biomimetic approach to enhance current techniques of articular cartilage regeneration in the clinical setting.",
+    "domain": "C07",
+    "claim": "A peptide amphiphile molecule comprising a peptide sequence that non-covalently binds TGF-\u03b21 and self-assembles into a gel scaffold in situ, which when combined with microfracture surgery localizes and retains chondrogenic growth factors to induce bone marrow mesenchymal stem cell chondrogenic differentiation and enhance articular cartilage regeneration.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2025439968"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 1,
+    "statement_id": "RN056",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8622905",
+    "title": "System and methods for processing analyte sensor data",
+    "abstract": "Systems and methods for processing sensor analyte data, including initiating calibration, updating calibration, evaluating clinical acceptability of reference and sensor analyte data, and evaluating the quality of sensor calibration. During initial calibration, the analyte sensor data is evaluated over a period of time to determine stability of the sensor. The sensor may be calibrated using a calibration set of one or more matched sensor and reference analyte data pairs. The calibration may be updated after evaluating the calibration set for best calibration based on inclusion criteria with newly received reference analyte data. Fail-safe mechanisms are provided based on clinical acceptability of reference and analyte data and quality of sensor calibration. Algorithms provide for optimized prospective and retrospective analysis of estimated blood analyte data from an analyte sensor.",
+    "domain": "A61",
+    "claim": "A continuous analyte sensor calibration system that evaluates sensor data stability over an initial time period before initiating calibration, then builds and updates a calibration set from matched sensor-reference data pairs using inclusion criteria to select optimal calibration pairs, while implementing fail-safe mechanisms that assess clinical acceptability of reference analyte data and calibration quality to validate estimated blood analyte values.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "10786185",
+      "7797028",
+      "7826981",
+      "8052601",
+      "8060173",
+      "8206297",
+      "8394021",
+      "8442610",
+      "8548553",
+      "8676287",
+      "8700117",
+      "8761856",
+      "8788006",
+      "8788008",
+      "8801612",
+      "8808182",
+      "9895089",
+      "10610135",
+      "10610136",
+      "10610137"
+    ],
+    "n_relevant": 20,
+    "statement_id": "RN057",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9040035",
+    "title": "Treatment of pain using placental stem cells",
+    "abstract": "Provided herein are methods of treatment of an individual having pain, e.g., neuropathic pain, comprising administering to the individual a therapeutically effective amount of tissue culture plastic adherent placental stem cells (PDAC\u2122).",
+    "domain": "A61",
+    "claim": "Tissue culture plastic-adherent placental stem cells (PDAC) are administered systemically to treat neuropathic pain in an individual, leveraging the immunomodulatory and neuroregenerative properties of placenta-derived adherent cells as a cell-based therapeutic approach.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2550262023"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 1,
+    "statement_id": "RN058",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "PARTIALLY_ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9358300",
+    "title": "Transfection reagents",
+    "abstract": "Disclosed are compounds capable of facilitating transport of biologically active agents or substances into cells having the general structure:wherein Q is selected from the group consisting of N, O and S; L is any bivalent organic radical capable of linking each Q, such as C, CH, (CH2)l, or {(CH2)i\u2014Y\u2014(CH2)j}k, wherein Y is selected from the group consisting of CH2, an ether, a polyether, an amide, a polyamide, an ester, a sulfide, a urea, a thiourea, a guanidyl, a carbamoyl, a carbonate, a phosphate, a sulfate, a sulfoxide, an imine, a carbonyl, and a secondary amino group and wherein Y is optionally substituted by \u2014X1-L\u2032-X2\u2014Z or \u2014Z; R1 R6, independently of one another, are selected from the group consisting of H, \u2014(CH2)p-D-Z, an alkyl, an alkenyl, an aryl, and an alkyl or alkyl ether optionally substituted by one or more of an alcohol, an aminoalcohol, an amine, an amide, an ether, a polyether, a polyamide, an ester, a mercaptan, an alkylthio, a urea, a thiourea, a guanidyl, or a carbamoyl group, and wherein at least one of R1, R3, R4 and R6 is a straight chain or branched, cyclic, alkyl, alkenyl, alkynyl or aryl group; and anyone of R1, R3, R4 and/or R6 may optionally be covalently linked with each other, with Y or with L when L is C or CH to form a cyclic moiety; Z is selected from the group consisting of amine, spermiyl, carboxyspermiyl, guanidyl, spermidinyl, putricinyl, diaminoalkyl, pyridyl, piperidinyl, pyrrolidinyl, polyamine, amino acid, peptide, and protein; X1 and X2, independently of one another, are selected from the group consisting of NH, O, S, alkylene, and arylene; L\u2032 is selected from the group consisting of alkylene, alkenylene, alkynylene, arylene, alkylene ether, and polyether; D is Q or a bond; A1 and A2, independently of one another, are selected from the group consisting of CH2O, CH2S, CH2NH, C(O), C(NH), C(S) and (CH2)t; X is a physiologically acceptable anion; m, n, r, s, u, v, w and y are 0 or 1, with the proviso that when both m and n are 0 at least one of r, s, u and y is other than 0; i, j, k, l, p and are integers from 0 to about 100; q is an integer from 1 to about 1000; and a is the number of positive charge divided by the valence of the anion.",
+    "domain": "C07",
+    "claim": "A lipid-based transfection compound having a central heteroatom core (N, O, or S) linked via a bivalent organic radical to multiple hydrophobic chains (alkyl, alkenyl, or aryl groups) and polyamine head groups selected from spermiyl, spermidyl, guanidyl, or related polyamine moieties, wherein the linker optionally incorporates ether, ester, amide, or phosphate functionalities, designed to facilitate intracellular delivery of biologically active agents.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W1988289069",
+      "W2063595779"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 2,
+    "statement_id": "RN059",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "majority",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "PARTIALLY_ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8841439",
+    "title": "Nucleotide sugar purification using membranes",
+    "abstract": "The invention provides methods of removing contaminants from a mixture of a desired product and contaminants by pH adjustments and molecular weight cut-offs. The contaminants include phosphate groups, magnesium sulfate, sodium pyruvate and tetrasodium pyrophosphate groups. The desired product includes nucleotide sugars, glycolipids, LnNT, sialyl lactose, and salts.",
+    "domain": "A61",
+    "claim": "A method for purifying nucleotide sugars from a reaction mixture by sequentially adjusting pH and applying membrane filtration with specific molecular weight cut-offs to selectively remove contaminants including phosphate groups, magnesium sulfate, sodium pyruvate, and tetrasodium pyrophosphate while retaining the desired nucleotide sugar product.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "novel",
+    "relevant_papers": [],
+    "relevant_patents": [],
+    "n_relevant": 0,
+    "statement_id": "RN060",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "override",
+      "individual": {}
+    }
+  },
+  {
+    "patent_id": "9487803",
+    "title": "Compositions and methods for the biosynthesis of 1,4-butanediol and its precursors",
+    "abstract": "The invention provides a non-naturally occurring microbial biocatalyst including a microbial organism having a 4-hydroxybutanoic acid (4-HB) biosynthetic pathway having at least one exogenous nucleic acid encoding 4-hydroxybutanoate dehydrogenase, succinyl-CoA synthetase, CoA-dependent succinic semialdehyde dehydrogenase, or \u03b1-ketoglutarate decarboxylase, wherein the exogenous nucleic acid is expressed in sufficient amounts to produce monomeric 4-hydroxybutanoic acid (4-HB). Also provided is a non-naturally occurring microbial biocatalyst including a microbial organism having 4-hydroxybutanoic acid (4-HB) and 1,4-butanediol (BDO) biosynthetic pathways, the pathways include at least one exogenous nucleic acid encoding 4-hydroxybutanoate dehydrogenase, succinyl-CoA synthetase, CoA-dependent succinic semialdehyde dehydrogenase, 4-hydroxybutyrate:CoA transferase, 4-butyrate kinase, phosphotransbutyrylase, \u03b1-ketoglutarate decarboxylase, aldehyde dehydrogenase, alcohol dehydrogenase or an aldehyde/alcohol dehydrogenase, wherein the exogenous nucleic acid is expressed in sufficient amounts to produce 1,4-butanediol (BDO). Additionally provided are methods for the production of 4-HB and BDO.",
+    "domain": "C07",
+    "claim": "A non-naturally occurring microbial organism engineered with both 4-hydroxybutanoic acid (4-HB) and 1,4-butanediol (BDO) biosynthetic pathways, wherein exogenous nucleic acids encoding enzymes including 4-hydroxybutanoate dehydrogenase, \u03b1-ketoglutarate decarboxylase, 4-hydroxybutyrate:CoA transferase, and aldehyde/alcohol dehydrogenase are expressed to enable direct microbial fermentation of 1,4-butanediol (BDO) from central metabolic intermediates succinyl-CoA or \u03b1-ketoglutarate.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 5,
+      "searchable": 5
+    },
+    "quality_avg": 4.666666666666667,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "11371046",
+      "8357520",
+      "8969054",
+      "8067214",
+      "8889399",
+      "10273508",
+      "8129169",
+      "9434964",
+      "7858350",
+      "8129156",
+      "8178327",
+      "9175297",
+      "11401534",
+      "8129155",
+      "10662451",
+      "8530210",
+      "9222113",
+      "9988656",
+      "7947483",
+      "8377666",
+      "8377667",
+      "11085015",
+      "9677045"
+    ],
+    "n_relevant": 23,
+    "statement_id": "RN061",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "6660234",
+    "title": "Apparatus for polymer synthesis",
+    "abstract": "A method and apparatus for preparation of a substrate containing a plurality of sequences. Photoremovable groups are attached to a surface of a substrate. Selected regions of the substrate are exposed to light so as to activate the selected areas. A monomer, also containing a photoremovable group, is provided to the substrate to bind at the selected areas. The process is repeated using a variety of monomers such as amino acids until sequences of a desired length are obtained. Detection methods and apparatus are also disclosed.",
+    "domain": "C07",
+    "claim": "A method for synthesizing arrays of polymer sequences on a substrate by selectively exposing regions bearing photoremovable protecting groups to light to activate those regions, then coupling monomers that also carry photoremovable protecting groups, and repeating the cycle with different monomers to build up sequence arrays of desired length.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "both",
+    "relevant_papers": [
+      "W2086464766",
+      "W2157215461",
+      "W2071451059",
+      "W2012878989",
+      "W2032429811"
+    ],
+    "relevant_patents": [
+      "6630308",
+      "6747143",
+      "6403957",
+      "6646243",
+      "6566495",
+      "6491871"
+    ],
+    "n_relevant": 11,
+    "statement_id": "RN062",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8440650",
+    "title": "Methods of treating hypertriglyceridemia",
+    "abstract": "In various embodiments, the present invention provides methods of treating and/or preventing cardiovascular-related disease and, in particular, a method of blood lipid therapy comprising administering to a subject in need thereof a pharmaceutical composition comprising eicosapentaenoic acid or a derivative thereof.",
+    "domain": "A61",
+    "claim": "A method of treating hypertriglyceridemia by administering a pharmaceutical composition comprising eicosapentaenoic acid (EPA) or a derivative thereof as the sole active ingredient, without docosahexaenoic acid (DHA), to reduce triglyceride levels in a subject while minimizing increases in LDL-cholesterol.",
+    "quality_scores": {
+      "self_contained": 5,
+      "specific": 5,
+      "searchable": 5
+    },
+    "quality_avg": 5.0,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "10537544",
+      "10632094",
+      "11291643",
+      "8293727",
+      "8293728",
+      "8314086",
+      "8324195",
+      "8357677",
+      "8367652",
+      "8377920",
+      "8399446",
+      "8415335",
+      "8426399",
+      "8431560",
+      "8518929",
+      "8524698",
+      "8546372",
+      "10561631",
+      "11052063",
+      "10166209",
+      "10265290",
+      "10610508",
+      "10973797",
+      "11185525",
+      "9452151",
+      "10973796",
+      "9827219",
+      "10406130",
+      "10842765",
+      "10172818",
+      "11446269",
+      "10016386",
+      "10278935",
+      "10278936",
+      "10278937",
+      "10278938",
+      "10278939",
+      "9603826",
+      "9610272",
+      "9623001",
+      "9693984",
+      "9693985",
+      "9693986",
+      "9918954",
+      "9918955",
+      "10383840",
+      "10555924"
+    ],
+    "n_relevant": 47,
+    "statement_id": "RN063",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10119972",
+    "title": "Reactive labelling compounds and uses thereof",
+    "abstract": "Provided are azido-BODIPY compounds of formula (I), cyclooctyne-based fluorogenic probes of formula (IV), and activity-based probes of formula (VI). These compounds undergo azide-alkyne cycloadditions (AAC) with to form triazolyl products. The provided compounds are useful for detection and imaging of alkyne-, or azide-containing molecules. Methods for detection and imaging biomolecules using compounds of the present disclosure are disclosed.",
+    "domain": "C07",
+    "claim": "Azido-BODIPY compounds and cyclooctyne-based fluorogenic probes that undergo azide-alkyne cycloaddition reactions to form triazolyl products, wherein the fluorogenic probes exhibit increased fluorescence upon reaction with azide- or alkyne-containing biomolecules, enabling activity-based detection and imaging of target biomolecules without requiring wash steps.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2062188984",
+      "W2002866108",
+      "W2022634915",
+      "W2046253638",
+      "W2076529491",
+      "W1980282352"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 6,
+    "statement_id": "RN064",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "PARTIALLY_ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "7700341",
+    "title": "Nucleic acid molecules encoding transmembrane serine proteases, the encoded proteins and methods based thereon",
+    "abstract": "Provided herein is are polypeptides that include the protease domain of a type II transmembrane serine protease (MTSP) as a single chain. Methods using the polypeptides to identify compounds that modulate the protease activity of an MTSP are provided. Also provided are MTSPs designated MTSP3 and MTSP4 and a form of an MTSP designated MTSP6.",
+    "domain": "C07",
+    "claim": "Single-chain polypeptides comprising only the protease domain of a type II transmembrane serine protease (MTSP) are used in methods to identify compounds that modulate MTSP protease activity, along with novel MTSP family members designated MTSP3, MTSP4, and a form of MTSP6.",
+    "quality_scores": {
+      "self_contained": 3,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "both",
+    "relevant_papers": [
+      "W2144185179",
+      "W2119542456",
+      "W2140618597"
+    ],
+    "relevant_patents": [
+      "7888092"
+    ],
+    "n_relevant": 4,
+    "statement_id": "RN065",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "11214825",
+    "title": "Fractional initiator hybridization chain reaction",
+    "abstract": "The present disclosure relates to methods and compositions involving HCR reactions that involve initiators that are split into two or more parts. Effective HCR is dependent upon two or more of these split initiators being brought into proximity (e.g., via binding events mediated by a target) such that a full initiator is formed that is capable of triggering HCR signal amplification.",
+    "domain": "A61",
+    "claim": "A hybridization chain reaction (HCR) method wherein a full initiator sequence is split into two or more partial initiator fragments that individually cannot trigger HCR amplification, but when brought into proximity through target-mediated binding events reconstitute a complete initiator capable of triggering HCR signal amplification.",
+    "quality_scores": {
+      "self_contained": 5,
+      "specific": 5,
+      "searchable": 5
+    },
+    "quality_avg": 5.0,
+    "category": "both",
+    "relevant_papers": [
+      "W2075077797"
+    ],
+    "relevant_patents": [
+      "10450599"
+    ],
+    "n_relevant": 2,
+    "statement_id": "RN066",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9109002",
+    "title": "E-selectin antagonist compounds, compositions, and methods of use",
+    "abstract": "Methods and compositions using E-selectin antagonists are provided for the treatment and prevention of diseases and disorders treatable by inhibiting binding of E-selectin to an E-selectin ligand. Described herein are E-selectin antagonists including, for example, glycomimetic compounds, antibodies, aptamers and peptides that are useful in methods for treatment of cancers, and treatment and prevention of metastasis, inhibiting infiltration of the cancer cells into bone marrow, reducing or inhibiting adhesion of the cancer cells to endothelial cells including cells in bone marrow, and inhibiting thrombus formation.",
+    "domain": "C07",
+    "claim": "Small molecule glycomimetic compounds that antagonize E-selectin by inhibiting its binding to E-selectin ligands, thereby preventing cancer cell adhesion to bone marrow endothelial cells, reducing metastatic infiltration into bone marrow, and inhibiting thrombus formation.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "both",
+    "relevant_papers": [
+      "W1871629237",
+      "W2047942414",
+      "W1725142663",
+      "W2979826324",
+      "W2480666200",
+      "W1983774546",
+      "W2568387171",
+      "W4248903596",
+      "W2557946695",
+      "W2109466573",
+      "W2564443150",
+      "W2562574582"
+    ],
+    "relevant_patents": [
+      "10526361",
+      "10766916",
+      "9796745",
+      "9867841"
+    ],
+    "n_relevant": 16,
+    "statement_id": "RN067",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9096877",
+    "title": "Fc region-containing polypeptides that exhibit improved effector function due to alterations of the extent of fucosylation, and methods for their use",
+    "abstract": "The present invention relates to Fc region-containing polypeptides that exhibit improved effector function due to alterations of the extent of fucosylation, and to methods of using such polypeptides for treating or preventing cancer and other diseases. The Fc region-containing polypeptides of the present invention are preferably immunoglobulins (e.g., antibodies), in which the Fc region comprises at least one amino acid substitution relative to the corresponding amino acid sequence of a wild type Fc region, and which is sufficient to attenuate post-translational fucosylation and mediate improved binding to an activating Fc receptor and reduced binding to an inhibitory Fc receptor. The methods of the invention are particularly useful in preventing, treating, or ameliorating one or more symptoms associated with a disease, disorder, or infection where either an enhanced efficacy of effector cell function mediated by Fc\u03b3R is desired (e.g., cancer, infectious disease) or an inhibited effector cell response mediated by Fc\u03b3R is desired (e.g., inflammation, autoimmune disease).",
+    "domain": "C12",
+    "claim": "Fc region-containing polypeptides (preferably antibodies) comprising at least one amino acid substitution in the Fc region that attenuates post-translational fucosylation, thereby improving binding to activating Fc\u03b3 receptors and reducing binding to inhibitory Fc\u03b3 receptors to enhance effector cell function.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "both",
+    "relevant_papers": [
+      "W2127214162",
+      "W2168313542",
+      "W2143562636",
+      "W1529809181",
+      "W2036609771",
+      "W2051652916"
+    ],
+    "relevant_patents": [
+      "8674083",
+      "8216574",
+      "10711069",
+      "8652466",
+      "9708408"
+    ],
+    "n_relevant": 11,
+    "statement_id": "RN068",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9567386",
+    "title": "Therapeutic uses of modified relaxin polypeptides",
+    "abstract": "Modified relaxin polypeptides and their uses, including therapeutic uses thereof for the treatment of a fibrotic disorder or heart failure are provided. Exemplary embodiments provide for the use of relaxin polypeptides which include one or more amino acid substitutions with natural or non-naturally encoded amino acids, and/or linkage to a water-soluble polymer, such as polyethylene glycol.",
+    "domain": "A61",
+    "claim": "Modified relaxin polypeptides comprising one or more amino acid substitutions with non-naturally encoded amino acids and/or conjugation to a water-soluble polymer such as polyethylene glycol, for use in treating fibrotic disorders or heart failure with improved pharmacological properties compared to native relaxin.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "11311605",
+      "10751391",
+      "11185570",
+      "8735539",
+      "10266578",
+      "11364281",
+      "10702588"
+    ],
+    "n_relevant": 7,
+    "statement_id": "RN069",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "11479470",
+    "title": "Three-dimensional boron-rich clusters",
+    "abstract": "Novel three-dimensional molecular clusters and methods of their synthesis are provided. The three-dimensional molecular clusters may be perfunctionalized polyhedral boranes and carboranes. The three-dimensional clusters may be configured to manipulate the photophysical properties of other materials, including, for example, for use as photooxidants or as components in organic light-emitting diode materials. Methods are also provided for synthesizing and perfunctionalizing such three-dimensional clusters. The three-dimensional clusters may also be configured for use as organomimetic materials.",
+    "domain": "C07",
+    "claim": "Three-dimensional perfunctionalized polyhedral borane and carborane molecular clusters wherein all vertices of the polyhedral cage are substituted with functional groups, enabling manipulation of photophysical properties for use as photooxidants or organic light-emitting diode components.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "novel",
+    "relevant_papers": [],
+    "relevant_patents": [],
+    "n_relevant": 0,
+    "statement_id": "RN070",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "override",
+      "individual": {}
+    }
+  },
+  {
+    "patent_id": "10703701",
+    "title": "Fluoroalkyl, fluoroalkoxy, phenoxy, heteroaryloxy, alkoxy, and amine 1,4-benzoquinone derivatives for treatment of oxidative stress disorders",
+    "abstract": "Disclosed herein are compounds and methods of using such compounds for treating or suppressing oxidative stress disorders, including mitochondrial disorders, impaired energy processing disorders, neurodegenerative diseases and diseases of aging, or for modulating one or more energy biomarkers, normalizing one or more energy biomarkers, or enhancing one or more energy biomarkers, wherein the compounds are tocopherol quinone derivatives. Further disclosed are compounds, compositions, and methods for treatment of, or prophylaxis against, radiation exposure.",
+    "domain": "C07",
+    "claim": "Tocopherol quinone derivatives bearing fluoroalkyl, fluoroalkoxy, phenoxy, heteroaryloxy, alkoxy, or amine substituents at the 1,4-benzoquinone core are used to treat oxidative stress disorders including mitochondrial disorders, neurodegenerative diseases, and diseases of aging by modulating, normalizing, or enhancing energy biomarkers.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "novel",
+    "relevant_papers": [],
+    "relevant_patents": [],
+    "n_relevant": 0,
+    "statement_id": "RN071",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "override",
+      "individual": {}
+    }
+  },
+  {
+    "patent_id": "10849982",
+    "title": "C3-carbon linked glutarimide degronimers for target protein degradation",
+    "abstract": "This invention provides Degronimers that have carbon-linked E3 Ubiquitin Ligase targeting moieties (Degrons), which can be linked to a targeting ligand for a protein that has been selected for in vivo degradation, and methods of use and compositions thereof as well as methods for their preparation.",
+    "domain": "C12",
+    "claim": "Bifunctional degrader molecules (Degronimers) comprising a glutarimide-based E3 ubiquitin ligase-binding degron linked to a target protein ligand via a carbon-carbon bond at the C3 position of the glutarimide ring, enabling targeted intracellular protein degradation through the ubiquitin-proteasome pathway.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2767426216",
+      "W2318148969",
+      "W2781383440",
+      "W1565619051"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 4,
+    "statement_id": "RN072",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "PARTIALLY_ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10729672",
+    "title": "Antineoplastic combinations with mTOR inhibitor, trastuzumab and/or HKI-272",
+    "abstract": "A combination of temsirolimus and trastuzumab in the treatment of cancer is provided. A combination of temsirolimus and HKI-272 is provided. A combination of a trastuzumab and a HKI-272 is also provided. Regimens and kits for treatment of metastatic breast cancer, containing trastuzumab, temsirolimus and/or HKI-272, optionally in combination with other anti-neoplastic agents, or immune modulators are described.",
+    "domain": "A61",
+    "claim": "A therapeutic combination comprising temsirolimus (an mTOR inhibitor), trastuzumab (HER2-targeting monoclonal antibody), and/or HKI-272 (neratinib, an irreversible pan-HER tyrosine kinase inhibitor) for treating metastatic breast cancer, wherein the combination simultaneously targets the mTOR pathway, HER2 receptor, and HER family kinase signaling.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2113762115",
+      "W2124648931",
+      "W2016506024",
+      "W2133325068",
+      "W2093650262",
+      "W2114195503",
+      "W2055831769"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 7,
+    "statement_id": "RN073",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "majority",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9134319",
+    "title": "Method for replacing biomarkers of protein kinetics from tissue samples by biomarkers of protein kinetics from body fluids after isotopic labeling in vivo",
+    "abstract": "Provided herein are method for measuring the rate of synthesis, breakdown, transport, or other kinetic parameters of a protein in a tissue of medical interest, without requiring physical sampling of the tissue, by a measurement of the protein in a body fluid. Methods may include selecting one or more target proteins in a tissue; administering an isotope-labeled molecule to a subject for a period of time sufficient for said isotope-labeled molecule to enter into and label the one or more target proteins to produce one or more isotope-labeled target proteins; collecting a volume of a body fluid, wherein the volume comprises one or more isotope-labeled target proteins that escaped or were released from the tissue; enriching or isolating the one or more isotope-labeled target proteins from the volume; performing a mass spectrometric measurement of the isotopic content, rate of incorporation, and/or pattern or rate of change in isotopic content and/or pattern of isotope labeling of the one or more enriched or isolated isotope-labeled target proteins; and calculating at least one kinetic parameter of the one or more enriched or isolated isotope-labeled target proteins, where the kinetic parameter of the one or more isotope-labeled target proteins from the volume of a body fluid reflects the corresponding kinetic parameter of the one or more target proteins in the tissue; and inferring the at least one kinetic parameter of the one or more target proteins in the tissue based on the corresponding at least one kinetic parameter of the one or more target proteins in the body fluid.",
+    "domain": "C07",
+    "claim": "A method for measuring protein kinetic parameters (synthesis, breakdown, transport rates) in inaccessible tissues without physical tissue biopsy by administering isotope-labeled molecules in vivo, then collecting body fluid samples to isolate and measure isotopic incorporation patterns of tissue-derived proteins that have escaped into the body fluid via mass spectrometry, using the body fluid protein kinetics as a surrogate for the corresponding tissue protein kinetics.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "novel",
+    "relevant_papers": [],
+    "relevant_patents": [],
+    "n_relevant": 0,
+    "statement_id": "RN074",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "override",
+      "individual": {}
+    }
+  },
+  {
+    "patent_id": "7709828",
+    "title": "RF circuits including transistors having strained material layers",
+    "abstract": "Circuits for processing radio frequency (\u201cRF\u201d) and microwave signals are fabricated using field effect transistors (\u201cFETs\u201d) that have one or more strained channel layers disposed on one or more planarized substrate layers. FETs having such a configuration exhibit improved values for, for example, transconductance and noise figure. RF circuits such as, for example, voltage controlled oscillators (\u201cVCOs\u201d), low noise amplifiers (\u201cLNAs\u201d), and phase locked loops (\u201cPLLs\u201d) built using these FETs also exhibit enhanced performance.",
+    "domain": "A61",
+    "claim": "A field effect transistor for RF and microwave circuits incorporates one or more strained channel layers disposed on one or more planarized substrate layers, wherein the strained material configuration produces improved transconductance and noise figure characteristics suitable for use in voltage controlled oscillators, low noise amplifiers, and phase locked loops.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "7906776",
+      "7776697",
+      "7846802",
+      "7884353"
+    ],
+    "n_relevant": 4,
+    "statement_id": "RN075",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8129154",
+    "title": "Microorganisms and methods for the biosynthesis of fumarate, malate, and acrylate",
+    "abstract": "A non-naturally occurring eukaryotic or prokaryotic organism includes one or more gene disruptions occurring in genes encoding enzymes imparting increased fumarate, malate or acrylate production in the organism when the gene disruption reduces an activity of the enzyme. The one or more gene disruptions confers increased production of acrylate onto the organism. Organisms that produce acrylate have an acrylate pathway that at least one exogenous nucleic acid encoding an acrylate pathway enzyme expressed in a sufficient amount to produce acrylate, the acrylate pathway comprising a decarboxylase. Methods of producing fumarate, malate or acrylate include culturing these organisms.",
+    "domain": "C07",
+    "claim": "A non-naturally occurring microorganism engineered to produce acrylate via a biosynthetic pathway comprising a decarboxylase enzyme, wherein one or more gene disruptions reduce competing enzymatic activities to confer increased acrylate production, with at least one exogenous nucleic acid encoding the acrylate pathway enzyme expressed in sufficient amount to produce acrylate from fumarate or malate intermediates.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "novel",
+    "relevant_papers": [],
+    "relevant_patents": [],
+    "n_relevant": 0,
+    "statement_id": "RN076",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "override",
+      "individual": {}
+    }
+  },
+  {
+    "patent_id": "6491871",
+    "title": "System for determining receptor-ligand binding affinity",
+    "abstract": "A synthetic strategy for the creation of large scale chemical diversity. Solid-phase chemistry, photolabile protecting groups, and photolithography are used to achieve light-directed spatially-addressable parallel chemical synthesis. Binary masking techniques are utilized in one embodiment. A reactor system, photoremovable protective groups, and improved data collection and handling techniques are also disclosed. A technique for screening linker molecules is also provided.",
+    "domain": "C07",
+    "claim": "A system for light-directed spatially-addressable parallel chemical synthesis that combines solid-phase chemistry, photolabile protecting groups, and photolithographic binary masking techniques to synthesize large-scale combinatorial chemical libraries on a substrate surface for receptor-ligand binding affinity screening.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "both",
+    "relevant_papers": [
+      "W2159511216",
+      "W2032429811",
+      "W2012878989",
+      "W2157215461",
+      "W2086464766",
+      "W4251565960",
+      "W2029911544",
+      "W2071451059"
+    ],
+    "relevant_patents": [
+      "6566495"
+    ],
+    "n_relevant": 9,
+    "statement_id": "RN077",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "11419887",
+    "title": "Vehicle for delivering a compound to a mucous membrane and related compositions, methods and systems",
+    "abstract": "PSA is delivered to the host by outer membrane vesicles (OMVs), secretion structures that target bacterial molecules to host cells. Purified OMVs direct the in vitro differentiation of functional Tregs with potent suppressive activity in a PSA dependent manner. Treatment of animals with OMVs containing PSA prevents experimental colitis and suppresses pro-inflammatory cytokine responses in the gut, and indicate that compositions, medicaments, and methods useful for the treatment of inflammation, and more particularly, inflammatory bowel diseases.",
+    "domain": "C07",
+    "claim": "Outer membrane vesicles (OMVs) containing polysaccharide A (PSA) are used as a delivery vehicle to mucous membranes, wherein the PSA-containing OMVs induce differentiation of functional regulatory T cells (Tregs) with suppressive activity in a PSA-dependent manner and prevent experimental colitis by suppressing pro-inflammatory cytokine responses in the gut.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 5,
+      "searchable": 5
+    },
+    "quality_avg": 4.666666666666667,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2150968312",
+      "W2402098026"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 2,
+    "statement_id": "RN078",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "PARTIALLY_ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9089553",
+    "title": "Method for inhibiting bone resorption",
+    "abstract": "The invention is directed to a method of inhibiting bone resorption. The method comprises administering to a human an amount of sclerostin inhibitor that reduces a bone resorption marker level for at least 2 weeks. The invention also provides a method of monitoring anti-sclerostin therapy comprising measuring one or more bone resorption marker levels, administering a sclerostin binding agent, then measuring the bone resorption marker levels. Also provided is a method of increasing bone mineral density; a method of ameliorating the effects of an osteoclast-related disorder; a method of treating a bone-related disorder by maintaining bone density; and a method of treating a bone-related disorder in a human suffering from or at risk of hypocalcemia or hypercalcemia, a human in which treatment with a parathyroid hormone or analog thereof is contraindicated, or a human in which treatment with a bisphosphonate is contraindicated.",
+    "domain": "A61",
+    "claim": "A method of inhibiting bone resorption comprising administering a sclerostin inhibitor to a human in an amount sufficient to reduce bone resorption marker levels for at least 2 weeks, wherein the sclerostin inhibitor is a sclerostin binding agent that can be monitored by measuring bone resorption markers before and after administration.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "both",
+    "relevant_papers": [
+      "W1992159640"
+    ],
+    "relevant_patents": [
+      "10273293",
+      "11091537",
+      "8563271",
+      "8992911",
+      "9011856",
+      "9657095",
+      "7868134"
+    ],
+    "n_relevant": 8,
+    "statement_id": "RN079",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9650639",
+    "title": "Dual delivery system for heterologous antigens",
+    "abstract": "Provided herein are recombinant Listeria strains expressing a tumor-specific antigenic polypeptide and, optionally, an angiogenic polypeptide wherein a nucleic acid molecule encoding at least one of the polypeptides is operably integrated into the Listeria genome in an open reading frame with a nucleic acid sequence encoding a PEST-containing polypeptide, methods of preparing same, and methods of inducing an immune response, and treating, inhibiting, or suppressing cancer or tumors comprising administering same.",
+    "domain": "C07",
+    "claim": "A recombinant Listeria strain that expresses a tumor-specific antigenic polypeptide and optionally an angiogenic polypeptide, wherein a nucleic acid encoding at least one polypeptide is genomically integrated in-frame with a nucleic acid sequence encoding a PEST-containing polypeptide, enabling dual delivery of heterologous antigens to induce an immune response against cancer.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "9644212"
+    ],
+    "n_relevant": 1,
+    "statement_id": "RN080",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8937724",
+    "title": "Systems and methods for extending imaging depth range of optical coherence tomography through optical sub-sampling",
+    "abstract": "Exemplary embodiments of systems and methods can be provided which can generate data associated with at least one sample. For example, using at least one first arrangement, it is possible to forward at least one first radiation to the sample(s) so as to cause at least one second radiation to be provided from the sample(s) that can be based on the first radiation(s). In addition, using at least one second arrangement, it is possible to receive the second radiation from the sample(s), generate a plurality of distinct measurements regarding at least one portion of the sample(s) based the second radiation(s), and characterize the portion(s) over a plurality of continuous resolvable depth points thereof which are associated with the distinct measurements. Further, the characterization of the at least one portion can be resolved and distinctly characterized at a number of the depth points which is greater than a number of the distinct measurements.",
+    "domain": "C12",
+    "claim": "An optical coherence tomography system that extends imaging depth range through optical sub-sampling, wherein a sample is characterized over a plurality of continuous resolvable depth points that exceeds the number of distinct measurements acquired, enabling depth reconstruction beyond the conventional Nyquist-limited imaging range without increasing detector sampling density.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2027077159",
+      "W2085637023"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 2,
+    "statement_id": "RN081",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10597680",
+    "title": "Methods and compositions for RNA-directed target DNA modification and for RNA-directed modulation of transcription",
+    "abstract": "The present disclosure provides a DNA-targeting RNA that comprises a targeting sequence and, together with a modifying polypeptide, provides for site-specific modification of a target DNA and/or a polypeptide associated with the target DNA. The present disclosure further provides site-specific modifying polypeptides. The present disclosure further provides methods of site-specific modification of a target DNA and/or a polypeptide associated with the target DNA The present disclosure provides methods of modulating transcription of a target nucleic acid in a target cell, generally involving contacting the target nucleic acid with an enzymatically inactive Cas9 polypeptide and a DNA-targeting RNA. Kits and compositions for carrying out the methods are also provided. The present disclosure provides genetically modified cells that produce Cas9; and Cas9 transgenic non-human multicellular organisms.",
+    "domain": "C12",
+    "claim": "A DNA-targeting RNA comprising a targeting sequence that, together with an enzymatically inactive Cas9 polypeptide, enables site-specific modulation of transcription of a target DNA without cleaving the DNA, wherein the RNA-directed targeting is achieved through a guide RNA that directs the Cas9 polypeptide to a specific genomic locus to activate or repress transcription.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "10400253",
+      "10000772",
+      "10113167",
+      "10227611",
+      "10266850",
+      "10308961",
+      "10337029",
+      "10351878",
+      "10358658",
+      "10358659",
+      "10385360",
+      "10407697",
+      "10415061",
+      "10421980",
+      "10428352",
+      "10443076",
+      "10487341",
+      "10513712",
+      "10519467",
+      "10526619"
+    ],
+    "n_relevant": 20,
+    "statement_id": "RN082",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "11066650",
+    "title": "Methods for the in vitro manufacture of gastric fundus tissue and compositions related to same",
+    "abstract": "The instant disclosure relates to methods for converting mammalian definitive endoderm (DE) cells into specific tissue(s) or organ(s) through directed differentiation. In particular, the disclosure relates to formation of gastric fundus tissue and/or organoids formed from differentiated definitive endoderm.",
+    "domain": "C12",
+    "claim": "A method for directed differentiation of mammalian definitive endoderm cells into gastric fundus tissue or organoids through a defined sequence of signaling pathway manipulations in vitro, producing tissue that recapitulates the cellular composition and organization of the gastric fundus.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "both",
+    "relevant_papers": [
+      "W2427010667"
+    ],
+    "relevant_patents": [
+      "10174289",
+      "11053477"
+    ],
+    "n_relevant": 3,
+    "statement_id": "RN083",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "PARTIALLY_ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "11401330",
+    "title": "Glycan-interacting compounds and methods of use",
+    "abstract": "The present disclosure provides antibodies with T cell-interacting regions and/or glycan-interacting regions. Bispecific antibodies capable of recruiting T cells to cancer cells are also provided, including bispecific antibodies capable of recruiting T cells to cancer cells expressing sialyl Tn (STn). The present disclosure also includes methods for killing cells by targeting them with antibodies having T cell-interacting regions.",
+    "domain": "C07",
+    "claim": "Bispecific antibodies comprising both a T cell-interacting region and a glycan-interacting region that binds sialyl Tn (STn) antigen expressed on cancer cells, enabling recruitment of T cells to STn-expressing cancer cells to mediate targeted cell killing.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2032185672",
+      "W2741768127"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 2,
+    "statement_id": "RN084",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8771697",
+    "title": "Methods of treatment using anti-IL-17A/IL-17F cross-reactive antibodies",
+    "abstract": "This invention provides fully human monoclonal antibodies that recognize IL-17F, the IL-17F homodimer, IL-17A, the IL-17A homodimer, and/or the heterodimeric IL-17A/IL-17F protein complex. The invention further provides methods of using such monoclonal antibodies as a therapeutic, diagnostic, and prophylactic.",
+    "domain": "A61",
+    "claim": "Fully human monoclonal antibodies that cross-reactively bind to both IL-17A and IL-17F, including their homodimeric forms and the heterodimeric IL-17A/IL-17F protein complex, for use in therapeutic, diagnostic, and prophylactic applications.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "both",
+    "relevant_papers": [
+      "W2091653067"
+    ],
+    "relevant_patents": [
+      "8715669",
+      "9475873",
+      "8137671",
+      "8609093"
+    ],
+    "n_relevant": 5,
+    "statement_id": "RN085",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9255282",
+    "title": "Tailored oils produced from recombinant heterotrophic microorganisms",
+    "abstract": "Methods and compositions for the production of oil, fuels, oleochemicals, and other compounds in recombinant microorganisms are provided, including oil-bearing microorganisms and methods of low cost cultivation of such microorganisms. Microalgal cells containing exogenous genes encoding, for example, a lipase, a sucrose transporter, a sucrose invertase, a fructokinase, a polysaccharide-degrading enzyme, a keto acyl-ACP synthase enzyme, a fatty acyl-ACP thioesterase, a fatty acyl-CoA/aldehyde reductase, a fatty acyl-CoA reductase, a fatty aldehyde reductase, a fatty aldehyde decarbonylase, and/or an acyl carrier protein are useful in manufacturing transportation fuels such as renewable diesel, biodiesel, and renewable jet fuel, as well as oleochemicals such as functional fluids, surfactants, soaps and lubricants.",
+    "domain": "C07",
+    "claim": "Recombinant microalgal cells engineered with exogenous genes encoding combinations of lipid biosynthesis and modification enzymes\u2014including fatty acyl-ACP thioesterase, keto acyl-ACP synthase, fatty acyl-CoA reductase, and fatty aldehyde decarbonylase\u2014together with sugar utilization genes such as sucrose transporter, sucrose invertase, and fructokinase, enabling heterotrophic cultivation on low-cost sucrose feedstocks to produce tailored oils with specific fatty acid profiles suitable for renewable diesel, biodiesel, and jet fuel.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "10100341",
+      "9249436",
+      "9279136",
+      "8852885",
+      "10006034",
+      "10167489",
+      "10344305",
+      "9388435",
+      "9719114",
+      "10053715",
+      "8945908",
+      "9102973",
+      "9200307",
+      "10287613",
+      "10683522",
+      "11401538",
+      "9551017",
+      "9909155",
+      "9068213",
+      "8951777"
+    ],
+    "n_relevant": 20,
+    "statement_id": "RN086",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "majority",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "11471510",
+    "title": "Activin-ActRII antagonists and uses for treating anemia",
+    "abstract": "Provided herein are methods for the treatment in a subject of anemia, anemia requiring RBC transfusion, low or intermediate-1-risk myelodysplastic syndromes (MDS), and/or non-proliferative chronic myelomonocytic leukemia (CMML) in any mammals wherein the methods comprise administration of Activin-ActRII signaling inhibitors to a subject in need of the treatment.",
+    "domain": "A61",
+    "claim": "Methods for treating anemia, low or intermediate-1-risk myelodysplastic syndromes (MDS), and/or non-proliferative chronic myelomonocytic leukemia (CMML) comprising administering Activin-ActRII signaling inhibitors that block the activin-ActRII signaling pathway to a subject in need thereof, thereby reducing or eliminating the need for red blood cell transfusions.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "novel",
+    "relevant_papers": [],
+    "relevant_patents": [],
+    "n_relevant": 0,
+    "statement_id": "RN087",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "override",
+      "individual": {}
+    }
+  },
+  {
+    "patent_id": "10544223",
+    "title": "Combination therapy with an anti-axl antibody-drug conjugate",
+    "abstract": "The present disclosure relates to combination therapies for the treatment of pathological conditions, such as cancer. In particular, the present disclosure relates to combination therapies comprising treatment with an Antibody Drug Conjugate (ADC) and a secondary agent.",
+    "domain": "A61",
+    "claim": "A combination therapy for cancer treatment comprising an anti-AXL antibody-drug conjugate (ADC) administered together with a secondary therapeutic agent, wherein the anti-AXL ADC targets the AXL receptor tyrosine kinase to deliver a cytotoxic payload to tumor cells.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "novel",
+    "relevant_papers": [],
+    "relevant_patents": [],
+    "n_relevant": 0,
+    "statement_id": "RN088",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "override",
+      "individual": {}
+    }
+  },
+  {
+    "patent_id": "9011856",
+    "title": "Antibodies specific for sclerostin and methods for increasing bone mineralization",
+    "abstract": "Compositions and methods relating to antibodies that specifically bind to TGF-beta binding proteins are provided. These methods and compositions relate to altering bone mineral density by interfering with the interaction between a TGF-beta binding protein sclerostin and a TGF-beta superfamily member, particularly a bone morphogenic protein. Increasing bone mineral density has uses in diseases and conditions in which low bone mineral density typifies the condition, such as osteopenia, osteoporosis, and bone fractures.",
+    "domain": "C12",
+    "claim": "Antibodies that specifically bind to sclerostin (a TGF-beta binding protein) to interfere with the interaction between sclerostin and bone morphogenetic proteins (TGF-beta superfamily members), thereby increasing bone mineral density for treatment of conditions such as osteoporosis and osteopenia.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "both",
+    "relevant_papers": [
+      "W2075010531",
+      "W2073558178",
+      "W2339561542",
+      "W2032956576",
+      "W2108403721",
+      "W2039302262"
+    ],
+    "relevant_patents": [
+      "8563271",
+      "8992911",
+      "9657095",
+      "7868134",
+      "10273293",
+      "11091537",
+      "9089553"
+    ],
+    "n_relevant": 13,
+    "statement_id": "RN089",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9814722",
+    "title": "Heteroaryl substituted pyrrolo[2,3-B] pyridines and pyrrolo[2,3-B] pyrimidines as janus kinase inhibitors",
+    "abstract": "The present invention provides heteroaryl substituted pyrrolo[2,3-b]pyridines and heteroaryl substituted pyrrolo[2,3-b]pyrimidines that modulate the activity of Janus kinases and are useful in the treatment of diseases related to activity of Janus kinases including, for example, immune-related diseases, skin disorders, myeloid proliferative disorders, cancer, and other diseases.",
+    "domain": "A61",
+    "claim": "Heteroaryl-substituted pyrrolo[2,3-b]pyridine and pyrrolo[2,3-b]pyrimidine compounds that selectively modulate Janus kinase (JAK) activity, useful for treating immune-related diseases, skin disorders, myeloid proliferative disorders, and cancer by inhibiting JAK signaling pathways.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "both",
+    "relevant_papers": [
+      "W2019402966"
+    ],
+    "relevant_patents": [
+      "10398699",
+      "10639310",
+      "11331320",
+      "8946245",
+      "9206187",
+      "9662335",
+      "9974790",
+      "11213528",
+      "9216984",
+      "9623029",
+      "10899736",
+      "9221845",
+      "9487521",
+      "9714233",
+      "9718834",
+      "9193733",
+      "10640506",
+      "9334274"
+    ],
+    "n_relevant": 19,
+    "statement_id": "RN090",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9636380",
+    "title": "Optogenetic control of inputs to the ventral tegmental area",
+    "abstract": "The present disclosure provides a method of inducing or modulating reward- or aversive-related behaviors in animals using light-responsive opsins. The present disclosure provides methods of identifying or screening compounds that may be used to treating mental disorders, or are relevant to disrupt or improve reward- or aversive related behaviors.",
+    "domain": "C07",
+    "claim": "A method of inducing or modulating reward- or aversive-related behaviors in an animal by expressing light-responsive opsins in neurons projecting to the ventral tegmental area and selectively activating or inhibiting those neural inputs using optical stimulation to control dopaminergic circuit activity.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W1980737345",
+      "W2165706889"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 2,
+    "statement_id": "RN091",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "majority",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "NOVEL",
+        "google": "NOVEL"
+      }
+    }
+  },
+  {
+    "patent_id": "9750460",
+    "title": "Systems and methods for replacing signal artifacts in a glucose sensor data stream",
+    "abstract": "Systems and methods for minimizing or eliminating transient non-glucose related signal noise due to non-glucose rate limiting phenomenon such as ischemia, pH changes, temperatures changes, and the like. The system monitors a data stream from a glucose sensor and detects signal artifacts that have higher amplitude than electronic or diffusion-related system noise. The system replaces some or the entire data stream continually or intermittently including signal estimation methods that particularly address transient signal artifacts. The system is also capable of detecting the severity of the signal artifacts and selectively applying one or more signal estimation algorithm factors responsive to the severity of the signal artifacts, which includes selectively applying distinct sets of parameters to a signal estimation algorithm or selectively applying distinct signal estimation algorithms.",
+    "domain": "A61",
+    "claim": "A glucose sensor system that monitors a continuous data stream to detect transient non-glucose-related signal artifacts of higher amplitude than electronic or diffusion noise, and selectively replaces corrupted data by applying distinct signal estimation algorithms or distinct parameter sets to a single algorithm based on detected artifact severity, to minimize the impact of ischemia, pH changes, and temperature changes on reported glucose values.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "8346338",
+      "11589823",
+      "7998071",
+      "8010174",
+      "8073519",
+      "8073520",
+      "8128562",
+      "8150488",
+      "8167801",
+      "8195265",
+      "8229536",
+      "8292810",
+      "8412301",
+      "8435179",
+      "8491474",
+      "8790260",
+      "8795177",
+      "8812073",
+      "8821400",
+      "8843187",
+      "9149219",
+      "9649069",
+      "9724045",
+      "8777853",
+      "9420968",
+      "9510782",
+      "9585607",
+      "10898113",
+      "8005524",
+      "8216139",
+      "8233958",
+      "8251906",
+      "8257259",
+      "8265725",
+      "8290561",
+      "8374667",
+      "8469886",
+      "8657745",
+      "8747315",
+      "8801610",
+      "9107623",
+      "9192328",
+      "9351668",
+      "9364173",
+      "9498155",
+      "9750441"
+    ],
+    "n_relevant": 46,
+    "statement_id": "RN092",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "7879328",
+    "title": "Antibodies that immunospecifically bind to B lymphocyte stimulator",
+    "abstract": "The present invention relates to antibodies and related molecules that immunospecifically bind to B Lymphocyte Stimulator. The present invention also relates to methods and compositions for detecting or diagnosing a disease or disorder associated with aberrant B Lymphocyte Stimulator expression or inappropriate function of B Lymphocyte Stimulator comprising antibodies or fragments or variants thereof or related molecules that immunospecifically bind to B Lymphocyte Stimulator. The present invention further relates to methods and compositions for preventing, treating or ameliorating a disease or disorder associated with aberrant B Lymphocyte Stimulator expression or inappropriate B Lymphocyte Stimulator function comprising administering to an animal an effective amount of one or more antibodies or fragments or variants thereof or related molecules that immunospecifically bind to B Lymphocyte Stimulator.",
+    "domain": "C07",
+    "claim": "Antibodies or antigen-binding fragments thereof that immunospecifically bind to B Lymphocyte Stimulator (BLyS) protein, wherein these antibodies are used to prevent, treat, or ameliorate diseases or disorders associated with aberrant BLyS expression or inappropriate BLyS function by administering an effective amount to an animal.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "both",
+    "relevant_papers": [
+      "W2095460138",
+      "W1536748279",
+      "W2060208115",
+      "W2014956545",
+      "W212723289"
+    ],
+    "relevant_patents": [
+      "8101181",
+      "9187548",
+      "8062906"
+    ],
+    "n_relevant": 8,
+    "statement_id": "RN093",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "8962589",
+    "title": "Cell line, system and method for optical control of secondary messengers",
+    "abstract": "A variety of methods, devices and compositions are implemented for light-activated molecules. One such method is implemented for generating secondary messengers in a cell. A nucleotide sequence for expressing a chimeric light responsive membrane protein (e.g., rhodopsin) is modified with one or more heterologous receptor subunits {e.g., an adrenergic receptor (alpha1, Beta2)}. The light responsive membrane protein is expressed in a cell for producing a secondary messenger in response to light.",
+    "domain": "C07",
+    "claim": "A chimeric light-responsive membrane protein is created by modifying a rhodopsin nucleotide sequence with one or more heterologous adrenergic receptor subunits, enabling expression in a cell to produce secondary messengers (such as cAMP or IP3) in response to light stimulation rather than chemical ligands.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "9453215"
+    ],
+    "n_relevant": 1,
+    "statement_id": "RN094",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9856322",
+    "title": "Chimeric receptors with 4-1BB stimulatory signaling domain",
+    "abstract": "The present invention relates to a chimeric receptor capable of signaling both a primary and a co-stimulatory pathway, thus allowing activation of the co-stimulatory pathway without binding to the natural ligand. The cytoplasmic domain of the receptor contains a portion of the 4-1BB signaling domain. Embodiments of the invention relate to polynucleotides that encode the receptor, vectors and host cells encoding a chimeric receptor, particularly including T cells and natural killer (NK) cells and methods of use.",
+    "domain": "C12",
+    "claim": "A chimeric receptor comprising a cytoplasmic domain containing a 4-1BB stimulatory signaling domain that enables simultaneous signaling of both a primary activation pathway and a co-stimulatory pathway, allowing activation of the co-stimulatory pathway independently of binding to the natural 4-1BB ligand, expressed in T cells or NK cells.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "both",
+    "relevant_papers": [
+      "W2306413099",
+      "W2020646453",
+      "W2032803186",
+      "W1842126375",
+      "W83880277",
+      "W2564777138",
+      "W2050386410",
+      "W2036644325",
+      "W2159537998",
+      "W2053440339",
+      "W2144436556",
+      "W1574443686",
+      "W2556167380",
+      "W2161958391",
+      "W2165580475",
+      "W2111429442",
+      "W1989523156",
+      "W2131609628"
+    ],
+    "relevant_patents": [
+      "9834590",
+      "10525083"
+    ],
+    "n_relevant": 20,
+    "statement_id": "RN095",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9957561",
+    "title": "Method of determining the nucleotide sequence of oligonucleotides and DNA molecules",
+    "abstract": "The present invention relates to a novel method for analyzing nucleic acid sequences based on real-time detection of DNA polymerase-catalyzed incorporation of each of the four nucleotide bases, supplied individually and serially in a microfluidic system, to a reaction cell containing a template system comprising a DNA fragment of unknown sequence and an oligonucleotide primer. Incorporation of a nucleotide base into the template system can be detected by any of a variety of methods including but not limited to fluorescence and chemiluminescence detection. Alternatively, microcalorimetic detection of the heat generated by the incorporation of a nucleotide into the extending template system using thermopile, thermistor and refractive index measurements can be used to detect extension reactions.",
+    "domain": "C07",
+    "claim": "A DNA sequencing method in which the four nucleotide bases are supplied individually and serially to a microfluidic reaction cell containing a DNA template and primer, with real-time detection of DNA polymerase-catalyzed incorporation events using fluorescence, chemiluminescence, or microcalorimetric measurement of heat generated during each nucleotide incorporation step.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 5
+    },
+    "quality_avg": 4.333333333333333,
+    "category": "both",
+    "relevant_papers": [
+      "W2137348240",
+      "W2082631942",
+      "W4234937123",
+      "W1964558738"
+    ],
+    "relevant_patents": [
+      "10214774",
+      "9096898",
+      "9212393",
+      "9540689",
+      "9725764"
+    ],
+    "n_relevant": 9,
+    "statement_id": "RN096",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "9023356",
+    "title": "Treatment method using EGFR antibodies and SRC inhibitors and related formulations",
+    "abstract": "The present invention relates to the treatment of EGFR-mediated disease, particularly cancer by inhibiting or blocking EGFR and src in combination or simultaneously. The invention relates to treatment, prevention, or modulation of cancer, particularly EGFR-mediated disease, with one or more EGFR modulator and src inhibitor in combination. The invention further relates to the treatment of cancer with anti-EGFR antibodies and src inhibitors. Methods and compositions for treatment of cancer with the antibody anti-EGFR mAb806 in combination or series with a src inhibitor or src inhibitors are described.",
+    "domain": "A61",
+    "claim": "Combined treatment of EGFR-mediated cancer using anti-EGFR monoclonal antibody mAb806 in combination with a src kinase inhibitor, wherein simultaneous or sequential inhibition of both EGFR and src pathways produces a therapeutic effect against cancer.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "novel",
+    "relevant_papers": [],
+    "relevant_patents": [],
+    "n_relevant": 0,
+    "statement_id": "RN097",
+    "novelty": {
+      "label": "NOVEL",
+      "agreement": "override",
+      "individual": {}
+    }
+  },
+  {
+    "patent_id": "10143410",
+    "title": "Polymer membranes for continuous analyte sensors",
+    "abstract": "Devices and methods are described for providing continuous measurement of an analyte concentration. In some embodiments, the device has a sensing mechanism and a sensing membrane that includes at least one surface-active group-containing polymer and that is located over the sensing mechanism. The sensing membrane may have a bioprotective layer configured to substantially block the effect and/or influence of non-constant noise-causing species.",
+    "domain": "A61",
+    "claim": "A continuous analyte sensor comprising a sensing membrane that includes at least one surface-active group-containing polymer configured as a bioprotective layer that substantially blocks the effect of non-constant noise-causing species on the sensing mechanism while permitting analyte transport to the sensor.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "patents_only",
+    "relevant_papers": [],
+    "relevant_patents": [
+      "11147483",
+      "8583204",
+      "8682408",
+      "8954128",
+      "9173606",
+      "9173607",
+      "9549699",
+      "9566026",
+      "9572523",
+      "9693721"
+    ],
+    "n_relevant": 10,
+    "statement_id": "RN098",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10569099",
+    "title": "System for optical stimulation of target cells",
+    "abstract": "Stimulation of target cells using light, e.g., in vivo, is implemented using a variety of methods and devices. According to an example embodiment of the present invention, target cells are stimulated using an implantable arrangement. The arrangement includes an electrical light-generation means for generating light and a biological portion. The biological portion has a photosensitive bio-molecular arrangement that responds to the generated light by stimulating target cells in vivo.",
+    "domain": "C12",
+    "claim": "An implantable arrangement for stimulating target cells in vivo comprising an electrical light-generation means coupled to a biological portion containing a photosensitive bio-molecular arrangement, wherein the photosensitive bio-molecular arrangement responds to generated light by directly stimulating target cells within a living organism.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 3,
+      "searchable": 4
+    },
+    "quality_avg": 3.6666666666666665,
+    "category": "both",
+    "relevant_papers": [
+      "W2037645743"
+    ],
+    "relevant_patents": [
+      "10052497",
+      "10046174",
+      "10426970",
+      "10434327",
+      "9238150",
+      "9084885",
+      "9394347"
+    ],
+    "n_relevant": 8,
+    "statement_id": "RN099",
+    "novelty": {
+      "label": "ANTICIPATED",
+      "agreement": "unanimous",
+      "individual": {
+        "openai": "ANTICIPATED",
+        "anthropic": "ANTICIPATED",
+        "google": "ANTICIPATED"
+      }
+    }
+  },
+  {
+    "patent_id": "10385475",
+    "title": "Random array sequencing of low-complexity libraries",
+    "abstract": "The invention is directed to a method of sequencing low-complexity amplicons randomly arrayed at high density on a surface. Methods of the invention include preparing amplicons for sequencing by a sets of primers that ensure initial signals front different amplicons on the surface will be evenly distributed among the different nucleotides being added in a sequencing by synthesis operation.",
+    "domain": "C07",
+    "claim": "A method of sequencing low-complexity amplicon libraries arrayed at high density on a surface, wherein amplicons are prepared using primer sets designed to ensure that initial sequencing-by-synthesis signals are evenly distributed among different nucleotides across different amplicons, thereby enabling accurate base calling in high-density random arrays where signal imbalance from low-complexity sequences would otherwise confound detection.",
+    "quality_scores": {
+      "self_contained": 4,
+      "specific": 4,
+      "searchable": 4
+    },
+    "quality_avg": 4.0,
+    "category": "papers_only",
+    "relevant_papers": [
+      "W2027589602"
+    ],
+    "relevant_patents": [],
+    "n_relevant": 1,
+    "statement_id": "RN100",
+    "novelty": {
+      "label": "PARTIALLY_ANTICIPATED",
+      "agreement": "majority",
+      "individual": {
+        "openai": "PARTIALLY_ANTICIPATED",
+        "anthropic": "PARTIALLY_ANTICIPATED",
+        "google": "NOVEL"
+      }
+    }
+  }
+]

@@ -25,8 +25,9 @@ wheels/
 .installed.cfg
 *.egg
 
-# Data & Cache (ignore root data/ but not src/biopat/data/)
-/data/
+# Data & Cache
+/data/raw/
+/data/cache/
 .pytest_cache/
 .coverage
 .cache/
@@ -34,7 +35,6 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *.db
-*.parquet
 
 # Environment Variables
 .env

@@ -1,0 +1,18 @@
+{
+  "tier": 3,
+  "method": "novelty_zs",
+  "model": "claude-sonnet-4-6",
+  "metrics": {
+    "accuracy": 0.32978723404255317,
+    "macro_f1": 0.1986824769433465,
+    "f1_novel": 0.10909090909090909,
+    "f1_partially_anticipated": 0,
+    "f1_anticipated": 0.48695652173913045
+  },
+  "per_query": {},
+  "cost_usd": 4.017848750000001,
+  "elapsed_seconds": 2416.0677852630615,
+  "metadata": {
+    "with_context": false
+  }
+}

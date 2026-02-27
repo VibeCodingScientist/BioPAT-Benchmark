@@ -1,0 +1,18 @@
+{
+  "tier": 3,
+  "method": "novelty_ctx",
+  "model": "gpt-5.2",
+  "metrics": {
+    "accuracy": 0.1,
+    "macro_f1": 0.07254901960784314,
+    "f1_novel": 0.11764705882352941,
+    "f1_partially_anticipated": 0,
+    "f1_anticipated": 0.09999999999999999
+  },
+  "per_query": {},
+  "cost_usd": 0.34217575000000006,
+  "elapsed_seconds": 329.35980439186096,
+  "metadata": {
+    "with_context": true
+  }
+}
