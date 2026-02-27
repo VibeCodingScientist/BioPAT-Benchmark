@@ -268,7 +268,7 @@ Curation targets, annotation protocol models, 3-tier evaluation setup, and budge
 | **2** | Relevance | Statement + 50 candidates | 0-3 relevance grade | Cohen's kappa, Kendall's tau, accuracy, MAE |
 | **3** | Novelty | Statement + prior art set | NOVEL / ANTICIPATED / PARTIAL | Per-class F1, accuracy, macro-F1 |
 
-100 expert-curated statements (stratified: 35 multi-patent examiner, 25 single-patent, 15 cross-domain, 15 applicant-only, 10 negative controls), evaluated with multi-LLM annotation protocol (GPT-4o + Claude Sonnet 4.5 + Gemini 2.5 Pro consensus).
+100 expert-curated statements (stratified: 35 multi-patent examiner, 25 single-patent, 15 cross-domain, 15 applicant-only, 10 negative controls), evaluated with multi-LLM annotation protocol (GPT-5.2 + Claude Sonnet 4.6 + Gemini 3 Pro consensus).
 
 ```bash
 # Step 1: Curate statements (3-LLM extraction + quality filter)
@@ -296,13 +296,59 @@ src/biopat/novex/
 └── analysis.py     # Vocabulary gap, cross-domain, agreement analysis, LaTeX tables
 ```
 
+## Results
+
+### Phase 1: BM25 Baseline (Test Split)
+
+| Metric | Score |
+|--------|-------|
+| Precision@10 | 0.257 |
+| Recall@10 | 0.007 |
+| Precision@50 | 0.167 |
+| Recall@50 | 0.022 |
+| Precision@100 | 0.131 |
+| Recall@100 | 0.034 |
+
+### NovEx Reverse: Novelty Assessment (100 Patents)
+
+Three frontier LLMs independently assessed each patent claim against retrieved prior art, with majority-vote consensus:
+
+| Model | Anticipated | Partially Anticipated | Novel |
+|-------|------------|----------------------|-------|
+| GPT-5.2 | 58 | 27 | — |
+| Claude Sonnet 4.6 | 61 | 21 | 3 |
+| Gemini 3 Pro | 58 | 13 | 10 |
+| **Consensus** | **61 (61%)** | **21 (21%)** | **18 (18%)** |
+
+**Inter-model agreement**: 69% unanimous, 15% majority, 15% override, 1% no consensus.
+
+Domain distribution: A61 (41), C07 (33), C12 (26).
+
+### NovEx Tier 1: Relevance Grading
+
+99 queries evaluated with 1,483 total relevance judgments:
+- Grade 1 (relevant): 671
+- Grade 2 (highly relevant): 393
+- Grade 3 (anticipation): 419
+- Mean judgments per query: 15.0
+
+### API Costs
+
+| Task | Cost | Calls | Tokens |
+|------|------|-------|--------|
+| Relevance grading (Tier 1) | $27.49 | 12,175 | 6.1M |
+| Novelty assessment (Tier 3) | $2.50 | 255 | 418K |
+| **Total** | **$29.98** | **12,430** | **6.5M** |
+
+Pipeline runtime: ~13.7 hours (Feb 25–26, 2026).
+
 ## Project Status
 
 - **Phase 1 pipeline**: Complete (842K qrels, 1,984 queries, 158K docs)
-- **BM25 baseline**: Running on test split
+- **BM25 baseline**: Complete (P@10=0.257, R@100=0.034)
 - **LLM evaluation framework**: 7 experiment types implemented
-- **Agent dual retrieval**: Implemented, ready for evaluation
-- **NovEx benchmark**: Framework implemented, ready for curation and evaluation
+- **Agent dual retrieval**: Implemented with dual corpus (papers + patents)
+- **NovEx benchmark**: Complete — 100 patent claims assessed, 3-model consensus novelty verdicts
 
 ## Dependencies
 
