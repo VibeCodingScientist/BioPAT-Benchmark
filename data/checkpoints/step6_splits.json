@@ -1,0 +1,1 @@
+{"train": {"queries": "step6_train_queries.parquet", "qrels": "step6_train_qrels.parquet"}, "dev": {"queries": "step6_dev_queries.parquet", "qrels": "step6_dev_qrels.parquet"}, "test": {"queries": "step6_test_queries.parquet", "qrels": "step6_test_qrels.parquet"}}
