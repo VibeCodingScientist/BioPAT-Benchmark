@@ -18,8 +18,8 @@ from biopat.reproducibility import ChecksumEngine, AuditLogger
 
 logger = logging.getLogger(__name__)
 
-ROS_ZENODO_URL = "https://zenodo.org/records/7996195/files/_pcs_oa.csv.gz"
-ROS_FILENAME = "_pcs_oa.csv.gz"
+ROS_ZENODO_URL = "https://zenodo.org/api/records/7996195/files/_pcs_oa.csv/content"
+ROS_FILENAME = "_pcs_oa.csv"
 
 
 class RelianceOnScienceLoader:
@@ -138,21 +138,53 @@ class RelianceOnScienceLoader:
         logger.info("Parsing RoS dataset")
 
         # Read CSV with appropriate schema
-        df = pl.read_csv(
-            self.raw_file_path,
-            schema_overrides={
-                "patent_id": pl.Utf8,
-                "openalex_id": pl.Utf8,
-                "pmid": pl.Utf8,
-                "confidence": pl.Int32,
-            },
-        )
+        df = pl.read_csv(self.raw_file_path)
 
-        # Standardize column names
-        df = df.rename({
-            col: col.lower().replace(" ", "_")
-            for col in df.columns
-        })
+        # Standardize column names to lowercase
+        df = df.rename({col: col.lower().replace(" ", "_") for col in df.columns})
+
+        # Map RoS column names to internal names
+        col_map = {}
+        if "oaid" in df.columns:
+            col_map["oaid"] = "openalex_id"
+        if "patent" in df.columns:
+            col_map["patent"] = "patent_id"
+        if "confscore" in df.columns:
+            col_map["confscore"] = "confidence"
+        if "wherefound" in df.columns:
+            col_map["wherefound"] = "examiner_applicant"
+        if "reftype" in df.columns:
+            col_map["reftype"] = "ref_type"
+        if col_map:
+            df = df.rename(col_map)
+
+        # Cast types
+        if "confidence" in df.columns:
+            df = df.with_columns(pl.col("confidence").cast(pl.Int32))
+        if "patent_id" in df.columns:
+            df = df.with_columns(pl.col("patent_id").cast(pl.Utf8))
+        if "openalex_id" in df.columns:
+            df = df.with_columns(pl.col("openalex_id").cast(pl.Utf8))
+
+        # Normalize patent IDs to PatentsView numeric format
+        # RoS uses "us-9186198-b2" style; PatentsView uses "9186198"
+        if "patent_id" in df.columns:
+            from biopat.ingestion.patentsview import normalize_patent_id
+            df = df.with_columns(
+                pl.col("patent_id").map_elements(
+                    normalize_patent_id, return_dtype=pl.Utf8
+                )
+            )
+
+        # Normalize OpenAlex IDs to W-prefixed format
+        # RoS uses bare numeric "2100342970"; OpenAlex API returns "W2100342970"
+        if "openalex_id" in df.columns:
+            from biopat.ingestion.openalex import normalize_openalex_id
+            df = df.with_columns(
+                pl.col("openalex_id").map_elements(
+                    normalize_openalex_id, return_dtype=pl.Utf8
+                )
+            )
 
         # Filter by confidence
         df = df.filter(pl.col("confidence") >= confidence_threshold)

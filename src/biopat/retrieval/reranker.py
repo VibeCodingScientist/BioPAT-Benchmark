@@ -284,14 +284,15 @@ class CrossEncoderReranker:
 
 
 class LLMReranker:
-    """LLM-based reranking using GPT-4/Claude for highest quality.
+    """LLM-based pointwise reranking using any LLM provider.
 
-    Uses LLM to judge document relevance with reasoning.
-    Most expensive but highest quality.
+    Scores each document individually against the query.
 
     Example:
         ```python
-        reranker = LLMReranker(model="gpt-4", api_key="...")
+        from biopat.llm import create_provider
+        provider = create_provider("openai", model="gpt-4o")
+        reranker = LLMReranker(llm_provider=provider)
         reranked = reranker.rerank(query, candidates, corpus, top_k=10)
         ```
     """
@@ -300,95 +301,79 @@ class LLMReranker:
         self,
         model: str = "gpt-4",
         api_key: Optional[str] = None,
-        provider: str = "openai",  # "openai" or "anthropic"
+        provider: str = "openai",
+        llm_provider: Optional[Any] = None,
     ):
         self.model = model
-        self.provider = provider
+        self.provider_name = provider
+        self._llm = llm_provider
 
-        if provider == "openai":
+        if self._llm is None:
             try:
-                import openai
-                self.client = openai.OpenAI(api_key=api_key)
-            except ImportError:
-                raise ImportError("openai package required for LLM reranking")
-        elif provider == "anthropic":
+                from biopat.llm import create_provider as _create
+                self._llm = _create(provider, model=model, api_key=api_key)
+            except (ImportError, ValueError):
+                # Legacy fallback
+                if provider == "openai":
+                    import openai
+                    self.client = openai.OpenAI(api_key=api_key)
+                elif provider == "anthropic":
+                    import anthropic
+                    self.client = anthropic.Anthropic(api_key=api_key)
+                else:
+                    raise ValueError(f"Unknown provider: {provider}")
+
+    def _score_document(
+        self,
+        query: str,
+        doc_id: str,
+        doc_text: str,
+    ) -> Tuple[float, str]:
+        """Score a single document."""
+        prompt = f"""Rate the relevance of this scientific article as prior art for the given patent claim.
+
+Patent Claim:
+{query[:1000]}
+
+Scientific Article ({doc_id}):
+{doc_text[:1500]}
+
+Rate relevance from 0-10 where:
+- 0: Not relevant at all
+- 5: Somewhat related topic
+- 10: Directly anticipates or discloses the claimed invention
+
+Respond with ONLY a JSON object:
+{{"score": <0-10>, "reasoning": "<brief explanation>"}}"""
+
+        if self._llm is not None:
+            response = self._llm.generate(prompt=prompt, max_tokens=200, temperature=0)
+            self._last_response = response
             try:
-                import anthropic
-                self.client = anthropic.Anthropic(api_key=api_key)
-            except ImportError:
-                raise ImportError("anthropic package required for LLM reranking")
+                import json
+                result = json.loads(response.text)
+                return result.get("score", 5) / 10.0, result.get("reasoning", "")
+            except Exception:
+                return 0.5, "Failed to parse response"
+
+        # Legacy fallback
+        if self.provider_name == "openai":
+            resp = self.client.chat.completions.create(
+                model=self.model,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0, max_tokens=200,
+            )
+            text = resp.choices[0].message.content
         else:
-            raise ValueError(f"Unknown provider: {provider}")
-
-    def _score_with_openai(
-        self,
-        query: str,
-        doc_id: str,
-        doc_text: str,
-    ) -> Tuple[float, str]:
-        """Score a single document using OpenAI."""
-        prompt = f"""Rate the relevance of this scientific article as prior art for the given patent claim.
-
-Patent Claim:
-{query[:1000]}
-
-Scientific Article ({doc_id}):
-{doc_text[:1500]}
-
-Rate relevance from 0-10 where:
-- 0: Not relevant at all
-- 5: Somewhat related topic
-- 10: Directly anticipates or discloses the claimed invention
-
-Respond with ONLY a JSON object:
-{{"score": <0-10>, "reasoning": "<brief explanation>"}}"""
-
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0,
-            max_tokens=200,
-        )
+            resp = self.client.messages.create(
+                model=self.model, max_tokens=200,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            text = resp.content[0].text
 
         try:
             import json
-            result = json.loads(response.choices[0].message.content)
-            return result.get("score", 5) / 10.0, result.get("reasoning", "")
-        except Exception:
-            return 0.5, "Failed to parse response"
-
-    def _score_with_anthropic(
-        self,
-        query: str,
-        doc_id: str,
-        doc_text: str,
-    ) -> Tuple[float, str]:
-        """Score a single document using Anthropic."""
-        prompt = f"""Rate the relevance of this scientific article as prior art for the given patent claim.
-
-Patent Claim:
-{query[:1000]}
-
-Scientific Article ({doc_id}):
-{doc_text[:1500]}
-
-Rate relevance from 0-10 where:
-- 0: Not relevant at all
-- 5: Somewhat related topic
-- 10: Directly anticipates or discloses the claimed invention
-
-Respond with ONLY a JSON object:
-{{"score": <0-10>, "reasoning": "<brief explanation>"}}"""
-
-        response = self.client.messages.create(
-            model=self.model,
-            max_tokens=200,
-            messages=[{"role": "user", "content": prompt}],
-        )
-
-        try:
-            import json
-            result = json.loads(response.content[0].text)
+            result = json.loads(text)
             return result.get("score", 5) / 10.0, result.get("reasoning", "")
         except Exception:
             return 0.5, "Failed to parse response"
@@ -402,25 +387,102 @@ Respond with ONLY a JSON object:
     ) -> List[Tuple[str, float]]:
         """Rerank using LLM."""
         results = []
-
-        # Limit candidates to avoid excessive API calls
         candidates = candidates[:min(len(candidates), 20)]
 
         for doc_id, _ in candidates:
             doc = corpus.get(doc_id, {})
-            if isinstance(doc, str):
-                doc_text = doc
-            else:
-                doc_text = f"{doc.get('title', '')} {doc.get('text', '')}"
-
-            if self.provider == "openai":
-                score, reasoning = self._score_with_openai(query, doc_id, doc_text)
-            else:
-                score, reasoning = self._score_with_anthropic(query, doc_id, doc_text)
-
+            doc_text = doc if isinstance(doc, str) else f"{doc.get('title', '')} {doc.get('text', '')}"
+            score, _ = self._score_document(query, doc_id, doc_text)
             results.append((doc_id, score))
 
         results.sort(key=lambda x: x[1], reverse=True)
+        return results[:top_k]
+
+
+class ListwiseLLMReranker:
+    """Listwise LLM reranker — sends all candidates in a single prompt.
+
+    More efficient than pointwise: one API call per query instead of per document.
+
+    Example:
+        ```python
+        from biopat.llm import create_provider
+        provider = create_provider("openai", model="gpt-4o")
+        reranker = ListwiseLLMReranker(provider)
+        ranked = reranker.rerank(query, candidates, corpus, top_k=10)
+        ```
+    """
+
+    def __init__(self, llm_provider: Any, window_size: int = 20):
+        self._llm = llm_provider
+        self.window_size = window_size
+        self._last_response = None
+
+    def rerank(
+        self,
+        query: str,
+        candidates: List[Tuple[str, float]],
+        corpus: Dict[str, Any],
+        top_k: int = 10,
+    ) -> List[Tuple[str, float]]:
+        """Rerank candidates using a single listwise prompt."""
+        candidates = candidates[:self.window_size]
+
+        # Build document list for prompt
+        doc_summaries = []
+        doc_ids = []
+        for i, (doc_id, _) in enumerate(candidates):
+            doc = corpus.get(doc_id, {})
+            if isinstance(doc, str):
+                text = doc[:300]
+            else:
+                text = f"{doc.get('title', '')} {doc.get('text', '')}".strip()[:300]
+            doc_summaries.append(f"[{i+1}] {doc_id}: {text}")
+            doc_ids.append(doc_id)
+
+        docs_text = "\n\n".join(doc_summaries)
+
+        prompt = f"""You are a patent prior art expert. Rank these scientific articles by relevance to the patent claim.
+
+PATENT CLAIM:
+{query[:1000]}
+
+CANDIDATE ARTICLES:
+{docs_text}
+
+Rank ALL articles from most to least relevant. Respond with ONLY a JSON object:
+{{"ranking": [<list of article numbers 1-{len(candidates)} from most to least relevant>]}}"""
+
+        response = self._llm.generate(
+            prompt=prompt,
+            system_prompt="You are an expert patent examiner. Respond only with valid JSON.",
+            max_tokens=500,
+            temperature=0,
+        )
+        self._last_response = response
+
+        try:
+            import json
+            text = response.text.strip()
+            if text.startswith("```"):
+                lines = text.split("\n")
+                if lines[0].startswith("```"):
+                    lines = lines[1:]
+                if lines and lines[-1].strip() == "```":
+                    lines = lines[:-1]
+                text = "\n".join(lines)
+            data = json.loads(text)
+            ranking = data.get("ranking", list(range(1, len(candidates) + 1)))
+        except (json.JSONDecodeError, Exception):
+            ranking = list(range(1, len(candidates) + 1))
+
+        # Convert ranking to scored results
+        results = []
+        for rank, idx in enumerate(ranking):
+            if 1 <= idx <= len(doc_ids):
+                score = 1.0 - (rank / len(ranking))
+                results.append((doc_ids[idx - 1], score))
+
         return results[:top_k]
 
 

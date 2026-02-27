@@ -77,16 +77,14 @@ class HyDEQueryExpander:
 
     Example:
         ```python
-        hyde = HyDEQueryExpander(llm_model="gpt-3.5-turbo")
-        dense_retriever = DenseRetriever(model_name="BAAI/bge-base-en-v1.5")
+        from biopat.llm import create_provider
 
-        # Expand query to hypothetical document
+        provider = create_provider("openai", model="gpt-4o")
+        hyde = HyDEQueryExpander(provider=provider)
+
         hypothetical = hyde.expand_query(
             "anti-PD-1 antibody for treating melanoma"
         )
-
-        # Use hypothetical document for retrieval
-        results = dense_retriever.search(hypothetical, top_k=100)
         ```
     """
 
@@ -94,79 +92,75 @@ class HyDEQueryExpander:
         self,
         config: Optional[HyDEConfig] = None,
         api_key: Optional[str] = None,
+        provider: Optional[Any] = None,
     ):
         self.config = config or HyDEConfig()
 
         if api_key:
             self.config.api_key = api_key
 
-        # Initialize LLM client
-        self._init_llm_client()
+        # Use unified LLMProvider if supplied, else fall back to legacy init
+        self._provider = provider
+        if self._provider is None:
+            self._init_llm_client()
 
     def _init_llm_client(self) -> None:
-        """Initialize the LLM client based on provider."""
-        if self.config.llm_provider == "openai":
-            try:
+        """Initialize the LLM client based on provider (legacy path)."""
+        try:
+            from biopat.llm import create_provider
+            self._provider = create_provider(
+                self.config.llm_provider,
+                model=self.config.llm_model,
+                api_key=self.config.api_key,
+            )
+        except (ImportError, ValueError):
+            # Fall back to direct SDK init for backwards compat
+            if self.config.llm_provider == "openai":
                 import openai
                 self.client = openai.OpenAI(api_key=self.config.api_key)
-            except ImportError:
-                raise ImportError("openai package required. Install with: pip install openai")
-
-        elif self.config.llm_provider == "anthropic":
-            try:
+            elif self.config.llm_provider == "anthropic":
                 import anthropic
                 self.client = anthropic.Anthropic(api_key=self.config.api_key)
-            except ImportError:
-                raise ImportError("anthropic package required. Install with: pip install anthropic")
-
-        elif self.config.llm_provider == "local":
-            # For local LLMs (e.g., llama.cpp, ollama)
-            self.client = None
-            logger.warning("Local LLM not yet implemented")
-
-        else:
-            raise ValueError(f"Unknown LLM provider: {self.config.llm_provider}")
-
-    def _generate_openai(self, prompt: str) -> str:
-        """Generate hypothetical document using OpenAI."""
-        response = self.client.chat.completions.create(
-            model=self.config.llm_model,
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You are a helpful assistant that generates scientific text.",
-                },
-                {"role": "user", "content": prompt},
-            ],
-            max_tokens=self.config.max_tokens,
-            temperature=self.config.temperature,
-        )
-        return response.choices[0].message.content.strip()
-
-    def _generate_anthropic(self, prompt: str) -> str:
-        """Generate hypothetical document using Anthropic."""
-        response = self.client.messages.create(
-            model=self.config.llm_model,
-            max_tokens=self.config.max_tokens,
-            messages=[{"role": "user", "content": prompt}],
-        )
-        return response.content[0].text.strip()
+            else:
+                raise ValueError(f"Unknown LLM provider: {self.config.llm_provider}")
 
     def _generate_hypothetical_doc(self, query: str) -> str:
         """Generate a single hypothetical document."""
-        # Get domain-specific prompt
         prompt_template = HYDE_PROMPTS.get(
             self.config.domain, HYDE_PROMPTS["general"]
         )
         prompt = prompt_template.format(query=query)
 
-        # Generate based on provider
+        if self._provider is not None:
+            response = self._provider.generate(
+                prompt=prompt,
+                system_prompt="You are a helpful assistant that generates scientific text.",
+                max_tokens=self.config.max_tokens,
+                temperature=self.config.temperature,
+            )
+            self._last_response = response
+            return response.text
+
+        # Legacy fallback (direct SDK)
         if self.config.llm_provider == "openai":
-            return self._generate_openai(prompt)
+            resp = self.client.chat.completions.create(
+                model=self.config.llm_model,
+                messages=[
+                    {"role": "system", "content": "You are a helpful assistant that generates scientific text."},
+                    {"role": "user", "content": prompt},
+                ],
+                max_tokens=self.config.max_tokens,
+                temperature=self.config.temperature,
+            )
+            return resp.choices[0].message.content.strip()
         elif self.config.llm_provider == "anthropic":
-            return self._generate_anthropic(prompt)
-        else:
-            raise ValueError(f"Cannot generate with provider: {self.config.llm_provider}")
+            resp = self.client.messages.create(
+                model=self.config.llm_model,
+                max_tokens=self.config.max_tokens,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            return resp.content[0].text.strip()
+        raise ValueError(f"Cannot generate with provider: {self.config.llm_provider}")
 
     def expand_query(self, query: str) -> str:
         """Expand query to hypothetical document.
@@ -178,11 +172,8 @@ class HyDEQueryExpander:
             Hypothetical document text
         """
         logger.debug(f"Generating hypothetical document for: {query[:50]}...")
-
         hypothetical = self._generate_hypothetical_doc(query)
-
         logger.debug(f"Generated: {hypothetical[:100]}...")
-
         return hypothetical
 
     def expand_queries_batch(self, queries: List[str]) -> List[str]:

@@ -23,17 +23,44 @@ DEFAULT_RATE_LIMIT = 10  # polite pool requests per second
 DEFAULT_BATCH_SIZE = 50  # max IDs per filter request
 
 
+def normalize_openalex_id(raw_id: str) -> str:
+    """Normalize an OpenAlex ID to the W-prefixed short form.
+
+    RoS dataset stores bare numeric IDs like '2100342970'.
+    OpenAlex API requires 'W2100342970' or the full URL.
+
+    Args:
+        raw_id: Raw OpenAlex ID in any format.
+
+    Returns:
+        Normalized ID like 'W2100342970'.
+    """
+    raw_id = str(raw_id).strip()
+    # Full URL: https://openalex.org/W2100342970
+    if raw_id.startswith("https://"):
+        return raw_id.split("/")[-1]
+    # Already prefixed: W2100342970
+    if raw_id.startswith("W") and raw_id[1:].isdigit():
+        return raw_id
+    # Bare numeric: 2100342970
+    if raw_id.isdigit():
+        return f"W{raw_id}"
+    return raw_id
+
+
 class OpenAlexClient:
     """Async client for OpenAlex API."""
 
     def __init__(
         self,
         mailto: Optional[str] = None,
+        api_key: Optional[str] = None,
         cache_dir: Optional[Path] = None,
         rate_limit: int = DEFAULT_RATE_LIMIT,
         audit_logger: Optional[AuditLogger] = None,
     ):
         self.mailto = mailto
+        self.api_key = api_key
         self.rate_limit = rate_limit
         self.cache = Cache(str(cache_dir / "openalex")) if cache_dir else None
         self._semaphore = asyncio.Semaphore(rate_limit)
@@ -81,6 +108,10 @@ class OpenAlexClient:
         """Make a rate-limited API request."""
         async with self._semaphore:
             url = f"{OPENALEX_BASE_URL}/{endpoint}"
+            if params is None:
+                params = {}
+            if self.api_key:
+                params["api_key"] = self.api_key
 
             try:
                 response = await retry_with_backoff(
@@ -129,11 +160,7 @@ class OpenAlexClient:
         Returns:
             Work data dict or None if not found.
         """
-        # Normalize ID format
-        if not openalex_id.startswith("https://"):
-            work_id = openalex_id
-        else:
-            work_id = openalex_id.split("/")[-1]
+        work_id = normalize_openalex_id(openalex_id)
 
         # Check cache
         cache_key = f"work:{work_id}"
@@ -158,27 +185,20 @@ class OpenAlexClient:
         self,
         openalex_ids: List[str],
         show_progress: bool = True,
+        select_fields: Optional[List[str]] = None,
     ) -> List[Dict[str, Any]]:
         """Get multiple works by OpenAlex ID.
 
         Args:
             openalex_ids: List of OpenAlex work IDs.
             show_progress: Show progress bar.
+            select_fields: If set, only return these fields (reduces memory).
 
         Returns:
             List of work data dicts.
         """
         results = []
-        ids_to_fetch = []
-
-        # Check cache first
-        for oid in openalex_ids:
-            work_id = oid.split("/")[-1] if oid.startswith("https://") else oid
-            cache_key = f"work:{work_id}"
-            if self.cache and cache_key in self.cache:
-                results.append(self.cache[cache_key])
-            else:
-                ids_to_fetch.append(work_id)
+        ids_to_fetch = [normalize_openalex_id(oid) for oid in openalex_ids]
 
         if not ids_to_fetch:
             return results
@@ -204,28 +224,16 @@ class OpenAlexClient:
                     "filter": f"openalex_id:{filter_str}",
                     "per-page": len(batch),
                 }
+                if select_fields:
+                    params["select"] = ",".join(select_fields)
 
                 try:
                     response = await self._make_request(client, "works", params=params)
                     works = response.get("results", [])
-
-                    for work in works:
-                        results.append(work)
-                        # Cache result
-                        if self.cache:
-                            work_id = work.get("id", "").split("/")[-1]
-                            self.cache[f"work:{work_id}"] = work
+                    results.extend(works)
 
                 except Exception as e:
                     logger.warning(f"Failed to fetch batch: {e}")
-                    # Try individual fetches as fallback
-                    for work_id in batch:
-                        try:
-                            work = await self.get_work(work_id)
-                            if work:
-                                results.append(work)
-                        except Exception:
-                            pass
 
                 # Small delay between batches
                 await asyncio.sleep(0.1)
@@ -390,21 +398,49 @@ class OpenAlexClient:
 
         return pl.DataFrame(records)
 
+    # Fields needed for the benchmark — requesting only these saves memory
+    PAPER_SELECT_FIELDS = [
+        "id", "title", "abstract_inverted_index", "publication_date",
+        "ids", "authorships", "primary_location", "cited_by_count",
+        "concepts",
+    ]
+
     async def get_papers_for_citations(
         self,
         openalex_ids: List[str],
         show_progress: bool = True,
+        chunk_size: int = 5000,
     ) -> pl.DataFrame:
         """Fetch papers and return as DataFrame.
 
-        Convenience method combining batch fetch and DataFrame conversion.
+        Processes in chunks to avoid OOM on large corpora.
 
         Args:
             openalex_ids: List of OpenAlex work IDs.
             show_progress: Show progress bar.
+            chunk_size: Number of IDs per chunk (controls peak memory).
 
         Returns:
             DataFrame with paper data.
         """
-        works = await self.get_works_batch(openalex_ids, show_progress=show_progress)
-        return self.works_to_dataframe(works)
+        dfs = []
+        for i in range(0, len(openalex_ids), chunk_size):
+            chunk_ids = openalex_ids[i:i + chunk_size]
+            logger.info(
+                f"Fetching paper chunk {i // chunk_size + 1}/"
+                f"{(len(openalex_ids) + chunk_size - 1) // chunk_size} "
+                f"({len(chunk_ids)} papers)"
+            )
+            works = await self.get_works_batch(
+                chunk_ids,
+                show_progress=show_progress,
+                select_fields=self.PAPER_SELECT_FIELDS,
+            )
+            if works:
+                dfs.append(self.works_to_dataframe(works))
+            # Free raw dicts immediately
+            del works
+
+        if not dfs:
+            return pl.DataFrame()
+        return pl.concat(dfs)

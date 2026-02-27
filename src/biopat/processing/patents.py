@@ -132,13 +132,30 @@ class PatentProcessor:
             DataFrame with one row per independent claim.
         """
         records = []
+        abstract_fallback_count = 0
 
         for row in compat.iter_rows(patents_df, named=True):
             patent_id = row["patent_id"]
             claims = row.get("claims", [])
 
             if not claims:
-                logger.warning(f"No claims found for patent {patent_id}")
+                # Fallback: use patent abstract as query when claims unavailable
+                abstract = row.get("abstract", "") or ""
+                title = row.get("title", "") or ""
+                if abstract or title:
+                    query_text = f"{title}. {abstract}".strip(". ")
+                    records.append({
+                        "query_id": f"{patent_id}-c0",
+                        "patent_id": patent_id,
+                        "claim_number": 0,
+                        "claim_text": query_text,
+                        "claim_type": "abstract_fallback",
+                        "priority_date": row.get("priority_date"),
+                        "ipc_codes": row.get("ipc_codes", []),
+                    })
+                    abstract_fallback_count += 1
+                else:
+                    logger.warning(f"No claims or abstract for patent {patent_id}")
                 continue
 
             for claim in claims:
@@ -163,21 +180,32 @@ class PatentProcessor:
                         "ipc_codes": row.get("ipc_codes", []),
                     })
 
+        if abstract_fallback_count:
+            logger.info(
+                f"Used abstract fallback for {abstract_fallback_count} patents "
+                f"(claims not available from API)"
+            )
+
         return pl.DataFrame(records)
 
-    def get_ipc3(self, ipc_codes: List[str]) -> str:
+    @staticmethod
+    def get_ipc3(ipc_codes) -> str:
         """Get primary IPC3 code (first 4 characters) for domain stratification.
 
         Args:
-            ipc_codes: List of IPC codes.
+            ipc_codes: List of IPC codes (may be a Python list or Polars Series).
 
         Returns:
             Primary IPC3 code or empty string.
         """
-        if not ipc_codes:
+        # Handle Polars Series from map_elements
+        if hasattr(ipc_codes, 'to_list'):
+            ipc_codes = ipc_codes.to_list()
+        if not ipc_codes or len(ipc_codes) == 0:
             return ""
         # Return first 4 characters of first code (e.g., "A61K")
-        return ipc_codes[0][:4] if ipc_codes[0] else ""
+        first = ipc_codes[0]
+        return first[:4] if first else ""
 
     def add_domain_info(self, claims_df: pl.DataFrame) -> pl.DataFrame:
         """Add domain stratification column based on IPC codes.

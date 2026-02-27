@@ -83,6 +83,7 @@ class Phase1Config(BaseModel):
     ros_confidence_threshold: int = 8
     ipc_prefixes: List[str] = ["A61", "C07", "C12"]
     seed: int = 42
+    graded_relevance: bool = True
 
 
 class CorpusConfig(BaseModel):
@@ -143,6 +144,62 @@ class AdvancedConfig(BaseModel):
     sequence_weight: float = 0.2
 
 
+class LLMConfig(BaseModel):
+    """Configuration for LLM providers."""
+    openai_api_key: Optional[str] = Field(default=None)
+    anthropic_api_key: Optional[str] = Field(default=None)
+    google_api_key: Optional[str] = Field(default=None)
+    openai_model: str = "gpt-4o"
+    anthropic_model: str = "claude-sonnet-4-5-20250929"
+    google_model: str = "gemini-2.5-pro"
+    max_concurrent: int = 5
+    cost_budget_usd: Optional[float] = 500.0
+
+    def __init__(self, **data):
+        super().__init__(**data)
+        if self.openai_api_key is None:
+            object.__setattr__(self, 'openai_api_key', os.environ.get("OPENAI_API_KEY"))
+        if self.anthropic_api_key is None:
+            object.__setattr__(self, 'anthropic_api_key', os.environ.get("ANTHROPIC_API_KEY"))
+        if self.google_api_key is None:
+            object.__setattr__(self, 'google_api_key', os.environ.get("GOOGLE_API_KEY"))
+
+
+class EvaluationConfig(BaseModel):
+    """Configuration for benchmark evaluation."""
+    cpu_only: bool = True
+    dense_batch_size: int = 16
+    bm25_top_k: int = 100
+    dense_top_k: int = 100
+    rerank_top_k: int = 20
+    splits: List[str] = ["test"]
+    results_dir: Path = Field(default=Path("data/results"))
+
+    class Config:
+        arbitrary_types_allowed = True
+
+
+class NovExConfig(BaseModel):
+    """Configuration for NovEx benchmark (3-tier prior art evaluation)."""
+    enabled: bool = False
+    data_dir: Path = Field(default=Path("data/novex"))
+    corpus_dir: Optional[Path] = None  # Defaults to Phase 1 benchmark corpus
+    results_dir: Path = Field(default=Path("data/novex/results"))
+    budget_usd: float = 350.0
+    seed: int = 42
+    # Curation
+    candidate_overselect: int = 120
+    min_quality_score: float = 3.5
+    # Annotation
+    candidates_per_statement: int = 50
+    # Evaluation
+    tier1_top_k: int = 100
+    tier1_k_values: List[int] = [10, 50, 100]
+
+    class Config:
+        arbitrary_types_allowed = True
+
+
 class BioPatConfig(BaseModel):
     """Main configuration for BioPAT benchmark."""
     phase: str = "phase1"
@@ -151,6 +208,9 @@ class BioPatConfig(BaseModel):
     phase1: Phase1Config = Field(default_factory=Phase1Config)
     phase5: Phase5Config = Field(default_factory=Phase5Config)
     advanced: AdvancedConfig = Field(default_factory=AdvancedConfig)
+    llm: LLMConfig = Field(default_factory=LLMConfig)
+    evaluation: EvaluationConfig = Field(default_factory=EvaluationConfig)
+    novex: NovExConfig = Field(default_factory=NovExConfig)
 
     @classmethod
     def load(cls, config_path: str = "configs/default.yaml") -> "BioPatConfig":

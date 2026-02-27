@@ -4,6 +4,7 @@ Coordinates all components to build the minimum viable benchmark.
 """
 
 import asyncio
+import hashlib
 import json
 import logging
 import shutil
@@ -40,6 +41,7 @@ class Phase1Pipeline:
         )
         self.openalex_client = OpenAlexClient(
             mailto=self.config.api.openalex_mailto,
+            api_key=self.config.api.openalex_api_key,
             cache_dir=self.config.paths.cache_dir,
         )
         self.patent_processor = PatentProcessor(self.config.paths.processed_dir)
@@ -271,8 +273,23 @@ class Phase1Pipeline:
             pl.col("openalex_id").is_in(paper_ids)
         )
 
-        # Create patent-level links with paper dates
+        # Create patent-level links with patent dates
+        # Use priority_date when available, fall back to patent_date (grant date)
         patents_with_dates = claims_df.select(["patent_id", "priority_date"]).unique()
+
+        # If priority_date is entirely null, try to get patent_date from patents checkpoint
+        if patents_with_dates["priority_date"].null_count() == len(patents_with_dates):
+            patents_cp = self.config.paths.checkpoint_dir / "step2_patents.parquet"
+            if patents_cp.exists():
+                patents_raw = pl.read_parquet(patents_cp)
+                if "patent_date" in patents_raw.columns:
+                    logger.warning(
+                        "priority_date is null for all patents, falling back to patent_date (grant date)"
+                    )
+                    date_lookup = patents_raw.select(["patent_id", "patent_date"]).unique()
+                    patents_with_dates = patents_with_dates.drop("priority_date").join(
+                        date_lookup, on="patent_id", how="left"
+                    ).rename({"patent_date": "priority_date"})
 
         links = ros_filtered.join(
             patents_with_dates,
@@ -284,6 +301,17 @@ class Phase1Pipeline:
             how="inner"
         ).rename({"openalex_id": "paper_id"})
 
+        # Map RoS examiner_applicant (front/body/both) to source (examiner/applicant)
+        if "examiner_applicant" in links.columns:
+            links = links.with_columns(
+                pl.when(pl.col("examiner_applicant").is_in(["front", "both"]))
+                .then(pl.lit("examiner"))
+                .when(pl.col("examiner_applicant") == "body")
+                .then(pl.lit("applicant"))
+                .otherwise(pl.lit("unknown"))
+                .alias("source")
+            )
+
         # Validate temporal constraints
         valid_links, report = self.temporal_validator.validate_and_report(
             links,
@@ -292,10 +320,13 @@ class Phase1Pipeline:
         )
 
         # Expand to claim level
+        select_cols = ["patent_id", "paper_id", "confidence"]
+        if "source" in valid_links.columns:
+            select_cols.append("source")
         expanded_links = (
             claims_df.select(["query_id", "patent_id"])
             .join(
-                valid_links.select(["patent_id", "paper_id", "confidence", "source"] if "source" in valid_links.columns else ["patent_id", "paper_id", "confidence"]),
+                valid_links.select(select_cols),
                 on="patent_id",
                 how="inner"
             )
@@ -308,7 +339,7 @@ class Phase1Pipeline:
         # Create qrels
         qrels = self.relevance_assigner.create_qrels(
             expanded_links,
-            graded=False,  # Phase 1 uses binary relevance
+            graded=self.config.phase1.graded_relevance,
             confidence_threshold=self.config.phase1.ros_confidence_threshold,
             save=True,
         )
@@ -375,6 +406,80 @@ class Phase1Pipeline:
 
         logger.info(f"Benchmark formatted: {stats}")
         return stats
+
+    def _generate_metadata(
+        self,
+        papers_df: pl.DataFrame,
+        claims_df: pl.DataFrame,
+        qrels: pl.DataFrame,
+        splits: dict,
+        stats: dict,
+    ) -> dict:
+        """Generate benchmark metadata.json alongside BEIR output."""
+        metadata: dict = {"benchmark": "BioPAT", "version": "1.0.0"}
+
+        # Corpus stats
+        metadata["corpus"] = {
+            "num_queries": int(claims_df["query_id"].n_unique()),
+            "num_docs": len(papers_df),
+            "num_qrels": len(qrels),
+        }
+
+        # Domain distribution
+        if "domain" in claims_df.columns:
+            domain_counts = (
+                claims_df.select("domain")
+                .group_by("domain")
+                .len()
+                .sort("len", descending=True)
+            )
+            metadata["domain_distribution"] = {
+                row["domain"]: int(row["len"]) for row in domain_counts.iter_rows(named=True)
+            }
+
+        # Relevance tier distribution
+        if "score" in qrels.columns:
+            score_counts = (
+                qrels.select("score")
+                .group_by("score")
+                .len()
+                .sort("score")
+            )
+            metadata["relevance_distribution"] = {
+                str(row["score"]): int(row["len"]) for row in score_counts.iter_rows(named=True)
+            }
+
+        # Splits info
+        metadata["splits"] = {
+            name: {"queries": len(q), "qrels": len(qr)}
+            for name, (q, qr) in splits.items()
+        }
+
+        # Temporal coverage
+        for col in ["priority_date", "filing_date"]:
+            if col in claims_df.columns:
+                dates = claims_df[col].drop_nulls()
+                if len(dates) > 0:
+                    metadata["temporal_coverage"] = {
+                        "earliest": str(dates.min()),
+                        "latest": str(dates.max()),
+                    }
+                break
+
+        # SHA256 checksums of output files
+        checksums = {}
+        for path in sorted(self.config.paths.benchmark_dir.rglob("*")):
+            if path.is_file():
+                h = hashlib.sha256(path.read_bytes()).hexdigest()
+                checksums[str(path.relative_to(self.config.paths.benchmark_dir))] = h
+        metadata["checksums"] = checksums
+
+        # Write metadata
+        meta_path = self.config.paths.benchmark_dir / "metadata.json"
+        meta_path.write_text(json.dumps(metadata, indent=2, default=str))
+        logger.info("Benchmark metadata written to %s", meta_path)
+
+        return metadata
 
     async def step8_run_baseline(self) -> dict:
         """Step 8: Run BM25 baseline evaluation.
@@ -491,6 +596,15 @@ class Phase1Pipeline:
             stats = await self.step7_format_output(papers_df, claims_df, splits)
             self._save_json(cp, stats)
         results["benchmark_stats"] = stats
+
+        # Step 7b: Generate benchmark metadata
+        cp_meta = "step7b_metadata.json"
+        if self._has_checkpoint(cp_meta):
+            metadata = self._load_json(cp_meta)
+        else:
+            metadata = self._generate_metadata(papers_df, claims_df, qrels, splits, stats)
+            self._save_json(cp_meta, metadata)
+        results["metadata"] = metadata
 
         # Step 8: Run baseline
         if not skip_baseline:
