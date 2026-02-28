@@ -7,6 +7,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Dict, List
 
+from biopat.evaluation.statistical_tests import bootstrap_confidence_interval
 from biopat.novex.benchmark import NovExBenchmark
 from biopat.novex.evaluator import TierResult
 
@@ -28,6 +29,14 @@ def _tokenize(text: str) -> set:
 
 def _mean(vals: List[float]) -> float:
     return sum(vals) / len(vals) if vals else 0.0
+
+
+def _compute_ci(vals: List[float]) -> Dict[str, float]:
+    """Return mean + 95% bootstrap CI as {mean, ci_lower, ci_upper}."""
+    if not vals:
+        return {"mean": 0.0, "ci_lower": 0.0, "ci_upper": 0.0}
+    mean, lower, upper = bootstrap_confidence_interval(vals, n_bootstrap=10000, seed=42)
+    return {"mean": round(mean, 4), "ci_lower": round(lower, 4), "ci_upper": round(upper, 4)}
 
 
 def _pearson(x: List[float], y: List[float]) -> float:
@@ -99,7 +108,9 @@ class NovExAnalyzer:
             for r in self.t1:
                 vals = [m for qid, m in r.per_query.items() if qid in ids]
                 if vals:
-                    dm[f"{r.method}/{r.model}"] = {k: _mean([v[k] for v in vals]) for k in vals[0]}
+                    dm[f"{r.method}/{r.model}"] = {
+                        k: _compute_ci([v[k] for v in vals]) for k in vals[0]
+                    }
             out[d] = {"count": len(ids), "metrics": dm}
         self._save("per_domain.json", out)
         return out
@@ -113,8 +124,13 @@ class NovExAnalyzer:
             cx_r = [m.get("recall@100", 0) for qid, m in r.per_query.items()
                     if self.b.statements.get(qid) and self.b.statements[qid].category == "cross_domain"]
             if in_r and cx_r:
-                out[f"{r.method}/{r.model}"] = {"in_domain": _mean(in_r), "cross_domain": _mean(cx_r),
-                                                 "gap": _mean(in_r) - _mean(cx_r)}
+                in_ci = _compute_ci(in_r)
+                cx_ci = _compute_ci(cx_r)
+                out[f"{r.method}/{r.model}"] = {
+                    "in_domain": in_ci,
+                    "cross_domain": cx_ci,
+                    "gap": round(in_ci["mean"] - cx_ci["mean"], 4),
+                }
         self._save("cross_domain.json", out)
         return out
 
@@ -126,20 +142,58 @@ class NovExAnalyzer:
         return out
 
     def tier1_table(self) -> List[Dict]:
-        rows = [{"method": r.method, "model": r.model, **{k: round(v, 4) for k, v in r.metrics.items()}} for r in self.t1]
+        rows = []
+        for r in self.t1:
+            row = {"method": r.method, "model": r.model}
+            for k, v in r.metrics.items():
+                row[k] = round(v, 4)
+                per_q_vals = [pq.get(k, 0) for pq in r.per_query.values() if k in pq]
+                if per_q_vals:
+                    ci = _compute_ci(per_q_vals)
+                    row[f"{k}_ci_lower"] = ci["ci_lower"]
+                    row[f"{k}_ci_upper"] = ci["ci_upper"]
+            rows.append(row)
         self._save("tier1_table.json", rows)
-        self._latex("tier1.tex", ["Method", "Model", "R@10", "R@50", "R@100", "NDCG@10", "MAP"],
-                    [[r["method"], r["model"]] + [f'{r.get(k,0):.3f}' for k in ["recall@10","recall@50","recall@100","ndcg@10","map"]] for r in rows])
+        metric_keys = ["recall@10", "recall@50", "recall@100", "ndcg@10", "map"]
+        self._latex("tier1.tex",
+                    ["Method", "Model", "R@10", "R@50", "R@100", "NDCG@10", "MAP"],
+                    [[r["method"], r["model"]] + [
+                        self._fmt_ci(r, k) for k in metric_keys
+                    ] for r in rows])
         return rows
 
     def tier2_table(self) -> List[Dict]:
-        rows = [{"model": r.model, **{k: round(v, 4) for k, v in r.metrics.items()}} for r in self.t2]
+        rows = []
+        for r in self.t2:
+            row = {"model": r.model}
+            for k, v in r.metrics.items():
+                row[k] = round(v, 4)
+            for k in ("accuracy", "mae"):
+                per_q_vals = [pq.get(k, 0) for pq in r.per_query.values() if k in pq]
+                if per_q_vals:
+                    ci = _compute_ci(per_q_vals)
+                    row[f"{k}_ci_lower"] = ci["ci_lower"]
+                    row[f"{k}_ci_upper"] = ci["ci_upper"]
+            rows.append(row)
         self._save("tier2_table.json", rows)
         return rows
 
     def tier3_table(self) -> List[Dict]:
-        rows = [{"model": r.model, "context": r.metadata.get("with_context", True),
-                 **{k: round(v, 4) for k, v in r.metrics.items()}} for r in self.t3]
+        rows = []
+        for r in self.t3:
+            row = {"model": r.model, "context": r.metadata.get("with_context", True)}
+            for k, v in r.metrics.items():
+                row[k] = round(v, 4)
+            for k in ("accuracy", "macro_f1"):
+                if k == "accuracy":
+                    per_q_vals = [pq.get("correct", 0) for pq in r.per_query.values()]
+                else:
+                    per_q_vals = [pq.get("correct", 0) for pq in r.per_query.values()]
+                if per_q_vals:
+                    ci = _compute_ci(per_q_vals)
+                    row[f"{k}_ci_lower"] = ci["ci_lower"]
+                    row[f"{k}_ci_upper"] = ci["ci_upper"]
+            rows.append(row)
         self._save("tier3_table.json", rows)
         return rows
 
@@ -149,13 +203,37 @@ class NovExAnalyzer:
         best_t3 = max(self.t3, key=lambda r: r.metrics.get("macro_f1", 0)) if self.t3 else None
         out = {
             "benchmark": self.b.get_stats(),
-            "best_t1": {"method": best_t1.method, "recall@100": best_t1.metrics.get("recall@100")} if best_t1 else None,
-            "best_t2": {"model": best_t2.model, "kappa": best_t2.metrics.get("weighted_kappa")} if best_t2 else None,
-            "best_t3": {"model": best_t3.model, "f1": best_t3.metrics.get("macro_f1")} if best_t3 else None,
+            "best_t1": self._summary_ci(best_t1, "recall@100") if best_t1 else None,
+            "best_t2": self._summary_ci(best_t2, "weighted_kappa") if best_t2 else None,
+            "best_t3": self._summary_ci(best_t3, "macro_f1") if best_t3 else None,
             "total_cost": sum(r.cost_usd for r in self.results),
         }
         self._save("summary.json", out)
         return out
+
+    @staticmethod
+    def _summary_ci(result: TierResult, metric: str) -> Dict:
+        entry = {"method": result.method, "model": result.model, metric: result.metrics.get(metric)}
+        per_q_vals = [pq.get(metric, 0) for pq in result.per_query.values() if metric in pq]
+        if not per_q_vals and metric in ("macro_f1", "weighted_kappa"):
+            # For aggregate metrics without per-query breakdown, use "correct" or "accuracy"
+            fallback = "correct" if result.tier == 3 else "accuracy"
+            per_q_vals = [pq.get(fallback, 0) for pq in result.per_query.values() if fallback in pq]
+        if per_q_vals:
+            ci = _compute_ci(per_q_vals)
+            entry[f"{metric}_ci_lower"] = ci["ci_lower"]
+            entry[f"{metric}_ci_upper"] = ci["ci_upper"]
+        return entry
+
+    @staticmethod
+    def _fmt_ci(row: Dict, metric: str) -> str:
+        """Format metric as 'mean [lower, upper]' for LaTeX."""
+        val = row.get(metric, 0)
+        lo = row.get(f"{metric}_ci_lower")
+        hi = row.get(f"{metric}_ci_upper")
+        if lo is not None and hi is not None:
+            return f"{val:.3f} [{lo:.3f}, {hi:.3f}]"
+        return f"{val:.3f}"
 
     def _save(self, name: str, data):
         with open(self.out / name, "w") as f:
@@ -168,7 +246,7 @@ class NovExAnalyzer:
                  " & ".join(f"\\textbf{{{h}}}" for h in headers) + " \\\\",
                  "\\midrule"]
         for row in rows:
-            lines.append(" & ".join(row) + " \\\\")
+            lines.append(" & ".join(str(c) for c in row) + " \\\\")
         lines += ["\\bottomrule", "\\end{tabular}", "\\end{table}"]
         with open(self.out / name, "w") as f:
             f.write("\n".join(lines))

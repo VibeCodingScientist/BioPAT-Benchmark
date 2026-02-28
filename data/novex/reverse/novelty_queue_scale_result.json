@@ -1,0 +1,1983 @@
+[
+  {
+    "statement_id": "RN101",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN102",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN103",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN104",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN105",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN106",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN107",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN108",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN109",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN110",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN111",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN112",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN113",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN114",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN115",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN116",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN117",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN118",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN119",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN120",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN121",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN122",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN123",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN124",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN125",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN126",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN127",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN128",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN129",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN130",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN131",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN132",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN133",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN134",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN135",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN136",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "NOVEL",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN137",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN138",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN139",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN140",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN141",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN142",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN143",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN144",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN145",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN146",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN147",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN148",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN149",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN150",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN151",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN152",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN153",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN154",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN155",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN156",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN157",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN158",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN159",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN160",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN161",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN162",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN163",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN164",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN165",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN166",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN167",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN168",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN169",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN170",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN171",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN172",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN173",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN174",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN175",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN176",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN177",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN178",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN179",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN180",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN181",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN182",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "NOVEL"
+    }
+  },
+  {
+    "statement_id": "RN183",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN184",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN185",
+    "label": "ANTICIPATED",
+    "agreement": "no_consensus",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN186",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN187",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN188",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN189",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN190",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN191",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN192",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN193",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN194",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN195",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN196",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN197",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN198",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN199",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN200",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN201",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN202",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN203",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN204",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN205",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN206",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN207",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN208",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN209",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN210",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN211",
+    "label": "ANTICIPATED",
+    "agreement": "no_consensus",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN212",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN213",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN214",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN215",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN216",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN217",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN218",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN219",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "PARTIALLY_ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN220",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN221",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN222",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN223",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN224",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN225",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN226",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN227",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN228",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN229",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN230",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN231",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN232",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN233",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN234",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN235",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN236",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN237",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN238",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN239",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN240",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN241",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN242",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN243",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN244",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN245",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN246",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN247",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN248",
+    "label": "ANTICIPATED",
+    "agreement": "no_consensus",
+    "individual": {
+      "openai": "NOVEL",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN249",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN250",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN251",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN252",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN253",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN254",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN255",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN256",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN257",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN258",
+    "label": "ANTICIPATED",
+    "agreement": "no_consensus",
+    "individual": {
+      "openai": "NOVEL",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN259",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN260",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN261",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN262",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN263",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "NOVEL",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN264",
+    "label": "ANTICIPATED",
+    "agreement": "no_consensus",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN265",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN266",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN267",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN268",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN269",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN270",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN271",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN272",
+    "label": "ANTICIPATED",
+    "agreement": "no_consensus",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN273",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN274",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN275",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN276",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN277",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN278",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN279",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN280",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN281",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN282",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN283",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN284",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN285",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN286",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN287",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN288",
+    "label": "ANTICIPATED",
+    "agreement": "no_consensus",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN289",
+    "label": "ANTICIPATED",
+    "agreement": "no_consensus",
+    "individual": {
+      "openai": "NOVEL",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN290",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN291",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN292",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN293",
+    "label": "ANTICIPATED",
+    "agreement": "no_consensus",
+    "individual": {
+      "openai": "NOVEL",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN294",
+    "label": "ANTICIPATED",
+    "agreement": "no_consensus",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN295",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN296",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN297",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN298",
+    "label": "NOVEL",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "NOVEL",
+      "anthropic": "NOVEL",
+      "google": "NOVEL"
+    }
+  },
+  {
+    "statement_id": "RN299",
+    "label": "NOVEL",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "NOVEL",
+      "anthropic": "NOVEL",
+      "google": "NOVEL"
+    }
+  },
+  {
+    "statement_id": "RN300",
+    "label": "PARTIALLY_ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "PARTIALLY_ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  }
+]

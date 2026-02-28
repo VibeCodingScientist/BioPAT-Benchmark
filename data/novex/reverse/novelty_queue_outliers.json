@@ -1,0 +1,26 @@
+[
+  {
+    "statement_id": "RN027",
+    "patent_id": "10058621",
+    "claim": "A combination therapy comprising an anti-HLA-DR antibody-drug conjugate (ADC) incorporating SN-38 or pro-2PDOX administered at 1-18 mg/kg, combined with a Bruton's tyrosine kinase inhibitor or PI3K inhibitor, wherein the combination produces a synergistic effect on inhibiting tumor growth in hematopoietic cancers, including those resistant to standard therapies.",
+    "title": "Combination therapy with anti-HLA-DR antibodies and kinase inhibitors in hematopoietic cancers",
+    "abstract": "The present invention relates to combination therapy with drugs, such as Bruton's tyrosine kinase inhibitors or PI3K inhibitors, with antibodies or ADCs against HLA-DR. Where ADCs are used, they preferably incorporate SN-38 or pro-2PDOX. The ADC may be administered at a dosage of between 1 mg/kg and 18 mg/kg, preferably 4, 6, 8, 9, 10, 12, 16 or 18 mg/kg. The combination therapy can reduce solid tumors in size, reduce or eliminate metastases and is effective to treat cancers resistant to standard therapies, such as radiation therapy, chemotherapy or immunotherapy. Preferably, the combination therapy has an additive effect on inhibiting tumor growth. Most preferably, the combination therapy has a synergistic effect on inhibiting tumor growth.",
+    "domain": "A61"
+  },
+  {
+    "statement_id": "RN038",
+    "patent_id": "11001863",
+    "claim": "A DNA-targeting RNA comprising a targeting sequence that, together with an enzymatically inactive Cas9 polypeptide, enables site-specific modulation of transcription at a target DNA locus without cleaving the DNA, providing RNA-directed transcriptional regulation through a catalytically dead Cas9-guide RNA complex.",
+    "title": "Methods and compositions for RNA-directed target DNA modification and for RNA-directed modulation of transcription",
+    "abstract": "The present disclosure provides a DNA-targeting RNA that comprises a targeting sequence and, together with a modifying polypeptide, provides for site-specific modification of a target DNA and/or a polypeptide associated with the target DNA. The present disclosure further provides site-specific modifying polypeptides. The present disclosure further provides methods of site-specific modification of a target DNA and/or a polypeptide associated with the target DNA The present disclosure provides methods of modulating transcription of a target nucleic acid in a target cell, generally involving contacting the target nucleic acid with an enzymatically inactive Cas9 polypeptide and a DNA-targeting RNA. Kits and compositions for carrying out the methods are also provided. The present disclosure provides genetically modified cells that produce Cas9; and Cas9 transgenic non-human multicellular organisms.",
+    "domain": "C12"
+  },
+  {
+    "statement_id": "RN087",
+    "patent_id": "11352426",
+    "claim": "A multispecific polypeptide molecule comprising at least one humanized CD3-binding domain and a second binding domain that binds a tumor antigen, wherein the molecule simultaneously engages the CD3 subunit of a T-cell receptor complex on T-cells and tumor antigen-expressing cells to induce target-dependent T-cell cytotoxicity, activation, and proliferation.",
+    "title": "CD3 binding polypeptides",
+    "abstract": "The present disclosure relates to protein molecules that specifically bind to CD3, which may have at least one humanized CD3-binding domain. Such molecules are useful for the treatment of cancer. The protein molecule binding to CD3 may have a second binding domain that binds to another target. In one embodiment, multispecific polypeptide molecules bind both tumor antigen-expressing cells and the CD3 subunit of a T-cell receptor complex on T-cells to induce target-dependent T-cell cytotoxicity, activation, and proliferation. The disclosure also provides pharmaceutical compositions comprising the CD3-binding poypeptide molecules, nucleic acid molecules encoding these polypeptides and methods of making these molecules.",
+    "domain": "A61"
+  }
+]

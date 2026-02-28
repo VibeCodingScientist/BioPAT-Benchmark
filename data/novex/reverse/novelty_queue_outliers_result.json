@@ -1,0 +1,32 @@
+[
+  {
+    "statement_id": "RN027",
+    "label": "ANTICIPATED",
+    "agreement": "majority",
+    "individual": {
+      "openai": "PARTIALLY_ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN038",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  },
+  {
+    "statement_id": "RN087",
+    "label": "ANTICIPATED",
+    "agreement": "unanimous",
+    "individual": {
+      "openai": "ANTICIPATED",
+      "anthropic": "ANTICIPATED",
+      "google": "ANTICIPATED"
+    }
+  }
+]

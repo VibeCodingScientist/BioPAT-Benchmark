@@ -246,8 +246,10 @@ class NovExEvaluator(CheckpointMixin):
                 if max_pairs and n >= max_pairs:
                     break
             m = self._tier2_metrics(preds, self.benchmark.tier2_qrels)
+            pq = self._tier2_per_query(preds, self.benchmark.tier2_qrels)
             return TierResult(tier=2, method="relevance", model=model_id, metrics=m,
-                              cost_usd=self.cost_tracker.total_cost, elapsed_seconds=time.time()-t0)
+                              per_query=pq, cost_usd=self.cost_tracker.total_cost,
+                              elapsed_seconds=time.time()-t0)
         return self._cached_or_run(f"t2_{safe}", _run)
 
     @staticmethod
@@ -277,6 +279,24 @@ class NovExEvaluator(CheckpointMixin):
         exp = sum(w[i][j]*rs[i]*cs[j]/(n*n) for i in range(k) for j in range(k))
         kappa = 1 - obs/exp if abs(exp) > 1e-10 else 1.0
         return {"accuracy": acc, "mae": mae, "weighted_kappa": kappa, "num_pairs": float(n)}
+
+    @staticmethod
+    def _tier2_per_query(pred, gt) -> Dict[str, Dict[str, float]]:
+        pq: Dict[str, Dict[str, float]] = {}
+        for qid in pred:
+            if qid not in gt:
+                continue
+            ps, gs = [], []
+            for did in pred[qid]:
+                if did in gt[qid]:
+                    ps.append(pred[qid][did])
+                    gs.append(gt[qid][did])
+            if not ps:
+                continue
+            acc = sum(p == g for p, g in zip(ps, gs)) / len(ps)
+            mae = sum(abs(p - g) for p, g in zip(ps, gs)) / len(ps)
+            pq[qid] = {"accuracy": acc, "mae": mae}
+        return pq
 
     # ===================== TIER 3: Novelty =====================
 
@@ -310,9 +330,13 @@ class NovExEvaluator(CheckpointMixin):
                     logger.warning("Tier3 parse failed for %s (%s): %s", qid, model_id, exc)
                     pass
             m = self._tier3_metrics(preds, self.benchmark.tier3_labels)
+            pq: Dict[str, Dict[str, float]] = {}
+            for qid in preds:
+                if qid in self.benchmark.tier3_labels:
+                    pq[qid] = {"correct": float(preds[qid] == self.benchmark.tier3_labels[qid])}
             return TierResult(tier=3, method=f"novelty_{'ctx' if with_context else 'zs'}", model=model_id,
-                              metrics=m, cost_usd=self.cost_tracker.total_cost, elapsed_seconds=time.time()-t0,
-                              metadata={"with_context": with_context})
+                              metrics=m, per_query=pq, cost_usd=self.cost_tracker.total_cost,
+                              elapsed_seconds=time.time()-t0, metadata={"with_context": with_context})
         return self._cached_or_run(f"t3_{safe}_{ctx}", _run)
 
     @staticmethod
