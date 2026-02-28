@@ -69,7 +69,12 @@ class NovExBenchmark:
 
         # Corpus
         if load_corpus:
-            for p in [self.corpus_dir / "corpus.jsonl", self.data_dir.parent / "benchmark" / "corpus.jsonl"]:
+            for p in [
+                self.corpus_dir / "dual_corpus.jsonl",
+                self.corpus_dir / "corpus.jsonl",
+                self.data_dir.parent / "benchmark" / "dual_corpus.jsonl",
+                self.data_dir.parent / "benchmark" / "corpus.jsonl",
+            ]:
                 if p.exists():
                     with open(p) as f:
                         for line in f:
@@ -99,6 +104,15 @@ class NovExBenchmark:
                     self.tier1_qrels[sid] = {d: 1 for d in rel_docs}
             logger.info("Populated tier1_qrels from statements: %d queries",
                         len(self.tier1_qrels))
+
+        if not self.tier2_qrels and self.tier1_qrels:
+            for qid, docs in self.tier1_qrels.items():
+                relevant = {did: score for did, score in docs.items() if score >= 1}
+                if relevant:
+                    self.tier2_qrels[qid] = relevant
+            logger.info("Populated tier2_qrels from tier1_qrels: %d queries, %d pairs",
+                        len(self.tier2_qrels),
+                        sum(len(v) for v in self.tier2_qrels.values()))
 
         if not self.tier3_labels and self.statements:
             label_to_score = {"NOVEL": 0, "PARTIALLY_ANTICIPATED": 1, "ANTICIPATED": 2}
