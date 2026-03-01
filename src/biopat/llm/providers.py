@@ -73,6 +73,35 @@ def _estimate_cost(model: str, input_tokens: int, output_tokens: int) -> float:
     return (input_tokens * input_price + output_tokens * output_price) / 1_000_000
 
 
+def _is_retryable(exc: Exception) -> bool:
+    """Check if an exception is a transient API error worth retrying."""
+    # HTTP status-based errors from all three providers
+    status = getattr(exc, "status_code", None) or getattr(exc, "code", None)
+    if status in (429, 500, 502, 503, 529):
+        return True
+    # Connection / timeout errors
+    err_name = type(exc).__name__.lower()
+    for token in ("timeout", "connection", "reset", "broken", "overloaded"):
+        if token in err_name or token in str(exc).lower():
+            return True
+    return False
+
+
+def _retry_call(fn, *, max_retries: int = 5, base_delay: float = 2.0):
+    """Call fn() with exponential backoff on transient errors."""
+    for attempt in range(max_retries + 1):
+        try:
+            return fn()
+        except Exception as exc:
+            if attempt < max_retries and _is_retryable(exc):
+                delay = base_delay * (2 ** attempt)
+                logger.warning("Retryable error (attempt %d/%d), waiting %.0fs: %s",
+                               attempt + 1, max_retries, delay, exc)
+                time.sleep(delay)
+            else:
+                raise
+
+
 class LLMProvider(ABC):
     """Abstract base class for LLM providers."""
 
@@ -160,7 +189,7 @@ class OpenAIProvider(LLMProvider):
             kwargs["temperature"] = temperature
 
         t0 = time.perf_counter()
-        response = self.client.chat.completions.create(**kwargs)
+        response = _retry_call(lambda: self.client.chat.completions.create(**kwargs))
         latency = (time.perf_counter() - t0) * 1000
 
         usage = response.usage
@@ -214,7 +243,7 @@ class AnthropicProvider(LLMProvider):
             kwargs["temperature"] = temperature
 
         t0 = time.perf_counter()
-        response = self.client.messages.create(**kwargs)
+        response = _retry_call(lambda: self.client.messages.create(**kwargs))
         latency = (time.perf_counter() - t0) * 1000
 
         input_tokens = response.usage.input_tokens
@@ -273,11 +302,11 @@ class GoogleProvider(LLMProvider):
             config.system_instruction = system_prompt
 
         t0 = time.perf_counter()
-        response = self.client.models.generate_content(
+        response = _retry_call(lambda: self.client.models.generate_content(
             model=self.model,
             contents=prompt,
             config=config,
-        )
+        ))
         latency = (time.perf_counter() - t0) * 1000
 
         input_tokens = 0
